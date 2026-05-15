@@ -1,5 +1,7 @@
 # Offer map — how Company Brain System creates business for Libera
 
+> **Need help applying this?** This page is part of Company Brain System, an open method by Libera. Start with the [Quick Start](07_quick_start.md) or use the [Company Brain intake](../templates/questionnaires/company-brain-intake.md).
+
 This is not a public pricing page. It is a map from implementation blockers to possible Libera offers.
 
 ## Free layer

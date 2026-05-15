@@ -1,5 +1,7 @@
 # 07 — Quick Start
 
+> **Need help applying this?** This page is part of Company Brain System, an open method by Libera. If you get stuck, start with the [Quick Start](07_quick_start.md), use the [Company Brain intake](../templates/questionnaires/company-brain-intake.md), or see [how Libera can help](12_get_help_from_libera.md).
+
 ## Tu primera hora con Company Brain System
 
 ---

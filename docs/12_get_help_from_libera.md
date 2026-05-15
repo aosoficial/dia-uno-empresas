@@ -1,5 +1,7 @@
 # Get help from Libera
 
+> **Need help applying this?** This page is part of Company Brain System, an open method by Libera. Start with the [Quick Start](07_quick_start.md) or use the [Company Brain intake](../templates/questionnaires/company-brain-intake.md).
+
 You can implement Company Brain System yourself.
 
 But some blockers are easier to solve with help.
