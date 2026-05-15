@@ -1,209 +1,214 @@
 # 07 — Quick Start
 
-> **Need help applying this?** This page is part of Company Brain System, an open method by Libera. If you get stuck, start with the [Quick Start](07_quick_start.md), use the [Company Brain intake](../templates/questionnaires/company-brain-intake.md), or see [how Libera can help](12_get_help_from_libera.md).
+This guide helps you create the smallest useful version of Company Brain System in about one hour.
 
-## Tu primera hora con Company Brain System
+You will create:
 
----
+1. a small **Company Brain**;
+2. one **Agent Runtime Pack**;
+3. one **Receipt** as evidence of work.
 
-## Objetivo
-
-En menos de 1 hora tendrás:
-
-1. Un **Company Brain mínimo** con 3 entidades.
-2. Un **agente con Agent Runtime Pack** operativo.
-3. Tu primera **primitiva operativa** (Receipt) creada.
-
-No necesitas instalar nada. Solo un editor de texto y Git.
+You do not need a database or a SaaS tool. A text editor and Git are enough.
 
 ---
 
-## Requisitos
+## Before you start
 
-- Git instalado.
-- Un editor de texto (VS Code, Obsidian, vim — cualquiera sirve).
-- Python 3.8+ (solo si quieres ejecutar los scripts de validación; no es obligatorio para empezar).
+You need:
+
+- Git;
+- a text editor;
+- Python 3.8+ only if you want to run the validation scripts.
+
+Useful terms:
+
+- **Company Brain:** the shared memory of your company.
+- **Agent Runtime Pack:** the files that tell an agent who it is, what it can do, what it cannot do and how it should work.
+- **Receipt:** a short record proving what an agent did, what changed and how it was checked.
+- **StateChange:** a short record of something important that changed.
+- **Context Packet:** the context an agent needs before doing useful work.
+
+If any term is unclear, use [`docs/08_glossary.md`](08_glossary.md).
 
 ---
 
-## Paso 1 — Clonar el repositorio (2 minutos)
+## Step 1 — Clone the repo
 
 ```bash
 git clone https://github.com/aosoficial/company-brain-system.git
 cd company-brain-system
 ```
 
-Explora la estructura:
+You will see this structure:
 
 ```text
 company-brain-system/
-  docs/           ← manuales del método (empieza por aquí si quieres teoría)
-  templates/      ← plantillas operativas (empieza por aquí si quieres práctica)
-  schemas/        ← schemas YAML de validación
-  registry/       ← registros centralizados
-  examples/       ← ejemplo completo con empresa ficticia
-  scripts/        ← validación y exportación
+  docs/           method manuals
+  templates/      reusable operating templates
+  schemas/        validation contracts
+  registry/       example registries
+  examples/       synthetic examples
+  scripts/        validation and build scripts
 ```
 
 ---
 
-## Paso 2 — Crear tu Company Brain mínimo (15 minutos)
+## Step 2 — Create a small Company Brain
 
-El Company Brain es la memoria central de tu organización. Empieza con lo mínimo: 3 entidades.
+The Company Brain is the shared memory of your organization.
 
-### 2.1 — Define tu ontología inicial
-
-Piensa en tu empresa. ¿Cuáles son las 3 entidades más importantes? Ejemplo:
+Start with only three important things. Example:
 
 ```text
-Entidades: cliente, producto, decisión
-Relaciones: cliente → compra → producto; decisión → afecta → producto
+Entities: customer, product, decision
+Relationships: customer buys product; decision affects product
 ```
 
-> **Consejo:** no intentes mapear toda tu empresa. 3-5 entidades son suficientes para empezar. Siempre puedes añadir más.
-
-### 2.2 — Crea el archivo
-
-Crea un archivo `my-company-brain.md` en la raíz (o donde prefieras):
+Create a file named `my-company-brain.md`:
 
 ```markdown
-# Company Brain — [Nombre de tu empresa]
+# Company Brain — [Company name]
 
-## Ontología
+## Core entities
 
-| Entidad | Propiedades clave | Freshness |
-|---------|-------------------|-----------|
-| cliente | nombre, sector, contacto principal, estado | semanal |
-| producto | nombre, precio, estado | mensual |
-| decisión | descripción, fecha, responsable, vigencia | cuando cambie |
+| Entity | Key properties | Update rhythm |
+|---|---|---|
+| customer | name, sector, main contact, status | weekly |
+| product | name, price, status | monthly |
+| decision | description, date, owner, valid until | when it changes |
 
-## Hechos fundamentales
+## Core facts
 
-- **Misión:** [Una frase]
-- **Equipo:** [Número de personas, estructura básica]
-- **Productos:** [Lista breve]
+- **Mission:** [One sentence]
+- **Team:** [People / roles]
+- **Products:** [Short list]
 
-## Decisiones vigentes
+## Active decisions
 
-| Decisión | Fecha | Responsable | Vigencia |
-|----------|-------|-------------|----------|
-| [Ejemplo: Precio del plan Pro es 49 €/mes] | 2026-05-01 | [Nombre] | Hasta revisión Q3 |
+| Decision | Date | Owner | Valid until |
+|---|---|---|---|
+| [Example: Pro plan costs 49 €/month] | 2026-05-01 | [Name] | Q3 review |
 
-## Políticas activas
+## Active rules
 
-- [Ejemplo: Descuento máximo sin aprobación: 10%]
-- [Ejemplo: Todo email a cliente VIP requiere revisión]
+- [Example: maximum discount without approval is 10%]
+- [Example: all VIP customer emails need review before sending]
 ```
 
-> **Referencia completa:** [`docs/03_brain_architecture.md`](03_brain_architecture.md) explica en detalle la arquitectura de cerebros.
+Reference: [`docs/03_brain_architecture.md`](03_brain_architecture.md)
 
 ---
 
-## Paso 3 — Crear tu primer agente (20 minutos)
+## Step 3 — Create your first agent
 
-Un agente necesita un **Agent Runtime Pack**: un conjunto de archivos que definen quién es, qué puede hacer y cómo opera.
+An agent should not operate from a vague prompt. It needs a clear operating pack.
 
-### 3.1 — Copia la plantilla
+Copy the template:
 
 ```bash
 cp -r templates/agent-runtime-pack/ my-first-agent/
 ```
 
-### 3.2 — Rellena los archivos esenciales
+Fill in the three essential files first.
 
-Solo necesitas 3 archivos para empezar. El resto puede esperar.
+### 3.1 IDENTITY.md
 
-**IDENTITY.md** — Quién es:
+Who the agent is:
 
 ```yaml
-nombre: "Atlas"
-id: "agente/atlas"
+name: "Atlas"
+id: "agent/atlas"
 version: "1.0.0"
-tipo: "ventas"
-descripcion: "Agente de ventas que prepara propuestas y gestiona el pipeline."
+type: "sales"
+description: "Sales agent that prepares proposals and manages the pipeline."
 owner:
-  nombre: "Tu nombre"
-  email: "tu@email.com"
-  rol: "Fundador"
-fecha_creacion: "2026-05-09"
-estado: "en_pruebas"
+  name: "Your name"
+  email: "you@your-company.com"
+  role: "Founder"
+created_at: "2026-05-09"
+status: "testing"
 ```
 
-**SOUL.md** — Su contrato operativo (rellena al menos Identity, Mission Map y Pushback Rules):
+### 3.2 SOUL.md
+
+The agent’s operating contract:
 
 ```markdown
 ## Identity
 
-**Nombre:** Atlas
-**Rol:** Agente de ventas
-**Dominio:** Comercial
-**Una frase:** Gestiono el pipeline y preparo propuestas.
+**Name:** Atlas
+**Role:** Sales agent
+**Domain:** Sales
+**One sentence:** I manage the pipeline and prepare proposals.
 
 ## Mission Map
 
-**Misión principal:** Preparar propuestas comerciales rápidas y con contexto.
-**Objetivos clave:**
-1. Mantener el pipeline actualizado.
-2. Generar propuestas en menos de 24 horas.
-3. No enviar nada sin aprobación.
+**Main mission:** Prepare commercial proposals with the right context.
+
+**Key goals:**
+1. Keep the pipeline updated.
+2. Draft proposals in less than 24 hours.
+3. Never send anything to a client without approval.
 
 ## Pushback Rules
 
-1. **Sin contexto suficiente** → Pedir Context Packet antes de actuar.
-2. **Descuento fuera de rango** → Escalar al operador.
-3. **Dato obsoleto** → Señalarlo y pedir actualización.
+1. **Not enough context** → ask for a Context Packet before acting.
+2. **Discount outside approved range** → escalate to the operator.
+3. **Outdated data** → flag it and ask for an update.
 ```
 
-**PERMISSIONS.md** — Qué puede y qué no:
+### 3.3 PERMISSIONS.md
+
+What the agent can and cannot do:
 
 ```yaml
-agente: "agente/atlas"
-version_permisos: "2026-05-09"
-permisos:
-  - accion: "Consultar Company Brain"
-    nivel: "autonomo"
-  - accion: "Generar borrador de propuesta"
-    nivel: "autonomo"
-  - accion: "Enviar propuesta a cliente"
-    nivel: "con_aprobacion"
-  - accion: "Modificar precios"
-    nivel: "prohibido"
-regla_por_defecto: "con_aprobacion"
+agent: "agent/atlas"
+permissions_version: "2026-05-09"
+permissions:
+  - action: "Read Company Brain"
+    level: "autonomous"
+  - action: "Draft commercial proposal"
+    level: "autonomous"
+  - action: "Send proposal to client"
+    level: "approval_required"
+  - action: "Change prices"
+    level: "forbidden"
+default_rule: "approval_required"
 ```
 
-> **Referencia completa:** [`docs/04_agent_onboarding.md`](04_agent_onboarding.md) explica todo el proceso de onboarding.
+Reference: [`docs/04_agent_onboarding.md`](04_agent_onboarding.md)
 
 ---
 
-## Paso 4 — Crear tu primer Receipt (10 minutos)
+## Step 4 — Create your first Receipt
 
-Un Receipt registra qué hizo un agente y con qué resultado. Crea uno manualmente para entender la mecánica.
+A Receipt is evidence. It prevents “trust me, I did it” work.
 
-Crea un archivo `my-first-receipt.yaml`:
+Create a file named `my-first-receipt.yaml`:
 
 ```yaml
 id: "rcp-atlas-20260509-001"
-agent: "agente/atlas"
-action: "Preparar propuesta comercial para Cliente Ejemplo S.L."
+agent: "agent/atlas"
+action: "Prepare commercial proposal for Example Customer"
 timestamp: "2026-05-09T10:00:00Z"
 inputs:
-  context_packet: "verbal — briefing del fundador"
-  additional_instructions: "Incluir tabla de precios del plan Pro."
+  context_packet: "verbal founder briefing"
+  additional_instructions: "Include the Pro plan pricing table."
 outputs:
-  - "propuesta-ejemplo-v1.pdf generada"
+  - "proposal-example-v1.md generated"
 outcome: >
-  Propuesta generada con tabla de precios actualizada.
-  Pendiente de revisión por el fundador antes de enviar.
-status: "pendiente_verificacion"
+  Proposal draft generated with updated pricing table.
+  Pending founder review before sending.
+status: "pending_verification"
 ```
 
-> **Principio clave:** "Completado" no significa "exitoso". El campo `outcome` describe el resultado real, no solo que se hizo.
+Important: “done” does not mean “successful”. The `outcome` field should describe the real result.
 
 ---
 
-## Paso 5 — Validar (5 minutos, opcional)
+## Step 5 — Validate the repo
 
-Si tienes Python instalado:
+This step is optional, but recommended.
 
 ```bash
 pip install pyyaml
@@ -211,33 +216,30 @@ python scripts/validate_repo.py
 python scripts/validate_schemas.py
 ```
 
-Estos scripts verifican que la estructura del repositorio y los schemas YAML sean correctos.
+These scripts check that the repo structure and YAML schemas are consistent.
 
 ---
 
-## ¿Qué sigue?
+## What to read next
 
-| Quiero… | Lee… |
-|---------|------|
-| Entender el método completo | [`docs/00_master_playbook.md`](00_master_playbook.md) |
-| Entender las primitivas (StateChange, Context Packet, Receipt) | [`docs/01_aos_system.md`](01_aos_system.md) y [`docs/02_operational_memory.md`](02_operational_memory.md) |
-| Crear un Department Brain | [`docs/03_brain_architecture.md`](03_brain_architecture.md) |
-| Ver un ejemplo completo relleno | [`examples/vega/`](../examples/vega/) — agente Vega de Meridian Foods |
-| Consultar un término que no entiendes | [`docs/08_glossary.md`](08_glossary.md) |
-| Operar el sistema día a día | [`docs/05_operator_manual.md`](05_operator_manual.md) |
+- **Understand the full method:** [`docs/00_master_playbook.md`](00_master_playbook.md)
+- **Understand operational records:** [`docs/01_aos_system.md`](01_aos_system.md) and [`docs/02_operational_memory.md`](02_operational_memory.md)
+- **Create a Department Brain:** [`docs/03_brain_architecture.md`](03_brain_architecture.md)
+- **See a full example:** [`examples/vega/`](../examples/vega/)
+- **Check a term:** [`docs/08_glossary.md`](08_glossary.md)
+- **Operate day to day:** [`docs/05_operator_manual.md`](05_operator_manual.md)
+- **Ask an agent to help install it:** [`docs/14_agent_installation_process.md`](14_agent_installation_process.md)
 
 ---
 
-## Resumen de lo que has creado
+## What you have created
 
 ```text
-✅ Company Brain mínimo (3 entidades, ontología, decisiones)
-✅ Agente con Runtime Pack (IDENTITY + SOUL + PERMISSIONS)
-✅ Primer Receipt (evidencia de acción)
+Company Brain minimum version
+Agent Runtime Pack minimum version
+First Receipt as evidence of work
 ```
 
-Con esto tienes las tres piezas fundamentales de Company Brain System funcionando. Todo lo demás es profundizar, medir y mejorar.
+This is enough to understand the basic system. Everything else is about adding better context, safer permissions and better operating habits over time.
 
----
-
-*Siguiente paso recomendado: lee [`docs/00_master_playbook.md`](00_master_playbook.md) para la visión completa del método.*
+If you get stuck, read [`docs/12_get_help_from_libera.md`](12_get_help_from_libera.md) or open a GitHub issue.

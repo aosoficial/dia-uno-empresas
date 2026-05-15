@@ -45,12 +45,12 @@ Main risk: [privacy / adoption / permissions / messy data / no owner / other].
 We want help with: [diagnosis / implementation / training / maintenance].
 ```
 
-Fake links for now:
+For now, use GitHub:
 
-- Implementation help: https://example.com/libera/company-brain-help
-- Academy: https://example.com/libera/academy
-- Community: https://example.com/libera/community
-- Contact: https://example.com/libera/contact
+- Need implementation help? Open an issue titled `Implementation help`.
+- Found a problem? Open an issue titled `Bug` or `Question`.
+- Improved a template? Open a pull request.
+- Do not share sensitive client data in public issues.
 
 ## For agents
 
