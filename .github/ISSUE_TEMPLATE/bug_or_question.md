@@ -1,23 +1,23 @@
 ---
-name: Bug or question
-about: Report a problem or ask a question about Company Brain System
+name: Error o pregunta
+about: Reporta un problema o haz una pregunta sobre Company Brain System
 title: ""
 labels: question
 assignees: ''
 ---
 
-## What happened?
+## ¿Qué ha pasado?
 
-Describe the issue or question.
+Describe el problema o la pregunta.
 
-## Where?
+## ¿Dónde?
 
-Link the doc, template, script or example.
+Enlaza el documento, plantilla, script o ejemplo.
 
-## What did you expect?
+## ¿Qué esperabas?
 
-Describe the clearer or better behavior.
+Describe qué comportamiento o explicación sería más clara.
 
-## Extra context
+## Contexto extra
 
-Do not include sensitive client data, private credentials or confidential company information.
+No incluyas datos sensibles de clientes, credenciales privadas ni información confidencial de empresa.

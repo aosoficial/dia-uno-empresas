@@ -1,66 +1,66 @@
 # Company Brain System
 
-Turn your company context into safe AI-agent operations.
+Convierte el contexto de tu empresa en operaciones seguras con agentes de IA.
 
-Company Brain System is a practical operating system for teams that want AI agents to work with shared context, clear permissions, evidence and human approval where it matters.
+Company Brain System es un sistema práctico para equipos que quieren usar agentes de IA con contexto compartido, permisos claros, evidencia y aprobación humana cuando importa.
 
-It helps you move from scattered prompts, chats and documents to a simple company brain that humans and agents can both use.
+Sirve para pasar de prompts sueltos, chats y documentos dispersos a un cerebro de empresa sencillo que puedan usar tanto humanos como agentes.
 
-Based on AOS: Agentic Operating System.
+Basado en AOS: Agentic Operating System.
 
 ---
 
-## Start here
+## Empieza aquí
 
-- **I want to understand it quickly:** read [`docs/07_quick_start.md`](docs/07_quick_start.md).
-- **I want an agent to help me install it:** give the agent [`docs/14_agent_installation_process.md`](docs/14_agent_installation_process.md).
-- **I want the full method:** read [`docs/00_master_playbook.md`](docs/00_master_playbook.md).
-- **I want to map my company:** use [`templates/questionnaires/company-brain-intake.md`](templates/questionnaires/company-brain-intake.md).
-- **I want to create an agent role:** use [`templates/agent-runtime-pack/README.md`](templates/agent-runtime-pack/README.md).
-- **I am stuck:** read [`docs/12_get_help_from_libera.md`](docs/12_get_help_from_libera.md) or open a GitHub issue.
+- **Quiero entenderlo rápido:** lee [`docs/07_quick_start.md`](docs/07_quick_start.md).
+- **Quiero que un agente me ayude a instalarlo:** dale [`docs/14_agent_installation_process.md`](docs/14_agent_installation_process.md).
+- **Quiero el método completo:** lee [`docs/00_master_playbook.md`](docs/00_master_playbook.md).
+- **Quiero mapear mi empresa:** usa [`templates/questionnaires/company-brain-intake.md`](templates/questionnaires/company-brain-intake.md).
+- **Quiero crear un rol de agente:** usa [`templates/agent-runtime-pack/README.md`](templates/agent-runtime-pack/README.md).
+- **Estoy bloqueado:** lee [`docs/12_get_help_from_libera.md`](docs/12_get_help_from_libera.md) o abre un issue en GitHub.
 
-## Why this exists
+## Por qué existe
 
-Most AI-agent setups fail for simple reasons:
+La mayoría de sistemas con agentes de IA fallan por motivos simples:
 
-- agents do not know the company context;
-- permissions are unclear;
-- sensitive actions are not separated from safe actions;
-- decisions and changes are not recorded;
-- nobody can verify what an agent actually did;
-- the method does not improve from real work.
+- los agentes no conocen el contexto real de la empresa;
+- los permisos no están claros;
+- las acciones sensibles no se separan de las acciones seguras;
+- las decisiones y cambios no quedan registrados;
+- nadie puede verificar qué hizo realmente un agente;
+- el método no mejora a partir del trabajo real.
 
-Company Brain System gives you a structure for fixing that.
+Company Brain System te da una estructura para arreglar eso.
 
-## What you get
+## Qué incluye
 
-- **Company Brain:** the shared memory of the company.
-- **Department Brains:** focused memory for sales, operations, product, finance, support and other areas.
-- **Agent Runtime Packs:** the operating files that define who an agent is, what it can do, what it cannot do and how it leaves evidence.
-- **Operational records:** simple records for context, changes, handoffs and completed work.
-- **Templates:** questionnaires, scorecards, agent packs, department packs, reviews and examples.
-- **Safety method:** approval rules, permission checks and evaluation fixtures.
-- **Validation scripts:** basic checks to keep the repo consistent.
+- **Company Brain:** la memoria compartida de la empresa.
+- **Department Brains:** memorias enfocadas para ventas, operaciones, producto, finanzas, soporte y otras áreas.
+- **Agent Runtime Packs:** archivos que definen quién es un agente, qué puede hacer, qué no puede hacer y cómo deja evidencia.
+- **Registros operativos:** registros simples para contexto, cambios, traspasos y trabajo terminado.
+- **Plantillas:** cuestionarios, scorecards, packs de agente, packs de departamento, revisiones y ejemplos.
+- **Método de seguridad:** reglas de aprobación, revisión de permisos y pruebas de seguridad.
+- **Scripts de validación:** comprobaciones básicas para mantener el repositorio consistente.
 
-## Who it is for
+## Para quién es
 
-- Founders building AI-enabled companies.
-- Operators trying to make AI useful beyond chat.
-- Consultants implementing AI workflows for clients.
-- Teams that need agents to work with context, not improvisation.
-- Technical teams that want a lightweight method before building software.
+- Fundadores que quieren construir empresas potenciadas por IA.
+- Operadores que quieren que la IA sea útil más allá del chat.
+- Consultores que implementan flujos de IA para clientes.
+- Equipos que necesitan agentes con contexto, no improvisación.
+- Equipos técnicos que quieren un método ligero antes de construir software.
 
-## What it is not
+## Qué no es
 
-- Not a SaaS.
-- Not a chatbot.
-- Not a magic prompt pack.
-- Not a replacement for human judgement.
-- Not a production database.
+- No es un SaaS.
+- No es un chatbot.
+- No es un pack mágico de prompts.
+- No sustituye el criterio humano.
+- No es una base de datos de producción.
 
-It is a method and repo structure you can copy, adapt and operate.
+Es un método y una estructura de repositorio que puedes copiar, adaptar y operar.
 
-## Quick start
+## Instalación rápida
 
 ```bash
 git clone https://github.com/aosoficial/company-brain-system.git
@@ -70,7 +70,7 @@ python scripts/validate_repo.py
 python scripts/validate_schemas.py
 ```
 
-Then read:
+Después lee:
 
 1. [`docs/07_quick_start.md`](docs/07_quick_start.md)
 2. [`docs/14_agent_installation_process.md`](docs/14_agent_installation_process.md)
@@ -82,142 +82,142 @@ Then read:
 8. [`templates/questionnaires/company-brain-intake.md`](templates/questionnaires/company-brain-intake.md)
 9. [`templates/agent-runtime-pack/README.md`](templates/agent-runtime-pack/README.md)
 
-## The practical path
+## Camino práctico
 
-### 1. Map the company
+### 1. Mapea la empresa
 
-Start with the basics:
+Empieza por lo básico:
 
-- purpose;
-- departments;
-- important people and roles;
-- active systems;
-- key decisions;
-- metrics;
-- risks;
-- permissions.
+- propósito;
+- departamentos;
+- personas y roles importantes;
+- sistemas activos;
+- decisiones clave;
+- métricas;
+- riesgos;
+- permisos.
 
-Use: [`templates/questionnaires/company-brain-intake.md`](templates/questionnaires/company-brain-intake.md)
+Usa: [`templates/questionnaires/company-brain-intake.md`](templates/questionnaires/company-brain-intake.md)
 
-### 2. Create the first Company Brain
+### 2. Crea el primer Company Brain
 
-Start small. Do not map the whole company on day one.
+Empieza pequeño. No intentes mapear toda la empresa el primer día.
 
-Use:
+Usa:
 
 - [`templates/context-packets/context-packet-template.md`](templates/context-packets/context-packet-template.md)
 - [`templates/department-brain-pack/`](templates/department-brain-pack/)
 - [`templates/scorecards/company-brain-scorecard.md`](templates/scorecards/company-brain-scorecard.md)
 
-### 3. Add one agent
+### 3. Añade un agente
 
-Create one agent role with:
+Crea un rol de agente con:
 
-- identity;
-- mission;
-- allowed tools;
-- forbidden actions;
-- approval rules;
-- memory rules;
-- evidence rules.
+- identidad;
+- misión;
+- herramientas permitidas;
+- acciones prohibidas;
+- reglas de aprobación;
+- reglas de memoria;
+- reglas de evidencia.
 
-Use: [`templates/agent-runtime-pack/`](templates/agent-runtime-pack/)
+Usa: [`templates/agent-runtime-pack/`](templates/agent-runtime-pack/)
 
-### 4. Make work verifiable
+### 4. Haz que el trabajo sea verificable
 
-Agents should not just say “done”. They should leave evidence of:
+Un agente no debería limitarse a decir “hecho”. Debe dejar evidencia de:
 
-- what they did;
-- why they did it;
-- which source they used;
-- what changed;
-- what risks remain;
-- how the work was checked.
+- qué hizo;
+- por qué lo hizo;
+- qué fuente usó;
+- qué cambió;
+- qué riesgos quedan;
+- cómo se revisó el trabajo.
 
-Use: [`templates/receipts/receipt-template.md`](templates/receipts/receipt-template.md)
+Usa: [`templates/receipts/receipt-template.md`](templates/receipts/receipt-template.md)
 
-### 5. Improve the method from real work
+### 5. Mejora el método con trabajo real
 
-When something breaks, do not only fix the task. Improve the system.
+Cuando algo falla, no arregles solo la tarea. Mejora el sistema.
 
-Use:
+Usa:
 
 - [`templates/method-improvements/method-improvement-proposal.md`](templates/method-improvements/method-improvement-proposal.md)
 - [`docs/09_method_improvement_loop.md`](docs/09_method_improvement_loop.md)
 
-## Repository map
+## Mapa del repositorio
 
 ```text
 company-brain-system/
-  docs/                         method manuals
-  templates/                    reusable packs and templates
-  schemas/                      YAML contracts
-  registry/                     example registries
-  examples/                     synthetic examples
-  scripts/                      validation and build scripts
-  method-improvements/          method learning log
-  .github/workflows/            validation workflow
+  docs/                         manuales del método
+  templates/                    packs y plantillas reutilizables
+  schemas/                      contratos YAML
+  registry/                     registros de ejemplo
+  examples/                     ejemplos sintéticos
+  scripts/                      validación y construcción de docs
+  method-improvements/          registro de aprendizaje del método
+  .github/workflows/            validación automática
 ```
 
-## Core terms
+## Términos clave
 
-- **Company Brain:** shared operational memory for the company.
-- **Department Brain:** focused memory for one area.
-- **Context Packet:** the context an agent needs before acting.
-- **StateChange:** a record of what changed.
-- **Receipt:** evidence that an action happened and how it was checked.
-- **Agent Runtime Pack:** the operating contract for an agent.
-- **Supervised autonomy:** agents can act inside clear limits; sensitive actions need approval.
+- **Company Brain:** memoria operativa compartida de la empresa.
+- **Department Brain:** memoria enfocada para un área.
+- **Context Packet:** el contexto que necesita un agente antes de actuar.
+- **StateChange:** registro de algo que ha cambiado.
+- **Receipt:** evidencia de que una acción ocurrió y cómo se revisó.
+- **Agent Runtime Pack:** contrato operativo de un agente.
+- **Autonomía supervisada:** los agentes pueden actuar dentro de límites claros; las acciones sensibles necesitan aprobación.
 
-More definitions: [`docs/08_glossary.md`](docs/08_glossary.md)
+Más definiciones: [`docs/08_glossary.md`](docs/08_glossary.md)
 
-## Safety rules
+## Reglas de seguridad
 
-Default rule: agents may draft, analyse, prepare and operate locally.
+Regla por defecto: los agentes pueden redactar, analizar, preparar y operar localmente.
 
-They should not, without explicit human approval:
+No deberían hacer esto sin aprobación humana explícita:
 
-- contact clients or leads;
-- publish externally;
-- spend money;
-- make legal or economic commitments;
-- use sensitive/private data without scope;
-- deploy to production;
-- change live systems.
+- contactar clientes o leads;
+- publicar externamente;
+- gastar dinero;
+- asumir compromisos legales o económicos;
+- usar datos sensibles o privados fuera de alcance;
+- desplegar a producción;
+- cambiar sistemas vivos.
 
-Read: [`docs/11_agent_safety_evaluation.md`](docs/11_agent_safety_evaluation.md)
+Lee: [`docs/11_agent_safety_evaluation.md`](docs/11_agent_safety_evaluation.md)
 
-## Built by Libera
+## Creado por Libera
 
-This repo is free and useful by itself.
+Este repositorio es gratuito y útil por sí mismo.
 
-If your team gets stuck applying it, Libera can help you install it inside a real company: diagnosis, Company Brain setup, agent roles, permissions, operating cadence and adoption.
+Si tu equipo se bloquea aplicándolo, Libera puede ayudarte a instalarlo en una empresa real: diagnóstico, configuración del Company Brain, roles de agentes, permisos, cadencia operativa y adopción.
 
-For now, use GitHub issues:
+Por ahora, usa GitHub issues:
 
-- **Need implementation help?** Open an issue titled `Implementation help`.
-- **Found a problem?** Open an issue titled `Bug` or `Question`.
-- **Improved a template?** Open a pull request.
+- **¿Necesitas ayuda de implementación?** Abre un issue titulado `Implementation help`.
+- **¿Has encontrado un problema?** Abre un issue titulado `Bug` o `Question`.
+- **¿Has mejorado una plantilla?** Abre un pull request.
 
-Read:
+Lee:
 
 - [`docs/12_get_help_from_libera.md`](docs/12_get_help_from_libera.md)
 - [`docs/13_libera_offer_map.md`](docs/13_libera_offer_map.md)
 
-## Contributing
+## Contribuir
 
-Contributions are welcome:
+Las contribuciones son bienvenidas:
 
-- better templates;
-- clearer examples;
-- new department packs;
-- safety fixtures;
-- method improvements;
-- translations;
-- implementation stories.
+- mejores plantillas;
+- ejemplos más claros;
+- nuevos packs de departamento;
+- pruebas de seguridad;
+- mejoras del método;
+- traducciones;
+- historias de implementación.
 
-Open an issue or pull request.
+Abre un issue o pull request.
 
-## License
+## Licencia
 
-MIT. See [`LICENSE`](LICENSE).
+MIT. Ver [`LICENSE`](LICENSE).

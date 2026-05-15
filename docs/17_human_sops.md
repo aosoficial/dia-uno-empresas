@@ -1,165 +1,165 @@
-# Human SOPs
+# SOPs humanos
 
-> **Need help applying this?** This page is part of Company Brain System, an open method by Libera. If you get stuck, start with the [Quick Start](07_quick_start.md), use the [Company Brain intake](../templates/questionnaires/company-brain-intake.md), or see [how Libera can help](12_get_help_from_libera.md).
+> **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, un método abierto de Libera. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [cuestionario Company Brain](../templates/questionnaires/company-brain-intake.md) o lee [cómo puede ayudarte Libera](12_get_help_from_libera.md).
 
-These are the standard operating procedures for humans working with Company Brain System.
+Estos son los procedimientos operativos estándar para personas que trabajan con Company Brain System.
 
-## SOP 1 — Start with a synthetic example
+## SOP 1 — Empieza con un ejemplo sintético
 
-Purpose: avoid exposing private data too early.
+Objetivo: evitar exponer datos privados demasiado pronto.
 
-Steps:
+Pasos:
 
-1. Ask the agent to create a fake company example.
-2. Test the structure with fake data.
-3. Check if the method makes sense.
-4. Only then decide what real data can be used.
+1. Pide al agente que cree un ejemplo de empresa ficticia.
+2. Prueba la estructura con datos ficticios.
+3. Comprueba si el método tiene sentido.
+4. Solo entonces decide qué datos reales pueden usarse.
 
-Do not:
+No hagas esto:
 
-- paste client files;
-- paste private messages;
-- share passwords or tokens;
-- connect live tools before permissions are clear.
+- pegar archivos de clientes;
+- pegar mensajes privados;
+- compartir contraseñas o tokens;
+- conectar herramientas vivas antes de aclarar permisos.
 
-Evidence:
+Evidencia:
 
-- synthetic Company Brain;
-- first Receipt;
-- list of real-data risks.
+- Company Brain sintético;
+- primer Receipt;
+- lista de riesgos con datos reales.
 
-## SOP 2 — Give context in packets, not dumps
+## SOP 2 — Da contexto en paquetes, no en volcados
 
-Purpose: give agents useful context without flooding them.
+Objetivo: dar a los agentes contexto útil sin saturarlos.
 
-Steps:
+Pasos:
 
-1. Explain the goal.
-2. Add only relevant sources.
-3. State what is approved and forbidden.
-4. State what output you want.
-5. Ask the agent what context is missing.
+1. Explica el objetivo.
+2. Añade solo fuentes relevantes.
+3. Di qué está aprobado y qué está prohibido.
+4. Di qué resultado quieres.
+5. Pregunta al agente qué contexto falta.
 
-Good context:
+Buen contexto:
 
-- short;
-- sourced;
-- scoped;
-- clear about permissions.
+- corto;
+- con fuentes;
+- delimitado;
+- claro sobre permisos.
 
-Bad context:
+Mal contexto:
 
-- huge raw dumps;
-- private data without need;
-- unclear goals;
-- no approval rules.
+- volcados enormes;
+- datos privados sin necesidad;
+- objetivos poco claros;
+- sin reglas de aprobación.
 
-Evidence:
+Evidencia:
 
 - Context Packet.
 
-## SOP 3 — Approve sensitive actions explicitly
+## SOP 3 — Aprueba acciones sensibles de forma explícita
 
-Purpose: prevent agents from crossing human boundaries.
+Objetivo: evitar que los agentes crucen límites humanos.
 
-Sensitive actions include:
+Acciones sensibles:
 
-- external contact;
-- publishing;
-- spending money;
-- using sensitive data;
-- legal/economic commitments;
-- production changes.
+- contacto externo;
+- publicación;
+- gasto de dinero;
+- uso de datos sensibles;
+- compromisos legales o económicos;
+- cambios en producción.
 
-Steps:
+Pasos:
 
-1. Agent proposes the action.
-2. Human checks risk.
-3. Human approves, rejects or changes scope.
-4. Agent records the approval in the Receipt.
+1. El agente propone la acción.
+2. La persona revisa el riesgo.
+3. La persona aprueba, rechaza o cambia el alcance.
+4. El agente registra la aprobación en el Receipt.
 
-Evidence:
+Evidencia:
 
-- decision note;
-- Receipt with approval reference.
+- nota de decisión;
+- Receipt con referencia de aprobación.
 
-## SOP 4 — Review receipts weekly
+## SOP 4 — Revisa Receipts cada semana
 
-Purpose: make sure the system is learning from real work.
+Objetivo: asegurar que el sistema aprende del trabajo real.
 
-Steps:
+Pasos:
 
-1. Review receipts from the week.
-2. Check what changed.
-3. Check what failed.
-4. Identify repeated blockers.
-5. Turn repeated blockers into method improvements.
+1. Revisa los Receipts de la semana.
+2. Comprueba qué cambió.
+3. Comprueba qué falló.
+4. Identifica bloqueos repetidos.
+5. Convierte bloqueos repetidos en mejoras del método.
 
-Evidence:
+Evidencia:
 
-- weekly review;
-- method improvement proposal if needed.
+- revisión semanal;
+- propuesta de mejora del método si hace falta.
 
-## SOP 5 — Keep one board for execution
+## SOP 5 — Mantén un único tablero de ejecución
 
-Purpose: avoid hidden work and duplicate task systems.
+Objetivo: evitar trabajo oculto y sistemas de tareas duplicados.
 
-Steps:
+Pasos:
 
-1. Choose one board/control plane for execution.
-2. Every work item has one owner.
-3. Every work item has one output.
-4. Every work item has a clear finish condition.
-5. Every closed item links to evidence.
+1. Elige un tablero o panel de control para la ejecución.
+2. Cada tarea tiene un único responsable.
+3. Cada tarea tiene un resultado esperado.
+4. Cada tarea tiene una condición clara para considerarse terminada.
+5. Cada tarea cerrada enlaza a evidencia.
 
-The board should track work. The Company Brain should explain the company and preserve memory.
+El tablero sigue el trabajo. El Company Brain explica la empresa y conserva memoria.
 
-Evidence:
+Evidencia:
 
-- board item;
-- evidence link;
+- tarea del tablero;
+- enlace a evidencia;
 - Receipt.
 
-## SOP 6 — Escalate when blocked
+## SOP 6 — Escala cuando estés bloqueado
 
-Purpose: stop pretending a template problem is only a template problem.
+Objetivo: dejar de fingir que un problema de implementación es solo un problema de plantilla.
 
-Escalate when:
+Escala cuando:
 
-- the same question repeats;
-- the agent cannot decide safely;
-- permissions are unclear;
-- implementation fails twice;
-- the team does not know the source of truth;
-- real tools need safe connection.
+- la misma pregunta se repite;
+- el agente no puede decidir con seguridad;
+- los permisos no están claros;
+- la implementación falla dos veces;
+- el equipo no sabe cuál es la fuente de verdad;
+- hay que conectar herramientas reales con seguridad.
 
-Steps:
+Pasos:
 
-1. Name the blocker.
-2. Ask the agent for three possible paths.
-3. Choose one path.
-4. If still blocked, use the Libera help process.
+1. Nombra el bloqueo.
+2. Pide al agente tres posibles caminos.
+3. Elige un camino.
+4. Si sigues bloqueado, usa el proceso de ayuda de Libera.
 
-Evidence:
+Evidencia:
 
-- blocker note;
-- decision;
-- next action.
+- nota de bloqueo;
+- decisión;
+- siguiente acción.
 
-## SOP 7 — Improve the method, not just the task
+## SOP 7 — Mejora el método, no solo la tarea
 
-Purpose: make each failure useful.
+Objetivo: hacer que cada fallo sea útil.
 
-Steps:
+Pasos:
 
-1. Identify what broke.
-2. Decide if it was context, permission, tool, skill, template or human process.
-3. Write a method improvement proposal.
-4. Apply the approved change.
-5. Record the result.
+1. Identifica qué se rompió.
+2. Decide si fue contexto, permiso, herramienta, skill, plantilla o proceso humano.
+3. Escribe una propuesta de mejora del método.
+4. Aplica el cambio aprobado.
+5. Registra el resultado.
 
-Evidence:
+Evidencia:
 
-- method improvement proposal;
-- changed file;
+- propuesta de mejora del método;
+- archivo cambiado;
 - Receipt.

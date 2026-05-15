@@ -1,31 +1,31 @@
 ---
-name: Implementation help
-about: Ask for help applying Company Brain System in a real company
-title: "Implementation help: "
+name: Ayuda de implementación
+about: Pide ayuda para aplicar Company Brain System en una empresa real
+title: "Ayuda de implementación: "
 labels: implementation-help
 assignees: ''
 ---
 
-## What are you trying to build?
+## ¿Qué estás intentando construir?
 
-Shortly describe the company, team or workflow.
+Describe brevemente la empresa, equipo o flujo de trabajo.
 
-## Where are you stuck?
+## ¿Dónde estás bloqueado?
 
-- [ ] Mapping the Company Brain
-- [ ] Creating an agent role
-- [ ] Setting permissions
-- [ ] Creating receipts/evidence
-- [ ] Team adoption
-- [ ] Other
+- [ ] Mapear el Company Brain
+- [ ] Crear un rol de agente
+- [ ] Definir permisos
+- [ ] Crear Receipts / evidencia
+- [ ] Conseguir adopción del equipo
+- [ ] Otro
 
-## What have you tried?
+## ¿Qué has probado?
 
-Link files, notes or examples if useful. Do not include sensitive client data.
+Enlaza archivos, notas o ejemplos si ayuda. No incluyas datos sensibles de clientes.
 
-## What would help most?
+## ¿Qué te ayudaría más?
 
-- [ ] A pointer to the right doc/template
-- [ ] Feedback on my structure
-- [ ] Implementation support from Libera
-- [ ] Other
+- [ ] Una indicación hacia el documento o plantilla correcta
+- [ ] Feedback sobre mi estructura
+- [ ] Soporte de implementación de Libera
+- [ ] Otro

@@ -1,269 +1,269 @@
-# Skills needed in Company Brain System
+# Skills necesarias en Company Brain System
 
-> **Need help applying this?** This page is part of Company Brain System, an open method by Libera. If you get stuck, start with the [Quick Start](07_quick_start.md), use the [Company Brain intake](../templates/questionnaires/company-brain-intake.md), or see [how Libera can help](12_get_help_from_libera.md).
+> **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, un método abierto de Libera. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [cuestionario Company Brain](../templates/questionnaires/company-brain-intake.md) o lee [cómo puede ayudarte Libera](12_get_help_from_libera.md).
 
-A skill is a reusable operating capability an agent can apply. It is not a personality and it is not a magic prompt. It is a documented way to do a type of work safely and repeatedly.
+Una skill es una capacidad operativa reutilizable que un agente puede aplicar. No es una personalidad ni un prompt mágico. Es una forma documentada de hacer un tipo de trabajo de manera segura y repetible.
 
-## How to write a skill
+## Cómo escribir una skill
 
-Each skill should include:
+Cada skill debería incluir:
 
-- purpose;
-- when to use it;
-- when not to use it;
-- required inputs;
-- steps;
-- guardrails;
-- output format;
-- verification;
-- common mistakes.
+- objetivo;
+- cuándo usarla;
+- cuándo no usarla;
+- contexto necesario;
+- pasos;
+- límites de seguridad;
+- formato de salida;
+- verificación;
+- errores comunes.
 
-## Core skills
+## Skills principales
 
-### 1. Company Brain setup
+### 1. Instalación del Company Brain
 
-Purpose: help a company create its first Company Brain.
+Objetivo: ayudar a una empresa a crear su primer Company Brain.
 
-The agent must know how to:
+El agente debe saber:
 
-- ask for minimum context;
-- avoid sensitive data at first;
-- create a synthetic example;
-- map departments;
-- define sources;
-- create first metrics;
-- mark open questions.
+- pedir el contexto mínimo;
+- evitar datos sensibles al principio;
+- crear un ejemplo sintético;
+- mapear departamentos;
+- definir fuentes;
+- crear primeras métricas;
+- marcar preguntas abiertas.
 
-Output:
+Salida:
 
-- Company Brain draft;
-- missing context list;
-- first risks;
-- first next actions.
+- borrador de Company Brain;
+- lista de contexto faltante;
+- primeros riesgos;
+- siguientes acciones.
 
-### 2. Department Brain setup
+### 2. Instalación de Department Brain
 
-Purpose: create focused memory for one area.
+Objetivo: crear memoria enfocada para un área.
 
-The agent must know how to define:
+El agente debe saber definir:
 
-- department purpose;
-- owned work;
-- sources;
-- signals;
-- metrics;
-- recurring decisions;
-- handoffs;
-- risks.
+- propósito del departamento;
+- trabajo del que es responsable;
+- fuentes;
+- señales;
+- métricas;
+- decisiones recurrentes;
+- traspasos;
+- riesgos.
 
-Output:
+Salida:
 
-- department brain pack;
+- pack de Department Brain;
 - scorecard;
-- sync policy.
+- política de sincronización.
 
-### 3. Agent onboarding
+### 3. Onboarding de agentes
 
-Purpose: create an agent that can operate safely.
+Objetivo: crear un agente que pueda operar con seguridad.
 
-The agent must define:
+El agente debe definir:
 
-- identity;
-- role;
-- allowed actions;
-- forbidden actions;
-- tools;
-- approval rules;
-- memory rules;
-- receipt rules.
+- identidad;
+- rol;
+- acciones permitidas;
+- acciones prohibidas;
+- herramientas;
+- reglas de aprobación;
+- reglas de memoria;
+- reglas de Receipts.
 
-Output:
+Salida:
 
 - Agent Runtime Pack;
-- first safe task;
-- evaluation checklist.
+- primera tarea segura;
+- lista de revisión.
 
-### 4. Context packaging
+### 4. Preparación de contexto
 
-Purpose: give an agent enough context to act without flooding it.
+Objetivo: dar al agente suficiente contexto para actuar sin saturarlo.
 
-The agent must know how to create:
+El agente debe saber crear:
 
-- context packets;
-- handoffs;
-- source summaries;
-- decision summaries;
-- risk summaries.
+- Context Packets;
+- traspasos;
+- resúmenes de fuentes;
+- resúmenes de decisiones;
+- resúmenes de riesgos.
 
-Output:
+Salida:
 
-- concise context packet;
-- source list;
-- missing context questions.
+- Context Packet conciso;
+- lista de fuentes;
+- preguntas de contexto faltante.
 
-### 5. Receipt writing
+### 5. Escritura de Receipts
 
-Purpose: leave evidence after action.
+Objetivo: dejar evidencia después de actuar.
 
-The agent must record:
+El agente debe registrar:
 
-- what happened;
-- why;
-- sources used;
-- files or systems changed;
-- approval used;
-- risks;
-- verification;
-- rollback path.
+- qué ocurrió;
+- por qué;
+- fuentes usadas;
+- archivos o sistemas cambiados;
+- aprobación usada;
+- riesgos;
+- verificación;
+- camino para deshacer si hace falta.
 
-Output:
+Salida:
 
 - Receipt.
 
-### 6. Human approval management
+### 6. Gestión de aprobación humana
 
-Purpose: know when the agent must stop and ask.
+Objetivo: saber cuándo el agente debe parar y preguntar.
 
-The agent should ask before:
+El agente debería preguntar antes de:
 
-- contacting people;
-- publishing;
-- spending money;
-- changing production;
-- using sensitive data;
-- making legal or economic commitments;
-- changing permissions.
+- contactar personas;
+- publicar;
+- gastar dinero;
+- cambiar producción;
+- usar datos sensibles;
+- asumir compromisos legales o económicos;
+- cambiar permisos.
 
-Output:
+Salida:
 
-- short decision request;
-- options;
-- recommendation;
-- approval needed.
+- petición corta de decisión;
+- opciones;
+- recomendación;
+- aprobación necesaria.
 
-### 7. CEO / direction skill
+### 7. Skill de dirección / CEO
 
-Purpose: help the company choose focus, priorities and trade-offs.
+Objetivo: ayudar a la empresa a elegir foco, prioridades y renuncias.
 
-The agent must know how to:
+El agente debe saber:
 
-- identify the real bottleneck;
-- limit priorities;
-- separate urgent from important;
-- route work to the right owner;
-- protect quality, margin, privacy and human energy.
+- identificar el bloqueo real;
+- limitar prioridades;
+- separar urgente de importante;
+- enrutar trabajo al responsable correcto;
+- proteger calidad, margen, privacidad y energía humana.
 
-Output:
+Salida:
 
-- focus;
-- up to three priorities;
-- what not to do;
-- risks;
-- assignments;
-- approvals needed.
+- foco;
+- máximo tres prioridades;
+- qué no hacer;
+- riesgos;
+- asignaciones;
+- aprobaciones necesarias.
 
-### 8. Operations skill
+### 8. Skill de operaciones
 
-Purpose: turn direction into a working board and closure rhythm.
+Objetivo: convertir dirección en tablero y ritmo de cierre.
 
-The agent must define:
+El agente debe definir:
 
-- owner;
-- output;
-- what has to be ready;
-- evidence path;
-- blocker;
-- next review.
+- responsable;
+- resultado esperado;
+- qué tiene que estar listo;
+- ruta de evidencia;
+- bloqueo;
+- próxima revisión.
 
-Output:
+Salida:
 
-- task/control board structure;
-- handoff notes;
-- closure checklist.
+- estructura de tablero/control;
+- notas de traspaso;
+- lista de cierre.
 
-### 9. Method skill
+### 9. Skill de método
 
-Purpose: turn repeated work into reusable playbooks and templates.
+Objetivo: convertir trabajo repetido en playbooks y plantillas reutilizables.
 
-The agent must know how to:
+El agente debe saber:
 
-- detect repeatable patterns;
-- separate private from public material;
-- create templates;
-- update method docs;
-- propose improvements.
+- detectar patrones repetibles;
+- separar material privado de material público;
+- crear plantillas;
+- actualizar documentación del método;
+- proponer mejoras.
 
-Output:
+Salida:
 
 - playbook;
 - checklist;
-- method improvement proposal.
+- propuesta de mejora del método.
 
-### 10. Growth skill
+### 10. Skill de growth
 
-Purpose: explain the value of the system without overpromising.
+Objetivo: explicar el valor del sistema sin prometer de más.
 
-The agent must know how to:
+El agente debe saber:
 
-- identify the buyer;
-- identify the painful problem;
-- explain the outcome;
-- draft landing or README copy;
-- create calls to action;
-- avoid unsupported claims.
+- identificar comprador;
+- identificar problema doloroso;
+- explicar resultado;
+- redactar landing o README;
+- crear llamadas a la acción;
+- evitar afirmaciones sin prueba.
 
-Output:
+Salida:
 
-- positioning draft;
-- message draft;
-- proof gaps;
-- approval gate before publishing.
+- borrador de posicionamiento;
+- borrador de mensaje;
+- huecos de prueba;
+- aprobación necesaria antes de publicar.
 
-### 11. Product skill
+### 11. Skill de producto
 
-Purpose: turn the method into usable assets.
+Objetivo: convertir el método en activos usables.
 
-The agent must know how to create:
+El agente debe saber crear:
 
-- templates;
-- examples;
-- validation scripts;
-- simple implementation flows;
-- repo structure improvements.
+- plantillas;
+- ejemplos;
+- scripts de validación;
+- flujos simples de implementación;
+- mejoras de estructura del repo.
 
-Output:
+Salida:
 
-- productized asset;
-- validation result;
-- rollback path.
+- activo productizado;
+- resultado de validación;
+- camino para deshacer si hace falta.
 
-### 12. Safety evaluation skill
+### 12. Skill de evaluación de seguridad
 
-Purpose: check whether an agent is safe to use with more autonomy.
+Objetivo: comprobar si un agente es seguro para usar con más autonomía.
 
-The agent must test:
+El agente debe probar:
 
-- permissions;
-- memory access;
-- tool access;
-- approval handling;
-- receipts;
-- failure behavior.
+- permisos;
+- acceso a memoria;
+- acceso a herramientas;
+- gestión de aprobaciones;
+- Receipts;
+- comportamiento ante fallos.
 
-Output:
+Salida:
 
-- safety scorecard;
-- risks;
-- required fixes before more autonomy.
+- scorecard de seguridad;
+- riesgos;
+- arreglos necesarios antes de dar más autonomía.
 
-## Skill quality rule
+## Regla de calidad de una skill
 
-A good skill makes the next agent better without needing private context.
+Una buena skill hace mejor al siguiente agente sin necesitar contexto privado.
 
-A bad skill:
+Una mala skill:
 
-- depends on one person's memory;
-- contains private names or internal credits;
-- has vague instructions;
-- lacks verification;
-- lets agents act without approval.
+- depende de la memoria de una persona;
+- contiene nombres privados o créditos internos;
+- tiene instrucciones vagas;
+- no tiene verificación;
+- permite actuar sin aprobación.

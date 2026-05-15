@@ -1,142 +1,142 @@
-# Tools used in Company Brain System
+# Herramientas usadas en Company Brain System
 
-> **Need help applying this?** This page is part of Company Brain System, an open method by Libera. If you get stuck, start with the [Quick Start](07_quick_start.md), use the [Company Brain intake](../templates/questionnaires/company-brain-intake.md), or see [how Libera can help](12_get_help_from_libera.md).
+> **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, un método abierto de Libera. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [cuestionario Company Brain](../templates/questionnaires/company-brain-intake.md) o lee [cómo puede ayudarte Libera](12_get_help_from_libera.md).
 
-Company Brain System does not require one specific software stack. It explains the categories of tools a company needs so agents can work with context, evidence and control.
+Company Brain System no exige una única tecnología. Explica las categorías de herramientas que necesita una empresa para que los agentes trabajen con contexto, evidencia y control.
 
-## Tool categories
+## Categorías de herramientas
 
-### 1. Source of truth
+### 1. Fuente de verdad
 
-Purpose: keep the method and operating memory in durable files.
+Objetivo: mantener el método y la memoria operativa en archivos duraderos.
 
-Examples:
+Ejemplos:
 
-- Git repository;
-- Markdown files;
-- YAML registries;
-- versioned templates.
+- repositorio Git;
+- archivos Markdown;
+- registros YAML;
+- plantillas versionadas.
 
-Use it for:
+Úsalo para:
 
-- docs;
-- templates;
+- documentación;
+- plantillas;
 - schemas;
-- decisions;
-- method improvements.
+- decisiones;
+- mejoras del método.
 
-Rule: if it defines how the company operates, it should be versioned.
+Regla: si define cómo opera la empresa, debería estar versionado.
 
 ### 2. Company Brain
 
-Purpose: store the company's operational context.
+Objetivo: guardar el contexto operativo de la empresa.
 
-It should contain:
+Debería contener:
 
-- purpose;
-- departments;
-- people/roles;
-- decisions;
-- metrics;
-- risks;
-- sources;
-- agents;
-- permissions.
+- propósito;
+- departamentos;
+- personas/roles;
+- decisiones;
+- métricas;
+- riesgos;
+- fuentes;
+- agentes;
+- permisos.
 
-Rule: the Company Brain should help agents act with context, not become a dumping ground.
+Regla: el Company Brain debe ayudar a los agentes a actuar con contexto, no convertirse en un vertedero de información.
 
 ### 3. Department Brains
 
-Purpose: keep focused memory for one area of the company.
+Objetivo: mantener memoria enfocada para un área de la empresa.
 
-Examples:
+Ejemplos:
 
-- Sales Brain;
-- Operations Brain;
-- Product Brain;
-- Finance Brain;
-- Support Brain.
+- cerebro de ventas;
+- cerebro de operaciones;
+- cerebro de producto;
+- cerebro de finanzas;
+- cerebro de soporte.
 
-Rule: each department brain should have clear sources, metrics and signals.
+Regla: cada Department Brain debería tener fuentes, métricas y señales claras.
 
-### 4. Agent runtime
+### 4. Entorno de ejecución de agentes
 
-Purpose: run agents with identity, permissions and evidence rules.
+Objetivo: operar agentes con identidad, permisos y reglas de evidencia.
 
-The runtime can be any agent tool that can:
+El entorno puede ser cualquier herramienta de agentes que pueda:
 
-- read Markdown;
-- follow instructions;
-- use approved tools;
-- write structured outputs;
-- ask for approval when needed.
+- leer Markdown;
+- seguir instrucciones;
+- usar herramientas aprobadas;
+- escribir salidas estructuradas;
+- pedir aprobación cuando haga falta.
 
-Examples:
+Ejemplos:
 
-- coding agents;
-- chat agents;
-- workflow agents;
-- internal assistants.
+- agentes de programación;
+- agentes de chat;
+- agentes de flujos de trabajo;
+- asistentes internos.
 
-Rule: no agent should operate without an Agent Runtime Pack.
+Regla: ningún agente debería operar sin un Agent Runtime Pack.
 
-### 5. Task/control board
+### 5. Tablero de trabajo / control
 
-Purpose: show what is being worked on, who owns it and what is blocked.
+Objetivo: ver qué se está haciendo, quién lo lleva y qué está bloqueado.
 
-It can be:
+Puede ser:
 
-- a project board;
-- an issue tracker;
-- a task database;
-- a visual control plane.
+- un tablero de proyecto;
+- un gestor de issues;
+- una base de datos de tareas;
+- un panel visual de control.
 
-It should track:
+Debería seguir:
 
-- owner;
-- output;
-- status;
-- blockers;
-- approval needed;
-- evidence path.
+- responsable;
+- resultado esperado;
+- estado;
+- bloqueos;
+- aprobación necesaria;
+- ruta de evidencia.
 
-Rule: the board tracks work; it should not replace the Company Brain.
+Regla: el tablero sigue el trabajo; no sustituye al Company Brain.
 
-### 6. Receipts and evidence store
+### 6. Receipts y almacén de evidencia
 
-Purpose: prove what happened.
+Objetivo: probar qué ha pasado.
 
-A receipt should capture:
+Un Receipt debería registrar:
 
-- action;
-- source/context;
-- files changed;
-- decision taken;
-- risks;
-- verification;
-- rollback path.
+- acción;
+- fuente/contexto;
+- archivos cambiados;
+- decisión tomada;
+- riesgos;
+- verificación;
+- camino para deshacer si hace falta.
 
-Rule: “done” is not enough. The system needs evidence.
+Regla: “hecho” no basta. El sistema necesita evidencia.
 
-### 7. Communication channels
+### 7. Canales de comunicación
 
-Purpose: let humans approve, correct and give context.
+Objetivo: permitir que las personas aprueben, corrijan y den contexto.
 
-Examples:
+Ejemplos:
 
 - chat;
 - email;
-- meetings;
-- issue comments;
-- voice notes.
+- reuniones;
+- comentarios en issues;
+- notas de voz.
 
-Rule: communication is input, not the source of truth. Important decisions should be captured back into the system.
+Regla: la comunicación es entrada, no fuente de verdad. Las decisiones importantes deben registrarse de vuelta en el sistema.
 
-### 8. Validation tools
+### 8. Herramientas de validación
 
-Purpose: check that files, schemas and structure are still valid.
+Objetivo: comprobar que archivos, schemas y estructura siguen siendo válidos.
 
-This repo includes:
+Este repo incluye:
 
 ```bash
 python scripts/validate_repo.py
@@ -144,29 +144,29 @@ python scripts/validate_schemas.py
 python scripts/build_docs.py
 ```
 
-Rule: run validation before publishing or making major changes.
+Regla: valida antes de publicar o hacer cambios importantes.
 
-## Minimal tool stack
+## Stack mínimo
 
-For a small team, start with:
+Para un equipo pequeño, empieza con:
 
-- GitHub or GitLab for the repo;
-- Markdown for docs and templates;
-- YAML for registries and schemas;
-- one task board;
-- one AI agent;
-- one evidence folder or receipts file.
+- GitHub o GitLab para el repositorio;
+- Markdown para documentación y plantillas;
+- YAML para registros y schemas;
+- un tablero de trabajo;
+- un agente de IA;
+- una carpeta de evidencia o archivo de Receipts.
 
-Do not add complex infrastructure until the method works manually.
+No añadas infraestructura compleja hasta que el método funcione manualmente.
 
-## Safe connection rule
+## Regla para conectar herramientas reales
 
-Before connecting real tools, answer:
+Antes de conectar herramientas reales, responde:
 
-1. What data can the agent read?
-2. What data can the agent write?
-3. What requires human approval?
-4. What is the rollback path?
-5. What receipt proves the action?
+1. ¿Qué datos puede leer el agente?
+2. ¿Qué datos puede escribir el agente?
+3. ¿Qué requiere aprobación humana?
+4. ¿Cómo se deshace la acción si sale mal?
+5. ¿Qué Receipt prueba la acción?
 
-If these are unclear, do not connect the tool yet.
+Si esto no está claro, no conectes la herramienta todavía.

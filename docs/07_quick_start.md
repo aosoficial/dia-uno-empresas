@@ -1,165 +1,165 @@
-# 07 — Quick Start
+# 07 — Inicio rápido
 
-This guide helps you create the smallest useful version of Company Brain System in about one hour.
+Esta guía te ayuda a crear la versión mínima útil de Company Brain System en más o menos una hora.
 
-You will create:
+Vas a crear:
 
-1. a small **Company Brain**;
-2. one **Agent Runtime Pack**;
-3. one **Receipt** as evidence of work.
+1. un **Company Brain** pequeño;
+2. un **Agent Runtime Pack** para un agente;
+3. un **Receipt** como evidencia de trabajo.
 
-You do not need a database or a SaaS tool. A text editor and Git are enough.
+No necesitas una base de datos ni una herramienta SaaS. Con un editor de texto y Git basta.
 
 ---
 
-## Before you start
+## Antes de empezar
 
-You need:
+Necesitas:
 
 - Git;
-- a text editor;
-- Python 3.8+ only if you want to run the validation scripts.
+- un editor de texto;
+- Python 3.8+ solo si quieres ejecutar los scripts de validación.
 
-Useful terms:
+Términos útiles:
 
-- **Company Brain:** the shared memory of your company.
-- **Agent Runtime Pack:** the files that tell an agent who it is, what it can do, what it cannot do and how it should work.
-- **Receipt:** a short record proving what an agent did, what changed and how it was checked.
-- **StateChange:** a short record of something important that changed.
-- **Context Packet:** the context an agent needs before doing useful work.
+- **Company Brain:** la memoria compartida de tu empresa.
+- **Agent Runtime Pack:** los archivos que dicen quién es un agente, qué puede hacer, qué no puede hacer y cómo debe trabajar.
+- **Receipt:** un registro corto que prueba qué hizo un agente, qué cambió y cómo se revisó.
+- **StateChange:** un registro corto de algo importante que cambió.
+- **Context Packet:** el contexto que necesita un agente antes de hacer trabajo útil.
 
-If any term is unclear, use [`docs/08_glossary.md`](08_glossary.md).
+Si algún término no queda claro, usa [`docs/08_glossary.md`](08_glossary.md).
 
 ---
 
-## Step 1 — Clone the repo
+## Paso 1 — Clona el repositorio
 
 ```bash
 git clone https://github.com/aosoficial/company-brain-system.git
 cd company-brain-system
 ```
 
-You will see this structure:
+Verás esta estructura:
 
 ```text
 company-brain-system/
-  docs/           method manuals
-  templates/      reusable operating templates
-  schemas/        validation contracts
-  registry/       example registries
-  examples/       synthetic examples
-  scripts/        validation and build scripts
+  docs/           manuales del método
+  templates/      plantillas operativas reutilizables
+  schemas/        contratos de validación
+  registry/       registros de ejemplo
+  examples/       ejemplos sintéticos
+  scripts/        scripts de validación y construcción
 ```
 
 ---
 
-## Step 2 — Create a small Company Brain
+## Paso 2 — Crea un Company Brain pequeño
 
-The Company Brain is the shared memory of your organization.
+El Company Brain es la memoria compartida de tu organización.
 
-Start with only three important things. Example:
+Empieza solo con tres cosas importantes. Ejemplo:
 
 ```text
-Entities: customer, product, decision
-Relationships: customer buys product; decision affects product
+Entidades: cliente, producto, decisión
+Relaciones: cliente compra producto; decisión afecta producto
 ```
 
-Create a file named `my-company-brain.md`:
+Crea un archivo llamado `my-company-brain.md`:
 
 ```markdown
-# Company Brain — [Company name]
+# Company Brain — [Nombre de la empresa]
 
-## Core entities
+## Entidades principales
 
-| Entity | Key properties | Update rhythm |
+| Entidad | Propiedades clave | Ritmo de actualización |
 |---|---|---|
-| customer | name, sector, main contact, status | weekly |
-| product | name, price, status | monthly |
-| decision | description, date, owner, valid until | when it changes |
+| cliente | nombre, sector, contacto principal, estado | semanal |
+| producto | nombre, precio, estado | mensual |
+| decisión | descripción, fecha, responsable, válida hasta | cuando cambie |
 
-## Core facts
+## Hechos principales
 
-- **Mission:** [One sentence]
-- **Team:** [People / roles]
-- **Products:** [Short list]
+- **Misión:** [Una frase]
+- **Equipo:** [Personas / roles]
+- **Productos:** [Lista corta]
 
-## Active decisions
+## Decisiones activas
 
-| Decision | Date | Owner | Valid until |
+| Decisión | Fecha | Responsable | Válida hasta |
 |---|---|---|---|
-| [Example: Pro plan costs 49 €/month] | 2026-05-01 | [Name] | Q3 review |
+| [Ejemplo: el plan Pro cuesta 49 €/mes] | 2026-05-01 | [Nombre] | Revisión Q3 |
 
-## Active rules
+## Reglas activas
 
-- [Example: maximum discount without approval is 10%]
-- [Example: all VIP customer emails need review before sending]
+- [Ejemplo: descuento máximo sin aprobación: 10%]
+- [Ejemplo: todos los emails a clientes VIP necesitan revisión antes de enviarse]
 ```
 
-Reference: [`docs/03_brain_architecture.md`](03_brain_architecture.md)
+Referencia: [`docs/03_brain_architecture.md`](03_brain_architecture.md)
 
 ---
 
-## Step 3 — Create your first agent
+## Paso 3 — Crea tu primer agente
 
-An agent should not operate from a vague prompt. It needs a clear operating pack.
+Un agente no debería operar desde un prompt vago. Necesita un pack operativo claro.
 
-Copy the template:
+Copia la plantilla:
 
 ```bash
 cp -r templates/agent-runtime-pack/ my-first-agent/
 ```
 
-Fill in the three essential files first.
+Rellena primero los tres archivos esenciales.
 
 ### 3.1 IDENTITY.md
 
-Who the agent is:
+Quién es el agente:
 
 ```yaml
 name: "Atlas"
 id: "agent/atlas"
 version: "1.0.0"
 type: "sales"
-description: "Sales agent that prepares proposals and manages the pipeline."
+description: "Agente de ventas que prepara propuestas y gestiona el pipeline."
 owner:
-  name: "Your name"
-  email: "you@your-company.com"
-  role: "Founder"
+  name: "Tu nombre"
+  email: "tu@empresa.com"
+  role: "Fundador"
 created_at: "2026-05-09"
 status: "testing"
 ```
 
 ### 3.2 SOUL.md
 
-The agent’s operating contract:
+El contrato operativo del agente:
 
 ```markdown
 ## Identity
 
 **Name:** Atlas
-**Role:** Sales agent
-**Domain:** Sales
-**One sentence:** I manage the pipeline and prepare proposals.
+**Role:** Agente de ventas
+**Domain:** Ventas
+**One sentence:** Gestiono el pipeline y preparo propuestas.
 
 ## Mission Map
 
-**Main mission:** Prepare commercial proposals with the right context.
+**Main mission:** Preparar propuestas comerciales con el contexto correcto.
 
 **Key goals:**
-1. Keep the pipeline updated.
-2. Draft proposals in less than 24 hours.
-3. Never send anything to a client without approval.
+1. Mantener el pipeline actualizado.
+2. Redactar propuestas en menos de 24 horas.
+3. No enviar nada a un cliente sin aprobación.
 
 ## Pushback Rules
 
-1. **Not enough context** → ask for a Context Packet before acting.
-2. **Discount outside approved range** → escalate to the operator.
-3. **Outdated data** → flag it and ask for an update.
+1. **Falta contexto** → pedir un Context Packet antes de actuar.
+2. **Descuento fuera del rango aprobado** → escalar al operador.
+3. **Dato obsoleto** → señalarlo y pedir actualización.
 ```
 
 ### 3.3 PERMISSIONS.md
 
-What the agent can and cannot do:
+Qué puede y qué no puede hacer:
 
 ```yaml
 agent: "agent/atlas"
@@ -176,15 +176,15 @@ permissions:
 default_rule: "approval_required"
 ```
 
-Reference: [`docs/04_agent_onboarding.md`](04_agent_onboarding.md)
+Referencia: [`docs/04_agent_onboarding.md`](04_agent_onboarding.md)
 
 ---
 
-## Step 4 — Create your first Receipt
+## Paso 4 — Crea tu primer Receipt
 
-A Receipt is evidence. It prevents “trust me, I did it” work.
+Un Receipt es evidencia. Evita el trabajo de “confía en mí, ya lo hice”.
 
-Create a file named `my-first-receipt.yaml`:
+Crea un archivo llamado `my-first-receipt.yaml`:
 
 ```yaml
 id: "rcp-atlas-20260509-001"
@@ -192,23 +192,23 @@ agent: "agent/atlas"
 action: "Prepare commercial proposal for Example Customer"
 timestamp: "2026-05-09T10:00:00Z"
 inputs:
-  context_packet: "verbal founder briefing"
-  additional_instructions: "Include the Pro plan pricing table."
+  context_packet: "briefing verbal del fundador"
+  additional_instructions: "Incluir tabla de precios del plan Pro."
 outputs:
   - "proposal-example-v1.md generated"
 outcome: >
-  Proposal draft generated with updated pricing table.
-  Pending founder review before sending.
+  Borrador de propuesta generado con tabla de precios actualizada.
+  Pendiente de revisión del fundador antes de enviar.
 status: "pending_verification"
 ```
 
-Important: “done” does not mean “successful”. The `outcome` field should describe the real result.
+Importante: “hecho” no significa “exitoso”. El campo `outcome` debe describir el resultado real.
 
 ---
 
-## Step 5 — Validate the repo
+## Paso 5 — Valida el repositorio
 
-This step is optional, but recommended.
+Este paso es opcional, pero recomendable.
 
 ```bash
 pip install pyyaml
@@ -216,30 +216,30 @@ python scripts/validate_repo.py
 python scripts/validate_schemas.py
 ```
 
-These scripts check that the repo structure and YAML schemas are consistent.
+Estos scripts comprueban que la estructura del repositorio y los schemas YAML son consistentes.
 
 ---
 
-## What to read next
+## Qué leer después
 
-- **Understand the full method:** [`docs/00_master_playbook.md`](00_master_playbook.md)
-- **Understand operational records:** [`docs/01_aos_system.md`](01_aos_system.md) and [`docs/02_operational_memory.md`](02_operational_memory.md)
-- **Create a Department Brain:** [`docs/03_brain_architecture.md`](03_brain_architecture.md)
-- **See a full example:** [`examples/vega/`](../examples/vega/)
-- **Check a term:** [`docs/08_glossary.md`](08_glossary.md)
-- **Operate day to day:** [`docs/05_operator_manual.md`](05_operator_manual.md)
-- **Ask an agent to help install it:** [`docs/14_agent_installation_process.md`](14_agent_installation_process.md)
+- **Entender el método completo:** [`docs/00_master_playbook.md`](00_master_playbook.md)
+- **Entender los registros operativos:** [`docs/01_aos_system.md`](01_aos_system.md) y [`docs/02_operational_memory.md`](02_operational_memory.md)
+- **Crear un Department Brain:** [`docs/03_brain_architecture.md`](03_brain_architecture.md)
+- **Ver un ejemplo completo:** [`examples/vega/`](../examples/vega/)
+- **Consultar un término:** [`docs/08_glossary.md`](08_glossary.md)
+- **Operar día a día:** [`docs/05_operator_manual.md`](05_operator_manual.md)
+- **Pedir a un agente que te ayude a instalarlo:** [`docs/14_agent_installation_process.md`](14_agent_installation_process.md)
 
 ---
 
-## What you have created
+## Qué has creado
 
 ```text
-Company Brain minimum version
-Agent Runtime Pack minimum version
-First Receipt as evidence of work
+Versión mínima del Company Brain
+Versión mínima del Agent Runtime Pack
+Primer Receipt como evidencia de trabajo
 ```
 
-This is enough to understand the basic system. Everything else is about adding better context, safer permissions and better operating habits over time.
+Esto basta para entender el sistema básico. Todo lo demás consiste en añadir mejor contexto, permisos más seguros y mejores hábitos operativos con el tiempo.
 
-If you get stuck, read [`docs/12_get_help_from_libera.md`](12_get_help_from_libera.md) or open a GitHub issue.
+Si te bloqueas, lee [`docs/12_get_help_from_libera.md`](12_get_help_from_libera.md) o abre un issue en GitHub.
