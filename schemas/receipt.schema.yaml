@@ -1,0 +1,163 @@
+# Company Brain System — Schema: Receipt
+# Registra el resultado de una acción ejecutada por un agente.
+
+schema:
+  name: receipt
+  version: "1.0"
+  description: >
+    Registra el resultado (recibo) de una acción ejecutada por un agente.
+    Es el comprobante de ejecución que permite auditar qué hizo el agente,
+    con qué inputs, qué produjo y si fue verificado.
+
+fields:
+  - name: id
+    type: string
+    required: true
+    description: Identificador único del recibo.
+    example: "rcpt-20260507-001"
+
+  - name: agent
+    type: string
+    required: true
+    description: Identificador del agente que ejecutó la acción.
+    example: "agent-ventas-001"
+
+  - name: action
+    type: string
+    required: true
+    description: >
+      Descripción de la acción ejecutada. Debe ser clara y específica.
+    example: "Preparar propuesta comercial para Restaurantes del Norte S.L."
+
+  - name: timestamp
+    type: datetime
+    required: true
+    description: Fecha y hora en que se completó la acción.
+    example: "2026-05-08T09:15:00Z"
+
+  - name: inputs
+    type: object
+    required: true
+    description: >
+      Entradas utilizadas para ejecutar la acción. Incluye referencia al
+      context packet y cualquier instrucción adicional recibida.
+    fields:
+      - name: context_packet
+        type: string
+        required: true
+        description: Referencia al context packet que originó la tarea.
+      - name: additional_instructions
+        type: string
+        required: false
+        description: Instrucciones adicionales recibidas durante la ejecución (si las hubo).
+    example:
+      context_packet: "ctx-20260507-ventas-001"
+      additional_instructions: "Incluir tabla comparativa entre línea estándar y premium."
+
+  - name: outputs
+    type: list
+    required: true
+    description: >
+      Lista de artefactos o resultados producidos por la acción. Pueden ser
+      documentos, registros creados, notificaciones enviadas, etc.
+    example:
+      - "propuesta-com-2026-090.pdf generada"
+      - "Registro de oportunidad actualizado en CRM"
+      - "Notificación enviada al vendedor asignado"
+
+  - name: outcome
+    type: string
+    required: true
+    description: >
+      Resumen narrativo del resultado. Explica qué se logró y cualquier
+      observación relevante.
+    example: "Propuesta generada con catálogo premium y tabla comparativa. El descuento aplicado es del 10%, dentro del rango autorizado. Pendiente de revisión por el director comercial."
+
+  - name: status
+    type: string
+    required: true
+    description: Estado final de la ejecución.
+    enum:
+      - éxito
+      - éxito_parcial
+      - fallo
+      - pendiente_verificacion
+      - rechazado
+    example: "pendiente_verificacion"
+
+  - name: verification
+    type: object
+    required: false
+    description: >
+      Datos de verificación humana del resultado, si aplica.
+    fields:
+      - name: reviewed_by
+        type: string
+        required: false
+        description: Persona o rol que revisó el resultado.
+      - name: reviewed_at
+        type: datetime
+        required: false
+        description: Fecha y hora de la revisión.
+      - name: notes
+        type: string
+        required: false
+        description: Notas del revisor sobre el resultado.
+    example:
+      reviewed_by: "director-comercial"
+      reviewed_at: "2026-05-08T11:00:00Z"
+      notes: "Propuesta aprobada. Ajustar plazo de entrega a 10 días hábiles antes de enviar al cliente."
+
+  - name: corrections
+    type: string
+    required: false
+    description: >
+      Correcciones aplicadas tras la verificación, si las hubo.
+      Null si no se requirieron correcciones.
+    example: "Plazo de entrega ajustado de 15 a 10 días hábiles. Propuesta regenerada como v2."
+
+  - name: tags
+    type: list
+    required: false
+    description: >
+      Etiquetas para clasificar y facilitar la búsqueda de Receipts.
+    example:
+      - ventas
+      - propuesta
+      - distribuidora-norte
+
+  - name: statechanges_generados
+    type: list
+    required: false
+    description: >
+      IDs de StateChanges creados como resultado de esta acción.
+      Permite trazar la cadena de causalidad desde la acción hasta los cambios
+      de estado que produjo.
+    example:
+      - "sc-pipeline-dist-norte-2026-05-08"
+
+example:
+  id: "rcpt-20260507-001"
+  agent: "agent-ventas-001"
+  action: "Preparar propuesta comercial para Restaurantes del Norte S.L."
+  timestamp: "2026-05-08T09:15:00Z"
+  inputs:
+    context_packet: "ctx-20260507-ventas-001"
+    additional_instructions: "Incluir tabla comparativa entre línea estándar y premium."
+  outputs:
+    - "propuesta-com-2026-090.pdf generada"
+    - "Registro de oportunidad actualizado en CRM"
+    - "Notificación enviada al vendedor asignado"
+  outcome: "Propuesta generada con catálogo premium y tabla comparativa. El descuento aplicado es del 10%, dentro del rango autorizado. Pendiente de revisión por el director comercial."
+  status: "pendiente_verificacion"
+  verification:
+    reviewed_by: "director-comercial"
+    reviewed_at: "2026-05-08T11:00:00Z"
+    notes: "Propuesta aprobada. Ajustar plazo de entrega a 10 días hábiles antes de enviar al cliente."
+  corrections: "Plazo de entrega ajustado de 15 a 10 días hábiles. Propuesta regenerada como v2."
+  tags:
+    - ventas
+    - propuesta
+    - distribuidora-norte
+  statechanges_generados:
+    - "sc-pipeline-dist-norte-2026-05-08"

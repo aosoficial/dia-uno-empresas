@@ -1,0 +1,49 @@
+# Company Brain System — Registro de Fuentes de Datos
+# Lista centralizada de fuentes externas e internas que alimentan
+# los Brains del sistema.
+#
+# Cada fuente define de donde vienen los datos, con que frecuencia
+# se actualizan y quien es responsable de mantenerla.
+
+version: "1.0"
+description: >
+  Registro de fuentes de datos que alimentan los Brains.
+  Cada fuente tiene un owner, una frecuencia de actualizacion
+  y una politica de freshness.
+
+sources:
+
+  # --- Plantilla de entrada ---
+  # - id: "src-[nombre]"
+  #   name: "[Nombre de la fuente]"
+  #   type: "[api / base_de_datos / archivo / manual / servicio / webhook]"
+  #   owner: "[Persona o equipo responsable]"
+  #   feeds_brain: "[ID del Brain que alimenta]"
+  #   frequency: "[tiempo_real / diaria / semanal / manual / por_evento]"
+  #   freshness_policy: "[Tiempo maximo aceptable sin actualizacion]"
+  #   status: "[activa / inactiva / planificada]"
+  #   description: "[Que datos proporciona]"
+  #   access: "[lectura / lectura_escritura]"
+
+  # --- Ejemplo de referencia ---
+  - id: "src-crm"
+    name: "CRM Principal"
+    type: "api"
+    owner: "equipo-comercial"
+    feeds_brain: "brain-dept-ventas"
+    frequency: "tiempo_real"
+    freshness_policy: "maximo 1 hora sin sincronizar"
+    status: "planificada"
+    description: "Datos de clientes, leads, oportunidades y actividad comercial."
+    access: "lectura_escritura"
+
+  - id: "src-catalogo-producto"
+    name: "Catalogo de Producto"
+    type: "archivo"
+    owner: "equipo-producto"
+    feeds_brain: "brain-company-main"
+    frequency: "semanal"
+    freshness_policy: "maximo 7 dias sin actualizacion"
+    status: "planificada"
+    description: "Precios, planes, features y roadmap del producto."
+    access: "lectura"

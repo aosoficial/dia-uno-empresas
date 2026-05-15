@@ -1,0 +1,92 @@
+# Company Brain System — Schema: Permission
+# Define un permiso asignado a un agente para una acción específica.
+
+schema:
+  name: permission
+  version: "1.0"
+  description: >
+    Define un permiso individual dentro del sistema. Cada permiso vincula un
+    agente con una acción y establece el nivel de autonomía para ejecutarla.
+    Los permisos son la base del control de acceso y gobernanza del sistema.
+
+fields:
+  - name: id
+    type: string
+    required: true
+    description: Identificador único del permiso.
+    example: "perm-ventas-001-precio"
+
+  - name: agent
+    type: string
+    required: true
+    description: Identificador del agente al que se otorga el permiso.
+    example: "agent-ventas-001"
+
+  - name: action
+    type: string
+    required: true
+    description: >
+      Acción específica sobre la que se define el permiso. Debe ser precisa
+      y corresponder a una operación conocida del sistema.
+    example: "modificar_precio_propuesta"
+
+  - name: level
+    type: string
+    required: true
+    description: >
+      Nivel de autonomía para ejecutar esta acción. Determina si el agente
+      puede actuar solo, debe notificar, necesita aprobación previa o tiene
+      la acción prohibida.
+    enum:
+      - autónomo
+      - con_notificación
+      - con_aprobación
+      - prohibido
+    example: "con_notificación"
+
+  - name: conditions
+    type: string
+    required: false
+    description: >
+      Condiciones adicionales bajo las cuales aplica este nivel de permiso.
+      Si se omite, el permiso aplica sin restricciones adicionales.
+    example: "Solo para descuentos de hasta el 15%. Descuentos mayores requieren aprobación."
+
+  - name: granted_by
+    type: string
+    required: true
+    description: Persona o rol que otorgó el permiso.
+    example: "director-comercial"
+
+  - name: granted_at
+    type: datetime
+    required: true
+    description: Fecha y hora en que se otorgó el permiso.
+    example: "2026-01-15T09:00:00Z"
+
+  - name: expires_at
+    type: datetime
+    required: false
+    description: >
+      Fecha y hora de expiración del permiso. Si se omite, el permiso no expira
+      (pero debe revisarse periódicamente según la política de gobernanza).
+    example: "2026-12-31T23:59:59Z"
+
+  - name: notes
+    type: string
+    required: false
+    description: >
+      Notas adicionales sobre el permiso. Contexto, justificación o referencia
+      a la política que lo respalda.
+    example: "Permiso otorgado tras la revisión trimestral de enero 2026. El agente demostró criterio adecuado en propuestas anteriores."
+
+example:
+  id: "perm-ventas-001-precio"
+  agent: "agent-ventas-001"
+  action: "modificar_precio_propuesta"
+  level: "con_notificación"
+  conditions: "Solo para descuentos de hasta el 15%. Descuentos mayores requieren aprobación."
+  granted_by: "director-comercial"
+  granted_at: "2026-01-15T09:00:00Z"
+  expires_at: "2026-12-31T23:59:59Z"
+  notes: "Permiso otorgado tras la revisión trimestral de enero 2026. El agente demostró criterio adecuado en propuestas anteriores."

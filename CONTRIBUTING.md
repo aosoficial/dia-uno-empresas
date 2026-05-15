@@ -1,35 +1,40 @@
-# Contributing
+# Contribuir a Company Brain System
 
-Company Brain System welcomes practical improvements.
+Company Brain System está en construcción como método operativo reutilizable.
 
-## Good contributions
+## Principios
 
-- clearer templates;
-- better SOPs;
-- safer permission patterns;
-- synthetic examples;
-- agent prompts;
-- implementation checklists;
-- bug reports from real usage without private data.
+- Escribir en español claro.
+- Priorizar utilidad práctica sobre teoría.
+- Explicar términos técnicos en lenguaje sencillo.
+- Mantener los ejemplos genéricos o ficticios.
+- No añadir datos privados, credenciales ni configuraciones reales.
 
-## Do not contribute
+## Antes de proponer cambios
 
-- private customer data;
-- credentials;
-- production configs;
-- private prompts;
-- personal information;
-- copyrighted material you cannot share;
-- claims without examples.
+Comprueba que el cambio:
 
-## Quality bar
+- mejora el método;
+- encaja con la arquitectura;
+- no introduce secretos;
+- no mezcla piloto privado con framework público;
+- deja ejemplos y plantillas utilizables.
 
-A contribution should answer:
+## Estructura de cambios
 
-1. What problem does it solve?
-2. Who uses it?
-3. How is it applied?
-4. What evidence does it produce?
-5. What mistake does it prevent?
+- Documentación: `docs/`
+- Plantillas: `templates/`
+- Schemas: `schemas/`
+- Scripts: `scripts/`
+- Registro de decisiones: `DECISIONS.md`
+- Cambios: `CHANGELOG.md`
 
-Open a PR or issue: https://example.com/issues
+## Calidad esperada
+
+Un cambio no está listo hasta que pueda responder:
+
+- qué problema resuelve;
+- quién lo usa;
+- cómo se aplica;
+- qué evidencia deja;
+- qué errores evita.

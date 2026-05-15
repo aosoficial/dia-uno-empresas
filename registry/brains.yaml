@@ -1,0 +1,51 @@
+# Company Brain System — Registro de Brains
+# Lista centralizada de todos los Brains del sistema operativo.
+#
+# Incluye el Company Brain y cada Department/Domain Brain.
+# Cada Brain registrado aqui debe tener su pack de documentacion
+# correspondiente.
+
+version: "1.0"
+description: >
+  Registro centralizado de Brains. Incluye jerarquia, ownership
+  y estado de cada cerebro del sistema.
+
+brains:
+
+  # --- Plantilla de entrada ---
+  # - id: "brain-[tipo]-[nombre]"
+  #   name: "[Nombre del Brain]"
+  #   type: "[company / department / domain / project]"
+  #   department: "[departamento, si aplica]"
+  #   owner: "[persona o equipo responsable]"
+  #   status: "[activo / en_construccion / inactivo]"
+  #   parent_brain: "[ID del Brain padre, null si es Company Brain]"
+  #   sync_policy: "[manual / automatica / hibrida]"
+  #   description: "[Que contiene y para que sirve]"
+  #   created_at: "YYYY-MM-DDTHH:MM:SSZ"
+  #   updated_at: "YYYY-MM-DDTHH:MM:SSZ"
+
+  # --- Ejemplo de referencia ---
+  - id: "brain-company-main"
+    name: "Company Brain Principal"
+    type: "company"
+    department: null
+    owner: "operaciones"
+    status: "en_construccion"
+    parent_brain: null
+    sync_policy: "hibrida"
+    description: "Memoria operativa central de la organizacion. Recibe datos de todos los Department Brains."
+    created_at: "2026-05-01T00:00:00Z"
+    updated_at: "2026-05-08T00:00:00Z"
+
+  - id: "brain-dept-ventas"
+    name: "Sales Brain"
+    type: "department"
+    department: "ventas"
+    owner: "equipo-comercial"
+    status: "en_construccion"
+    parent_brain: "brain-company-main"
+    sync_policy: "automatica"
+    description: "Pipeline comercial, leads, propuestas, precios y relaciones con clientes."
+    created_at: "2026-05-01T00:00:00Z"
+    updated_at: "2026-05-08T00:00:00Z"

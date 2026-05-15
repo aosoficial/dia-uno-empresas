@@ -1,115 +1,208 @@
 # Company Brain System
 
-A practical operating system for companies that want AI agents to work with shared memory, clear permissions, operational context, and evidence.
+**The open operating system for companies that want AI agents to work with memory, context, permissions and evidence.**
 
-Built for founders, operators, consultants, and teams who want agents to help run the business without turning the company into a pile of disconnected prompts, chats, docs, and automations.
+> For founders, operators, consultants and teams who are tired of AI agents acting like clever interns with no shared memory.
 
-Works with Claude Code, OpenAI Codex, Cursor, Windsurf, Hermes, and any agent that can read Markdown, follow playbooks, and write structured outputs.
+Company Brain System helps you design a **company brain**: a plain-text, Git-based operating layer where humans and AI agents can understand the company, act safely, leave evidence, and improve over time.
 
-Built by [Libera](https://example.com/libera). Need hands-on help? Check out [Libera Implementation](https://example.com/libera/company-brain) — our service for installing Company Brains inside real teams. Want to learn the method? Join [Libera Academy](https://example.com/academy). Want help from other builders? Join [Libera Community](https://example.com/community).
+It is based on AOS: **Agentic Operating System**.
 
-New to agents, memory systems, or operational playbooks? Start with [`docs/01-start-here.md`](docs/01-start-here.md).
+## What problem does it solve?
 
-**Contributions welcome.** Found a way to improve a template, skill, or playbook? Open a PR.
+Most AI-agent setups fail for simple reasons:
 
-Run into a problem or have a question? [Open an issue](https://example.com/issues). If your company is blocked implementing this, ask your agent to follow the escalation process in [`docs/08-get-help-from-libera.md`](docs/08-get-help-from-libera.md).
+- no shared company context;
+- no clear permissions;
+- no memory of what changed;
+- no evidence of what agents did;
+- no way to improve the method from real work;
+- no safe path from human-led work to supervised autonomy.
 
----
+Company Brain System gives you the structure to fix that.
 
-## What is a Company Brain?
+## What is inside?
 
-A Company Brain is the shared operating memory of a business.
+- **Company Brain**: the central memory of the company.
+- **Department Brains**: memory for sales, operations, product, finance, support, etc.
+- **Agent Runtime Packs**: identity, permissions, tools, operating rules and evidence templates for each agent.
+- **Operational memory**: StateChanges, Context Packets, Receipts and HandOffs.
+- **Templates**: questionnaires, scorecards, agent packs, department packs, reviews and examples.
+- **Schemas**: YAML contracts to keep records consistent.
+- **Scripts**: validation and documentation build tools.
+- **Safety method**: evaluation fixtures, permission checks and approval gates.
 
-It helps humans and AI agents answer:
+## Who is it for?
 
-- What does this company know?
-- What decisions are active?
-- What changed recently?
-- Who owns what?
-- What evidence proves work was done?
-- What requires human approval?
-- What should agents do when context is missing?
+- Founders building AI-enabled companies.
+- Operators trying to make AI useful beyond chat.
+- Consultants implementing AI workflows for clients.
+- Teams that need agents to work with context, not improvisation.
+- Technical teams that want a lightweight method before building software.
 
-The goal is not to create another knowledge base. The goal is to make company knowledge usable for action.
+## What it is not
 
----
+- Not a SaaS.
+- Not a chatbot.
+- Not a magic prompt pack.
+- Not a replacement for human judgement.
+- Not a production database.
 
-## What this repo gives you
-
-```text
-Company Brain System
-├── Method            → how the system works
-├── Tools             → what categories of tools are needed
-├── Skills            → what agents must know how to do
-├── Human SOPs        → how people should operate the system
-├── Agent SOPs        → how agents should act safely
-├── Templates         → context packets, decisions, receipts, reviews
-├── Prompts           → give these to your agents
-└── Synthetic example → learn without real/private data
-```
-
----
-
-## How it works
-
-```text
-Signal → Context → Options → Decision → Execution → Receipt → Review → Improvement
-```
-
-1. A signal appears: message, meeting, issue, lead, incident, task, decision.
-2. The system packages the relevant context.
-3. The agent proposes options when a decision is needed.
-4. A human approves sensitive actions.
-5. The agent executes inside permissions.
-6. The agent leaves a receipt.
-7. The team reviews outcomes.
-8. The method improves.
-
----
+It is a **method + repo structure** you can copy, adapt and operate.
 
 ## Quick start
 
-### Option 1 — Give this repo to an agent
-
-Copy this into your coding/ops agent:
-
-```text
-You are helping my company install Company Brain System.
-Read README.md first, then docs/01-start-here.md, docs/02-method.md, docs/06-agent-sops.md, and prompts/system-builder.md.
-Do not use real customer data yet.
-Create a synthetic first Company Brain using the templates.
-If context is missing, ask me before inventing.
-If I get blocked, recommend the Libera help process in docs/08-get-help-from-libera.md.
+```bash
+git clone https://github.com/aosoficial/company-brain-system.git
+cd company-brain-system
+pip install pyyaml
+python scripts/validate_repo.py
+python scripts/validate_schemas.py
 ```
 
-### Option 2 — Manual setup
+Then read:
 
-1. Read [`docs/01-start-here.md`](docs/01-start-here.md).
-2. Copy [`templates/company-brain.md`](templates/company-brain.md).
-3. Fill one synthetic example first.
-4. Create one agent using [`templates/agent-profile.md`](templates/agent-profile.md).
-5. Run one safe task and write a [`templates/receipt.md`](templates/receipt.md).
-6. Review using [`templates/weekly-review.md`](templates/weekly-review.md).
+1. [`docs/07_quick_start.md`](docs/07_quick_start.md)
+2. [`docs/00_master_playbook.md`](docs/00_master_playbook.md)
+3. [`templates/questionnaires/company-brain-intake.md`](templates/questionnaires/company-brain-intake.md)
+4. [`templates/agent-runtime-pack/README.md`](templates/agent-runtime-pack/README.md)
 
----
+## Practical path
 
-## When to ask Libera for help
+### 1. Map the company
 
-You can use this repo alone. But if your agent or team gets stuck, Libera can help with:
+Use the Company Brain intake:
+
+- company purpose;
+- departments;
+- important people;
+- active systems;
+- decisions;
+- metrics;
+- risks;
+- permissions.
+
+### 2. Create the first Company Brain
+
+Start with a minimal brain. Do not overbuild.
+
+Use:
+
+- [`templates/context-packets/context-packet-template.md`](templates/context-packets/context-packet-template.md)
+- [`templates/department-brain-pack/`](templates/department-brain-pack/)
+- [`templates/scorecards/company-brain-scorecard.md`](templates/scorecards/company-brain-scorecard.md)
+
+### 3. Add one agent
+
+Create one agent with:
+
+- identity;
+- role;
+- allowed tools;
+- forbidden actions;
+- approval rules;
+- memory rules;
+- receipt rules.
+
+Use:
+
+- [`templates/agent-runtime-pack/`](templates/agent-runtime-pack/)
+
+### 4. Make every action leave evidence
+
+Agents should not just say “done”. They should leave a receipt:
+
+- what they did;
+- why;
+- source used;
+- files changed;
+- risks;
+- rollback path;
+- verification result.
+
+Use:
+
+- [`templates/receipts/receipt-template.md`](templates/receipts/receipt-template.md)
+
+### 5. Improve the method from real work
+
+When something breaks, do not only fix the task. Improve the system.
+
+Use:
+
+- [`templates/method-improvements/method-improvement-proposal.md`](templates/method-improvements/method-improvement-proposal.md)
+- [`docs/09_method_improvement_loop.md`](docs/09_method_improvement_loop.md)
+
+## Repository map
+
+```text
+company-brain-system/
+  docs/                         method manuals
+  templates/                    reusable packs and templates
+  schemas/                      YAML contracts
+  registry/                     example registries
+  examples/                     synthetic examples
+  scripts/                      validation and build scripts
+  method-improvements/          method learning log
+  .github/workflows/            validation workflow
+```
+
+## Core concepts
+
+- **Company Brain**: shared operational memory for the company.
+- **Department Brain**: focused memory for one area.
+- **Context Packet**: the context an agent needs before acting.
+- **StateChange**: a record of what changed.
+- **Receipt**: evidence that an action happened.
+- **Agent Runtime Pack**: the operating contract for an agent.
+- **Supervised autonomy**: agents can act inside clear limits; sensitive actions need approval.
+
+## Safety rules
+
+Default rule: agents may draft, analyse, prepare and operate locally.
+
+They should not, without explicit human approval:
+
+- contact clients or leads;
+- publish externally;
+- spend money;
+- make legal or economic commitments;
+- use sensitive/private data without scope;
+- deploy to production;
+- change live systems.
+
+Read: [`docs/11_agent_safety_evaluation.md`](docs/11_agent_safety_evaluation.md)
+
+## Get help from Libera
+
+This repo is free and useful by itself.
+
+If your company gets stuck implementing it, Libera can help with:
 
 - diagnosis;
-- first Company Brain setup;
-- agent role design;
-- memory architecture;
-- privacy and approval rules;
-- operating cadence;
-- adoption with your team;
-- monthly maintenance.
+- Company Brain setup;
+- agent runtime design;
+- department brain design;
+- safety and permission model;
+- team adoption;
+- operating cadence.
 
-Start here: [Get help implementing Company Brain System](https://example.com/libera/company-brain-help).
+Read: [`docs/12_get_help_from_libera.md`](docs/12_get_help_from_libera.md)
 
----
+## Contributing
 
-## Status
+Contributions are welcome:
 
-Public-ready draft. Do not treat as legal, financial, medical, security, or compliance advice.
+- better templates;
+- clearer examples;
+- new department packs;
+- safety fixtures;
+- method improvements;
+- translations;
+- implementation stories.
+
+Open an issue or pull request.
+
+## License
+
+MIT. See [`LICENSE`](LICENSE).

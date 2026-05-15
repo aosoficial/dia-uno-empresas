@@ -1,0 +1,154 @@
+# Company Brain System — Schema: Heartbeat
+# Registra el estado de salud periódico de un agente.
+
+schema:
+  name: heartbeat
+  version: "1.0"
+  description: >
+    Registra un latido de estado (heartbeat) emitido por un agente. Cada
+    heartbeat contiene los checks de salud, detección de drift y el estado
+    general del agente en un momento dado. Sirve para monitorizar que los
+    agentes funcionan correctamente y detectar problemas a tiempo.
+
+fields:
+  - name: id
+    type: string
+    required: true
+    description: Identificador único del heartbeat.
+    example: "hb-ventas001-20260508-0900"
+
+  - name: agent
+    type: string
+    required: true
+    description: Identificador del agente que emite el heartbeat.
+    example: "agent-ventas-001"
+
+  - name: timestamp
+    type: datetime
+    required: true
+    description: Fecha y hora en que se emitió el heartbeat.
+    example: "2026-05-08T09:00:00Z"
+
+  - name: frequency
+    type: string
+    required: true
+    description: >
+      Frecuencia configurada para este heartbeat. Permite verificar si el
+      agente emite a tiempo.
+    example: "cada 15 minutos"
+
+  - name: checks
+    type: list
+    required: true
+    description: >
+      Lista de verificaciones de salud realizadas en este heartbeat. Cada
+      check evalúa un aspecto del funcionamiento del agente.
+    items:
+      fields:
+        - name: name
+          type: string
+          required: true
+          description: Nombre del check de salud.
+        - name: status
+          type: string
+          required: true
+          description: Resultado del check.
+          enum:
+            - ok
+            - warning
+            - critical
+        - name: value
+          type: string
+          required: true
+          description: Valor actual medido.
+        - name: threshold
+          type: string
+          required: true
+          description: Umbral esperado para este check.
+        - name: notes
+          type: string
+          required: false
+          description: Notas adicionales sobre el resultado del check.
+    example:
+      - name: "conexion_crm"
+        status: "ok"
+        value: "conectado"
+        threshold: "conectado"
+        notes: null
+      - name: "tareas_pendientes"
+        status: "warning"
+        value: "12"
+        threshold: "máximo 10"
+        notes: "Dos tareas por encima del umbral. Revisar priorización."
+      - name: "tiempo_respuesta"
+        status: "ok"
+        value: "2.3 segundos"
+        threshold: "máximo 5 segundos"
+        notes: null
+      - name: "memoria_utilizada"
+        status: "ok"
+        value: "68%"
+        threshold: "máximo 85%"
+        notes: null
+
+  - name: drift_detected
+    type: boolean
+    required: true
+    description: >
+      Indica si se ha detectado drift (desviación) en el comportamiento o
+      datos del agente desde el último heartbeat.
+    example: false
+
+  - name: drift_details
+    type: string
+    required: false
+    description: >
+      Detalles del drift detectado. Null si no hay drift.
+    example: null
+
+  - name: overall_status
+    type: string
+    required: true
+    description: Estado general del agente en este heartbeat.
+    enum:
+      - saludable
+      - advertencia
+      - crítico
+    example: "advertencia"
+
+  - name: next_heartbeat
+    type: datetime
+    required: true
+    description: Fecha y hora esperada del próximo heartbeat.
+    example: "2026-05-08T09:15:00Z"
+
+example:
+  id: "hb-ventas001-20260508-0900"
+  agent: "agent-ventas-001"
+  timestamp: "2026-05-08T09:00:00Z"
+  frequency: "cada 15 minutos"
+  checks:
+    - name: "conexion_crm"
+      status: "ok"
+      value: "conectado"
+      threshold: "conectado"
+      notes: null
+    - name: "tareas_pendientes"
+      status: "warning"
+      value: "12"
+      threshold: "máximo 10"
+      notes: "Dos tareas por encima del umbral. Revisar priorización."
+    - name: "tiempo_respuesta"
+      status: "ok"
+      value: "2.3 segundos"
+      threshold: "máximo 5 segundos"
+      notes: null
+    - name: "memoria_utilizada"
+      status: "ok"
+      value: "68%"
+      threshold: "máximo 85%"
+      notes: null
+  drift_detected: false
+  drift_details: null
+  overall_status: "advertencia"
+  next_heartbeat: "2026-05-08T09:15:00Z"

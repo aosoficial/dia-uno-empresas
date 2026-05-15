@@ -1,0 +1,71 @@
+# Company Brain System — Registro de Departamentos
+# Lista centralizada de departamentos que tienen o tendran un Department Brain.
+#
+# Cada departamento registrado define sus entidades principales,
+# su Brain asociado y los agentes asignados.
+
+version: "1.0"
+description: >
+  Registro de departamentos de la organizacion con sus Brains
+  y agentes asociados.
+
+departments:
+
+  # --- Plantilla de entrada ---
+  # - id: "dept-[nombre]"
+  #   name: "[Nombre del departamento]"
+  #   brain: "[ID del Brain asociado, null si no tiene]"
+  #   owner: "[Responsable del departamento]"
+  #   status: "[activo / planificado / inactivo]"
+  #   agents: []  # Lista de IDs de agentes asignados
+  #   core_entities:
+  #     - "[Entidad principal 1]"
+  #     - "[Entidad principal 2]"
+  #   syncs_to_company_brain: true  # Si envia datos al Company Brain
+  #   description: "[Funcion del departamento]"
+
+  # --- Ejemplo de referencia ---
+  - id: "dept-ventas"
+    name: "Ventas"
+    brain: "brain-dept-ventas"
+    owner: "director-comercial"
+    status: "planificado"
+    agents:
+      - "agent-ventas-ejemplo"
+    core_entities:
+      - "leads"
+      - "oportunidades"
+      - "propuestas"
+      - "clientes"
+      - "precios"
+    syncs_to_company_brain: true
+    description: "Gestion comercial: pipeline, propuestas, clientes y seguimiento de oportunidades."
+
+  - id: "dept-producto"
+    name: "Producto"
+    brain: null
+    owner: "director-producto"
+    status: "planificado"
+    agents: []
+    core_entities:
+      - "productos"
+      - "precios"
+      - "roadmap"
+      - "integraciones"
+      - "feedback"
+    syncs_to_company_brain: true
+    description: "Definicion de producto, precios, roadmap y feedback de usuarios."
+
+  - id: "dept-operaciones"
+    name: "Operaciones"
+    brain: null
+    owner: "director-operaciones"
+    status: "planificado"
+    agents: []
+    core_entities:
+      - "procesos"
+      - "metricas"
+      - "incidencias"
+      - "proveedores"
+    syncs_to_company_brain: true
+    description: "Procesos operativos, metricas de eficiencia e incidencias."

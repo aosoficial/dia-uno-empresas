@@ -1,0 +1,41 @@
+# Company Brain System — Registro de Agentes
+# Lista centralizada de todos los agentes del sistema operativo.
+#
+# Cada agente registrado aqui debe tener su Agent Runtime Pack completo
+# en el directorio correspondiente.
+#
+# Para agregar un agente: copiar la plantilla de entrada, completar
+# los campos y verificar que el Agent Runtime Pack existe.
+
+version: "1.0"
+description: >
+  Registro centralizado de agentes. Cada entrada es un resumen;
+  la definicion completa esta en el Agent Runtime Pack del agente.
+
+agents:
+
+  # --- Plantilla de entrada ---
+  # - id: "agent-[departamento]-[secuencial]"
+  #   name: "[Nombre del agente]"
+  #   type: "[ventas / soporte / operaciones / analisis / coordinacion]"
+  #   status: "[activo / inactivo / en_pruebas]"
+  #   department: "[departamento]"
+  #   owner: "[persona o equipo responsable]"
+  #   mission: "[Una frase con la mision del agente]"
+  #   autonomy_level: "[bajo / medio / alto]"
+  #   runtime_pack: "[ruta al directorio del Agent Runtime Pack]"
+  #   created_at: "YYYY-MM-DDTHH:MM:SSZ"
+  #   updated_at: "YYYY-MM-DDTHH:MM:SSZ"
+
+  # --- Ejemplo de referencia (no activar) ---
+  - id: "agent-ventas-ejemplo"
+    name: "Vega"
+    type: "ventas"
+    status: "en_pruebas"
+    department: "ventas"
+    owner: "equipo-comercial"
+    mission: "Gestionar pipeline de ventas, preparar propuestas y dar seguimiento a oportunidades."
+    autonomy_level: "medio"
+    runtime_pack: "examples/vega/"
+    created_at: "2026-05-01T00:00:00Z"
+    updated_at: "2026-05-08T00:00:00Z"

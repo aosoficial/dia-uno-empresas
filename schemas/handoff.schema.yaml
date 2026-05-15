@@ -1,0 +1,228 @@
+# Company Brain System — Schema: Handoff
+# Registra la transferencia formal de una tarea entre agentes o entre agente y humano.
+
+schema:
+  name: handoff
+  version: "1.0"
+  description: >
+    Registra la transferencia formal de una tarea, responsabilidad o contexto
+    de un agente a otro agente o a un humano. Garantiza que nada se pierda
+    en el traspaso y permite verificar que el destinatario recibió el contexto.
+
+fields:
+  - name: id
+    type: string
+    required: true
+    description: Identificador único del handoff.
+    example: "ho-vega-20260510-001"
+
+  - name: tipo
+    type: string
+    required: true
+    description: Tipo de traspaso según origen y destino.
+    enum:
+      - agente_a_agente
+      - agente_a_humano
+      - humano_a_agente
+      - desactivacion
+    example: "agente_a_agente"
+
+  - name: timestamp
+    type: datetime
+    required: true
+    description: Fecha y hora en que se inició el traspaso.
+    example: "2026-05-10T11:00:00Z"
+
+  - name: origen
+    type: object
+    required: true
+    description: >
+      Quién inicia el traspaso. Puede ser un agente o un humano.
+    fields:
+      - name: agente
+        type: string
+        required: true
+        description: Identificador del agente o email/nombre del humano que origina el traspaso.
+      - name: rol
+        type: string
+        required: true
+        description: Rol del origen dentro de la organización.
+    example:
+      agente: "agente/vega"
+      rol: "Agente de ventas"
+
+  - name: destino
+    type: object
+    required: true
+    description: >
+      Quién recibe el traspaso. Puede ser un agente o un humano.
+    fields:
+      - name: agente
+        type: string
+        required: true
+        description: Identificador del agente o email/nombre del humano que recibe el traspaso.
+      - name: rol
+        type: string
+        required: true
+        description: Rol del destino dentro de la organización.
+    example:
+      agente: "agente/nova"
+      rol: "Agente de producto"
+
+  - name: tarea
+    type: object
+    required: true
+    description: >
+      Descripción de la tarea que se traspasa, su estado actual y condiciones.
+    fields:
+      - name: descripcion
+        type: string
+        required: true
+        description: Qué tarea se traspasa.
+      - name: estado_actual
+        type: string
+        required: true
+        description: En qué punto está la tarea al momento del traspaso.
+      - name: deadline
+        type: string
+        required: false
+        description: Cuándo debe completarse la tarea.
+      - name: prioridad
+        type: string
+        required: true
+        description: Nivel de prioridad de la tarea.
+        enum:
+          - critica
+          - alta
+          - media
+          - baja
+    example:
+      descripcion: "Verificar viabilidad técnica de integración ERP custom para Costa Frutas"
+      estado_actual: "Cliente solicitó integración custom. Vega no puede evaluar viabilidad técnica."
+      deadline: "2026-05-15"
+      prioridad: "alta"
+
+  - name: contexto_transferido
+    type: object
+    required: true
+    description: >
+      Información transferida al destinatario para que pueda continuar
+      la tarea sin pérdida de contexto.
+    fields:
+      - name: context_packet
+        type: string
+        required: false
+        description: Referencia al Context Packet asociado, si existe.
+      - name: receipts_relevantes
+        type: list
+        required: false
+        description: IDs de Receipts que el destinatario debe conocer.
+      - name: statechanges_relevantes
+        type: list
+        required: false
+        description: IDs de StateChanges recientes sobre esta tarea.
+      - name: notas_adicionales
+        type: string
+        required: false
+        description: Información no documentada formalmente que el destinatario necesita.
+    example:
+      context_packet: "cp-costafrutas-2026-05-05"
+      receipts_relevantes:
+        - "rcp-vega-20260505-001"
+      statechanges_relevantes:
+        - "sc-costafrutas-20260505-001"
+      notas_adicionales: >
+        Costa Frutas usa SAP B1 como ERP. Quieren integración
+        bidireccional de pedidos.
+
+  - name: decisiones_pendientes
+    type: list
+    required: false
+    description: >
+      Decisiones que el destinatario debe tomar para continuar la tarea.
+    example:
+      - "¿Es viable la integración bidireccional con SAP B1?"
+      - "Si requiere custom, ¿cuál es el coste estimado?"
+
+  - name: riesgos
+    type: list
+    required: false
+    description: >
+      Riesgos conocidos que el destinatario debe tener en cuenta.
+    example:
+      - "Si la respuesta tarda más de 5 días, Costa Frutas puede optar por FreshTrack."
+
+  - name: razon_del_traspaso
+    type: string
+    required: true
+    description: >
+      Explicación de por qué se hace el traspaso. Permite evaluar si fue
+      correcto y mejorar las reglas de handoff futuras.
+    example: "Evaluación técnica fuera del dominio de ventas. Requiere conocimiento de producto."
+
+  - name: confirmacion_destino
+    type: object
+    required: true
+    description: >
+      Verificación de que el destinatario recibió y entendió el traspaso.
+      Un handoff sin confirmación es un handoff al vacío.
+    fields:
+      - name: recibido
+        type: boolean
+        required: true
+        description: Si el destinatario ha confirmado la recepción.
+      - name: recibido_por
+        type: string
+        required: false
+        description: Quién confirmó la recepción.
+      - name: recibido_timestamp
+        type: datetime
+        required: false
+        description: Cuándo se confirmó la recepción.
+      - name: notas
+        type: string
+        required: false
+        description: Notas del destinatario al recibir el traspaso.
+    example:
+      recibido: true
+      recibido_por: "agente/nova"
+      recibido_timestamp: "2026-05-10T11:30:00Z"
+      notas: "Recibido. Comenzaré evaluación mañana."
+
+example:
+  id: "ho-vega-20260510-001"
+  tipo: "agente_a_agente"
+  timestamp: "2026-05-10T11:00:00Z"
+  origen:
+    agente: "agente/vega"
+    rol: "Agente de ventas"
+  destino:
+    agente: "agente/nova"
+    rol: "Agente de producto"
+  tarea:
+    descripcion: "Verificar viabilidad técnica de integración ERP custom para Costa Frutas"
+    estado_actual: "Cliente solicitó integración custom. Vega no puede evaluar viabilidad técnica."
+    deadline: "2026-05-15"
+    prioridad: "alta"
+  contexto_transferido:
+    context_packet: "cp-costafrutas-2026-05-05"
+    receipts_relevantes:
+      - "rcp-vega-20260505-001"
+    statechanges_relevantes:
+      - "sc-costafrutas-20260505-001"
+    notas_adicionales: >
+      Costa Frutas usa SAP B1 como ERP. Quieren integración bidireccional
+      de pedidos. El plan estándar incluye integración básica pero no bidireccional.
+  decisiones_pendientes:
+    - "¿Es viable la integración bidireccional con SAP B1?"
+    - "Si requiere custom, ¿cuál es el coste estimado?"
+  riesgos:
+    - "Si la respuesta tarda más de 5 días, Costa Frutas puede optar por FreshTrack."
+  razon_del_traspaso: >
+    Evaluación técnica fuera del dominio de ventas.
+    Requiere conocimiento de producto que solo Nova tiene.
+  confirmacion_destino:
+    recibido: true
+    recibido_por: "agente/nova"
+    recibido_timestamp: "2026-05-10T11:30:00Z"
+    notas: "Recibido. Comenzaré evaluación mañana."

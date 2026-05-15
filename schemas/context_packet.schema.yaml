@@ -1,0 +1,199 @@
+# Company Brain System — Schema: Context Packet
+# Define el paquete de contexto que se entrega a un agente para ejecutar una tarea.
+
+schema:
+  name: context_packet
+  version: "1.0"
+  description: >
+    Define un paquete de contexto (context packet). Es la unidad de información
+    que se entrega a un agente cuando se le asigna una tarea. Contiene todo lo
+    que el agente necesita saber para actuar: qué hacer, para cuándo, con qué
+    restricciones y qué datos son relevantes.
+
+fields:
+  - name: id
+    type: string
+    required: true
+    description: Identificador único del paquete de contexto.
+    example: "ctx-20260507-ventas-001"
+
+  - name: target
+    type: string
+    required: true
+    description: >
+      Agente o rol destinatario del paquete de contexto.
+    example: "agent-ventas-001"
+
+  - name: task
+    type: string
+    required: true
+    description: >
+      Descripción clara de la tarea a ejecutar. Debe ser accionable y verificable.
+    example: "Preparar propuesta comercial para Restaurantes del Norte S.L. basada en el catálogo de conservas premium de Meridian Foods."
+
+  - name: deadline
+    type: datetime
+    required: true
+    description: Fecha y hora límite para completar la tarea.
+    example: "2026-05-09T17:00:00Z"
+
+  - name: priority
+    type: string
+    required: true
+    description: Nivel de prioridad de la tarea.
+    enum:
+      - alta
+      - media
+      - baja
+    example: "alta"
+
+  - name: context
+    type: object
+    required: true
+    description: >
+      Datos relevantes para la tarea. Estructura flexible que contiene toda la
+      información que el agente necesita para ejecutar sin pedir más datos.
+      El contenido varía según el tipo de tarea.
+    example:
+      cliente:
+        nombre: "Restaurantes del Norte S.L."
+        sector: "hostelería"
+        contacto: "María García"
+        email: "maria@restaurantesnorte.es"
+        historial: "Cliente desde 2024. Último pedido: enero 2026, conservas estándar."
+      producto_referencia:
+        linea: "Conservas Premium"
+        catalogo_url: "https://meridianfoods.es/catalogo/premium-2026.pdf"
+      notas_vendedor: "El cliente mostró interés en la línea premium durante la feria de Alimentaria 2026."
+
+  - name: constraints
+    type: list
+    required: false
+    description: >
+      Lista de restricciones que el agente debe respetar al ejecutar la tarea.
+    example:
+      - "No ofrecer descuento superior al 15% sin aprobación."
+      - "La propuesta debe incluir condiciones de pago a 30 días."
+      - "No contactar al cliente directamente; solo preparar el documento."
+
+  - name: permissions
+    type: list
+    required: false
+    description: >
+      Lista de permisos específicos otorgados para esta tarea. Complementan
+      los permisos base del agente.
+    example:
+      - "leer_catalogo_premium"
+      - "leer_historial_cliente"
+      - "escribir_propuesta_borrador"
+
+  - name: freshness
+    type: object
+    required: false
+    description: >
+      Información de frescura de los datos incluidos en el contexto. Permite
+      al agente evaluar la fiabilidad temporal de la información recibida.
+    fields:
+      - name: fecha_paquete
+        type: datetime
+        required: true
+        description: Cuándo se generó este Context Packet.
+      - name: datos_mas_antiguos
+        type: string
+        required: false
+        description: Fecha del dato más antiguo incluido en el contexto.
+      - name: advertencias_freshness
+        type: list
+        required: false
+        description: Datos que podrían estar desactualizados, con fecha y contexto.
+    example:
+      fecha_paquete: "2026-05-08T09:00:00Z"
+      datos_mas_antiguos: "2026-04-15 (precio conserva tomate orgánico)"
+      advertencias_freshness:
+        - "Precio de conserva verificado hace 23 días. Cerca del límite mensual."
+
+  - name: expected_output
+    type: string
+    required: false
+    description: >
+      Descripción concreta de lo que se espera que el agente produzca como
+      resultado de la tarea.
+    example: "Borrador de propuesta en PDF con tabla de productos, precios y condiciones."
+
+  - name: solicitado_por
+    type: string
+    required: false
+    description: Persona o rol que solicita la tarea.
+    example: "Carlos Martín (Director Comercial)"
+
+  - name: cerebros_consultables
+    type: list
+    required: false
+    description: >
+      Lista de cerebros que el agente puede consultar para complementar
+      la información del Context Packet.
+    example:
+      - "Sales Brain (lectura)"
+      - "Operations Brain (solo stock, lectura)"
+
+  - name: tags
+    type: list
+    required: false
+    description: Etiquetas para clasificar y buscar Context Packets.
+    example:
+      - ventas
+      - propuesta
+
+  - name: sources
+    type: list
+    required: false
+    description: >
+      Lista de fuentes de donde provienen los datos del contexto. Permite
+      al agente evaluar la fiabilidad de la información.
+    example:
+      - "crm-hubspot (sync 2026-05-07T08:00:00Z)"
+      - "catalogo-interno-v2026.1"
+      - "notas-vendedor-manuel (2026-05-05)"
+
+example:
+  id: "ctx-20260507-ventas-001"
+  target: "agent-ventas-001"
+  task: "Preparar propuesta comercial para Restaurantes del Norte S.L. basada en el catálogo de conservas premium de Meridian Foods."
+  deadline: "2026-05-09T17:00:00Z"
+  priority: "alta"
+  context:
+    cliente:
+      nombre: "Restaurantes del Norte S.L."
+      sector: "hostelería"
+      contacto: "María García"
+      email: "maria@restaurantesnorte.es"
+      historial: "Cliente desde 2024. Último pedido: enero 2026, conservas estándar."
+    producto_referencia:
+      linea: "Conservas Premium"
+      catalogo_url: "https://meridianfoods.es/catalogo/premium-2026.pdf"
+    notas_vendedor: "El cliente mostró interés en la línea premium durante la feria de Alimentaria 2026."
+  constraints:
+    - "No ofrecer descuento superior al 15% sin aprobación."
+    - "La propuesta debe incluir condiciones de pago a 30 días."
+    - "No contactar al cliente directamente; solo preparar el documento."
+  permissions:
+    - "leer_catalogo_premium"
+    - "leer_historial_cliente"
+    - "escribir_propuesta_borrador"
+  freshness:
+    fecha_paquete: "2026-05-08T09:00:00Z"
+    datos_mas_antiguos: "2026-04-15"
+    advertencias_freshness:
+      - "Precio de conserva verificado hace 23 días."
+  expected_output: "Borrador de propuesta en PDF con tabla de productos, precios y condiciones."
+  solicitado_por: "Carlos Martín (Director Comercial)"
+  cerebros_consultables:
+    - "Sales Brain (lectura)"
+    - "Operations Brain (solo stock, lectura)"
+  tags:
+    - ventas
+    - propuesta
+  sources:
+    - "crm-hubspot (sync 2026-05-07T08:00:00Z)"
+    - "catalogo-interno-v2026.1"
+    - "notas-vendedor-manuel (2026-05-05)"

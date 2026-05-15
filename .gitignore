@@ -1,24 +1,47 @@
+# Secrets / credentials
 .env
 .env.*
-!.env.example
-*.key
 *.pem
+*.key
 *.p12
 *.pfx
-secrets/
-credentials/
-private/
-exports/
-logs/
-transcripts/
-diaries/
-receipts/private/
-memory/
-*.sqlite
-*.db
-*.dump
-*.bak
+*.crt
+*.cer
+*.token
+*token*
+*secret*
+*password*
+*credential*
+
+# Private pilot material that must not be pushed/public without review
+pilot/private/**
+
+# Local/runtime caches
+.cache/
+cache/
+*.log
 .DS_Store
-node_modules/
+
+# Build outputs
+build/outputs/**
+!build/outputs/.gitkeep
+
+# Python / tooling
 __pycache__/
-.pytest_cache/
+*.pyc
+.venv/
+venv/
+node_modules/
+
+# Local agent/runtime state — never commit
+.hermes/
+.gbrain/
+*.sqlite
+*.sqlite3
+*.db
+*.pglite
+
+# Internal planning files — not part of the public framework
+PLAN.md
+ORCHESTRATION_PLAN.md
+source-map.md

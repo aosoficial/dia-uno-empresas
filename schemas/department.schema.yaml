@@ -1,0 +1,286 @@
+# Company Brain System — Schema: Department Brain
+# Define la estructura de un cerebro departamental.
+
+schema:
+  name: department
+  version: "1.0"
+  description: >
+    Define un Department Brain: la memoria operativa de un departamento o dominio
+    específico dentro de la organización. Contiene sus entidades, fuentes,
+    señales, política de sincronización y agentes asignados.
+
+fields:
+  - name: id
+    type: string
+    required: true
+    description: Identificador único del cerebro departamental.
+    example: "dept-brain-ventas-001"
+
+  - name: name
+    type: string
+    required: true
+    description: Nombre legible del cerebro departamental.
+    example: "Cerebro de Ventas"
+
+  - name: department
+    type: string
+    required: true
+    description: Nombre del departamento al que pertenece.
+    example: "ventas"
+
+  - name: owner
+    type: string
+    required: true
+    description: Persona o rol responsable del cerebro departamental.
+    example: "director-comercial"
+
+  - name: created_at
+    type: datetime
+    required: true
+    description: Fecha y hora de creación.
+    example: "2025-08-01T09:00:00Z"
+
+  - name: updated_at
+    type: datetime
+    required: true
+    description: Fecha y hora de la última actualización.
+    example: "2026-05-06T11:45:00Z"
+
+  - name: scope
+    type: string
+    required: true
+    description: >
+      Descripción del alcance del cerebro departamental. Qué cubre y qué
+      queda fuera de su responsabilidad.
+    example: "Pipeline comercial, cualificación de leads, propuestas, seguimiento de clientes activos. No cubre facturación ni cobros."
+
+  - name: entities
+    type: list
+    required: true
+    description: >
+      Lista de entidades que gestiona este cerebro departamental. Cada entidad
+      tiene un nombre, tipo y categoría de frescura.
+    items:
+      fields:
+        - name: name
+          type: string
+          required: true
+          description: Nombre de la entidad.
+        - name: type
+          type: string
+          required: true
+          description: Tipo de entidad (persona, objeto, evento, métrica, etc.).
+        - name: freshness_category
+          type: string
+          required: true
+          description: Categoría de frescura requerida (critica, alta, media, baja).
+    example:
+      - name: "lead"
+        type: "persona"
+        freshness_category: "critica"
+      - name: "oportunidad"
+        type: "objeto"
+        freshness_category: "alta"
+      - name: "propuesta_comercial"
+        type: "documento"
+        freshness_category: "alta"
+      - name: "cliente_activo"
+        type: "persona"
+        freshness_category: "media"
+
+  - name: sources
+    type: list
+    required: true
+    description: >
+      Fuentes de datos que alimentan este cerebro departamental. Cada fuente
+      incluye nombre, tipo, frecuencia de sincronización y fiabilidad.
+    items:
+      fields:
+        - name: name
+          type: string
+          required: true
+          description: Nombre de la fuente.
+        - name: type
+          type: string
+          required: true
+          description: Tipo de fuente (api, base_de_datos, manual, webhook, archivo).
+        - name: sync_frequency
+          type: string
+          required: true
+          description: Frecuencia con la que se sincroniza esta fuente.
+        - name: reliability
+          type: string
+          required: true
+          description: Nivel de fiabilidad de la fuente (alta, media, baja).
+    example:
+      - name: "CRM HubSpot"
+        type: "api"
+        sync_frequency: "cada 30 minutos"
+        reliability: "alta"
+      - name: "Hoja de seguimiento manual"
+        type: "archivo"
+        sync_frequency: "diaria"
+        reliability: "media"
+      - name: "Formulario web"
+        type: "webhook"
+        sync_frequency: "tiempo real"
+        reliability: "alta"
+
+  - name: signals
+    type: list
+    required: true
+    description: >
+      Señales que el cerebro departamental monitoriza. Cada señal define un
+      disparador, umbral y escalación.
+    items:
+      fields:
+        - name: name
+          type: string
+          required: true
+          description: Nombre descriptivo de la señal.
+        - name: trigger
+          type: string
+          required: true
+          description: Condición que activa la señal.
+        - name: threshold
+          type: string
+          required: true
+          description: Umbral que determina cuándo la señal es relevante.
+        - name: escalation
+          type: string
+          required: true
+          description: Acción a tomar cuando se supera el umbral.
+    example:
+      - name: "lead_sin_contacto"
+        trigger: "Lead sin interacción durante más de 48 horas."
+        threshold: "48 horas"
+        escalation: "Notificar al agente de ventas asignado y al director comercial."
+      - name: "oportunidad_estancada"
+        trigger: "Oportunidad sin avance de etapa durante más de 7 días."
+        threshold: "7 días"
+        escalation: "Generar alerta y sugerir acciones al agente."
+      - name: "propuesta_sin_respuesta"
+        trigger: "Propuesta enviada sin respuesta del cliente."
+        threshold: "5 días"
+        escalation: "Programar seguimiento automático."
+
+  - name: sync_policy
+    type: object
+    required: true
+    description: >
+      Política de sincronización entre el cerebro departamental y el
+      cerebro de empresa. Define qué sube, qué queda local, frecuencia
+      y resolución de conflictos.
+    fields:
+      - name: uploads_to_company_brain
+        type: list
+        required: true
+        description: Entidades o datos que se sincronizan al cerebro de empresa.
+      - name: stays_local
+        type: list
+        required: true
+        description: Entidades o datos que permanecen solo en el cerebro departamental.
+      - name: sync_frequency
+        type: string
+        required: true
+        description: Frecuencia de sincronización con el cerebro de empresa.
+      - name: conflict_resolution
+        type: string
+        required: true
+        description: Estrategia para resolver conflictos entre datos locales y centrales.
+    example:
+      uploads_to_company_brain:
+        - "cliente_activo"
+        - "oportunidad_cerrada"
+        - "metricas_semanales"
+      stays_local:
+        - "notas_internas_vendedor"
+        - "borradores_propuesta"
+        - "leads_descartados"
+      sync_frequency: "cada 6 horas"
+      conflict_resolution: "El cerebro de empresa tiene prioridad. Los conflictos se registran para revisión manual."
+
+  - name: agents
+    type: list
+    required: false
+    description: Lista de referencias a agentes asignados a este departamento.
+    example:
+      - "agent-ventas-001"
+      - "agent-ventas-002"
+
+  - name: metrics
+    type: list
+    required: false
+    description: Lista de métricas que este cerebro departamental reporta.
+    example:
+      - "leads_nuevos_por_semana"
+      - "tasa_conversion"
+      - "valor_pipeline"
+      - "tiempo_medio_cierre"
+
+example:
+  id: "dept-brain-ventas-001"
+  name: "Cerebro de Ventas"
+  department: "ventas"
+  owner: "director-comercial"
+  created_at: "2025-08-01T09:00:00Z"
+  updated_at: "2026-05-06T11:45:00Z"
+  scope: "Pipeline comercial, cualificación de leads, propuestas, seguimiento de clientes activos. No cubre facturación ni cobros."
+  entities:
+    - name: "lead"
+      type: "persona"
+      freshness_category: "critica"
+    - name: "oportunidad"
+      type: "objeto"
+      freshness_category: "alta"
+    - name: "propuesta_comercial"
+      type: "documento"
+      freshness_category: "alta"
+    - name: "cliente_activo"
+      type: "persona"
+      freshness_category: "media"
+  sources:
+    - name: "CRM HubSpot"
+      type: "api"
+      sync_frequency: "cada 30 minutos"
+      reliability: "alta"
+    - name: "Hoja de seguimiento manual"
+      type: "archivo"
+      sync_frequency: "diaria"
+      reliability: "media"
+    - name: "Formulario web"
+      type: "webhook"
+      sync_frequency: "tiempo real"
+      reliability: "alta"
+  signals:
+    - name: "lead_sin_contacto"
+      trigger: "Lead sin interacción durante más de 48 horas."
+      threshold: "48 horas"
+      escalation: "Notificar al agente de ventas asignado y al director comercial."
+    - name: "oportunidad_estancada"
+      trigger: "Oportunidad sin avance de etapa durante más de 7 días."
+      threshold: "7 días"
+      escalation: "Generar alerta y sugerir acciones al agente."
+    - name: "propuesta_sin_respuesta"
+      trigger: "Propuesta enviada sin respuesta del cliente."
+      threshold: "5 días"
+      escalation: "Programar seguimiento automático."
+  sync_policy:
+    uploads_to_company_brain:
+      - "cliente_activo"
+      - "oportunidad_cerrada"
+      - "metricas_semanales"
+    stays_local:
+      - "notas_internas_vendedor"
+      - "borradores_propuesta"
+      - "leads_descartados"
+    sync_frequency: "cada 6 horas"
+    conflict_resolution: "El cerebro de empresa tiene prioridad. Los conflictos se registran para revisión manual."
+  agents:
+    - "agent-ventas-001"
+    - "agent-ventas-002"
+  metrics:
+    - "leads_nuevos_por_semana"
+    - "tasa_conversion"
+    - "valor_pipeline"
+    - "tiempo_medio_cierre"

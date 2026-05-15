@@ -1,0 +1,210 @@
+# Company Brain System — Schema: Company Brain
+# Define la estructura y gobernanza de un cerebro de empresa.
+
+schema:
+  name: brain
+  version: "1.0"
+  description: >
+    Define un Company Brain: la memoria central de una organización.
+    Contiene la ontología, capas de memoria, políticas de frescura,
+    cerebros departamentales vinculados y reglas de gobernanza.
+
+fields:
+  - name: id
+    type: string
+    required: true
+    description: Identificador único del cerebro de empresa.
+    example: "brain-meridian-001"
+
+  - name: name
+    type: string
+    required: true
+    description: Nombre legible del cerebro.
+    example: "Cerebro Meridian Foods"
+
+  - name: owner
+    type: string
+    required: true
+    description: Persona o rol responsable del cerebro.
+    example: "director-general"
+
+  - name: created_at
+    type: datetime
+    required: true
+    description: Fecha y hora de creación.
+    example: "2025-06-01T10:00:00Z"
+
+  - name: updated_at
+    type: datetime
+    required: true
+    description: Fecha y hora de la última actualización.
+    example: "2026-05-07T18:00:00Z"
+
+  - name: ontology
+    type: object
+    required: true
+    description: >
+      Modelo conceptual del cerebro. Define qué entidades existen y cómo
+      se relacionan entre sí.
+    fields:
+      - name: entities
+        type: list
+        required: true
+        description: Lista de tipos de entidad que el cerebro conoce.
+        example:
+          - "cliente"
+          - "producto"
+          - "proveedor"
+          - "pedido"
+          - "campaña"
+      - name: relationships
+        type: list
+        required: true
+        description: Lista de relaciones entre entidades.
+        example:
+          - "cliente -> hace -> pedido"
+          - "pedido -> contiene -> producto"
+          - "proveedor -> suministra -> producto"
+          - "campaña -> targeta -> cliente"
+    example:
+      entities:
+        - "cliente"
+        - "producto"
+        - "proveedor"
+        - "pedido"
+        - "campaña"
+      relationships:
+        - "cliente -> hace -> pedido"
+        - "pedido -> contiene -> producto"
+        - "proveedor -> suministra -> producto"
+        - "campaña -> targeta -> cliente"
+
+  - name: memory_layers
+    type: object
+    required: true
+    description: >
+      Capas de memoria del cerebro. Cada capa almacena un tipo distinto
+      de información.
+    fields:
+      - name: factual
+        type: string
+        required: true
+        description: Capa de hechos verificados y datos estables (catálogo, precios, fichas de cliente).
+      - name: interaction
+        type: string
+        required: true
+        description: Capa de interacciones y conversaciones con clientes, proveedores y equipo.
+      - name: action
+        type: string
+        required: true
+        description: Capa de acciones ejecutadas, decisiones tomadas y sus resultados.
+    example:
+      factual: "Catálogo de productos, fichas de clientes, contratos vigentes."
+      interaction: "Historial de conversaciones con clientes y notas de reuniones."
+      action: "Pedidos procesados, campañas lanzadas, incidencias resueltas."
+
+  - name: freshness_policy
+    type: object
+    required: true
+    description: >
+      Política que define la frescura esperada de cada categoría de datos.
+      Indica cada cuánto deben revisarse o actualizarse.
+    example:
+      critica: "Actualización en tiempo real o máximo 1 hora (stock, pedidos activos)."
+      alta: "Actualización diaria (precios, disponibilidad de proveedores)."
+      media: "Actualización semanal (métricas de campañas, KPIs)."
+      baja: "Actualización mensual o trimestral (datos de empresa, contratos)."
+
+  - name: department_brains
+    type: list
+    required: false
+    description: >
+      Lista de referencias a cerebros departamentales vinculados a este
+      cerebro de empresa.
+    example:
+      - "dept-brain-ventas-001"
+      - "dept-brain-operaciones-001"
+      - "dept-brain-soporte-001"
+
+  - name: governance
+    type: object
+    required: true
+    description: >
+      Reglas de gobernanza que determinan qué acciones requieren aprobación
+      y cuáles están prohibidas.
+    fields:
+      - name: approval_required_for
+        type: list
+        required: true
+        description: Lista de acciones que requieren aprobación humana antes de ejecutarse.
+      - name: prohibited_actions
+        type: list
+        required: true
+        description: Lista de acciones que ningún agente puede ejecutar bajo ninguna circunstancia.
+    example:
+      approval_required_for:
+        - "modificar_precio_producto"
+        - "eliminar_cliente"
+        - "cambiar_proveedor_principal"
+        - "modificar_contrato"
+      prohibited_actions:
+        - "eliminar_datos_historicos"
+        - "compartir_datos_financieros_externamente"
+        - "modificar_ontologia_sin_revision"
+
+  - name: metrics
+    type: list
+    required: false
+    description: Lista de métricas de salud y rendimiento del cerebro.
+    example:
+      - "entidades_totales"
+      - "frescura_promedio"
+      - "consultas_por_dia"
+      - "drift_detectado_ultimos_7_dias"
+
+example:
+  id: "brain-meridian-001"
+  name: "Cerebro Meridian Foods"
+  owner: "director-general"
+  created_at: "2025-06-01T10:00:00Z"
+  updated_at: "2026-05-07T18:00:00Z"
+  ontology:
+    entities:
+      - "cliente"
+      - "producto"
+      - "proveedor"
+      - "pedido"
+      - "campaña"
+    relationships:
+      - "cliente -> hace -> pedido"
+      - "pedido -> contiene -> producto"
+      - "proveedor -> suministra -> producto"
+      - "campaña -> targeta -> cliente"
+  memory_layers:
+    factual: "Catálogo de productos, fichas de clientes, contratos vigentes."
+    interaction: "Historial de conversaciones con clientes y notas de reuniones."
+    action: "Pedidos procesados, campañas lanzadas, incidencias resueltas."
+  freshness_policy:
+    critica: "Actualización en tiempo real o máximo 1 hora (stock, pedidos activos)."
+    alta: "Actualización diaria (precios, disponibilidad de proveedores)."
+    media: "Actualización semanal (métricas de campañas, KPIs)."
+    baja: "Actualización mensual o trimestral (datos de empresa, contratos)."
+  department_brains:
+    - "dept-brain-ventas-001"
+    - "dept-brain-operaciones-001"
+    - "dept-brain-soporte-001"
+  governance:
+    approval_required_for:
+      - "modificar_precio_producto"
+      - "eliminar_cliente"
+      - "cambiar_proveedor_principal"
+      - "modificar_contrato"
+    prohibited_actions:
+      - "eliminar_datos_historicos"
+      - "compartir_datos_financieros_externamente"
+      - "modificar_ontologia_sin_revision"
+  metrics:
+    - "entidades_totales"
+    - "frescura_promedio"
+    - "consultas_por_dia"
+    - "drift_detectado_ultimos_7_dias"

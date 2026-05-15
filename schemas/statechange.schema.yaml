@@ -1,0 +1,163 @@
+# Company Brain System — Schema: State Change
+# Registra un cambio de estado en cualquier entidad del sistema.
+
+schema:
+  name: statechange
+  version: "1.0"
+  description: >
+    Registra un cambio de estado en una entidad del sistema. Cada vez que un
+    agente o humano modifica un campo relevante, se crea un registro de
+    state change para mantener trazabilidad completa.
+
+fields:
+  - name: id
+    type: string
+    required: true
+    description: Identificador único del cambio de estado.
+    example: "sc-20260507-001"
+
+  - name: entity
+    type: string
+    required: true
+    description: >
+      Tipo de entidad afectada por el cambio. Debe corresponder a una
+      entidad conocida en la ontología del cerebro.
+    enum:
+      - cliente
+      - producto
+      - proveedor
+      - pedido
+      - campaña
+      - lead
+      - oportunidad
+      - propuesta
+      - contrato
+      - agente
+      - configuración
+    example: "oportunidad"
+
+  - name: field
+    type: string
+    required: true
+    description: Nombre del campo que ha cambiado.
+    example: "etapa"
+
+  - name: old_value
+    type: string
+    required: true
+    description: Valor anterior del campo antes del cambio.
+    example: "propuesta_enviada"
+
+  - name: new_value
+    type: string
+    required: true
+    description: Nuevo valor del campo después del cambio.
+    example: "negociación"
+
+  - name: changed_by
+    type: string
+    required: true
+    description: >
+      Identificador del agente o persona que realizó el cambio.
+    example: "agent-ventas-001"
+
+  - name: timestamp
+    type: datetime
+    required: true
+    description: Fecha y hora exacta en que se realizó el cambio.
+    example: "2026-05-07T10:23:45Z"
+
+  - name: reason
+    type: string
+    required: true
+    description: >
+      Justificación del cambio. Debe explicar por qué se modificó el campo,
+      no solo qué se cambió.
+    example: "El cliente respondió positivamente a la propuesta y solicitó negociar condiciones de pago."
+
+  - name: source
+    type: string
+    required: false
+    description: >
+      Origen del cambio (sistema que lo generó o canal por el que se recibió
+      la información).
+    example: "crm-hubspot"
+
+  - name: approved_by
+    type: string
+    required: false
+    description: >
+      Persona o rol que aprobó el cambio, si el cambio requería aprobación.
+      Null si no requería aprobación.
+    example: "director-comercial"
+
+  - name: approval_timestamp
+    type: datetime
+    required: false
+    description: Fecha y hora de la aprobación, si aplica.
+    example: "2026-05-07T10:30:00Z"
+
+  - name: related_entities
+    type: list
+    required: false
+    description: >
+      Lista de entidades relacionadas con este cambio de estado. Útil para
+      mantener el contexto completo del cambio.
+    example:
+      - "cliente-meridian-042"
+      - "propuesta-com-2026-089"
+
+  - name: brain
+    type: string
+    required: false
+    description: >
+      En qué cerebro se registra este cambio de estado (company_brain,
+      sales_brain, operations_brain, etc.).
+    example: "sales_brain"
+
+  - name: sync
+    type: string
+    required: false
+    description: >
+      Si el cambio debe sincronizarse con otro cerebro. Indica el cerebro
+      destino (normalmente company_brain) o null si es local.
+    example: "company_brain"
+
+  - name: receipt_relacionado
+    type: string
+    required: false
+    description: >
+      ID del Receipt que provocó este cambio de estado, si aplica.
+      Permite trazar la cadena de causalidad.
+    example: "rcp-oliva-2026-05-08-007"
+
+  - name: tags
+    type: list
+    required: false
+    description: >
+      Etiquetas para clasificar y facilitar la búsqueda de StateChanges.
+    example:
+      - pricing
+      - aceite-premium
+
+example:
+  id: "sc-20260507-001"
+  entity: "oportunidad"
+  field: "etapa"
+  old_value: "propuesta_enviada"
+  new_value: "negociación"
+  changed_by: "agent-ventas-001"
+  timestamp: "2026-05-07T10:23:45Z"
+  reason: "El cliente respondió positivamente a la propuesta y solicitó negociar condiciones de pago."
+  source: "crm-hubspot"
+  approved_by: "director-comercial"
+  approval_timestamp: "2026-05-07T10:30:00Z"
+  related_entities:
+    - "cliente-meridian-042"
+    - "propuesta-com-2026-089"
+  brain: "company_brain"
+  sync: null
+  receipt_relacionado: null
+  tags:
+    - pricing
+    - oportunidad

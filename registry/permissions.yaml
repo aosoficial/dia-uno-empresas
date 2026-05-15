@@ -1,0 +1,63 @@
+# Company Brain System — Registro de Conjuntos de Permisos
+# Define los permission sets reutilizables que se asignan a agentes.
+#
+# Cada agente referencia un permission set desde su PERMISSIONS.md
+# y desde el schema de agente.
+
+version: "1.0"
+description: >
+  Conjuntos de permisos reutilizables. Cada set define que acciones
+  puede realizar un agente y con que nivel de autonomia.
+
+# Niveles de permiso disponibles:
+# - autonomo: el agente puede ejecutar sin pedir permiso.
+# - con_aprobacion: el agente debe pedir aprobacion antes de ejecutar.
+# - prohibido: el agente no puede ejecutar bajo ninguna circunstancia.
+# - solo_lectura: el agente puede consultar pero no modificar.
+
+permission_sets:
+
+  # --- Plantilla de entrada ---
+  # - id: "perm-set-[nombre]"
+  #   name: "[Nombre del set de permisos]"
+  #   description: "[Para que tipo de agente esta disenado]"
+  #   permissions:
+  #     - action: "[nombre de la accion]"
+  #       level: "[autonomo / con_aprobacion / prohibido / solo_lectura]"
+  #       conditions: "[condiciones especiales, si aplica]"
+
+  # --- Ejemplo de referencia ---
+  - id: "perm-set-ventas-standard"
+    name: "Permisos estandar de ventas"
+    description: "Para agentes de ventas con autonomia media."
+    permissions:
+      - action: "consultar_brain_ventas"
+        level: "autonomo"
+        conditions: null
+      - action: "consultar_brain_producto"
+        level: "solo_lectura"
+        conditions: null
+      - action: "actualizar_pipeline"
+        level: "autonomo"
+        conditions: null
+      - action: "generar_propuesta"
+        level: "autonomo"
+        conditions: null
+      - action: "enviar_propuesta_a_cliente"
+        level: "con_aprobacion"
+        conditions: "Requiere aprobacion del operador siempre."
+      - action: "aplicar_descuento_hasta_15"
+        level: "autonomo"
+        conditions: "Solo hasta el 15%. Por encima, requiere aprobacion."
+      - action: "aplicar_descuento_mayor_15"
+        level: "con_aprobacion"
+        conditions: "Requiere aprobacion del Director Comercial."
+      - action: "contactar_cliente_vip"
+        level: "con_aprobacion"
+        conditions: null
+      - action: "modificar_datos_financieros"
+        level: "prohibido"
+        conditions: "Fuera del dominio de ventas."
+      - action: "acceso_base_datos_produccion"
+        level: "prohibido"
+        conditions: "Nunca acceso directo a produccion."

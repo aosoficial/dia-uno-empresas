@@ -1,0 +1,163 @@
+# Company Brain System — Registro de Metricas
+# Catalogo centralizado de metricas del sistema operativo.
+#
+# Incluye metricas de Company Brain, Department Brains y agentes.
+# Cada metrica define que mide, como se calcula y cuales son
+# los umbrales de salud.
+
+version: "1.0"
+description: >
+  Catalogo de metricas operativas del sistema. Cada metrica tiene
+  un owner, una frecuencia de medicion y umbrales claros.
+
+# --- Metricas del Company Brain ---
+company_brain_metrics:
+
+  - id: "metric-cb-context-rebuild-time"
+    name: "Tiempo para reconstruir contexto"
+    description: "Cuanto tarda un humano nuevo en obtener contexto suficiente para decidir."
+    unit: "minutos"
+    frequency: "trimestral"
+    owner: "operaciones"
+    thresholds:
+      bueno: "<15"
+      aceptable: "15-30"
+      malo: ">60"
+
+  - id: "metric-cb-decisions-with-evidence"
+    name: "Decisiones con evidencia"
+    description: "Porcentaje de decisiones que tienen rationale, owner y datos vigentes."
+    unit: "porcentaje"
+    frequency: "mensual"
+    owner: "operaciones"
+    thresholds:
+      bueno: ">95"
+      aceptable: "70-95"
+      malo: "<70"
+
+  - id: "metric-cb-repeated-questions"
+    name: "Preguntas repetidas"
+    description: "Reduccion porcentual de preguntas operativas repetidas periodo a periodo."
+    unit: "porcentaje_reduccion"
+    frequency: "trimestral"
+    owner: "operaciones"
+    thresholds:
+      bueno: ">60"
+      aceptable: "30-60"
+      malo: "<30"
+
+  - id: "metric-cb-corrections-to-improvements"
+    name: "Correcciones convertidas en mejoras"
+    description: "Porcentaje de correcciones humanas que se incorporan al sistema."
+    unit: "porcentaje"
+    frequency: "mensual"
+    owner: "operaciones"
+    thresholds:
+      bueno: ">80"
+      aceptable: "50-80"
+      malo: "<50"
+
+# --- Metricas de Department Brains ---
+department_brain_metrics:
+
+  - id: "metric-db-entity-completeness"
+    name: "Completitud de entidades"
+    description: "Porcentaje de entidades del departamento registradas con campos completos."
+    unit: "porcentaje"
+    frequency: "mensual"
+    owner: "owner-departamento"
+    thresholds:
+      bueno: ">90"
+      aceptable: "70-90"
+      malo: "<70"
+
+  - id: "metric-db-freshness"
+    name: "Freshness de datos"
+    description: "Porcentaje de datos dentro de su periodo de vigencia."
+    unit: "porcentaje"
+    frequency: "semanal"
+    owner: "owner-departamento"
+    thresholds:
+      bueno: ">95"
+      aceptable: "80-95"
+      malo: "<80"
+
+  - id: "metric-db-sync-success"
+    name: "Sincronizacion exitosa"
+    description: "Porcentaje de datos sincronizados correctamente con el Company Brain."
+    unit: "porcentaje"
+    frequency: "semanal"
+    owner: "owner-departamento"
+    thresholds:
+      bueno: ">95"
+      aceptable: "80-95"
+      malo: "<80"
+
+# --- Metricas de Agentes ---
+agent_metrics:
+
+  - id: "metric-ag-identification-accuracy"
+    name: "Precision de identificacion"
+    description: "Porcentaje de veces que el agente identifica correctamente la tarea y el contexto."
+    unit: "porcentaje"
+    frequency: "mensual"
+    owner: "operador-agente"
+    thresholds:
+      bueno: ">95"
+      aceptable: "80-95"
+      malo: "<80"
+
+  - id: "metric-ag-permission-compliance"
+    name: "Cumplimiento de permisos"
+    description: "Porcentaje de acciones que respetan la matriz de permisos."
+    unit: "porcentaje"
+    frequency: "mensual"
+    owner: "operador-agente"
+    thresholds:
+      bueno: ">99"
+      aceptable: "90-99"
+      malo: "<90"
+
+  - id: "metric-ag-receipt-completeness"
+    name: "Completitud de Receipts"
+    description: "Porcentaje de acciones con Receipt completo y outcome descriptivo."
+    unit: "porcentaje"
+    frequency: "semanal"
+    owner: "operador-agente"
+    thresholds:
+      bueno: ">95"
+      aceptable: "80-95"
+      malo: "<80"
+
+  - id: "metric-ag-pushback-quality"
+    name: "Calidad del pushback"
+    description: "Frecuencia y calidad de las veces que el agente dice no o pide mas informacion."
+    unit: "escala_1_5"
+    frequency: "mensual"
+    owner: "operador-agente"
+    thresholds:
+      bueno: ">4"
+      aceptable: "3-4"
+      malo: "<3"
+
+  - id: "metric-ag-drift"
+    name: "Drift detectado"
+    description: "Numero de desviaciones del comportamiento esperado detectadas en Heartbeats."
+    unit: "conteo"
+    frequency: "semanal"
+    owner: "operador-agente"
+    thresholds:
+      bueno: "0"
+      aceptable: "1-2"
+      malo: ">2"
+
+  - id: "metric-ag-repeated-corrections"
+    name: "Correcciones humanas repetidas"
+    description: "Numero de veces que el operador corrige el mismo error."
+    unit: "conteo"
+    frequency: "mensual"
+    owner: "operador-agente"
+    thresholds:
+      bueno: "0"
+      aceptable: "1-2"
+      malo: ">3"

@@ -1,0 +1,159 @@
+# Company Brain System — Schema: Agente
+# Define la identidad y configuración de un agente dentro del sistema operativo.
+
+schema:
+  name: agent
+  version: "1.0"
+  description: >
+    Define la identidad, capacidades y configuración operativa de un agente.
+    Un agente es cualquier entidad autónoma o semi-autónoma que ejecuta tareas
+    dentro del sistema operativo agentico.
+
+fields:
+  - name: id
+    type: string
+    required: true
+    description: Identificador único del agente. Formato recomendado UUID o slug descriptivo.
+    example: "agent-ventas-001"
+
+  - name: name
+    type: string
+    required: true
+    description: Nombre legible del agente.
+    example: "Agente de Ventas Principal"
+
+  - name: version
+    type: string
+    required: true
+    description: Versión del agente. Sigue versionado semántico.
+    example: "1.2.0"
+
+  - name: type
+    type: string
+    required: true
+    description: Tipo funcional del agente dentro de la organización.
+    enum:
+      - ventas
+      - soporte
+      - operaciones
+      - análisis
+      - coordinación
+    example: "ventas"
+
+  - name: status
+    type: string
+    required: true
+    description: Estado operativo actual del agente.
+    enum:
+      - activo
+      - inactivo
+      - en_pruebas
+    example: "activo"
+
+  - name: owner
+    type: string
+    required: true
+    description: Persona o equipo responsable del agente.
+    example: "equipo-comercial"
+
+  - name: department
+    type: string
+    required: true
+    description: Departamento al que pertenece el agente.
+    example: "ventas"
+
+  - name: created_at
+    type: datetime
+    required: true
+    description: Fecha y hora de creación del agente.
+    example: "2026-01-15T09:00:00Z"
+
+  - name: updated_at
+    type: datetime
+    required: true
+    description: Fecha y hora de la última actualización del agente.
+    example: "2026-05-01T14:30:00Z"
+
+  - name: mission
+    type: string
+    required: true
+    description: >
+      Descripción clara de la misión del agente. Define qué hace, para quién
+      y con qué objetivo.
+    example: "Gestionar el pipeline de ventas de Meridian Foods, cualificar leads entrantes y preparar propuestas comerciales para el equipo."
+
+  - name: autonomy_level
+    type: string
+    required: true
+    description: >
+      Nivel de autonomía del agente. Determina cuántas decisiones puede tomar
+      sin supervisión humana.
+    enum:
+      - bajo
+      - medio
+      - alto
+    example: "medio"
+
+  - name: tools
+    type: list
+    required: true
+    description: Lista de herramientas que el agente tiene autorización para usar.
+    example:
+      - "crm-api"
+      - "email-sender"
+      - "calendar-reader"
+
+  - name: permissions
+    type: string
+    required: true
+    description: Referencia al conjunto de permisos asignados al agente. Apunta a un permission set.
+    example: "perm-set-ventas-standard"
+
+  - name: memory_policy
+    type: string
+    required: true
+    description: >
+      Referencia a la política de memoria que gobierna qué recuerda el agente,
+      durante cuánto tiempo y con qué prioridad.
+    example: "mem-policy-ventas-001"
+
+  - name: heartbeat_frequency
+    type: string
+    required: true
+    description: >
+      Frecuencia con la que el agente emite un heartbeat (latido de estado).
+      Formato libre, pero se recomienda usar intervalos legibles.
+    example: "cada 15 minutos"
+
+  - name: metrics
+    type: list
+    required: false
+    description: Lista de nombres de métricas que el agente reporta periódicamente.
+    example:
+      - "leads_cualificados_por_dia"
+      - "propuestas_enviadas"
+      - "tiempo_respuesta_promedio"
+
+example:
+  id: "agent-ventas-001"
+  name: "Agente de Ventas Principal"
+  version: "1.2.0"
+  type: "ventas"
+  status: "activo"
+  owner: "equipo-comercial"
+  department: "ventas"
+  created_at: "2026-01-15T09:00:00Z"
+  updated_at: "2026-05-01T14:30:00Z"
+  mission: "Gestionar el pipeline de ventas de Meridian Foods, cualificar leads entrantes y preparar propuestas comerciales para el equipo."
+  autonomy_level: "medio"
+  tools:
+    - "crm-api"
+    - "email-sender"
+    - "calendar-reader"
+  permissions: "perm-set-ventas-standard"
+  memory_policy: "mem-policy-ventas-001"
+  heartbeat_frequency: "cada 15 minutos"
+  metrics:
+    - "leads_cualificados_por_dia"
+    - "propuestas_enviadas"
+    - "tiempo_respuesta_promedio"
