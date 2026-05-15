@@ -19,7 +19,7 @@ Requirements:
 2. Spanish only.
 3. Practical, not academic.
 4. Explain technical terms in simple Spanish.
-5. No private Jordi/AOS/Urus/Telegram/GBrain-live details.
+5. No private the human owner/AOS/Urus/Telegram/GBrain-live details.
 6. Use Company Brain as a core application domain, not as the repository name.
 7. Include examples with fictitious companies/agents only.
 8. Each manual must include:

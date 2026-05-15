@@ -4,15 +4,15 @@
 id: "mi-2026-05-14-001"
 titulo: "Escalar agentes mediante loops de feedback revisados"
 fecha: "2026-05-14"
-owner: "Hermes Clean"
+owner: "repository maintainer"
 
 origen:
   tipo: "fuente externa + feedback operador"
-  fuente: "GBrain sources/2026-05-14-agents-feedback-loops-not-perfect-prompts + instrucción de Jordi"
+  fuente: "GBrain sources/2026-05-14-agents-feedback-loops-not-perfect-prompts + operator instruction"
   privacidad: "publicable como principio; fuente no citada textualmente"
 
 senal_observada: >
-  Jordi quiere escalar múltiples proyectos con más agentes. El patrón operativo detectado es
+  the human owner quiere escalar múltiples proyectos con más agentes. El patrón operativo detectado es
   que más agentes aumentan calidad solo si cada corrección humana se convierte en mejora
   versionable y revisada, no si cada agente depende de prompts largos.
 
@@ -46,7 +46,7 @@ capas_afectadas:
 
 aplicable_directamente: true
 requiere_aprobacion: false
-razon_aprobacion: "Jordi pidió explícitamente activar y aplicar el mecanismo; no implica exposición pública, permisos reales ni acciones externas."
+razon_aprobacion: "the human owner pidió explícitamente activar y aplicar el mecanismo; no implica exposición pública, permisos reales ni acciones externas."
 
 riesgos:
   - "Añadir burocracia si cualquier corrección menor se trata como mejora. Mitigado con criterios de activación."
@@ -76,7 +76,7 @@ estado: "aplicada"
 ## Decisión
 
 - **Decisión:** aplicar.
-- **Razón:** cambio seguro, pedido por Jordi y coherente con Company Brain System.
+- **Razón:** cambio seguro, pedido por the human owner y coherente con Company Brain System.
 - **Aplicado en:** docs core, templates, scorecard, source-map, changelog y feedback del piloto.
 - **Pendiente:** observar impacto en próximas rutinas/revisiones de agentes.
 - **Receipt/StateChange:** registrado tras validación.

@@ -1,10 +1,10 @@
-# Company Brain System — Claude Code Instructions
+# Company Brain System — Agent Instructions
 
-You are assisting Hermes Clean to build **Company Brain System — Agentic Operating System**.
+You are helping improve **Company Brain System — Agentic Operating System**.
 
 ## Mission
 
-Create a complete Spanish documentation/framework repository for Company Brain System.
+Create and maintain a public-safe documentation/framework repository for Company Brain System.
 
 Company Brain System is a reusable operating method for:
 
@@ -14,31 +14,29 @@ Company Brain System is a reusable operating method for:
 - agent onboarding;
 - agent runtime packs;
 - permissions, receipts, state changes and context packets;
-- measurement and continuous improvement.
+- tools, skills, SOPs, measurement and continuous improvement.
 
 ## Authority
 
-- You draft and improve files.
-- Hermes Clean verifies and decides.
-- Project owner is the repository owner.
+- Draft and improve files inside this repository.
+- Keep public material reusable and safe.
+- Ask before changing strategic positioning, commercial promises or publication status.
 
 ## Hard boundaries
 
 - Work only inside this repository.
-- Do not read private, legacy or out-of-scope folders.
-- Do not touch real communication gateways.
-- Do not touch live memory/database state.
-- Do not touch real private implementations.
-- Do not create GitHub repos or push unless explicitly instructed by Hermes.
-- Do not include secrets, tokens, credentials, connection strings, real gateway configs or raw dumps.
+- Do not include secrets, tokens, credentials, connection strings, private paths or raw data dumps.
+- Do not include real client data.
+- Do not publish, contact anyone, spend money or change live systems.
+- Do not include private/internal credits in skills or public method docs.
 
 ## Language
 
-Spanish, clear and practical. Avoid unnecessary technical jargon. If a technical term is used, explain it in plain Spanish.
+Clear and practical. Avoid unnecessary technical jargon. If a technical term is used, explain it in plain language.
 
 ## Public-ready rule
 
-Write reusable framework material. Private pilot material must stay under `pilot/private/` and must not be treated as public content.
+Write reusable framework material. Private implementation material must stay outside the public repository unless fully anonymized and approved.
 
 ## Quality bar
 
@@ -46,8 +44,4 @@ Write reusable framework material. Private pilot material must stay under `pilot
 - Templates must be usable, not decorative.
 - Schemas must reflect the actual templates.
 - Docs must teach someone how to apply the method.
-- Every operational primitive must include: what it is, when to use it, required fields, example, and common mistakes.
-
-## Preferred outputs
-
-Use Markdown for manuals/templates, YAML for schemas/registry, Python for scripts.
+- Commercial breadcrumbs should be present without making the free repo feel useless.

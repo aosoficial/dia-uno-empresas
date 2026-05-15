@@ -4,23 +4,23 @@
 agent: "[nombre]"
 carril: "[proyecto/clase de tarea]"
 periodo: "[fecha/rango]"
-reviewer: "Hermes Clean"
+reviewer: "repository maintainer"
 nivel_actual: "[0-5]"
 nivel_recomendado: "[0-5]"
-status: "draft|active|needs_jordi_review"
+status: "draft|active|needs_owner_review"
 ```
 
 ## 1. Señales observadas
 
 - Propuestas 1:3:1 realizadas:
-- Jordi aceptó recomendación:
-- Jordi eligió otra opción:
-- Jordi rechazó las tres opciones:
-- Jordi hizo preguntas/dudas:
-- Jordi corrigió comunicación/tono:
+- human owner accepted recomendación:
+- human owner chose otra opción:
+- human owner rejected las tres opciones:
+- human owner asked preguntas/dudas:
+- human owner corrected comunicación/tono:
 - Acciones prematuras:
 - Bloqueos por mala definición:
-- Outputs sin DoD/receipt:
+- Outputs sin completion criterion/receipt:
 
 ## 2. Diagnóstico
 

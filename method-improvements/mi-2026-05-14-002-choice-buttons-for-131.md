@@ -4,7 +4,7 @@
 id: "mi-2026-05-14-002"
 titulo: "Presentar 1:3:1 con botones/respuestas rápidas cuando el canal lo permita"
 fecha: "2026-05-14"
-owner: "Hermes Clean"
+owner: "repository maintainer"
 origen: "Feedback directo de un operador en chat"
 estado: "aplicado"
 ```

@@ -460,8 +460,8 @@ Vega entra en período de prueba de 2 semanas con permisos reducidos (no puede a
 | Calidad de pushback | ¿Dice "no" cuando debe? | Siempre adecuado | Ocasionalmente | Nunca o siempre |
 | Drift detectado | ¿Se desvía de su misión? | No | Menor, corregido | Sí, sin corrección |
 | Calidad 1:3:1 | ¿Formula bien problema, 3 opciones y recomendación? | Claro y accionable | Útil pero incompleto | Confuso o ausente |
-| Aceptación de recomendación | ¿Jordi suele aceptar la opción recomendada? | Alta | Mixta | Baja/rechaza las tres |
-| Preguntas aclaratorias de Jordi | ¿Necesita dudas antes de decidir? | Raras | Algunas | Frecuentes |
+| Aceptación de recomendación | ¿the human owner suele aceptar la opción recomendada? | Alta | Mixta | Baja/rechaza las tres |
+| Preguntas aclaratorias de the human owner | ¿Necesita dudas antes de decidir? | Raras | Algunas | Frecuentes |
 | Aprendizaje de feedback | ¿Corrige conducta/skill tras feedback? | Sí, verificado | Parcial | No |
 
 ### Evaluación al final del período de prueba

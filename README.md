@@ -15,6 +15,7 @@ It is based on AOS: **Agentic Operating System**.
 ## Start here
 
 - **New to this?** Read [`docs/07_quick_start.md`](docs/07_quick_start.md).
+- **Want an agent to install it with you?** Give it [`docs/14_agent_installation_process.md`](docs/14_agent_installation_process.md).
 - **Want the full method?** Read [`docs/00_master_playbook.md`](docs/00_master_playbook.md).
 - **Want to install it in a company?** Use [`templates/questionnaires/company-brain-intake.md`](templates/questionnaires/company-brain-intake.md).
 - **Want an agent to operate it?** Use [`templates/agent-runtime-pack/README.md`](templates/agent-runtime-pack/README.md).
@@ -26,7 +27,10 @@ This repo is free and useful by itself.
 
 If your team gets stuck applying it, Libera can help you install it inside a real company: diagnosis, Company Brain setup, agent roles, permissions, operating cadence and adoption.
 
-- Need help? [`docs/12_get_help_from_libera.md`](docs/12_get_help_from_libera.md)
+- Implementation help: [Libera Company Brain Implementation](https://example.com/libera/company-brain)
+- Academy: [Libera Academy](https://example.com/libera/academy)
+- Community: [Libera Community](https://example.com/libera/community)
+- Need help now? [`docs/12_get_help_from_libera.md`](docs/12_get_help_from_libera.md)
 - Want to understand the offer? [`docs/13_libera_offer_map.md`](docs/13_libera_offer_map.md)
 - Found a problem? Open an issue.
 - Improved a template? Open a pull request.
@@ -52,7 +56,9 @@ Company Brain System gives you the structure to fix that.
 - **Department Brains**: memory for sales, operations, product, finance, support, etc.
 - **Agent Runtime Packs**: identity, permissions, tools, operating rules and evidence templates for each agent.
 - **Operational memory**: StateChanges, Context Packets, Receipts and HandOffs.
-- **Templates**: questionnaires, scorecards, agent packs, department packs, reviews and examples.
+- **Templates**: questionnaires, scorecards, agent packs, department packs, SOPs, reviews and examples.
+- **Tools guide**: what categories of tools are needed and how to connect them safely.
+- **Skills guide**: what capabilities agents need without exposing private/internal credits.
 - **Schemas**: YAML contracts to keep records consistent.
 - **Scripts**: validation and documentation build tools.
 - **Safety method**: evaluation fixtures, permission checks and approval gates.
@@ -88,9 +94,14 @@ python scripts/validate_schemas.py
 Then read:
 
 1. [`docs/07_quick_start.md`](docs/07_quick_start.md)
-2. [`docs/00_master_playbook.md`](docs/00_master_playbook.md)
-3. [`templates/questionnaires/company-brain-intake.md`](templates/questionnaires/company-brain-intake.md)
-4. [`templates/agent-runtime-pack/README.md`](templates/agent-runtime-pack/README.md)
+2. [`docs/14_agent_installation_process.md`](docs/14_agent_installation_process.md)
+3. [`docs/00_master_playbook.md`](docs/00_master_playbook.md)
+4. [`docs/15_tools.md`](docs/15_tools.md)
+5. [`docs/16_skills.md`](docs/16_skills.md)
+6. [`docs/17_human_sops.md`](docs/17_human_sops.md)
+7. [`docs/18_agent_sops.md`](docs/18_agent_sops.md)
+8. [`templates/questionnaires/company-brain-intake.md`](templates/questionnaires/company-brain-intake.md)
+9. [`templates/agent-runtime-pack/README.md`](templates/agent-runtime-pack/README.md)
 
 ## Practical path
 

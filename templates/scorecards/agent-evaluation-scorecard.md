@@ -169,10 +169,10 @@
 
 | Puntuación | Criterio |
 |-----------|---------|
-| **5** | Usa 1:3:1 de forma clara y breve; Jordi suele aceptar la recomendación o decide sin dudas relevantes. |
-| **4** | Buen 1:3:1 con algún ajuste menor; Jordi a veces elige otra opción pero las opciones son útiles. |
+| **5** | Usa 1:3:1 de forma clara y breve; the human owner suele aceptar la recomendación o decide sin dudas relevantes. |
+| **4** | Buen 1:3:1 con algún ajuste menor; the human owner a veces elige otra opción pero las opciones son útiles. |
 | **3** | Pregunta, pero la explicación obliga a aclaraciones frecuentes o la recomendación es irregular. |
-| **2** | Propone opciones pobres, Jordi rechaza a menudo las tres o debe redefinir el problema. |
+| **2** | Propone opciones pobres, the human owner rechaza a menudo las tres o debe redefinir el problema. |
 | **1** | Actúa sin preguntar o no sabe estructurar decisiones supervisadas. |
 
 **Puntuación:** [COMPLETAR — 1 a 5]

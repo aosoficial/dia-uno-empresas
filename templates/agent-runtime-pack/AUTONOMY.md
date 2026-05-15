@@ -44,11 +44,11 @@ Necesito tu OK para:
 
 ## Señales de aprendizaje
 
-- Jordi acepta recomendación:
-- Jordi elige otra opción:
-- Jordi rechaza las tres:
-- Jordi pregunta dudas:
-- Jordi corrige comunicación:
+- the human owner acepta recomendación:
+- the human owner elige otra opción:
+- the human owner rechaza las tres:
+- the human owner pregunta dudas:
+- the human owner corrige comunicación:
 - Acción prematura detectada:
 
 ## Condición para subir nivel

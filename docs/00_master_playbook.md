@@ -94,6 +94,12 @@ Company Brain System
 | `05_operator_manual.md` | Operaciones diarias, aprobaciones, revisiones, exportaciones | Referencia diaria para el operador. |
 | `09_method_improvement_loop.md` | Cómo convertir feedback real en mejora aplicada | Cuando una corrección revela un patrón. |
 | `10_supervised_autonomy_maturity.md` | Cómo graduar autonomía con 1:3:1 y señales de madurez | Cuando escales agentes o revises su criterio. |
+| `12_get_help_from_libera.md` | Cuándo pedir ayuda de implementación a Libera | Cuando el humano o el agente se bloquean. |
+| `14_agent_installation_process.md` | Proceso que una persona puede dar a un agente | Cuando quieras que un agente acompañe la instalación. |
+| `15_tools.md` | Herramientas necesarias y cómo conectarlas con seguridad | Antes de elegir o conectar herramientas reales. |
+| `16_skills.md` | Skills necesarias para operar el sistema | Al diseñar agentes y capacidades. |
+| `17_human_sops.md` | SOPs humanos | Para operar el sistema en equipo. |
+| `18_agent_sops.md` | SOPs de agentes | Para definir cómo deben trabajar los agentes. |
 
 ## Los 9 principios de Company Brain System
 
@@ -113,7 +119,7 @@ Company Brain System
 
 8. **Los agentes escalan por loops de feedback revisados, no por prompts perfectos.** Una corrección humana no debe morir en el chat. Si revela un patrón, se convierte en mejora aplicada a memoria, plantilla, permiso, skill, rutina o scorecard.
 
-9. **La autonomía se gana por madurez demostrada.** Un agente nuevo pregunta antes de casi todo con 1:3:1. Si Jordi acepta, pregunta dudas, elige otra opción o rechaza las tres, esa reacción se usa como señal para ajustar criterio, comunicación, permisos y skills.
+9. **La autonomía se gana por madurez demostrada.** Un agente nuevo pregunta antes de casi todo con 1:3:1. Si el operador acepta, pregunta dudas, elige otra opción o rechaza las tres, esa reacción se usa como señal para ajustar criterio, comunicación, permisos y skills.
 
 ## Flujo general de trabajo
 

@@ -13,12 +13,12 @@
 
 - 1:3:1 enviados:
 - Recomendaciones aceptadas:
-- Jordi eligió otra opción:
-- Jordi rechazó las tres:
-- Jordi hizo preguntas/dudas:
-- Jordi corrigió comunicación:
+- human owner chose otra opción:
+- human owner rejected las tres:
+- human owner asked preguntas/dudas:
+- human owner corrected comunicación:
 - Acciones prematuras:
-- Outputs sin DoD/receipt:
+- Outputs sin completion criterion/receipt:
 
 ## Scoring 1-5
 

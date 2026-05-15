@@ -45,7 +45,12 @@ Main risk: [privacy / adoption / permissions / messy data / no owner / other].
 We want help with: [diagnosis / implementation / training / maintenance].
 ```
 
-Fake link for now: https://example.com/libera/company-brain-help
+Fake links for now:
+
+- Implementation help: https://example.com/libera/company-brain-help
+- Academy: https://example.com/libera/academy
+- Community: https://example.com/libera/community
+- Contact: https://example.com/libera/contact
 
 ## For agents
 

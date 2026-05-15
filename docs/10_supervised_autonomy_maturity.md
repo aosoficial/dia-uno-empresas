@@ -8,7 +8,7 @@ Este protocolo define cómo un agente pasa de ejecución supervisada a mayor aut
 
 La regla base es simple:
 
-> Al principio, el agente pregunta antes de casi todo con 1:3:1. Después aprende de cada respuesta de Jordi.
+> Al principio, el agente pregunta antes de casi todo con 1:3:1. Después aprende de cada respuesta de the human owner.
 
 La autonomía no se concede por confianza abstracta. Se gana por evidencia: buenas propuestas, buena comunicación, decisiones acertadas, outputs verificables y pocas correcciones repetidas.
 
@@ -23,7 +23,7 @@ Deben operar así:
 1. Detectan el problema.
 2. Proponen 3 caminos razonables.
 3. Recomiendan 1.
-4. Jordi decide, pregunta o corrige.
+4. the human owner decide, pregunta o corrige.
 5. El sistema interpreta esa reacción como señal de madurez.
 6. La skill, el prompt, el runtime pack o el proceso se corrige.
 
@@ -57,7 +57,7 @@ Cuando el canal lo permita, las opciones 1:3:1 deben presentarse como botones o 
 
 Objetivo:
 
-- reducir fricción para Jordi;
+- reducir fricción para the human owner;
 - hacer más clara la decisión;
 - capturar mejor la señal de madurez;
 - distinguir aceptación, elección alternativa y rechazo de opciones.
@@ -67,16 +67,16 @@ Formato recomendado:
 - Botón A: opción conservadora.
 - Botón B: opción equilibrada.
 - Botón C: opción agresiva/exploratoria.
-- Botón D / Otra: Jordi define otra dirección.
+- Botón D / Otra: the human owner define otra dirección.
 
-Si Jordi usa botón A/B/C, el sistema registra señal estructurada.
-Si Jordi elige “Otra”, se interpreta como señal de que el agente no cubrió bien el espacio de decisión y debe mejorar criterio.
+Si the human owner usa botón A/B/C, el sistema registra señal estructurada.
+Si the human owner elige “Otra”, se interpreta como señal de que el agente no cubrió bien el espacio de decisión y debe mejorar criterio.
 
 ---
 
 ## Señales de madurez
 
-### Señal 1 — Jordi acepta la recomendación
+### Señal 1 — the human owner acepta la recomendación
 
 Interpretación:
 
@@ -89,7 +89,7 @@ Acción:
 - Registrar como acierto si produjo output verificable.
 - Reutilizar el patrón.
 
-### Señal 2 — Jordi elige otra de las tres opciones
+### Señal 2 — the human owner elige otra de las tres opciones
 
 Interpretación:
 
@@ -98,10 +98,10 @@ Interpretación:
 
 Acción:
 
-- Actualizar heurística: por qué Jordi eligió otra.
+- Actualizar heurística: por qué human owner chose otra.
 - Mantener el mismo nivel de autonomía.
 
-### Señal 3 — Jordi dice que ninguna opción sirve y propone otra
+### Señal 3 — the human owner dice que ninguna opción sirve y propone otra
 
 Interpretación:
 
@@ -114,7 +114,7 @@ Acción obligatoria:
 - Corregir skill/protocolo si el patrón se repite.
 - Reducir autonomía temporalmente en esa clase de tarea.
 
-### Señal 4 — Jordi hace dudas/preguntas antes de decidir
+### Señal 4 — the human owner hace dudas/preguntas antes de decidir
 
 Interpretación:
 
@@ -126,7 +126,7 @@ Acción obligatoria:
 - Crear entrada de mejora: `communication_gap`.
 - Mejorar framing: más concreto, menos jerga, mejor por qué.
 
-### Señal 5 — Jordi corrige tono, estilo o forma de comunicar
+### Señal 5 — the human owner corrige tono, estilo o forma de comunicar
 
 Interpretación:
 
@@ -164,13 +164,13 @@ Puede formular 1:3:1 y esperar OK.
 
 ### Nivel 2 — Ejecutor interno supervisado
 
-Puede ejecutar acciones internas, reversibles y de bajo riesgo después de una decisión previa de Jordi para esa clase de tarea.
+Puede ejecutar acciones internas, reversibles y de bajo riesgo después de una decisión previa de the human owner para esa clase de tarea.
 
 Debe dejar receipt.
 
 ### Nivel 3 — Ejecutor por carril
 
-Puede operar tareas internas recurrentes dentro de un carril definido, con DoD, guardrails y watchdog.
+Puede operar tareas internas recurrentes dentro de un carril definido, con completion criterion, guardrails y watchdog.
 
 Ejemplo: Libera prepara borradores internos o assets ficticios sin pedir cada microacción.
 
@@ -195,11 +195,11 @@ Todo agente activo debe tener supervisión periódica.
 La revisión mira:
 
 - propuestas 1:3:1 realizadas;
-- si Jordi aceptó, eligió otra, rechazó todas o preguntó dudas;
+- si the human owner accepted, chose another option, rejected all options o preguntó dudas;
 - correcciones de comunicación;
 - acciones prematuras;
 - tareas bloqueadas por mala definición;
-- outputs sin DoD;
+- outputs sin completion criterion;
 - receipts ausentes;
 - mejoras aplicadas a skills, runtime packs o método.
 
@@ -258,11 +258,11 @@ Necesito tu OK para:
 Preparar plan + wireframe + copy interno. No publicaré nada.
 ```
 
-Si Jordi responde “no, quiero directamente B”, el agente aprende que su criterio fue demasiado conservador para ese caso.
+Si the human owner responde “no, quiero directamente B”, el agente aprende que su criterio fue demasiado conservador para ese caso.
 
-Si Jordi pregunta “¿qué pondríamos en la web?”, aprende que explicó mal el alcance.
+Si the human owner pregunta “¿qué pondríamos en la web?”, aprende que explicó mal el alcance.
 
-Si Jordi dice “ninguna, primero define oferta”, aprende que no entendió la dependencia real.
+Si the human owner dice “ninguna, primero define oferta”, aprende que no entendió la dependencia real.
 
 ---
 
