@@ -1,12 +1,37 @@
 # Company Brain System
 
-**The open operating system for companies that want AI agents to work with memory, context, permissions and evidence.**
+A practical operating system for companies that want AI agents to work with **shared memory, clear permissions, operational context and evidence**.
 
-> For founders, operators, consultants and teams who are tired of AI agents acting like clever interns with no shared memory.
+Built for founders, operators, consultants and teams who want agents to help run the business without turning the company into a pile of disconnected prompts, chats, docs and automations.
 
-Company Brain System helps you design a **company brain**: a plain-text, Git-based operating layer where humans and AI agents can understand the company, act safely, leave evidence, and improve over time.
+Works with Claude Code, OpenAI Codex, Cursor, Windsurf, Hermes and any agent that can read Markdown, follow playbooks and write structured outputs.
+
+Company Brain System helps you design a **company brain**: a plain-text, Git-based operating layer where humans and AI agents can understand the company, act safely, leave evidence and improve over time.
 
 It is based on AOS: **Agentic Operating System**.
+
+---
+
+## Start here
+
+- **New to this?** Read [`docs/07_quick_start.md`](docs/07_quick_start.md).
+- **Want the full method?** Read [`docs/00_master_playbook.md`](docs/00_master_playbook.md).
+- **Want to install it in a company?** Use [`templates/questionnaires/company-brain-intake.md`](templates/questionnaires/company-brain-intake.md).
+- **Want an agent to operate it?** Use [`templates/agent-runtime-pack/README.md`](templates/agent-runtime-pack/README.md).
+- **Blocked implementing it?** Read [`docs/12_get_help_from_libera.md`](docs/12_get_help_from_libera.md).
+
+## Built by Libera
+
+This repo is free and useful by itself.
+
+If your team gets stuck applying it, Libera can help you install it inside a real company: diagnosis, Company Brain setup, agent roles, permissions, operating cadence and adoption.
+
+- Need help? [`docs/12_get_help_from_libera.md`](docs/12_get_help_from_libera.md)
+- Want to understand the offer? [`docs/13_libera_offer_map.md`](docs/13_libera_offer_map.md)
+- Found a problem? Open an issue.
+- Improved a template? Open a pull request.
+
+---
 
 ## What problem does it solve?
 
