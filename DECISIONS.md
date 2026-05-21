@@ -28,6 +28,6 @@ This file records public-safe method decisions for Company Brain System.
 
 ## D-005 — Commercial help path is part of the repo
 
-**Decision:** the repo should remain useful for free, while clearly showing how to ask Libera for help when implementation gets blocked.
+**Decision:** the repo should remain useful for free, while clearly showing how to ask DIA UNO for help when implementation gets blocked.
 
 **Why:** Company Brain System is a lead magnet and an implementation method. The commercial path should be visible but not required.

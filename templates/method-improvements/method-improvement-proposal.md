@@ -34,7 +34,7 @@ capas_afectadas:
   docs: []          # Ej: docs/04_agent_onboarding.md
   templates: []     # Ej: templates/agent-runtime-pack/OPERATIONS.md
   schemas: []       # Ej: schemas/agent.schema.yaml
-  skills: []        # Ej: libera-ceo-consulting
+  skills: []        # Ej: service-ceo-consulting
   routines: []      # Ej: weekly review
   scorecards: []    # Ej: agent-evaluation-scorecard.md
 

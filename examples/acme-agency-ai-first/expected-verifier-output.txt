@@ -1,0 +1,7 @@
+Created guided Company Brain instance: examples/acme-agency-ai-first
+Files written: 124
+Rollout map: examples/acme-agency-ai-first/company/department-rollout-map.md
+Company scorecard: examples/acme-agency-ai-first/company/company-scorecard.md
+Receipt: examples/acme-agency-ai-first/receipts/wizard-installation-receipt.md
+Installation verification OK: examples/acme-agency-ai-first
+Synthetic fake company: Acme Growth Studio

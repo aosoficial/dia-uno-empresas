@@ -1,66 +1,98 @@
 # Company Brain System
 
-Convierte el contexto de tu empresa en operaciones seguras con agentes de IA.
+Convierte una agencia, consultoría o negocio freelance en una empresa AI-First de servicios productizados: con Dirección / Cerebro Madre, departamentos, memoria operativa, empleados digitales, permisos, receipts y mejora continua.
 
-Company Brain System es un sistema práctico para equipos que quieren usar agentes de IA con contexto compartido, permisos claros, evidencia y aprobación humana cuando importa.
+Company Brain System es una aceleradora guiada para pasar de **Punto A** a **Punto B AI-First**.
 
-Sirve para pasar de prompts sueltos, chats y documentos dispersos a un cerebro de empresa sencillo que puedan usar tanto humanos como agentes.
+## Punto A
 
-Basado en AOS: Agentic Operating System.
+Empresa de servicios que no sabe por dónde empezar:
 
----
+- conocimiento disperso;
+- personas sin sistema operativo claro;
+- procesos manuales;
+- IA usada de forma puntual;
+- sin brain por departamento;
+- sin agentes integrados;
+- sin memoria operativa ni feedback loop.
 
-## Empieza aquí
+## Punto B
 
-- **Quiero entenderlo rápido:** lee [`docs/07_quick_start.md`](docs/07_quick_start.md).
-- **Quiero que un agente me ayude a instalarlo:** dale [`docs/14_agent_installation_process.md`](docs/14_agent_installation_process.md).
-- **Quiero el método completo:** lee [`docs/00_master_playbook.md`](docs/00_master_playbook.md).
-- **Quiero mapear mi empresa:** usa [`templates/questionnaires/company-brain-intake.md`](templates/questionnaires/company-brain-intake.md).
-- **Quiero crear un rol de agente:** usa [`templates/agent-runtime-pack/README.md`](templates/agent-runtime-pack/README.md).
-- **Estoy bloqueado:** lee [`docs/12_get_help_from_libera.md`](docs/12_get_help_from_libera.md) o abre un issue en GitHub.
+Empresa AI-First de servicios productizados con:
 
-## Por qué existe
+- Dirección / Cerebro Madre creado primero;
+- departamentos definidos uno por uno;
+- brain por departamento;
+- sistema para guardar memoria operativa;
+- comunicación entre humanos y agentes;
+- organización de personas y agentes;
+- roles, permisos, límites y aprobaciones;
+- skills por departamento;
+- onboarding para agentes, departamentos y roles;
+- receipts, statechanges, context packets y feedback loop;
+- roadmap claro de 48h / 7 días / 30 días.
 
-La mayoría de sistemas con agentes de IA fallan por motivos simples:
+## Dos caminos
 
-- los agentes no conocen el contexto real de la empresa;
-- los permisos no están claros;
-- las acciones sensibles no se separan de las acciones seguras;
-- las decisiones y cambios no quedan registrados;
-- nadie puede verificar qué hizo realmente un agente;
-- el método no mejora a partir del trabajo real.
+### 1. Evaluar el método
 
-Company Brain System te da una estructura para arreglar eso.
+- [`docs/00_ai_first_company.md`](docs/00_ai_first_company.md) — Punto A → Punto B AI-First.
+- [`docs/23_direction_mother_brain.md`](docs/23_direction_mother_brain.md) — Dirección / Cerebro Madre.
+- [`docs/24_department_rollout_roadmap.md`](docs/24_department_rollout_roadmap.md) — roadmap 48h / 7d / 30d.
+- [`docs/25_agency_consulting_freelance_vertical.md`](docs/25_agency_consulting_freelance_vertical.md) — vertical agencias, consultorías y freelancers.
+- [`docs/26_source_adapters.md`](docs/26_source_adapters.md) — estrategia para adaptar fuentes externas.
+- [`docs/27_human_agent_operating_system.md`](docs/27_human_agent_operating_system.md) — organización humano-agente.
+- [`docs/28_feedback_loop.md`](docs/28_feedback_loop.md) — mejora continua.
+
+### 2. Generar una empresa privada guiada
+
+```bash
+python scripts/company_brain_wizard.py --dry-run --company "Acme Demo" --company-type agency --output /tmp/acme-company-brain
+python scripts/company_brain_wizard.py --company "Acme Demo" --company-type agency --output /tmp/acme-company-brain --yes
+python scripts/verify_installation.py /tmp/acme-company-brain
+```
+
+Para un bootstrap mínimo:
+
+```bash
+python scripts/bootstrap_company_brain.py --dry-run --company "Acme Demo" --company-type agency --output /tmp/acme-company-brain
+```
+
+## Orden de instalación
+
+1. Dirección / Mother Brain.
+2. Operations / Delivery.
+3. Marketing.
+4. Sales.
+5. Customer Success / Postventa.
+6. Product / Software Internal Systems.
+7. Finance.
+8. People / Organization.
+9. Admin / Legal / Compliance where needed.
 
 ## Qué incluye
 
-- **Company Brain:** la memoria compartida de la empresa.
-- **Department Brains:** memorias enfocadas para ventas, operaciones, producto, finanzas, soporte y otras áreas.
-- **Agent Runtime Packs:** archivos que definen quién es un agente, qué puede hacer, qué no puede hacer y cómo deja evidencia.
-- **Registros operativos:** registros simples para contexto, cambios, traspasos y trabajo terminado.
-- **Plantillas:** cuestionarios, scorecards, packs de agente, packs de departamento, revisiones y ejemplos.
-- **Método de seguridad:** reglas de aprobación, revisión de permisos y pruebas de seguridad.
-- **Scripts de validación:** comprobaciones básicas para mantener el repositorio consistente.
+- Company Brain y Department Brains.
+- Wizard guiado para agencia, consultoría o freelancer.
+- Department templates.
+- Agent onboarding packs.
+- Skills por departamento.
+- Roadmap 48h / 7d / 30d.
+- Receipts, StateChanges y Context Packets.
+- Trace policy y model strategy.
+- Validadores de seguridad pública e instalabilidad.
 
-## Para quién es
+## Repo público vs instancia privada
 
-- Fundadores que quieren construir empresas potenciadas por IA.
-- Operadores que quieren que la IA sea útil más allá del chat.
-- Consultores que implementan flujos de IA para clientes.
-- Equipos que necesitan agentes con contexto, no improvisación.
-- Equipos técnicos que quieren un método ligero antes de construir software.
+```text
+company-brain-system/          framework público: docs, plantillas, scripts, validadores
+private-company-instance/      empresa real: contexto, handoffs, receipts, statechanges
+Hermes / ORGO / local runtime  agente operativo con herramientas y límites
+```
 
-## Qué no es
+Regla: los datos reales de empresa no viven en este repo público.
 
-- No es un SaaS.
-- No es un chatbot.
-- No es un pack mágico de prompts.
-- No sustituye el criterio humano.
-- No es una base de datos de producción.
-
-Es un método y una estructura de repositorio que puedes copiar, adaptar y operar.
-
-## Instalación rápida
+## Instalación rápida para desarrollo
 
 ```bash
 git clone https://github.com/aosoficial/company-brain-system.git
@@ -68,156 +100,30 @@ cd company-brain-system
 pip install pyyaml
 python scripts/validate_repo.py
 python scripts/validate_schemas.py
+python scripts/build_docs.py
+python scripts/validate_links.py
+python scripts/validate_public_safety.py
+python scripts/validate_installable_runtime.py
 ```
-
-Después lee:
-
-1. [`docs/07_quick_start.md`](docs/07_quick_start.md)
-2. [`docs/14_agent_installation_process.md`](docs/14_agent_installation_process.md)
-3. [`docs/00_master_playbook.md`](docs/00_master_playbook.md)
-4. [`docs/15_tools.md`](docs/15_tools.md)
-5. [`docs/16_skills.md`](docs/16_skills.md)
-6. [`docs/17_human_sops.md`](docs/17_human_sops.md)
-7. [`docs/18_agent_sops.md`](docs/18_agent_sops.md)
-8. [`templates/questionnaires/company-brain-intake.md`](templates/questionnaires/company-brain-intake.md)
-9. [`templates/agent-runtime-pack/README.md`](templates/agent-runtime-pack/README.md)
-
-## Camino práctico
-
-### 1. Mapea la empresa
-
-Empieza por lo básico:
-
-- propósito;
-- departamentos;
-- personas y roles importantes;
-- sistemas activos;
-- decisiones clave;
-- métricas;
-- riesgos;
-- permisos.
-
-Usa: [`templates/questionnaires/company-brain-intake.md`](templates/questionnaires/company-brain-intake.md)
-
-### 2. Crea el primer Company Brain
-
-Empieza pequeño. No intentes mapear toda la empresa el primer día.
-
-Usa:
-
-- [`templates/context-packets/context-packet-template.md`](templates/context-packets/context-packet-template.md)
-- [`templates/department-brain-pack/`](templates/department-brain-pack/)
-- [`templates/scorecards/company-brain-scorecard.md`](templates/scorecards/company-brain-scorecard.md)
-
-### 3. Añade un agente
-
-Crea un rol de agente con:
-
-- identidad;
-- misión;
-- herramientas permitidas;
-- acciones prohibidas;
-- reglas de aprobación;
-- reglas de memoria;
-- reglas de evidencia.
-
-Usa: [`templates/agent-runtime-pack/`](templates/agent-runtime-pack/)
-
-### 4. Haz que el trabajo sea verificable
-
-Un agente no debería limitarse a decir “hecho”. Debe dejar evidencia de:
-
-- qué hizo;
-- por qué lo hizo;
-- qué fuente usó;
-- qué cambió;
-- qué riesgos quedan;
-- cómo se revisó el trabajo.
-
-Usa: [`templates/receipts/receipt-template.md`](templates/receipts/receipt-template.md)
-
-### 5. Mejora el método con trabajo real
-
-Cuando algo falla, no arregles solo la tarea. Mejora el sistema.
-
-Usa:
-
-- [`templates/method-improvements/method-improvement-proposal.md`](templates/method-improvements/method-improvement-proposal.md)
-- [`docs/09_method_improvement_loop.md`](docs/09_method_improvement_loop.md)
-
-## Mapa del repositorio
-
-```text
-company-brain-system/
-  docs/                         manuales del método
-  templates/                    packs y plantillas reutilizables
-  schemas/                      contratos YAML
-  registry/                     registros de ejemplo
-  examples/                     ejemplos sintéticos
-  scripts/                      validación y construcción de docs
-  method-improvements/          registro de aprendizaje del método
-  .github/workflows/            validación automática
-```
-
-## Términos clave
-
-- **Company Brain:** memoria operativa compartida de la empresa.
-- **Department Brain:** memoria enfocada para un área.
-- **Context Packet:** el contexto que necesita un agente antes de actuar.
-- **StateChange:** registro de algo que ha cambiado.
-- **Receipt:** evidencia de que una acción ocurrió y cómo se revisó.
-- **Agent Runtime Pack:** contrato operativo de un agente.
-- **Autonomía supervisada:** los agentes pueden actuar dentro de límites claros; las acciones sensibles necesitan aprobación.
-
-Más definiciones: [`docs/08_glossary.md`](docs/08_glossary.md)
 
 ## Reglas de seguridad
 
-Regla por defecto: los agentes pueden redactar, analizar, preparar y operar localmente.
+Por defecto, los empleados digitales pueden redactar, analizar, preparar y operar localmente.
 
-No deberían hacer esto sin aprobación humana explícita:
+Piden aprobación antes de:
 
-- contactar clientes o leads;
-- publicar externamente;
+- contactar personas externas;
+- publicar;
 - gastar dinero;
 - asumir compromisos legales o económicos;
-- usar datos sensibles o privados fuera de alcance;
-- desplegar a producción;
-- cambiar sistemas vivos.
+- usar datos sensibles fuera de alcance;
+- desplegar o cambiar producción;
+- conectar nuevas herramientas críticas.
 
-Lee: [`docs/11_agent_safety_evaluation.md`](docs/11_agent_safety_evaluation.md)
+## Comunidad DIA UNO
 
-## Creado por Libera
-
-Este repositorio es gratuito y útil por sí mismo.
-
-Si tu equipo se bloquea aplicándolo, Libera puede ayudarte a instalarlo en una empresa real: diagnóstico, configuración del Company Brain, roles de agentes, permisos, cadencia operativa y adopción.
-
-Por ahora, usa GitHub issues:
-
-- **¿Necesitas ayuda de implementación?** Abre un issue titulado `Implementation help`.
-- **¿Has encontrado un problema?** Abre un issue titulado `Bug` o `Question`.
-- **¿Has mejorado una plantilla?** Abre un pull request.
-
-Lee:
-
-- [`docs/12_get_help_from_libera.md`](docs/12_get_help_from_libera.md)
-- [`docs/13_libera_offer_map.md`](docs/13_libera_offer_map.md)
+Este repositorio es gratuito y útil por sí mismo. Si tu equipo se bloquea aplicándolo, DIA UNO puede ayudar a instalarlo: diagnóstico, Company Brain, departamentos, empleados digitales, permisos, cadencia operativa y adopción.
 
 ## Contribuir
 
-Las contribuciones son bienvenidas:
-
-- mejores plantillas;
-- ejemplos más claros;
-- nuevos packs de departamento;
-- pruebas de seguridad;
-- mejoras del método;
-- traducciones;
-- historias de implementación.
-
-Abre un issue o pull request.
-
-## Licencia
-
-MIT. Ver [`LICENSE`](LICENSE).
+Las contribuciones son bienvenidas: plantillas, ejemplos sintéticos, validadores, guías, pruebas de seguridad, mejoras del método y traducciones.

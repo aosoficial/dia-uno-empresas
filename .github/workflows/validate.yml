@@ -27,5 +27,20 @@ jobs:
       - name: Validate schemas
         run: python scripts/validate_schemas.py
 
+      - name: Validate links
+        run: python scripts/validate_links.py
+
+      - name: Validate public safety
+        run: python scripts/validate_public_safety.py
+
+      - name: Validate installable runtime
+        run: python scripts/validate_installable_runtime.py
+
+      - name: Smoke test guided wizard
+        run: |
+          python scripts/company_brain_wizard.py --dry-run --company "Acme Demo" --company-type agency --output /tmp/acme-company-brain
+          python scripts/company_brain_wizard.py --company "Acme Demo" --company-type agency --output /tmp/acme-company-brain --yes
+          python scripts/verify_installation.py /tmp/acme-company-brain
+
       - name: Build docs
         run: python scripts/build_docs.py

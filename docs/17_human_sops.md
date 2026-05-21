@@ -1,6 +1,6 @@
 # SOPs humanos
 
-> **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, un método abierto de Libera. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [cuestionario Company Brain](../templates/questionnaires/company-brain-intake.md) o lee [cómo puede ayudarte Libera](12_get_help_from_libera.md).
+> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
 
 Estos son los procedimientos operativos estándar para personas que trabajan con Company Brain System.
 
@@ -138,7 +138,7 @@ Pasos:
 1. Nombra el bloqueo.
 2. Pide al agente tres posibles caminos.
 3. Elige un camino.
-4. Si sigues bloqueado, usa el proceso de ayuda de Libera.
+4. Si sigues bloqueado, usa el proceso de ayuda de DIA UNO.
 
 Evidencia:
 

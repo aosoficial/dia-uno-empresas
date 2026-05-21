@@ -1,6 +1,6 @@
 # 10 — Autonomía Supervisada y Madurez de Agentes
 
-> **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, un método abierto de Libera. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [cuestionario Company Brain](../templates/questionnaires/company-brain-intake.md) o lee [cómo puede ayudarte Libera](12_get_help_from_libera.md).
+> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
 
 ## Propósito
 
@@ -172,7 +172,7 @@ Debe dejar receipt.
 
 Puede operar tareas internas recurrentes dentro de un carril definido, con completion criterion, guardrails y watchdog.
 
-Ejemplo: Libera prepara borradores internos o assets ficticios sin pedir cada microacción.
+Ejemplo: DIA UNO prepara borradores internos o assets ficticios sin pedir cada microacción.
 
 ### Nivel 4 — Autonomía operativa limitada
 
@@ -236,7 +236,7 @@ El sistema debe tener:
 
 ---
 
-## Ejemplo: crear una web para Libera
+## Ejemplo: crear una web para DIA UNO
 
 Un agente inmaduro no debe simplemente “crear la web”.
 
@@ -244,7 +244,7 @@ Debe hacer:
 
 ```text
 Problema:
-Libera necesita una web, pero todavía no sabemos alcance, objetivo ni grado de publicación.
+DIA UNO necesita una web, pero todavía no sabemos alcance, objetivo ni grado de publicación.
 
 Opciones:
 A) Landing interna en borrador, sin publicar.
