@@ -4,6 +4,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 WIZARD = ROOT / "scripts" / "company_brain_wizard.py"
+BOOTSTRAP = ROOT / "scripts" / "bootstrap_company_brain.py"
 POINT_B_VALIDATOR = ROOT / "scripts" / "validate_point_b_readiness.py"
 INSTALLABLE_VALIDATOR = ROOT / "scripts" / "validate_installable_runtime.py"
 
@@ -84,6 +85,33 @@ def test_wizard_generates_pilot_plan_and_point_b_scorecard(tmp_path):
     assert point_b.exists()
     assert "30 / 60 / 120" in pilot_plan.read_text()
     assert "Point B readiness" in point_b.read_text()
+
+    readme = (output / "README.md").read_text(encoding="utf-8")
+    required_readme_markers = [
+        "No subas esta instancia a un repositorio público",
+        "company/company-brain.md",
+        "company/approval-boundaries.md",
+        "company/company-scorecard.md",
+        "company/guided-pilot-plan.md",
+        "company/point-b-readiness.md",
+        "departments/<department>/department-brain.md",
+        "digital-employees/<employee>/PERMISSIONS.md",
+        "context-packets/initial-company-context.md",
+        "receipts/first-loop.md",
+        "statechanges/",
+        "roadmap/48h-7d-30d.md",
+        "validate_point_b_readiness.py --mode scaffold",
+        "--mode operational",
+        "En una instancia recién generada, `--mode operational` debe fallar",
+        "docs/TROUBLESHOOTING.md",
+        "DIA UNO",
+        "diauno.io",
+        "contexto anonimizado",
+    ]
+    for marker in required_readme_markers:
+        assert marker in readme
+    assert "digital-employees/Dirección Assistant / CEO Operations Assistant/PERMISSIONS.md" not in readme
+
     verify = run_cmd([ROOT / "scripts" / "verify_installation.py", output])
     assert verify.returncode == 0, verify.stderr + verify.stdout
     scaffold_readiness = run_cmd([POINT_B_VALIDATOR, "--mode", "scaffold", output])
@@ -105,6 +133,41 @@ def test_wizard_generates_pilot_plan_and_point_b_scorecard(tmp_path):
     assert low_threshold_operational_readiness.returncode == 1
     assert "missing mandatory operational evidence" in low_threshold_operational_readiness.stdout.lower()
     assert "Point B operational validation OK" not in low_threshold_operational_readiness.stdout
+
+
+def test_bootstrap_generates_verifiable_scaffold_without_operational_false_positive(tmp_path):
+    output = tmp_path / "bootstrap-acme"
+    result = run_cmd([
+        BOOTSTRAP,
+        "--company", "Bootstrap Acme",
+        "--company-type", "agency",
+        "--sector", "B2B services",
+        "--owner", "Founder",
+        "--output", output,
+        "--yes",
+    ])
+    assert result.returncode == 0, result.stderr + result.stdout
+
+    for rel in [
+        "company/company-scorecard.md",
+        "company/guided-pilot-plan.md",
+        "company/point-b-readiness.md",
+    ]:
+        assert (output / rel).exists(), rel
+
+    readme = (output / "README.md").read_text(encoding="utf-8")
+    assert "digital-employees/Dirección Assistant / CEO Operations Assistant/PERMISSIONS.md" not in readme
+    assert "digital-employees/ceo-operations-assistant/PERMISSIONS.md" in readme
+
+    verify = run_cmd([ROOT / "scripts" / "verify_installation.py", output])
+    assert verify.returncode == 0, verify.stderr + verify.stdout
+
+    scaffold = run_cmd([POINT_B_VALIDATOR, "--mode", "scaffold", output])
+    assert scaffold.returncode == 0, scaffold.stderr + scaffold.stdout
+
+    operational = run_cmd([POINT_B_VALIDATOR, "--mode", "operational", output])
+    assert operational.returncode == 1
+    assert "missing mandatory operational evidence" in operational.stdout.lower()
 
 
 def write_operational_fixture(root: Path) -> None:

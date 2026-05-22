@@ -7,7 +7,15 @@ Freshness: initial bootstrap
 
 ## Purpose
 
-Describe the company in operational terms.
+Describe the company in operational terms. Start here before asking a digital employee to work: this file is the Direction / Mother Brain for the private instance.
+
+## Fill first
+
+- Owner / responsable humano: `{{ owner }}` or the accountable operator.
+- Source / procedencia: where these facts came from.
+- Freshness / vigencia: when they were last reviewed.
+- Approval: who reviewed the direction before the first operating loop.
+- Evidence: link to `receipts/first-loop.md` after the first human-reviewed loop.
 
 ## Current operating state
 

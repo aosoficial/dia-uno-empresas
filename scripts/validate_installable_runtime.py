@@ -32,6 +32,7 @@ REQUIRED = [
     "templates/pilot/pilot-session-script.md", "templates/pilot/operator-checklist.md", "templates/pilot/client-homework.md",
     "templates/pilot/sprint-0-intake.md", "templates/pilot/sprint-1-direction.md", "templates/pilot/sprint-2-department.md",
     "templates/pilot/sprint-3-digital-employee.md", "templates/pilot/sprint-4-feedback-loop.md",
+    "templates/how-to/create-sharp-soul.md", "templates/agent-runtime-pack/SOUL.md",
     "scripts/bootstrap_company_brain.py", "scripts/company_brain_wizard.py", "scripts/verify_installation.py", "scripts/validate_department_quality.py", "scripts/validate_point_b_readiness.py",
     "templates/receipts/installation-receipt-template.md", "templates/trace-policy/trace-policy-template.md",
     "templates/generated-company-instance/README.md", "templates/generated-company-instance/AGENTS.md", "templates/generated-company-instance/MAP.md",
@@ -65,6 +66,17 @@ DEPTH_MARKERS = [
     "Common failure modes",
 ]
 SKILL_MARKERS = ["Trigger", "Inputs", "Steps", "Outputs", "Approval boundaries", "Receipt"]
+SOUL_MARKERS = [
+    "Identity",
+    "Values",
+    "Communication Style",
+    "Expertise",
+    "Boundaries",
+    "Workflow",
+    "Tool Usage",
+    "Memory Policy",
+    "Example Interactions",
+]
 
 
 def word_count(path: Path) -> int:
@@ -113,6 +125,20 @@ def main() -> int:
             errors.append(f"skill template {skill} too shallow: expected >=120 words")
         if f"templates/skills/{skill}.md" not in registry:
             errors.append(f"skills registry missing link for: {skill}")
+
+    soul_files = [ROOT / "templates" / "agent-runtime-pack" / "SOUL.md"]
+    soul_files.extend((ROOT / "templates" / "generated-company-instance" / "digital-employees").glob("*/SOUL.md"))
+    for soul_file in soul_files:
+        if not soul_file.exists():
+            errors.append(f"Missing SOUL template: {soul_file.relative_to(ROOT)}")
+            continue
+        text = soul_file.read_text(encoding="utf-8", errors="ignore")
+        for marker in SOUL_MARKERS:
+            if marker not in text:
+                errors.append(f"{soul_file.relative_to(ROOT)} missing SOUL marker: {marker}")
+        for operational_marker in ["approval", "receipt", "Memory Policy", "Tool Usage"]:
+            if operational_marker.lower() not in text.lower():
+                errors.append(f"{soul_file.relative_to(ROOT)} missing operational SOUL marker: {operational_marker}")
 
     if errors:
         print("Installable accelerator validation failed:")

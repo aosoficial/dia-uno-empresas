@@ -53,6 +53,90 @@ def copy_template(output: Path, values: dict[str, str]) -> list[Path]:
     return written
 
 
+def write_guided_scaffold_files(output: Path, args: argparse.Namespace) -> list[Path]:
+    """Write minimum guided-pilot files expected by installation verification.
+
+    The richer guided wizard overwrites these with maturity-specific content. The
+    bootstrap path still needs these scaffold files so operators can run the same
+    verifier and see that operational Punto B evidence remains pending.
+    """
+    files = {
+        "company/company-scorecard.md": f"""# Company AI-First Scorecard
+
+Company: `{args.company}`
+Owner: `{args.owner}`
+Freshness: `draft until reviewed`
+
+## Point A
+
+`{args.point_a}`
+
+## Company-level metrics
+
+- Revenue / retained revenue: `fill privately`
+- Delivery quality: `fill privately`
+- Sales pipeline health: `fill privately`
+- Customer success signal: `fill privately`
+- Automation leverage: `human hours removed with evidence`
+- Memory quality: `receipts/statechanges/context packets current`
+
+## Rule
+
+This scaffold is not operational evidence. Update it only from a human-reviewed internal loop and link the supporting receipt.
+""",
+        "company/guided-pilot-plan.md": f"""# Guided Pilot Plan
+
+Company: `{args.company}`
+Owner: `{args.owner}`
+Company type: `{args.company_type}`
+
+## First 48 hours
+
+1. Review `company/company-brain.md`.
+2. Review `company/approval-boundaries.md`.
+3. Complete `context-packets/initial-company-context.md`.
+4. Run one safe internal Dirección task.
+5. Write `receipts/first-loop.md` and update `company/company-scorecard.md`.
+
+## Closeout rule
+
+Do not claim operational Punto B from bootstrap files. Scaffold validation only proves installation shape; operational validation requires human-reviewed evidence.
+""",
+        "company/point-b-readiness.md": f"""# Point B Readiness
+
+Company: `{args.company}`
+Owner: `{args.owner}`
+Freshness: `draft until validated with evidence`
+
+## Scaffold checklist
+
+- [x] Direction / Mother Brain file exists.
+- [x] Approval boundaries file exists.
+- [x] Initial context packet scaffold exists.
+- [x] Installation receipt exists.
+
+## Operational Punto B evidence still required
+
+- [ ] Human-reviewed Direction contains real vision, mission, annual goal/rocks/OKRs and owner.
+- [ ] One priority department has a live workflow, owner, scorecard and escalation path.
+- [ ] One digital employee/role ran a bounded internal loop under explicit permissions.
+- [ ] A receipt proves what happened, why, source/provenance, approvals and observed outcome.
+- [ ] Scorecard/readiness was updated from evidence, not from generated defaults.
+
+## Rule
+
+A fresh bootstrap output should pass installation verification but fail operational validation until private evidence exists.
+""",
+    }
+    written: list[Path] = []
+    for rel, content in files.items():
+        path = output / rel
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content, encoding="utf-8")
+        written.append(path)
+    return written
+
+
 def write_receipt(output: Path, args: argparse.Namespace) -> Path:
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     path = output / "receipts" / "installation-receipt.md"
@@ -172,6 +256,7 @@ def main() -> int:
         return 2
 
     written = copy_template(output, values)
+    written.extend(write_guided_scaffold_files(output, args))
     receipt = write_receipt(output, args)
     print(f"Created private Company Brain instance: {output}")
     print(f"Files written: {len(written) + 1}")
