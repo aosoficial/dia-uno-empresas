@@ -61,6 +61,8 @@ Do not paste:
 
 Use the first digital employee only to draft, analyze or prepare. It may create a context packet, QA checklist, proposal draft or SOP draft. It may not send, publish, invoice, deploy or change client systems.
 
+For a detailed step-by-step guide with prerequisites, synthetic example and exit criteria per step, see [`templates/how-to/run-first-internal-loop.md`](../templates/how-to/run-first-internal-loop.md).
+
 Evidence:
 - context packet;
 - reviewed source-of-truth map for the workflow input;

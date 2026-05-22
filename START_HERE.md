@@ -56,6 +56,8 @@ Rellena solo lo mínimo y seguro:
 8. **Scorecard**: puntuación honesta de preparación y huecos.
 9. **Siguiente sprint**: el próximo paso pequeño y revisable.
 
+Para los pasos 5-9, sigue la guía detallada: [`templates/how-to/run-first-internal-loop.md`](templates/how-to/run-first-internal-loop.md).
+
 ## Qué no debes pegar ni compartir
 
 No pegues en este repo público, en ejemplos públicos ni en solicitudes de ayuda:
