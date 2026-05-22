@@ -11,6 +11,7 @@ A fresh wizard scaffold must pass scaffold mode and fail operational mode.
 from __future__ import annotations
 
 import argparse
+import re
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -84,9 +85,104 @@ REQUIRED_OPERATIONAL_MARKERS = (
     "evidence",
 )
 
+FIELD_LABEL_ALIASES = {
+    "owner": "owner",
+    "propietario": "owner",
+    "responsable": "owner",
+    "source": "source",
+    "source / provenance": "source",
+    "fuente": "source",
+    "fuente / procedencia": "source",
+    "procedencia": "source",
+    "freshness": "freshness",
+    "vigencia": "freshness",
+    "actualización": "freshness",
+    "actualizacion": "freshness",
+    "frescura": "freshness",
+    "approval": "approval",
+    "required approval": "approval",
+    "aprobación": "approval",
+    "aprobacion": "approval",
+    "aprobación requerida": "approval",
+    "aprobacion requerida": "approval",
+    "evidence": "evidence",
+    "evidencia": "evidence",
+    "prueba": "evidence",
+}
+FIELD_LABEL_PATTERN = "|".join(re.escape(label) for label in sorted(FIELD_LABEL_ALIASES, key=len, reverse=True))
+FIELD_LINE_RE = re.compile(rf"^\s*({FIELD_LABEL_PATTERN})\s*:\s*(.+?)\s*$", re.IGNORECASE | re.MULTILINE)
+FIELD_HEADING_RE = re.compile(rf"^#{{2,6}}\s+({FIELD_LABEL_PATTERN})\s*$\n+(.+?)(?=\n#{{1,6}}\s+|\Z)", re.IGNORECASE | re.MULTILINE | re.DOTALL)
+DATE_RE = re.compile(r"\b(20\d{2}-\d{2}-\d{2}|20\d{2}/\d{2}/\d{2}|20\d{2})\b")
+GENERIC_FIELD_VALUES = {
+    "",
+    "done",
+    "complete",
+    "completed",
+    "reviewed",
+    "current",
+    "ok",
+    "yes",
+    "n/a",
+    "na",
+    "none",
+    "team",
+    "internal",
+    "actual",
+    "equipo",
+    "hecho",
+    "interno",
+    "revisado",
+}
+
 
 def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8", errors="ignore")
+
+
+def normalized_field_value(value: str) -> str:
+    return value.strip().strip("`*_ .").lower()
+
+
+def canonical_field_label(label: str) -> str:
+    return FIELD_LABEL_ALIASES[label.strip().casefold()]
+
+
+def operational_fields(text: str) -> dict[str, str]:
+    fields: dict[str, str] = {}
+    for match in FIELD_LINE_RE.finditer(text):
+        key = canonical_field_label(match.group(1))
+        fields[key] = match.group(2).strip()
+    for match in FIELD_HEADING_RE.finditer(text):
+        key = canonical_field_label(match.group(1))
+        fields.setdefault(key, " ".join(match.group(2).strip().split()))
+    return fields
+
+
+def has_evidence_shape(text: str, *, allow_synthetic: bool) -> bool:
+    fields = operational_fields(text)
+    if not all(marker in fields for marker in REQUIRED_OPERATIONAL_MARKERS):
+        return False
+
+    for marker in REQUIRED_OPERATIONAL_MARKERS:
+        value = normalized_field_value(fields[marker])
+        if value in GENERIC_FIELD_VALUES:
+            return False
+        if marker != "evidence" and len(value.split()) < 2:
+            return False
+
+    freshness = fields["freshness"].lower()
+    if not (DATE_RE.search(freshness) or "this week" in freshness or "esta semana" in freshness or "current" in freshness or "vigente" in freshness or (allow_synthetic and "synthetic" in freshness)):
+        return False
+
+    evidence = fields["evidence"].lower()
+    if not ("/" in evidence or ".md" in evidence or "receipt" in evidence or "recibo" in evidence or "scorecard" in evidence or "cuadro de mando" in evidence or (allow_synthetic and "synthetic" in evidence)):
+        return False
+
+    approval = fields["approval"].lower()
+    if not any(marker in approval for marker in ("human", "owner", "review", "approved", "approval", "operator", "humano", "humana", "propietario", "propietaria", "responsable", "revisión", "revision", "aprobado", "aprobada", "aprobación", "aprobacion", "operador", "operadora")):
+        return False
+
+    return True
 
 
 def matching_files(root: Path, criterion: Criterion) -> list[Path]:
@@ -116,7 +212,7 @@ def is_substantive(path: Path, *, allow_synthetic: bool) -> bool:
     if any(marker in lowered for marker in PLACEHOLDER_MARKERS):
         return False
 
-    if not all(marker in lowered for marker in REQUIRED_OPERATIONAL_MARKERS):
+    if not has_evidence_shape(text, allow_synthetic=allow_synthetic):
         return False
 
     return True

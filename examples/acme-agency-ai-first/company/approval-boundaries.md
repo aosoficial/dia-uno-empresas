@@ -3,6 +3,7 @@
 Owner: Example Operator.
 Source: synthetic approval review.
 Freshness: synthetic current example.
+Approval: Example Operator approval required before any real-world execution.
 Evidence: synthetic day-1 permission check and first operating receipt.
 
 ## Allowed without approval

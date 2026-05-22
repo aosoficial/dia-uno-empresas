@@ -231,6 +231,160 @@ This document describes a thoughtful operating practice for a company that wants
     assert "Point B operational validation OK" not in result.stdout
 
 
+def test_operational_validator_rejects_label_only_evidence_shape(tmp_path):
+    instance = tmp_path / "label-only"
+    files = [
+        "company/company-brain.md",
+        "company/approval-boundaries.md",
+        "departments/operations/department-brain.md",
+        "digital-employees/ops-agent/PERMISSIONS.md",
+        "context-packets/first-loop.md",
+        "receipts/first-loop.md",
+        "company/company-scorecard.md",
+        "company/guided-pilot-plan.md",
+    ]
+    label_only = """
+# Label-only evidence document
+Owner: Team
+Source: Internal
+Freshness: Current
+Approval: Reviewed
+Evidence: Done
+This document has enough generic prose to look complete. It repeats operational words like owner, source, freshness, approval and evidence, but it does not provide dated provenance, a concrete owner, a reviewer, or a receipt or scorecard reference that can support a Punto B claim.
+""".strip()
+    for rel in files:
+        path = instance / rel
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(label_only + "\n", encoding="utf-8")
+
+    result = run_cmd([POINT_B_VALIDATOR, "--mode", "operational", "--min-score", "1", instance])
+    assert result.returncode == 1
+    assert "missing mandatory operational evidence" in result.stdout.lower()
+    assert "Point B operational validation OK" not in result.stdout
+
+
+def write_spanish_operational_fixture(root: Path) -> None:
+    files = {
+        "company/company-brain.md": """
+# Dirección / Mother Brain
+Propietario: Fundadora operativa
+Fuente: taller de dirección 2026-05-20
+Vigencia: actualizado 2026-05-22
+Aprobación: aprobado por responsable humana
+Evidencia: receipts/first-loop.md
+La visión, misión, meta anual, rocks y OKRs quedaron revisados para el primer ciclo operativo con responsables y decisiones trazables.
+""",
+        "company/approval-boundaries.md": """
+# Límites de aprobación
+Responsable: Fundadora operativa
+Fuente / procedencia: revisión de riesgos 2026-05-20
+Actualización: actualizado 2026-05-22
+Aprobacion requerida: revisión humana antes de acciones sensibles
+Prueba: receipts/first-loop.md
+Acciones externas, económicas, legales, de producción y sensibles requieren aprobación humana explícita con escalado documentado.
+""",
+        "departments/operations/department-brain.md": """
+# Cerebro del departamento de operaciones
+Propietario: Líder de operaciones
+Procedencia: revisión departamental 2026-05-20
+Frescura: validado 2026-05-22
+Aprobación requerida: aprobado por propietaria humana
+Evidencia: receipts/first-loop.md
+Responsabilidades, flujos de trabajo, scorecard, ruta de escalado y cadencia operativa están definidos para el primer corte.
+""",
+        "digital-employees/ops-agent/PERMISSIONS.md": """
+# Permisos del agente de operaciones
+Propietario: Fundadora operativa
+Fuente: diseño de rol 2026-05-20
+Vigencia: vigente 2026-05-22
+Aprobación: aprobado por responsable humana
+Evidencia: receipts/first-loop.md
+Acciones permitidas, acciones prohibidas, límites de herramienta, traspasos y aprobaciones obligatorias están definidos antes del trabajo activo.
+""",
+        "context-packets/first-loop.md": """
+# Paquete de contexto del primer ciclo
+Responsable: Fundadora operativa
+Fuente: mapa de fuentes 2026-05-20
+Actualización: actualizado 2026-05-22
+Aprobación: revisión humana completada
+Prueba: receipts/first-loop.md
+Objetivo, alcance, fuentes, supuestos, riesgos, acciones permitidas, acciones prohibidas y resultado esperado están completos.
+""",
+        "receipts/first-loop.md": """
+# Recibo del primer ciclo
+Propietario: Fundadora operativa
+Fuente / procedencia: context-packets/first-loop.md revisado
+Vigencia: completado 2026-05-22
+Aprobacion: revisado por operadora humana
+Evidencia: company/company-scorecard.md
+Resultado observado: se completó un ciclo operativo interno, fue revisado y se convirtió en una decisión para el siguiente sprint.
+""",
+        "company/company-scorecard.md": """
+# Scorecard de compañía
+Propietario: Fundadora operativa
+Fuente: receipts/first-loop.md validado
+Frescura: actualizado 2026-05-22
+Aprobación: aprobado por responsable humana
+Evidencia: receipts/first-loop.md
+Las métricas se actualizaron desde evidencia operativa observada y no desde archivos de instalación o andamiaje.
+""",
+        "company/guided-pilot-plan.md": """
+# Plan del piloto guiado
+Responsable: Fundadora operativa
+Procedencia: revisión del primer ciclo 2026-05-22
+Vigencia: actualizado 2026-05-22
+Aprobación requerida: revisión humana registrada
+Prueba: receipts/first-loop.md
+El siguiente sprint se seleccionó desde la evidencia revisada y tiene responsable, resultado esperado y puertas de aprobación claras.
+""",
+    }
+    for rel, text in files.items():
+        path = root / rel
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(text.strip() + "\n", encoding="utf-8")
+
+
+def test_operational_validator_accepts_complete_spanish_evidence_labels(tmp_path):
+    instance = tmp_path / "spanish-operational"
+    write_spanish_operational_fixture(instance)
+
+    result = run_cmd([POINT_B_VALIDATOR, "--mode", "operational", instance])
+    assert result.returncode == 0, result.stderr + result.stdout
+    assert "Point B operational validation OK" in result.stdout
+
+
+def test_operational_validator_rejects_spanish_label_only_evidence_shape(tmp_path):
+    instance = tmp_path / "spanish-label-only"
+    files = [
+        "company/company-brain.md",
+        "company/approval-boundaries.md",
+        "departments/operations/department-brain.md",
+        "digital-employees/ops-agent/PERMISSIONS.md",
+        "context-packets/first-loop.md",
+        "receipts/first-loop.md",
+        "company/company-scorecard.md",
+        "company/guided-pilot-plan.md",
+    ]
+    label_only = """
+# Documento con etiquetas genéricas
+Propietario: Equipo
+Fuente: Interno
+Vigencia: Actual
+Aprobación: Revisado
+Evidencia: Hecho
+Este documento tiene suficiente prosa genérica para parecer completo. Repite palabras operativas como propietario, fuente, vigencia, aprobación y evidencia, pero no aporta procedencia fechada, responsable concreto, revisión humana ni referencia a recibo o scorecard que sostenga una afirmación de Punto B.
+""".strip()
+    for rel in files:
+        path = instance / rel
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(label_only + "\n", encoding="utf-8")
+
+    result = run_cmd([POINT_B_VALIDATOR, "--mode", "operational", "--min-score", "1", instance])
+    assert result.returncode == 1
+    assert "missing mandatory operational evidence" in result.stdout.lower()
+    assert "Point B operational validation OK" not in result.stdout
+
+
 def test_operational_validator_rejects_scaffold_markers_even_with_complete_shape_and_low_min_score(tmp_path):
     markers = [
         "draft until reviewed",

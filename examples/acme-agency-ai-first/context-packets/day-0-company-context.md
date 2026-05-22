@@ -8,6 +8,7 @@ Curated synthetic example for Company Brain System Sprint 4. No real client data
 
 Freshness: synthetic current example.
 Approval: Example Operator must review before any real-world action.
+Evidence: receipts/day-1-first-digital-employee-run.md and company/company-scorecard.md.
 
 ## Summary
 

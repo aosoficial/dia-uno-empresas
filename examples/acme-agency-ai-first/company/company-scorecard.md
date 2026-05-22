@@ -2,6 +2,12 @@
 
 Synthetic fake company scorecard for the first AI-First operating week.
 
+Owner: Example Operator.
+Source: synthetic day-1 operating review and first digital employee run.
+Freshness: synthetic current example.
+Approval: Example Operator approval required before any real-world execution.
+Evidence: receipts/day-1-first-digital-employee-run.md and context-packets/day-0-company-context.md.
+
 ## Direction
 
 - Weekly priorities selected: 3.

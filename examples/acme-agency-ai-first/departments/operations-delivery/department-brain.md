@@ -2,10 +2,12 @@
 
 Department: `operations-delivery`
 Mission: service delivery, SOPs, QA, capacity, handoffs and client outcomes.
-Human owner: `Example Operator`
+Owner: `Example Operator`
 Digital employee: `Operations Delivery Assistant`
 Source: synthetic Acme agency delivery review and first-loop evidence pack.
 Freshness: `synthetic example reviewed for public documentation`
+Approval: `Example Operator approval required before any real-world execution`
+Evidence: `receipts/day-1-first-digital-employee-run.md` and synthetic scorecard update.
 
 ## Current state
 
