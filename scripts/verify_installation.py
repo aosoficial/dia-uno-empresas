@@ -13,6 +13,7 @@ REQUIRED_PATHS = [
     "README.md", "AGENTS.md", "MAP.md", ".env.example",
     "company/company-brain.md", "company/approval-boundaries.md", "company/operating-principles.md",
     "company/accountability-map.md", "company/scorecard.md", "company/operating-cadence.md",
+    "company/company-scorecard.md", "company/guided-pilot-plan.md", "company/point-b-readiness.md",
     "departments/direction/department-brain.md", "departments/direction/skills.md", "departments/direction/onboarding.md",
     "digital-employees/ceo-operations-assistant/IDENTITY.md", "digital-employees/ceo-operations-assistant/SOUL.md",
     "digital-employees/ceo-operations-assistant/PERMISSIONS.md", "digital-employees/ceo-operations-assistant/TOOLS.md",

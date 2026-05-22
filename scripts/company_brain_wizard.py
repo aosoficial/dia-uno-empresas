@@ -367,6 +367,117 @@ Complete the selected department rollout, add finance/customer-success visibilit
     return path
 
 
+def write_guided_pilot_plan(output: Path, args: argparse.Namespace, departments: list[str]) -> Path:
+    path = output / "company" / "guided-pilot-plan.md"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    profile = readiness_profile(args, departments)
+    selections = recommended_departments(args.company_type, args.maturity, departments)
+    first_department = next((dept for dept in selections["now"] if dept != "direction"), departments[1] if len(departments) > 1 else "direction")
+    path.write_text(f"""# Guided Pilot Plan
+
+Company: `{args.company}`
+Owner: `{args.owner}`
+Company type: `{args.company_type}`
+Maturity: `{args.maturity}`
+Readiness score: `{profile["total"]}/100`
+Next sprint: `{profile["next_sprint"]}`
+
+## Guided Pilot 30 / 60 / 120
+
+### First 30 minutes — operating contract
+
+- Confirm Punto A: `{args.point_a}`
+- Confirm first objective: `{args.first_objective}`
+- Confirm human approval owner: `{args.owner}`
+- Confirm forbidden actions: external/public/economic/legal/production/sensitive.
+
+### First 60 minutes — Direction and first department
+
+- Review `company/company-brain.md`.
+- Review `company/approval-boundaries.md`.
+- Install first priority department: `{first_department}`.
+- Fill company scorecard with evidenced values or `unknown`.
+
+### First 120 minutes — first internal loop
+
+- Create one context packet.
+- Ask the digital employee for draft/analysis only.
+- Human reviews the output.
+- Write Receipt and StateChange when operating state changes.
+- Run `python scripts/validate_point_b_readiness.py --mode scaffold {output}` to verify generated files.
+- Run `python scripts/validate_point_b_readiness.py --mode operational {output}` only after the first human-reviewed operating loop has real evidence.
+
+## Recommended departments now
+
+{chr(10).join(f'- `{dept}`' for dept in selections["now"])}
+
+## Deferred departments
+
+{chr(10).join(f'- `{dept}`' for dept in selections["later"]) or '- none'}
+
+## Closeout rule
+
+Do not claim operational Punto B from generated files. Scaffold validation only proves installation shape. Operational Punto B requires `--mode operational` to pass with human-reviewed evidence for Direction, approval boundaries, first department, digital employee permissions, context packet, receipt, scorecard and next sprint.
+""", encoding="utf-8")
+    return path
+
+
+def write_point_b_readiness(output: Path, args: argparse.Namespace, departments: list[str]) -> Path:
+    path = output / "company" / "point-b-readiness.md"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    profile = readiness_profile(args, departments)
+    path.write_text(f"""# Point B Readiness
+
+Company: `{args.company}`
+Owner: `{args.owner}`
+Freshness: `draft until validated with evidence`
+
+## Starting diagnostic
+
+Point B readiness: `{profile["total"]}/100`
+AI-First readiness score: `{profile["total"]}/100`
+Readiness level: `{profile["level"]}`
+Recommended next sprint: `{profile["next_sprint"]}`
+
+## Scaffold checklist generated now
+
+- [x] Direction / Mother Brain file created: `company/company-brain.md`
+- [x] Approval boundaries file created: `company/approval-boundaries.md`
+- [x] Priority department scaffold created: `departments/*/department-brain.md`
+- [x] Digital employee permissions file created: `digital-employees/*/PERMISSIONS.md`
+- [x] Initial context packet scaffold created: `context-packets/initial-company-context.md`
+- [x] Installation receipt created: `receipts/wizard-installation-receipt.md`
+- [x] Scorecard scaffold created: `company/company-scorecard.md`
+- [x] Guided pilot plan scaffold created: `company/guided-pilot-plan.md`
+
+## Operational Punto B evidence still required
+
+- [ ] Human-reviewed Direction contains real vision, mission, annual goal/rocks/OKRs and owner.
+- [ ] Approval boundaries were reviewed by the accountable human.
+- [ ] One priority department has a live workflow, owner, scorecard and escalation path.
+- [ ] One digital employee/role ran a bounded internal loop under explicit permissions.
+- [ ] A non-placeholder context packet briefed that loop.
+- [ ] A receipt proves what happened, why, source/provenance, approvals and observed outcome.
+- [ ] Scorecard/readiness was updated from evidence, not from generated defaults.
+- [ ] Next sprint was selected from the review.
+
+## Validation commands
+
+Scaffold check:
+
+`python scripts/validate_point_b_readiness.py --mode scaffold {output}`
+
+Operational check after the first human-reviewed loop:
+
+`python scripts/validate_point_b_readiness.py --mode operational {output}`
+
+## Rule
+
+This file is not proof by itself. A fresh wizard output should pass scaffold validation and fail operational validation until placeholders are replaced with evidenced private context and an actual reviewed operating loop has a receipt.
+""", encoding="utf-8")
+    return path
+
+
 def write_receipt(output: Path, args: argparse.Namespace, departments: list[str]) -> Path:
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     path = output / "receipts" / "wizard-installation-receipt.md"
@@ -491,6 +602,8 @@ def main() -> int:
         if selections["later"]:
             print("Install later: " + ", ".join(selections["later"]))
         print("Next: rerun with --yes, then python scripts/verify_installation.py <output>")
+        print("Then: python scripts/validate_point_b_readiness.py --mode scaffold <output>")
+        print("Guided Pilot 30/60/120: contract, Direction + first department, first internal loop")
         return 0
 
     if output.exists() and any(output.iterdir()):
@@ -513,14 +626,20 @@ def main() -> int:
     rollout = write_rollout_map(output, args, departments)
     scorecard = write_company_scorecard(output, args, departments)
     diagnosis = write_maturity_diagnosis(output, args, departments)
+    pilot_plan = write_guided_pilot_plan(output, args, departments)
+    point_b = write_point_b_readiness(output, args, departments)
     receipt = write_receipt(output, args, departments)
     print(f"Created guided Company Brain instance: {output}")
-    print(f"Files written: {count + 4}")
+    print(f"Files written: {count + 6}")
     print(f"Rollout map: {rollout}")
     print(f"Company scorecard: {scorecard}")
     print(f"Maturity diagnosis: {diagnosis}")
+    print(f"Guided pilot plan: {pilot_plan}")
+    print(f"Point B readiness: {point_b}")
     print(f"Receipt: {receipt}")
     print(f"Next: python scripts/verify_installation.py {output}")
+    print(f"Then scaffold check: python scripts/validate_point_b_readiness.py --mode scaffold {output}")
+    print(f"After a human-reviewed loop: python scripts/validate_point_b_readiness.py --mode operational {output}")
     return 0
 
 

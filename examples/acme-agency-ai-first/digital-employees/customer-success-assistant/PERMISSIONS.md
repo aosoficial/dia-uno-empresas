@@ -1,5 +1,10 @@
 # Customer Success Assistant — Permissions
 
+Owner: Example Operator.
+Source: synthetic customer-success operating review.
+Freshness: synthetic current example.
+Evidence: synthetic customer-health review and receipt.
+
 ## Allowed without additional approval
 
 - draft onboarding checklists.

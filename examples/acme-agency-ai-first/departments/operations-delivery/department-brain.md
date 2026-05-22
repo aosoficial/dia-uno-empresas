@@ -4,16 +4,17 @@ Department: `operations-delivery`
 Mission: service delivery, SOPs, QA, capacity, handoffs and client outcomes.
 Human owner: `Example Operator`
 Digital employee: `Operations Delivery Assistant`
-Freshness: `draft until reviewed`
+Source: synthetic Acme agency delivery review and first-loop evidence pack.
+Freshness: `synthetic example reviewed for public documentation`
 
 ## Current state
 
 - Point A symptoms:
   - `Knowledge scattered; processes manual; AI used ad hoc.`
 - Current tools:
-  - `fill privately`
+  - Synthetic CRM board, shared project tracker and delivery QA checklist.
 - Active services/processes:
-  - `fill privately`
+  - Synthetic sales-to-delivery handoff, weekly delivery QA and customer-risk review.
 
 ## Core operating questions
 
@@ -76,10 +77,10 @@ Run a delivery QA review on one internal or synthetic service flow:
 - Metric 1: `one company outcome metric`
 - Metric 2: `one department throughput metric`
 - Metric 3: `one quality or customer signal`
-- Delivery cycle time: `fill privately`
-- QA pass rate: `fill privately`
-- Blocked handoffs: `fill privately`
-- Client correction loops: `fill privately`
+- Delivery cycle time: synthetic weekly trend reviewed from delivery board evidence.
+- QA pass rate: synthetic checklist pass/fail count reviewed before client-facing output.
+- Blocked handoffs: synthetic count from sales-to-delivery handoff review.
+- Client correction loops: synthetic post-delivery correction count reviewed in customer success.
 
 ## Expected receipts
 

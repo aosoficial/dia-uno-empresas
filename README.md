@@ -43,6 +43,11 @@ Empresa AI-First de servicios productizados con:
 - [`docs/26_source_adapters.md`](docs/26_source_adapters.md) — estrategia para adaptar fuentes externas.
 - [`docs/27_human_agent_operating_system.md`](docs/27_human_agent_operating_system.md) — organización humano-agente.
 - [`docs/28_feedback_loop.md`](docs/28_feedback_loop.md) — mejora continua.
+- [`docs/39_guided_pilot_happy_path.md`](docs/39_guided_pilot_happy_path.md) — piloto guiado 30 / 60 / 120.
+- [`docs/40_self_serve_happy_path.md`](docs/40_self_serve_happy_path.md) — camino self-serve.
+- [`docs/41_guided_pilot_delivery_model.md`](docs/41_guided_pilot_delivery_model.md) — modelo de entrega del piloto.
+- [`docs/42_point_b_definition.md`](docs/42_point_b_definition.md) — definición verificable de Punto B.
+- [`docs/43_self_serve_operator_ux.md`](docs/43_self_serve_operator_ux.md) — UX operativa self-serve.
 
 ### 2. Generar una empresa privada guiada
 
@@ -50,6 +55,18 @@ Empresa AI-First de servicios productizados con:
 python scripts/company_brain_wizard.py --dry-run --company "Acme Demo" --company-type agency --output /tmp/acme-company-brain
 python scripts/company_brain_wizard.py --company "Acme Demo" --company-type agency --output /tmp/acme-company-brain --yes
 python scripts/verify_installation.py /tmp/acme-company-brain
+python scripts/validate_point_b_readiness.py --mode scaffold /tmp/acme-company-brain
+# Solo después de un primer loop humano revisado con receipt real:
+python scripts/validate_point_b_readiness.py --mode operational /tmp/acme-company-brain
+```
+
+También puedes usar:
+
+```bash
+make validate
+make demo-agency
+make point-b-scaffold INSTANCE=/tmp/company-brain-demo-agency
+make point-b INSTANCE=/tmp/company-brain-demo-agency  # operational; requires real reviewed evidence
 ```
 
 Para un bootstrap mínimo:
@@ -80,7 +97,7 @@ python scripts/bootstrap_company_brain.py --dry-run --company "Acme Demo" --comp
 - Roadmap 48h / 7d / 30d.
 - Receipts, StateChanges y Context Packets.
 - Trace policy y model strategy.
-- Validadores de seguridad pública e instalabilidad.
+- Validadores de seguridad pública, instalabilidad y Point B readiness.
 
 ## Repo público vs instancia privada
 

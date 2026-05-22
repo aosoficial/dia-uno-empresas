@@ -1,5 +1,10 @@
 # Approval Boundaries
 
+Owner: Example Operator.
+Source: synthetic approval review.
+Freshness: synthetic current example.
+Evidence: synthetic day-1 permission check and first operating receipt.
+
 ## Allowed without approval
 
 - Internal drafting.

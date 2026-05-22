@@ -49,3 +49,19 @@ What changed:
 Evidence:
 - Local validation required before publication.
 - No real operator/company/client data intended in public docs.
+
+## R-006 — Guided Pilot and Self-Serve reliability pass
+
+Date: 2026-05-22
+Owner: Hermes Clean
+Scope: local repo change, not pushed.
+
+What changed:
+- Added guided pilot 30/60/120 path, delivery model and Point B definition.
+- Added self-serve happy path, operator UX, `make` shortcuts and troubleshooting.
+- Added pilot templates and Point B readiness scorecard.
+- Added `scripts/validate_point_b_readiness.py` and wizard-generated `guided-pilot-plan.md` / `point-b-readiness.md`.
+
+Evidence:
+- Run repository validators, tests, smoke installs and Point B validator before publication.
+- Do not claim guaranteed transformation; claim verified Punto B slice when evidence passes.

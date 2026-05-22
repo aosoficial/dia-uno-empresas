@@ -32,7 +32,9 @@ Acme sells productized growth systems to B2B software companies. Current deliver
 ## Operating state
 
 Owner: Example Operator.
+Source: synthetic leadership workshop and day-1 operating review.
 Freshness: synthetic current example.
 Allowed action: internal drafting, review, verification and receipts.
 Forbidden action: external/public/economic/legal/production/sensitive action.
 Required approval: any real-world execution.
+Evidence: synthetic day-1 context packet, receipt and scorecard update.

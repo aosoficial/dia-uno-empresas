@@ -41,6 +41,12 @@ jobs:
           python scripts/company_brain_wizard.py --dry-run --company "Acme Demo" --company-type agency --output /tmp/acme-company-brain
           python scripts/company_brain_wizard.py --company "Acme Demo" --company-type agency --output /tmp/acme-company-brain --yes
           python scripts/verify_installation.py /tmp/acme-company-brain
+          python scripts/validate_point_b_readiness.py --mode scaffold /tmp/acme-company-brain
+          if python scripts/validate_point_b_readiness.py --mode operational /tmp/acme-company-brain; then
+            echo "Fresh wizard scaffold must not pass operational Point B readiness" >&2
+            exit 1
+          fi
+          python scripts/validate_point_b_readiness.py --mode operational --allow-synthetic examples/acme-agency-ai-first
 
       - name: Build docs
         run: python scripts/build_docs.py
