@@ -41,6 +41,8 @@ Fill this before asking any agent:
 
 If any of those are unclear, stop and complete them first.
 
+If you need a concrete shape before using real company facts, open the example kit: [`examples/first-operating-loop/README.md`](examples/first-operating-loop/README.md). The examples are fictional and are not Punto B evidence.
+
 ## Agent prompt skeleton
 
 Paste this only after the context packet is complete:

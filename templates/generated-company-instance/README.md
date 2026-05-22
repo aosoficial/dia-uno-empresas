@@ -15,7 +15,7 @@ Trabaja en este orden. No intentes activar muchos agentes a la vez: el objetivo 
 
 1. Lee `MAP.md` y `AGENTS.md`.
 2. Completa Dirección/Mother Brain en `company/company-brain.md` con hechos verificados: propósito, modelo de negocio, metas, prioridades, sistemas en alcance y preguntas abiertas.
-3. Abre `FIRST_OPERATING_LOOP.md`. Es la guía corta para ejecutar el primer ciclo real de 30–60 minutos sin confundirse entre scaffold y Punto B operativo.
+3. Abre `FIRST_OPERATING_LOOP.md`. Es la guía corta para ejecutar el primer ciclo real de 30–60 minutos sin confundirse entre scaffold y Punto B operativo. Si necesitas ver la forma antes de usar datos reales, abre `examples/first-operating-loop/README.md`.
 4. Completa `company/source-of-truth-map.md`. Es un artefacto obligatorio de los primeros 120 minutos y la fuente principal para el primer Context Packet: identifica Drive/Docs, Notion/wiki, Sheets, CRM, WhatsApp/Slack, email, calendario, proyectos y finanzas con propietario, permisos, frescura, regla de recibo y siguiente acción.
 5. Revisa límites de aprobación en `company/approval-boundaries.md`. Nada externo, público, económico, legal, de producción o sensible se ejecuta sin aprobación humana explícita.
 6. Elige un primer departamento prioritario y completa su brain, por ejemplo `departments/{{ first_department }}/department-brain.md` o `departments/operations/department-brain.md`.
@@ -77,6 +77,7 @@ La definición vive en `docs/42_point_b_definition.md` del framework. Dentro de 
 
 - Dirección/Mother Brain: `company/company-brain.md`
 - Guía del primer ciclo real: `FIRST_OPERATING_LOOP.md`
+- Example kit del primer ciclo: `examples/first-operating-loop/README.md`
 - Mapa de fuentes/sistemas: `company/source-of-truth-map.md`
 - Límites de aprobación: `company/approval-boundaries.md`
 - Scorecard: `company/company-scorecard.md`

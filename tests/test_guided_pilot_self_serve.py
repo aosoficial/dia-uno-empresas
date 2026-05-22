@@ -66,6 +66,32 @@ def test_first_operating_loop_examples_make_evidence_concrete():
         assert marker in text
 
 
+def test_first_operating_loop_example_kit_is_safe_and_actionable():
+    kit = ROOT / "templates/generated-company-instance/examples/first-operating-loop"
+    required = [
+        "README.md",
+        "context-packet-example.md",
+        "receipt-example.md",
+        "scorecard-example.md",
+    ]
+    for name in required:
+        path = kit / name
+        assert path.exists(), f"missing first loop example file: {name}"
+        text = path.read_text(encoding="utf-8")
+        assert "example" in text.lower()
+        assert "Punto B" in text or "punto b" in text.lower() or "human-reviewed" in text
+    combined = "\n".join((kit / name).read_text(encoding="utf-8") for name in required)
+    for marker in [
+        "Context Packet",
+        "operational receipt",
+        "human-reviewed",
+        "scorecard",
+        "Do not treat",
+        "fictional",
+    ]:
+        assert marker in combined
+
+
 def test_source_of_truth_maps_are_operator_usable_and_required():
     template = ROOT / "templates/integrations/existing-systems-map.md"
     generated = ROOT / "templates/generated-company-instance/company/source-of-truth-map.md"
