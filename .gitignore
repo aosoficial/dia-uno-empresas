@@ -1,6 +1,8 @@
 # Secrets / credentials
 .env
 .env.*
+!.env.example
+!**/.env.example
 *.pem
 *.key
 *.p12
@@ -12,6 +14,8 @@
 *secret*
 *password*
 *credential*
+!**/secrets/
+!**/secrets/README.md
 
 # Private pilot material that must not be pushed/public without review
 pilot/private/**

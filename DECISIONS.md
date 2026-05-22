@@ -28,6 +28,18 @@ This file records public-safe method decisions for Company Brain System.
 
 ## D-005 — Commercial help path is part of the repo
 
-**Decision:** the repo should remain useful for free, while clearly showing how to ask Libera for help when implementation gets blocked.
+**Decision:** the repo should remain useful for free, while clearly showing how to ask DIA UNO for help when implementation gets blocked.
 
 **Why:** Company Brain System is a lead magnet and an implementation method. The commercial path should be visible but not required.
+
+## D-006 — Punto B requires evidence, not narrative
+
+**Decision:** a company can only claim the minimum Punto B slice when Direction, approval boundaries, one department, one digital employee permission file, one context packet, one Receipt, one scorecard update and one next sprint exist as evidence.
+
+**Why:** the accelerator should increase pilot reliability without overpromising guaranteed transformation. The validator makes the claim operational and auditable.
+
+## D-007 — Self-serve must expose the same safety gates as guided delivery
+
+**Decision:** self-serve users get a happy path, `make` commands, troubleshooting, Point B validation and explicit “do not paste secrets/customer data” rules.
+
+**Why:** maximizing self-serve should not weaken privacy, approval or public-safety boundaries.

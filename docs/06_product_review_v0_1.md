@@ -1,6 +1,6 @@
 # 06 — Product Review v0.1
 
-> **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, un método abierto de Libera. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [cuestionario Company Brain](../templates/questionnaires/company-brain-intake.md) o lee [cómo puede ayudarte Libera](12_get_help_from_libera.md).
+> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
 
 ## Revisión de Company Brain System como documentación pública
 
@@ -148,7 +148,7 @@ Existen templates de Receipt, StateChange y Context Packet tanto dentro de `temp
 | Reemplazar `<url-del-repo>` | URL real o instrucción genérica tipo `git clone https://github.com/<org>/company-brain-system.git` |
 | Añadir badge de versión | `v0.1.0` visible al inicio |
 | Añadir sección "Quick Start" | Caso mínimo: crear 1 Company Brain con 3 entidades + 1 agente con Runtime Pack mínimo. Enlazar a example/ |
-| Enlazar LICENSE | "Licencia: [MIT](LICENSE)" en vez de solo "MIT" |
+| Enlazar LICENSE | "Licencia: [MIT](../LICENSE)" en vez de solo "MIT" |
 | Simplificar "Cómo empezar" | Los 6 pasos actuales son correctos pero abstractos. Reescribir como "ruta de lectura" + "ruta práctica" |
 
 ### docs/00_master_playbook.md

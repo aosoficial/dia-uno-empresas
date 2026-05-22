@@ -20,8 +20,84 @@ This file is a public-safe example receipt log for repository-level work.
 
 ## R-003 — Commercial breadcrumbs added
 
-**Action:** added Libera help breadcrumbs across the documentation.
+**Action:** added DIA UNO help breadcrumbs across the documentation.
 
 **Output:** each main doc points blocked implementers toward the help process.
 
-**Verification:** docs link to `docs/12_get_help_from_libera.md`.
+**Verification:** docs link to `docs/12_get_help_from_dia_uno.md`.
+
+## R-004 — ORGO/Hermes installer readiness pass
+
+**Action:** added ORGO/Hermes onboarding, private company bootstrap, first digital employee guide, model/trace strategy and installability validators.
+
+**Output:** public framework now distinguishes repo content from private company instances and can generate/verify a demo private instance.
+
+**Verification:** repo, schema, docs build, link, public-safety, installable-runtime, bootstrap dry-run, bootstrap write and installation verifier checks pass locally.
+
+## R-005 — Phase B guided accelerator assets
+
+Date: 2026-05-21
+Owner: Hermes Clean
+Scope: local repo change, not pushed.
+
+What changed:
+- Added Dirección / Mother Brain, department rollout, vertical, source adapter, human-agent OS and feedback loop docs.
+- Added department and company-type templates.
+- Added guided `company_brain_wizard.py`.
+- Updated validators/verifier for accelerator assets.
+
+Evidence:
+- Local validation required before publication.
+- No real operator/company/client data intended in public docs.
+
+## R-006 — Guided Pilot and Self-Serve reliability pass
+
+Date: 2026-05-22
+Owner: Hermes Clean
+Scope: local repo change, not pushed.
+
+What changed:
+- Added guided pilot 30/60/120 path, delivery model and Point B definition.
+- Added self-serve happy path, operator UX, `make` shortcuts and troubleshooting.
+- Added pilot templates and Point B readiness scorecard.
+- Added `scripts/validate_point_b_readiness.py` and wizard-generated `guided-pilot-plan.md` / `point-b-readiness.md`.
+
+Evidence:
+- Run repository validators, tests, smoke installs and Point B validator before publication.
+- Do not claim guaranteed transformation; claim verified Punto B slice when evidence passes.
+
+## R-007 — START_HERE and scaffold-first operator path
+
+Date: 2026-05-22
+Owner: Hermes Clean
+Scope: autonomous cron change on `auto/point-b-readiness-loop`; no main merge, no PR, no deploy.
+
+What changed:
+- Added root `START_HERE.md` as the first nontechnical entrypoint.
+- Linked `START_HERE.md` from the first section of `README.md`.
+- Updated self-serve docs so the first Point-B validation is scaffold mode, not operational mode.
+- Explicitly documented that a fresh scaffold should not pass operational Punto B until a human-reviewed loop produces evidence.
+
+Why:
+- A nontechnical operator needs one safe first path: install private scaffold, validate scaffold structure, then create real operational evidence before claiming Punto B.
+- This reduces false positives and prevents confusing an expected operational failure with a broken install.
+
+Source/provenance:
+- 2026-05-22 autonomous Point-B improvement backlog items `CBS-PB-UX-001` and `CBS-PB-UX-002`.
+- Spec and quality review subagents approved the documentation slice.
+
+Allowed actions:
+- Local documentation/template/script edits inside this repository.
+- Local validation with synthetic/private temporary instances.
+
+Forbidden actions:
+- No push to `main`, merge, PR, deploy or publication from this run.
+- No real client/company data or secrets in public examples.
+
+Validation:
+- `make validate` passed, including repo, schema, links, public safety, installable runtime, department quality and pytest checks.
+- Wizard smoke created a synthetic private instance, installation verification passed, scaffold readiness passed.
+- Operational readiness on the fresh scaffold failed as expected with “Do not claim operational Punto B yet.”
+
+Next gap:
+- Continue translating/self-serve hardening: Spanish summaries for remaining operator docs, standardized `python3` commands, and simpler troubleshooting for nontechnical users.

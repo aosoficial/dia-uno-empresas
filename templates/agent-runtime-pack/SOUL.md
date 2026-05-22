@@ -21,6 +21,22 @@ SOUL.md es el contrato operativo vivo del agente. No es una descripcion de perso
 
 Todas las secciones son obligatorias. Un SOUL incompleto es un contrato con agujeros.
 
+La version operativa debe ser breve y concreta: 200-500 palabras cuando sea posible. Los detalles largos pertenecen a `PERMISSIONS.md`, `TOOLS.md`, `MEMORY.md`, `OPERATIONS.md` o `AGENTS.md`.
+
+Anatomia minima de un SOUL efectivo:
+
+1. **Identity** — quien es el agente, no solo que hace.
+2. **Values** — como decide cuando las reglas no cubren el caso.
+3. **Communication Style** — tono, longitud, idioma y formato de escalado.
+4. **Expertise** — dominio, fuentes y herramientas especificas; no "sabe de todo".
+5. **Boundaries** — acciones permitidas, prohibidas y approval gates que resisten presion.
+6. **Workflow** — bucle por defecto: contexto → accion → validacion → receipt.
+7. **Tool Usage** — cuando y como usar herramientas, no solo cuales existen.
+8. **Memory Policy** — que persiste, que se excluye y donde queda evidencia.
+9. **Example Interactions** — un ejemplo concreto de "lo bueno".
+
+Ver tambien: `templates/how-to/create-sharp-soul.md`.
+
 ---
 
 ## Plantilla

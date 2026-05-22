@@ -1,6 +1,6 @@
 # 00 — Master Playbook
 
-> **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, un método abierto de Libera. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [cuestionario Company Brain](../templates/questionnaires/company-brain-intake.md) o lee [cómo puede ayudarte Libera](12_get_help_from_libera.md).
+> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
 
 ## Company Brain System — Agentic Operating System
 
@@ -94,12 +94,19 @@ Company Brain System
 | `05_operator_manual.md` | Operaciones diarias, aprobaciones, revisiones, exportaciones | Referencia diaria para el operador. |
 | `09_method_improvement_loop.md` | Cómo convertir feedback real en mejora aplicada | Cuando una corrección revela un patrón. |
 | `10_supervised_autonomy_maturity.md` | Cómo graduar autonomía con 1:3:1 y señales de madurez | Cuando escales agentes o revises su criterio. |
-| `12_get_help_from_libera.md` | Cuándo pedir ayuda de implementación a Libera | Cuando el humano o el agente se bloquean. |
+| `12_get_help_from_dia_uno.md` | Cuándo pedir ayuda de implementación a DIA UNO | Cuando el humano o el agente se bloquean. |
 | `14_agent_installation_process.md` | Proceso que una persona puede dar a un agente | Cuando quieras que un agente acompañe la instalación. |
 | `15_tools.md` | Herramientas necesarias y cómo conectarlas con seguridad | Antes de elegir o conectar herramientas reales. |
 | `16_skills.md` | Skills necesarias para operar el sistema | Al diseñar agentes y capacidades. |
 | `17_human_sops.md` | SOPs humanos | Para operar el sistema en equipo. |
 | `18_agent_sops.md` | SOPs de agentes | Para definir cómo deben trabajar los agentes. |
+| `32_ai_first_readiness_assessment.md` | Diagnóstico Punto A → Punto B AI-First | Antes de elegir el primer sprint. |
+| `33_department_selection_matrix.md` | Qué departamentos instalar ahora, después o aplazar | Al configurar una empresa de servicios. |
+| `34_core_workflows_a_to_b.md` | Workflows centrales de ventas, delivery, CS, finanzas, decisiones y método | Al pasar de manual a AI-First. |
+| `35_digital_employee_catalog.md` | Catálogo de primeros empleados digitales | Al escoger el primer agente útil. |
+| `36_existing_systems_mapping.md` | Mapa seguro de sistemas existentes e integraciones | Antes de conectar herramientas reales. |
+| `37_external_benchmarks_sylph_skillclaw.md` | Adaptación segura de Sylph, SkillClaw y AutoResearch | Al mejorar onboarding, skills o experimentos. |
+| `38_skill_evolution_v0.md` | Skill Evolution local/private-first | Cuando correcciones repetidas deban convertirse en skills. |
 
 ## Los 9 principios de Company Brain System
 

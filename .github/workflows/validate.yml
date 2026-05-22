@@ -19,13 +19,37 @@ jobs:
           python-version: '3.11'
 
       - name: Install validation dependencies
-        run: python -m pip install --upgrade pip pyyaml
+        run: python -m pip install --upgrade pip pyyaml pytest
 
       - name: Validate repository
         run: python scripts/validate_repo.py
 
       - name: Validate schemas
         run: python scripts/validate_schemas.py
+
+      - name: Validate links
+        run: python scripts/validate_links.py
+
+      - name: Validate public safety
+        run: python scripts/validate_public_safety.py
+
+      - name: Validate installable runtime
+        run: python scripts/validate_installable_runtime.py
+
+      - name: Run self-serve regression tests
+        run: python -m pytest tests/test_guided_pilot_self_serve.py -q -p no:cacheprovider
+
+      - name: Smoke test guided wizard
+        run: |
+          python scripts/company_brain_wizard.py --dry-run --company "Acme Demo" --company-type agency --output /tmp/acme-company-brain
+          python scripts/company_brain_wizard.py --company "Acme Demo" --company-type agency --output /tmp/acme-company-brain --yes
+          python scripts/verify_installation.py /tmp/acme-company-brain
+          python scripts/validate_point_b_readiness.py --mode scaffold /tmp/acme-company-brain
+          if python scripts/validate_point_b_readiness.py --mode operational /tmp/acme-company-brain; then
+            echo "Fresh wizard scaffold must not pass operational Point B readiness" >&2
+            exit 1
+          fi
+          python scripts/validate_point_b_readiness.py --mode operational --allow-synthetic examples/acme-agency-ai-first
 
       - name: Build docs
         run: python scripts/build_docs.py

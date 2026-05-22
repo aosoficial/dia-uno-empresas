@@ -242,4 +242,4 @@ Primer Receipt como evidencia de trabajo
 
 Esto basta para entender el sistema básico. Todo lo demás consiste en añadir mejor contexto, permisos más seguros y mejores hábitos operativos con el tiempo.
 
-Si te bloqueas, lee [`docs/12_get_help_from_libera.md`](12_get_help_from_libera.md) o abre un issue en GitHub.
+Si te bloqueas, lee [`docs/12_get_help_from_dia_uno.md`](12_get_help_from_dia_uno.md) o abre un issue en GitHub.

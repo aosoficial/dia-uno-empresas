@@ -27,5 +27,5 @@ Enlaza archivos, notas o ejemplos si ayuda. No incluyas datos sensibles de clien
 
 - [ ] Una indicación hacia el documento o plantilla correcta
 - [ ] Feedback sobre mi estructura
-- [ ] Soporte de implementación de Libera
+- [ ] Soporte de implementación de DIA UNO
 - [ ] Otro

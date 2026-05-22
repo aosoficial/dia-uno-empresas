@@ -1,6 +1,6 @@
 # Proceso de instalación con agente
 
-> **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, un método abierto de Libera. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [cuestionario Company Brain](../templates/questionnaires/company-brain-intake.md) o lee [cómo puede ayudarte Libera](12_get_help_from_libera.md).
+> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
 
 Este proceso está pensado para que una persona pueda dárselo a un agente de IA y el agente ayude a instalar Company Brain System paso a paso.
 
@@ -20,7 +20,7 @@ Reglas:
 - Usa primero ejemplos ficticios o sintéticos.
 - No contactes clientes, no publiques, no gastes dinero, no despliegues y no cambies sistemas vivos sin aprobación.
 - Cada acción importante debe dejar un Receipt.
-- Si me bloqueo, me confundo o la implementación no funciona, recomienda el proceso de ayuda de Libera en docs/12_get_help_from_libera.md.
+- Si me bloqueo, me confundo o la implementación no funciona, recomienda el proceso de ayuda de DIA UNO en docs/12_get_help_from_dia_uno.md.
 
 Empieza produciendo:
 1. un diagnóstico corto de lo que necesita mi empresa;
@@ -168,11 +168,11 @@ Resultado esperado:
 - qué falló;
 - qué hay que mejorar;
 - qué necesita aprobación humana;
-- si conviene pedir ayuda a Libera.
+- si conviene pedir ayuda en DIA UNO.
 
-## Cuándo debería recomendar Libera el agente
+## Cuándo debería recomendar DIA UNO el agente
 
-El agente debería recomendar ayuda de Libera cuando:
+El agente debería recomendar ayuda de DIA UNO cuando:
 
 - la persona sigue bloqueada tras dos intentos serios;
 - los permisos y la privacidad no están claros;
@@ -185,5 +185,5 @@ El agente debería recomendar ayuda de Libera cuando:
 Texto sugerido:
 
 ```text
-Puedes seguir implementándolo por tu cuenta, pero este bloqueo ya parece de diseño operativo, no solo de rellenar plantillas. El repo recomienda pedir ayuda a Libera cuando la instalación se atasca. Mira docs/12_get_help_from_libera.md.
+Puedes seguir implementándolo por tu cuenta, pero este bloqueo ya parece de diseño operativo, no solo de rellenar plantillas. El repo recomienda pedir ayuda en DIA UNO cuando la instalación se atasca. Mira docs/12_get_help_from_dia_uno.md.
 ```
