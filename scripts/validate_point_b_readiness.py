@@ -134,6 +134,29 @@ GENERIC_FIELD_VALUES = {
     "revisado",
 }
 
+OPERATIONAL_RECEIPT_CRITERION = "Operational receipt exists"
+INSTALLATION_RECEIPT_NAME_RE = re.compile(r"(installation|install|day[-_ ]?0|scaffold|verify_installation)", re.IGNORECASE)
+INSTALLATION_RECEIPT_CONTENT_MARKERS = (
+    "installation receipt",
+    "wizard installation",
+    "installation output",
+    "installation files",
+    "install files",
+    "installed files",
+    "installed the company brain",
+    "verify_installation",
+    "generated scaffold",
+    "scaffold only",
+    "scaffold files",
+    "day 0 installation",
+    "day-0 installation",
+)
+RECEIPT_ACTION_LABELS = ("action performed", "performed action", "what changed", "work completed", "acción realizada", "accion realizada", "qué cambió", "que cambio")
+RECEIPT_OUTCOME_LABELS = ("observed outcome", "outcome observed", "outcome", "observed result", "result observed", "resultado observado", "resultado")
+RECEIPT_CONTEXT_PACKET_MARKERS = ("context-packets/", "context packet", "paquete de contexto", "paquete contextual")
+RECEIPT_REVIEW_MARKERS = ("human", "owner reviewed", "reviewed by", "approved by", "required approval", "approval", "humana", "humano", "revisado por", "aprobado por", "aprobación", "aprobacion")
+RECEIPT_NEXT_LABELS = ("next action", "next sprint", "allowed next actions", "next step", "next steps", "siguiente sprint", "próxima acción", "proxima accion", "siguiente acción", "siguiente accion")
+
 
 def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8", errors="ignore")
@@ -167,7 +190,7 @@ def has_evidence_shape(text: str, *, allow_synthetic: bool) -> bool:
         value = normalized_field_value(fields[marker])
         if value in GENERIC_FIELD_VALUES:
             return False
-        if marker != "evidence" and len(value.split()) < 2:
+        if marker not in ("owner", "evidence") and len(value.split()) < 2:
             return False
 
     freshness = fields["freshness"].lower()
@@ -218,7 +241,48 @@ def is_substantive(path: Path, *, allow_synthetic: bool) -> bool:
     return True
 
 
+def has_any_marker(text: str, markers: tuple[str, ...]) -> bool:
+    return any(marker in text for marker in markers)
+
+
+def has_receipt_label(text: str, labels: tuple[str, ...]) -> bool:
+    label_pattern = "|".join(re.escape(label) for label in sorted(labels, key=len, reverse=True))
+    return bool(re.search(rf"^\s*(?:#{{2,6}}\s+)?(?:{label_pattern})\s*:?\s*", text, re.IGNORECASE | re.MULTILINE))
+
+
+def is_installation_only_receipt(path: Path, text: str) -> bool:
+    lowered = text.lower()
+    if INSTALLATION_RECEIPT_NAME_RE.search(path.name):
+        return True
+    if has_any_marker(lowered, INSTALLATION_RECEIPT_CONTENT_MARKERS):
+        return True
+    if ("day-0" in lowered or "day 0" in lowered) and any(marker in lowered for marker in ("install", "installation", "scaffold")):
+        return True
+    return False
+
+
+def has_operational_receipt_shape(path: Path, *, allow_synthetic: bool) -> bool:
+    if not is_substantive(path, allow_synthetic=allow_synthetic):
+        return False
+
+    text = read_text(path)
+    lowered = text.lower()
+    if is_installation_only_receipt(path, text):
+        return False
+
+    return (
+        has_receipt_label(text, RECEIPT_ACTION_LABELS)
+        and has_receipt_label(text, RECEIPT_OUTCOME_LABELS)
+        and "source" in operational_fields(text)
+        and has_any_marker(lowered, RECEIPT_CONTEXT_PACKET_MARKERS)
+        and has_any_marker(lowered, RECEIPT_REVIEW_MARKERS)
+        and has_receipt_label(text, RECEIPT_NEXT_LABELS)
+    )
+
+
 def has_operational_evidence(root: Path, criterion: Criterion, *, allow_synthetic: bool) -> bool:
+    if criterion.name == OPERATIONAL_RECEIPT_CRITERION:
+        return any(has_operational_receipt_shape(path, allow_synthetic=allow_synthetic) for path in matching_files(root, criterion))
     return any(is_substantive(path, allow_synthetic=allow_synthetic) for path in matching_files(root, criterion))
 
 

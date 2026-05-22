@@ -115,7 +115,7 @@ Owner: Founder
 Source: leadership workshop
 Freshness: reviewed this week
 Approval: human owner reviewed
-Evidence: first operating loop evidence pack
+Evidence: receipts/first-loop.md
 Vision and mission are documented. Annual goal, rocks and OKRs are reviewed for the first operating slice.
 """,
         "company/approval-boundaries.md": """
@@ -124,7 +124,7 @@ Owner: Founder
 Source: approval workshop
 Freshness: reviewed this week
 Approval: human owner reviewed
-Evidence: approval matrix reviewed before first loop
+Evidence: receipts/first-loop.md
 External, economic, legal, production and sensitive actions require explicit human approval. Forbidden actions are listed.
 """,
         "departments/operations/department-brain.md": """
@@ -133,7 +133,7 @@ Owner: Operations lead
 Source: department review
 Freshness: reviewed this week
 Approval: human owner reviewed
-Evidence: first operational loop used this department brain
+Evidence: receipts/first-loop.md
 Responsibilities, workflows, scorecard, escalation path and operating cadence are defined for the first slice.
 """,
         "digital-employees/ops-agent/PERMISSIONS.md": """
@@ -142,7 +142,7 @@ Owner: Founder
 Source: role design
 Freshness: reviewed this week
 Approval: human owner reviewed
-Evidence: first operational loop permission check
+Evidence: receipts/first-loop.md
 Allowed actions, forbidden actions, tool boundaries, handoffs and approval gates are defined before active work.
 """,
         "context-packets/first-loop.md": """
@@ -151,22 +151,24 @@ Owner: Founder
 Source: source-of-truth map
 Freshness: reviewed this week
 Approval: human owner reviewed
-Evidence: receipt/first-loop.md
+Evidence: receipts/first-loop.md
 Goal, scope, sources, assumptions, risks, allowed actions, forbidden actions and expected outcome are complete.
 """,
         "receipts/first-loop.md": """
 # First Loop Receipt
 Owner: Founder
-Source: context-packets/first-loop.md
+Source: reviewed context-packets/first-loop.md
 Freshness: completed this week
 Approval: human owner reviewed
 Evidence: scorecard update and reviewed output
+Action performed: reviewed one internal operations-delivery handoff using the first-loop context packet.
 Observed outcome: one internal operating loop was completed, reviewed and converted into the next sprint.
+Next action: Sprint 2 will tighten the delivery handoff and rerun the margin check with human approval.
 """,
         "company/company-scorecard.md": """
 # Company Scorecard
 Owner: Founder
-Source: receipt/first-loop.md
+Source: reviewed receipts/first-loop.md
 Freshness: updated this week
 Approval: human owner reviewed
 Evidence: first loop receipt
@@ -186,6 +188,128 @@ Next sprint was selected from the reviewed evidence and has a clear owner, expec
         path = root / rel
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(text.strip() + "\n", encoding="utf-8")
+
+
+def test_operational_validator_accepts_complete_first_loop_receipt(tmp_path):
+    instance = tmp_path / "operational-complete-receipt"
+    write_operational_fixture(instance)
+
+    result = run_cmd([POINT_B_VALIDATOR, "--mode", "operational", instance])
+    assert result.returncode == 0, result.stderr + result.stdout
+    assert "Point B operational validation OK" in result.stdout
+
+
+def test_operational_validator_accepts_concise_founder_owner(tmp_path):
+    instance = tmp_path / "concise-founder-owner"
+    write_operational_fixture(instance)
+
+    result = run_cmd([POINT_B_VALIDATOR, "--mode", "operational", instance])
+    assert result.returncode == 0, result.stderr + result.stdout
+    assert "Point B operational validation OK" in result.stdout
+
+
+def test_operational_validator_requires_receipt_context_packet_link_separate_from_source(tmp_path):
+    instance = tmp_path / "receipt-source-no-context-packet"
+    write_operational_fixture(instance)
+    (instance / "receipts" / "first-loop.md").write_text(
+        """
+# First Loop Receipt
+Owner: Founder
+Source / provenance: founder notes and operator transcript
+Freshness: completed this week
+Approval: human owner reviewed
+Evidence: scorecard update and reviewed output
+Action performed: reviewed one internal operations-delivery handoff using approved source notes.
+Observed outcome: one internal operating loop was completed, reviewed and converted into a decision.
+Next action: Sprint 2 will tighten the delivery handoff and rerun the margin check with human approval.
+""".strip()
+        + "\n",
+        encoding="utf-8",
+    )
+
+    result = run_cmd([POINT_B_VALIDATOR, "--mode", "operational", instance])
+    assert result.returncode == 1
+    assert "Operational receipt exists" in result.stdout
+    assert "missing mandatory operational evidence" in result.stdout.lower()
+    assert "Point B operational validation OK" not in result.stdout
+
+
+def test_operational_validator_rejects_receipt_without_explicit_action_outcome_next_lines(tmp_path):
+    instance = tmp_path / "receipt-generic-prose-no-receipt-lines"
+    write_operational_fixture(instance)
+    (instance / "receipts" / "first-loop.md").write_text(
+        """
+# First Loop Receipt
+Owner: Founder
+Source: reviewed context-packets/first-loop.md
+Freshness: completed this week
+Approval: human owner reviewed
+Evidence: scorecard update and reviewed output
+The operator reviewed the internal handoff and the result was captured for the sprint. This generic prose mentions reviewed, result and sprint, but it intentionally omits explicit receipt lines for the performed action, observed outcome and next action.
+""".strip()
+        + "\n",
+        encoding="utf-8",
+    )
+
+    result = run_cmd([POINT_B_VALIDATOR, "--mode", "operational", instance])
+    assert result.returncode == 1
+    assert "Operational receipt exists" in result.stdout
+    assert "missing mandatory operational evidence" in result.stdout.lower()
+    assert "Point B operational validation OK" not in result.stdout
+
+
+def test_operational_validator_rejects_installation_receipt_even_when_evidence_shaped(tmp_path):
+    instance = tmp_path / "installation-receipt-renamed-risk"
+    write_operational_fixture(instance)
+    (instance / "receipts" / "first-loop.md").unlink()
+    (instance / "receipts" / "installation-receipt.md").write_text(
+        """
+# Installation Receipt
+Owner: Founder
+Source: reviewed context-packets/first-loop.md
+Freshness: completed this week
+Approval: human owner reviewed
+Evidence: company/company-scorecard.md
+Action performed: installed the Company Brain folders and verified the installation output.
+Observed outcome: the Company Brain installation exists with folders and starter files ready for review.
+Next action: begin the first operational sprint after installation is complete.
+""".strip()
+        + "\n",
+        encoding="utf-8",
+    )
+
+    result = run_cmd([POINT_B_VALIDATOR, "--mode", "operational", instance])
+    assert result.returncode == 1
+    assert "Operational receipt exists" in result.stdout
+    assert "missing mandatory operational evidence" in result.stdout.lower()
+    assert "Point B operational validation OK" not in result.stdout
+
+
+def test_operational_validator_rejects_day_0_installation_receipt_even_with_low_min_score(tmp_path):
+    instance = tmp_path / "day-0-installation-receipt-risk"
+    write_operational_fixture(instance)
+    (instance / "receipts" / "first-loop.md").unlink()
+    (instance / "receipts" / "day-0-installation-receipt.md").write_text(
+        """
+# Receipt — Day 0 Installation
+Owner: Founder
+Source: reviewed context-packets/first-loop.md
+Freshness: completed this week
+Approval: human owner reviewed
+Evidence: company/company-scorecard.md
+Action performed: installed files and ran verify_installation after the install.
+Observed outcome: day-0 installation files were present and ready for an operational loop.
+Next action: select the first operational sprint after installation.
+""".strip()
+        + "\n",
+        encoding="utf-8",
+    )
+
+    result = run_cmd([POINT_B_VALIDATOR, "--mode", "operational", "--min-score", "1", instance])
+    assert result.returncode == 1
+    assert "Operational receipt exists" in result.stdout
+    assert "missing mandatory operational evidence" in result.stdout.lower()
+    assert "Point B operational validation OK" not in result.stdout
 
 
 def test_operational_validator_requires_all_mandatory_criteria_even_if_score_is_high(tmp_path):
@@ -317,7 +441,9 @@ Fuente / procedencia: context-packets/first-loop.md revisado
 Vigencia: completado 2026-05-22
 Aprobacion: revisado por operadora humana
 Evidencia: company/company-scorecard.md
+Acción realizada: se revisó el paquete de contexto y se ejecutó un ciclo operativo interno.
 Resultado observado: se completó un ciclo operativo interno, fue revisado y se convirtió en una decisión para el siguiente sprint.
+Siguiente acción: el siguiente sprint ajustará el traspaso operativo con aprobación humana.
 """,
         "company/company-scorecard.md": """
 # Scorecard de compañía
