@@ -4,6 +4,8 @@ Convierte una agencia, consultoría o negocio freelance en una empresa AI-First 
 
 Company Brain System es una aceleradora guiada para pasar de **Punto A** a **Punto B AI-First**.
 
+**Primera vez aquí:** empieza por [`START_HERE.md`](START_HERE.md). La primera instalación valida el scaffold privado; la validación operativa de Punto B viene después de un primer loop interno revisado con evidencia real.
+
 ## Punto A
 
 Empresa de servicios que no sabe por dónde empezar:

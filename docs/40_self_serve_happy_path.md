@@ -30,8 +30,10 @@ Next action: read the dry-run output. If it recommends Direction first, do not s
 ```bash
 python scripts/company_brain_wizard.py --company "Acme Demo" --company-type agency --output /tmp/acme-company-brain --yes
 python scripts/verify_installation.py /tmp/acme-company-brain
-python scripts/validate_point_b_readiness.py /tmp/acme-company-brain
+python scripts/validate_point_b_readiness.py --mode scaffold /tmp/acme-company-brain
 ```
+
+This first validation is scaffold-only: it checks that the private instance was created with the expected structure. Operational Point B validation is expected to fail on a fresh scaffold because no human-reviewed evidence exists yet. Run operational mode only after one internal loop has a real Context Packet, human review, Receipt, scorecard update and approval boundaries.
 
 Approval: writing local files is safe. Any external/public/economic/legal/production/sensitive action still requires a human decision.
 

@@ -65,3 +65,39 @@ What changed:
 Evidence:
 - Run repository validators, tests, smoke installs and Point B validator before publication.
 - Do not claim guaranteed transformation; claim verified Punto B slice when evidence passes.
+
+## R-007 — START_HERE and scaffold-first operator path
+
+Date: 2026-05-22
+Owner: Hermes Clean
+Scope: autonomous cron change on `auto/point-b-readiness-loop`; no main merge, no PR, no deploy.
+
+What changed:
+- Added root `START_HERE.md` as the first nontechnical entrypoint.
+- Linked `START_HERE.md` from the first section of `README.md`.
+- Updated self-serve docs so the first Point-B validation is scaffold mode, not operational mode.
+- Explicitly documented that a fresh scaffold should not pass operational Punto B until a human-reviewed loop produces evidence.
+
+Why:
+- A nontechnical operator needs one safe first path: install private scaffold, validate scaffold structure, then create real operational evidence before claiming Punto B.
+- This reduces false positives and prevents confusing an expected operational failure with a broken install.
+
+Source/provenance:
+- 2026-05-22 autonomous Point-B improvement backlog items `CBS-PB-UX-001` and `CBS-PB-UX-002`.
+- Spec and quality review subagents approved the documentation slice.
+
+Allowed actions:
+- Local documentation/template/script edits inside this repository.
+- Local validation with synthetic/private temporary instances.
+
+Forbidden actions:
+- No push to `main`, merge, PR, deploy or publication from this run.
+- No real client/company data or secrets in public examples.
+
+Validation:
+- `make validate` passed, including repo, schema, links, public safety, installable runtime, department quality and pytest checks.
+- Wizard smoke created a synthetic private instance, installation verification passed, scaffold readiness passed.
+- Operational readiness on the fresh scaffold failed as expected with “Do not claim operational Punto B yet.”
+
+Next gap:
+- Continue translating/self-serve hardening: Spanish summaries for remaining operator docs, standardized `python3` commands, and simpler troubleshooting for nontechnical users.

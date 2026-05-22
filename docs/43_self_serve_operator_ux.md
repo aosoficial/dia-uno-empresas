@@ -9,8 +9,12 @@ Recommended commands:
 ```bash
 make validate
 make demo-agency
-make point-b INSTANCE=/tmp/company-brain-demo-agency
+make point-b-scaffold INSTANCE=/tmp/company-brain-demo-agency
+# Only after a reviewed first internal loop with real evidence:
+make point-b-operational INSTANCE=/tmp/company-brain-demo-agency
 ```
+
+Use `point-b-scaffold` first. `point-b`, `point-b-operational` or `--mode operational` are only for after a human-reviewed first loop has produced real evidence: Context Packet, Receipt, scorecard update and approval boundaries.
 
 If `make` is unavailable, run the Python commands printed by the wizard.
 
