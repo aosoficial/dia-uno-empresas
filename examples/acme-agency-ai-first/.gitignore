@@ -1,6 +1,7 @@
 # Secrets and local runtime
 .env
 .env.*
+!.env.example
 secrets/*
 !secrets/README.md
 traces/raw/**
