@@ -49,7 +49,7 @@ Rellena solo lo mínimo y seguro:
 1. **Dirección / Mother Brain**: propósito, oferta, tipo de empresa, prioridades.
 2. **Contexto seguro**: información general, sin secretos ni datos sensibles.
 3. **Límites de aprobación**: qué puede preparar la IA y qué necesita decisión humana.
-4. **Primer departamento**: normalmente Dirección, Operaciones / Delivery o el cuello de botella recomendado.
+4. **Primer departamento**: normalmente Operaciones / Delivery o el cuello de botella recomendado. Usa la guía [`templates/how-to/choose-first-department.md`](templates/how-to/choose-first-department.md) para decidir.
 5. **Primer Context Packet**: contexto suficiente para una acción interna pequeña.
 6. **Primera acción interna**: redactar, analizar, ordenar o preparar; no enviar ni publicar.
 7. **Receipt**: prueba de qué se hizo, quién revisó y qué cambió.
