@@ -36,6 +36,9 @@ jobs:
       - name: Validate installable runtime
         run: python scripts/validate_installable_runtime.py
 
+      - name: Run self-serve regression tests
+        run: python -m pytest tests/test_guided_pilot_self_serve.py -q -p no:cacheprovider
+
       - name: Smoke test guided wizard
         run: |
           python scripts/company_brain_wizard.py --dry-run --company "Acme Demo" --company-type agency --output /tmp/acme-company-brain
