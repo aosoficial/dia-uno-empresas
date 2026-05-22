@@ -16,7 +16,7 @@ make point-b-operational INSTANCE=/tmp/company-brain-demo-agency
 
 Use `point-b-scaffold` first. `point-b`, `point-b-operational` or `--mode operational` are only for after a human-reviewed first loop has produced real evidence: Context Packet, Receipt, scorecard update and approval boundaries.
 
-If `make` is unavailable, run the Python commands printed by the wizard.
+If `make` is unavailable, run the Python commands printed by the wizard. For copy/paste fixes to common stalls, use [`TROUBLESHOOTING.md`](TROUBLESHOOTING.md).
 
 ## UX principles
 
@@ -39,6 +39,8 @@ The wizard should produce:
 - Point B validator command.
 
 ## Troubleshooting
+
+Full practical guide: [`TROUBLESHOOTING.md`](TROUBLESHOOTING.md). It includes exact symptoms for missing Python, missing Make, missing `pyyaml`, output path refusals, unknown departments, possible secret refusals, permission errors and scaffold-vs-operational validation confusion.
 
 ### The verifier fails
 

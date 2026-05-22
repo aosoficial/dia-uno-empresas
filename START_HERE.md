@@ -8,6 +8,8 @@ No promete una transformación garantizada. Te ayuda a crear una base ordenada p
 
 Usa el camino self-serve como una lista de pasos. La primera validación debe ser de **scaffold**: comprueba que la estructura está creada, no que la empresa ya opera como Punto B.
 
+Si te bloqueas con Python, Make, `pyyaml`, permisos, carpeta no vacía o validaciones, abre primero [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md).
+
 ```bash
 # 1) Simular sin crear nada
 git clone https://github.com/aosoficial/company-brain-system.git
@@ -84,5 +86,6 @@ Incluye solo contexto seguro o anonimizado: tipo de empresa, paso donde te bloqu
 - [`README.md`](README.md) — visión general y comandos principales.
 - [`docs/40_self_serve_happy_path.md`](docs/40_self_serve_happy_path.md) — camino self-serve paso a paso.
 - [`docs/43_self_serve_operator_ux.md`](docs/43_self_serve_operator_ux.md) — checklist operativa para usuarios self-serve.
+- [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) — errores habituales y arreglos copy/paste.
 - [`docs/12_get_help_from_dia_uno.md`](docs/12_get_help_from_dia_uno.md) — cómo pedir ayuda de forma segura.
 - [`templates/generated-company-instance/README.md`](templates/generated-company-instance/README.md) — plantilla de instancia privada generada.

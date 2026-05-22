@@ -4,7 +4,7 @@ Convierte una agencia, consultoría o negocio freelance en una empresa AI-First 
 
 Company Brain System es una aceleradora guiada para pasar de **Punto A** a **Punto B AI-First**.
 
-**Primera vez aquí:** empieza por [`START_HERE.md`](START_HERE.md). La primera instalación valida el scaffold privado; la validación operativa de Punto B viene después de un primer loop interno revisado con evidencia real.
+**Primera vez aquí:** empieza por [`START_HERE.md`](START_HERE.md). La primera instalación valida el scaffold privado; la validación operativa de Punto B viene después de un primer loop interno revisado con evidencia real. Si un comando falla, usa [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md).
 
 ## Punto A
 
@@ -70,6 +70,8 @@ make demo-agency
 make point-b-scaffold INSTANCE=/tmp/company-brain-demo-agency
 make point-b INSTANCE=/tmp/company-brain-demo-agency  # operational; requires real reviewed evidence
 ```
+
+Si aparece `python: command not found`, `ModuleNotFoundError: No module named 'yaml'`, `make: command not found`, errores de permisos o confusión entre `scaffold` y `operational`, consulta [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) para soluciones copy/paste.
 
 Para un bootstrap mínimo:
 

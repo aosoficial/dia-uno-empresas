@@ -603,6 +603,7 @@ def main() -> int:
             print("Install later: " + ", ".join(selections["later"]))
         print("Next: rerun with --yes, then python scripts/verify_installation.py <output>")
         print("Then: python scripts/validate_point_b_readiness.py --mode scaffold <output>")
+        print("Troubleshooting: docs/TROUBLESHOOTING.md")
         print("Guided Pilot 30/60/120: contract, Direction + first department, first internal loop")
         return 0
 
@@ -640,6 +641,7 @@ def main() -> int:
     print(f"Next: python scripts/verify_installation.py {output}")
     print(f"Then scaffold check: python scripts/validate_point_b_readiness.py --mode scaffold {output}")
     print(f"After a human-reviewed loop: python scripts/validate_point_b_readiness.py --mode operational {output}")
+    print("Troubleshooting: docs/TROUBLESHOOTING.md")
     return 0
 
 
