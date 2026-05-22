@@ -65,6 +65,8 @@ Mal ejemplo: "Enviar propuesta al cliente" (requiere aprobación y contacto exte
 
 ## Paso 2 — Crear el Context Packet
 
+Para una guía detallada solo sobre este paso, consulta [`create-first-context-packet.md`](create-first-context-packet.md).
+
 Usa la plantilla de [`templates/context-packets/context-packet-template.md`](../context-packets/context-packet-template.md).
 
 Campos mínimos para el primer loop:
@@ -134,6 +136,8 @@ Anota el resultado de la revisión: correcto, incorrecto o parcial.
 
 ## Paso 5 — Escribir el Receipt
 
+Para una guía detallada solo sobre este paso, consulta [`create-first-receipt.md`](create-first-receipt.md).
+
 Usa la plantilla de [`templates/receipts/receipt-template.md`](../receipts/receipt-template.md).
 
 Campos mínimos:
@@ -177,6 +181,8 @@ Actualiza al menos un campo con datos observados:
 ---
 
 ## Paso 7 — Crear StateChange (si aplica)
+
+Para una guía detallada solo sobre este paso, consulta [`create-first-statechange.md`](create-first-statechange.md).
 
 Si la acción cambió algo en el sistema operativo (nuevo dato, nueva política, corrección de información), crea un StateChange usando [`templates/statechanges/statechange-template.md`](../statechanges/statechange-template.md).
 
