@@ -113,9 +113,10 @@ Sol Digital tiene 3 personas. Sus departamentos con más dolor:
 
 ## Después de elegir
 
-1. Completa el `department-brain.md` del departamento elegido en tu instancia privada.
-2. Crea al menos un empleado digital con `PERMISSIONS.md` para ese departamento.
-3. Sigue la guía del primer loop interno: [`templates/how-to/run-first-internal-loop.md`](run-first-internal-loop.md).
+1. Completa el `department-brain.md` del departamento elegido: [`complete-department-brain.md`](complete-department-brain.md).
+2. Crea el mapa de fuentes de verdad si no lo tienes: [`create-source-of-truth-map.md`](create-source-of-truth-map.md).
+3. Crea al menos un empleado digital con `PERMISSIONS.md`: [`create-first-digital-employee.md`](create-first-digital-employee.md).
+4. Sigue la guía del primer loop interno: [`run-first-internal-loop.md`](run-first-internal-loop.md).
 
 ## Errores comunes
 
