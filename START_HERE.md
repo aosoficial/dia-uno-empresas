@@ -57,6 +57,7 @@ Rellena solo lo mínimo y seguro:
 9. **Siguiente sprint**: el próximo paso pequeño y revisable.
 
 Para los pasos 5-9, sigue la guía detallada: [`templates/how-to/run-first-internal-loop.md`](templates/how-to/run-first-internal-loop.md).
+Si no sabes qué acción elegir, usa ejemplos seguros en [`docs/44_first_operating_loop_examples.md`](docs/44_first_operating_loop_examples.md).
 
 ## Qué no debes pegar ni compartir
 
@@ -88,6 +89,7 @@ Incluye solo contexto seguro o anonimizado: tipo de empresa, paso donde te bloqu
 - [`README.md`](README.md) — visión general y comandos principales.
 - [`docs/40_self_serve_happy_path.md`](docs/40_self_serve_happy_path.md) — camino self-serve paso a paso.
 - [`docs/43_self_serve_operator_ux.md`](docs/43_self_serve_operator_ux.md) — checklist operativa para usuarios self-serve.
+- [`docs/44_first_operating_loop_examples.md`](docs/44_first_operating_loop_examples.md) — ejemplos seguros de evidencia para agencia, consultoría y freelancer.
 - [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) — errores habituales y arreglos copy/paste.
 - [`docs/12_get_help_from_dia_uno.md`](docs/12_get_help_from_dia_uno.md) — cómo pedir ayuda de forma segura.
 - [`templates/generated-company-instance/README.md`](templates/generated-company-instance/README.md) — plantilla de instancia privada generada.

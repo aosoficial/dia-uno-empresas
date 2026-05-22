@@ -26,6 +26,7 @@ def test_guided_pilot_docs_and_templates_exist_with_operational_markers():
         "docs/41_guided_pilot_delivery_model.md",
         "docs/42_point_b_definition.md",
         "docs/43_self_serve_operator_ux.md",
+        "docs/44_first_operating_loop_examples.md",
         "templates/pilot/pilot-session-script.md",
         "templates/pilot/operator-checklist.md",
         "templates/pilot/client-homework.md",
@@ -44,6 +45,25 @@ def test_guided_pilot_docs_and_templates_exist_with_operational_markers():
         text = path.read_text(encoding="utf-8", errors="ignore")
         assert len(text.split()) >= 60, rel
         assert any(marker in text for marker in markers), rel
+
+
+def test_first_operating_loop_examples_make_evidence_concrete():
+    path = ROOT / "docs/44_first_operating_loop_examples.md"
+    text = path.read_text(encoding="utf-8")
+    for marker in [
+        "agency delivery checklist",
+        "consultancy proposal risks",
+        "freelancer offer cleanup",
+        "Universal evidence chain",
+        "Source row selected",
+        "Operational Receipt",
+        "Scorecard update",
+        "Anti-examples that must not count",
+        "DIA UNO",
+        "diauno.io",
+        "Do not share the private instance or secrets",
+    ]:
+        assert marker in text
 
 
 def test_source_of_truth_maps_are_operator_usable_and_required():

@@ -50,6 +50,7 @@ Empresa AI-First de servicios productizados con:
 - [`docs/41_guided_pilot_delivery_model.md`](docs/41_guided_pilot_delivery_model.md) — modelo de entrega del piloto.
 - [`docs/42_point_b_definition.md`](docs/42_point_b_definition.md) — definición verificable de Punto B.
 - [`docs/43_self_serve_operator_ux.md`](docs/43_self_serve_operator_ux.md) — UX operativa self-serve.
+- [`docs/44_first_operating_loop_examples.md`](docs/44_first_operating_loop_examples.md) — ejemplos seguros para crear evidencia del primer loop.
 
 ### 2. Generar una empresa privada guiada
 
