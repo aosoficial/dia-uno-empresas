@@ -15,17 +15,18 @@ Trabaja en este orden. No intentes activar muchos agentes a la vez: el objetivo 
 
 1. Lee `MAP.md` y `AGENTS.md`.
 2. Completa Dirección/Mother Brain en `company/company-brain.md` con hechos verificados: propósito, modelo de negocio, metas, prioridades, sistemas en alcance y preguntas abiertas.
-3. Completa `company/source-of-truth-map.md`. Es un artefacto obligatorio de los primeros 120 minutos y la fuente principal para el primer Context Packet: identifica Drive/Docs, Notion/wiki, Sheets, CRM, WhatsApp/Slack, email, calendario, proyectos y finanzas con propietario, permisos, frescura, regla de recibo y siguiente acción.
-4. Revisa límites de aprobación en `company/approval-boundaries.md`. Nada externo, público, económico, legal, de producción o sensible se ejecuta sin aprobación humana explícita.
-5. Elige un primer departamento prioritario y completa su brain, por ejemplo `departments/{{ first_department }}/department-brain.md` o `departments/operations/department-brain.md`.
-6. Revisa permisos del primer empleado digital. La ruta inicial habitual es `digital-employees/ceo-operations-assistant/PERMISSIONS.md`; si el wizard generó otro empleado, usa su carpeta dentro de `digital-employees/`.
-7. Crea o completa un paquete de contexto en `context-packets/initial-company-context.md` antes de pedir trabajo al agente. Debe enlazar `company/source-of-truth-map.md`, nombrar las filas usadas y mantener el acceso en solo lectura salvo aprobación explícita.
-8. Ejecuta una acción interna pequeña y segura: resumir un handoff, revisar una SOP, preparar una lista de riesgos, actualizar una métrica interna, etc.
-9. Guarda evidencia del ciclo en `receipts/first-loop.md` o en otro archivo dentro de `receipts/`.
-10. Si cambió el estado operativo, registra el cambio en `statechanges/`.
-11. Actualiza `company/company-scorecard.md` con una línea basada en evidencia, no en intención.
-12. Actualiza `company/guided-pilot-plan.md`, `company/point-b-readiness.md` y `roadmap/48h-7d-30d.md` con el siguiente sprint.
-13. Ejecuta validaciones en modo scaffold primero. Usa modo operational solo después del primer ciclo humano revisado.
+3. Abre `FIRST_OPERATING_LOOP.md`. Es la guía corta para ejecutar el primer ciclo real de 30–60 minutos sin confundirse entre scaffold y Punto B operativo.
+4. Completa `company/source-of-truth-map.md`. Es un artefacto obligatorio de los primeros 120 minutos y la fuente principal para el primer Context Packet: identifica Drive/Docs, Notion/wiki, Sheets, CRM, WhatsApp/Slack, email, calendario, proyectos y finanzas con propietario, permisos, frescura, regla de recibo y siguiente acción.
+5. Revisa límites de aprobación en `company/approval-boundaries.md`. Nada externo, público, económico, legal, de producción o sensible se ejecuta sin aprobación humana explícita.
+6. Elige un primer departamento prioritario y completa su brain, por ejemplo `departments/{{ first_department }}/department-brain.md` o `departments/operations/department-brain.md`.
+7. Revisa permisos del primer empleado digital. La ruta inicial habitual es `digital-employees/ceo-operations-assistant/PERMISSIONS.md`; si el wizard generó otro empleado, usa su carpeta dentro de `digital-employees/`.
+8. Crea o completa un paquete de contexto en `context-packets/initial-company-context.md` antes de pedir trabajo al agente. Debe enlazar `company/source-of-truth-map.md`, nombrar las filas usadas y mantener el acceso en solo lectura salvo aprobación explícita.
+9. Ejecuta una acción interna pequeña y segura: resumir un handoff, revisar una SOP, preparar una lista de riesgos, actualizar una métrica interna, etc.
+10. Guarda evidencia del ciclo en `receipts/first-loop.md` o en otro archivo dentro de `receipts/`.
+11. Si cambió el estado operativo, registra el cambio en `statechanges/`.
+12. Actualiza `company/company-scorecard.md` con una línea basada en evidencia, no en intención.
+13. Actualiza `company/guided-pilot-plan.md`, `company/point-b-readiness.md` y `roadmap/48h-7d-30d.md` con el siguiente sprint.
+14. Ejecuta validaciones en modo scaffold primero. Usa modo operational solo después del primer ciclo humano revisado.
 
 ## Secuencia de 48 horas hacia Punto B
 
@@ -75,6 +76,7 @@ Trabaja en este orden. No intentes activar muchos agentes a la vez: el objetivo 
 La definición vive en `docs/42_point_b_definition.md` del framework. Dentro de esta instancia, las pruebas mínimas deben apuntar a:
 
 - Dirección/Mother Brain: `company/company-brain.md`
+- Guía del primer ciclo real: `FIRST_OPERATING_LOOP.md`
 - Mapa de fuentes/sistemas: `company/source-of-truth-map.md`
 - Límites de aprobación: `company/approval-boundaries.md`
 - Scorecard: `company/company-scorecard.md`

@@ -25,15 +25,16 @@ class Criterion:
 
 
 SCAFFOLD_CRITERIA = (
-    Criterion("Direction / Mother Brain file exists", 12, ("company/company-brain.md",), "Create company/company-brain.md."),
-    Criterion("Source-of-truth map file exists", 12, ("company/source-of-truth-map.md",), "Create company/source-of-truth-map.md before the first Context Packet."),
-    Criterion("Approval boundaries file exists", 12, ("company/approval-boundaries.md",), "Create company/approval-boundaries.md."),
+    Criterion("Direction / Mother Brain file exists", 10, ("company/company-brain.md",), "Create company/company-brain.md."),
+    Criterion("Direction governance files exist", 8, ("company/annual-plan.md", "company/okrs.md", "company/org-chart.md", "company/roles-and-responsibilities.md"), "Create annual plan, OKRs, org chart and roles files to close the Direction chain."),
+    Criterion("Source-of-truth map file exists", 10, ("company/source-of-truth-map.md",), "Create company/source-of-truth-map.md before the first Context Packet."),
+    Criterion("Approval boundaries file exists", 10, ("company/approval-boundaries.md",), "Create company/approval-boundaries.md."),
     Criterion("Priority department scaffold exists", 12, ("departments/*/department-brain.md",), "Install at least one department brain."),
     Criterion("Digital employee permissions file exists", 12, ("digital-employees/*/PERMISSIONS.md",), "Create at least one digital employee permissions file."),
     Criterion("Context packet scaffold exists", 10, ("context-packets/*.md",), "Create a context packet scaffold."),
     Criterion("Installation receipt exists", 10, ("receipts/*.md",), "Write an installation or pilot receipt."),
     Criterion("Scorecard scaffold exists", 10, ("company/company-scorecard.md", "company/point-b-readiness.md"), "Create scorecard/readiness files."),
-    Criterion("Next sprint plan exists", 10, ("company/guided-pilot-plan.md",), "Create company/guided-pilot-plan.md with next sprint."),
+    Criterion("Next sprint plan exists", 8, ("company/guided-pilot-plan.md",), "Create company/guided-pilot-plan.md with next sprint."),
 )
 
 OPERATIONAL_CRITERIA = (
@@ -469,6 +470,23 @@ def validate(instance: Path, *, mode: str, allow_synthetic: bool) -> tuple[int, 
     return score, missing
 
 
+def operational_next_unblocker(instance: Path, missing: list[Criterion]) -> list[str]:
+    """Return operator-facing next steps for self-serve operational readiness."""
+    if not missing:
+        return []
+
+    first_missing = missing[0]
+    guide_path = instance / "FIRST_OPERATING_LOOP.md"
+    guide_ref = "FIRST_OPERATING_LOOP.md" if guide_path.exists() else "the First Operating Loop guide in templates/generated-company-instance/FIRST_OPERATING_LOOP.md"
+    return [
+        "Next unblocker:",
+        f"- Open {guide_ref} and create one human-reviewed internal loop before retrying operational readiness.",
+        f"- First missing proof point: {first_missing.name} — {first_missing.detail}",
+        "- Minimum proof chain: source-of-truth map → context-packets/initial-company-context.md → bounded agent draft/analysis → human review → receipts/first-loop.md → scorecard/next sprint update.",
+        f"- After evidence exists, rerun: python scripts/validate_point_b_readiness.py --mode operational {instance}",
+    ]
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Validate scaffold or operational Point B readiness for a Company Brain instance.")
     parser.add_argument("instance", type=Path, help="Path to generated/private instance")
@@ -498,6 +516,9 @@ def main() -> int:
         print("Missing or insufficient evidence:")
         for criterion in missing:
             print(f"- {criterion.name} ({criterion.points}): {criterion.detail}")
+        if args.mode == "operational":
+            for line in operational_next_unblocker(instance, missing):
+                print(line)
     else:
         print("All minimum evidence for this mode is present.")
 

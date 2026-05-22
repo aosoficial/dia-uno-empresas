@@ -124,6 +124,18 @@ def test_wizard_generates_pilot_plan_and_point_b_scorecard(tmp_path):
     assert "Point B readiness" in point_b.read_text()
     assert "Source-of-Truth Map" in source_map.read_text(encoding="utf-8")
 
+    first_loop = output / "FIRST_OPERATING_LOOP.md"
+    assert first_loop.exists()
+    first_loop_text = first_loop.read_text(encoding="utf-8")
+    for marker in [
+        "30–60 minute first operating loop",
+        "Pick exactly one safe internal task",
+        "Before you ask an agent",
+        "After the agent output",
+        "Operational validation command",
+    ]:
+        assert marker in first_loop_text
+
     readme = (output / "README.md").read_text(encoding="utf-8")
     required_readme_markers = [
         "No subas esta instancia a un repositorio público",
@@ -132,6 +144,7 @@ def test_wizard_generates_pilot_plan_and_point_b_scorecard(tmp_path):
         "company/approval-boundaries.md",
         "company/company-scorecard.md",
         "company/guided-pilot-plan.md",
+        "FIRST_OPERATING_LOOP.md",
         "company/point-b-readiness.md",
         "departments/<department>/department-brain.md",
         "digital-employees/<employee>/PERMISSIONS.md",
@@ -160,6 +173,13 @@ def test_wizard_generates_pilot_plan_and_point_b_scorecard(tmp_path):
     operational_readiness = run_cmd([POINT_B_VALIDATOR, "--mode", "operational", output])
     assert operational_readiness.returncode == 1
     assert "Point B operational validation failed" in operational_readiness.stdout
+    for marker in [
+        "Next unblocker",
+        "Open FIRST_OPERATING_LOOP.md",
+        "create one human-reviewed internal loop",
+        "rerun: python scripts/validate_point_b_readiness.py --mode operational",
+    ]:
+        assert marker in operational_readiness.stdout
 
     low_threshold_operational_readiness = run_cmd([
         POINT_B_VALIDATOR,
