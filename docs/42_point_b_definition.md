@@ -7,13 +7,14 @@ Punto B is not a slogan. It is a verifiable operating state for an AI-First serv
 A company reaches the minimum Punto B slice when it has:
 
 1. Direction / Mother Brain installed.
-2. One priority department installed.
-3. One digital employee with permissions and forbidden actions.
-4. One context packet used for real internal work.
-5. One Receipt proving the action.
-6. One scorecard line updated with evidence.
-7. One approval boundary reviewed by a human.
-8. One next sprint selected.
+2. One source-of-truth map reviewed before the first Context Packet.
+3. One priority department installed.
+4. One digital employee with permissions and forbidden actions.
+5. One context packet used for real internal work.
+6. One Receipt proving the action.
+7. One scorecard line updated with evidence.
+8. One approval boundary reviewed by a human.
+9. One next sprint selected.
 
 ## Punto B strong
 
@@ -47,6 +48,7 @@ A stronger Punto B state adds:
 Every claim must point to files or records:
 
 - `company/company-brain.md`
+- `company/source-of-truth-map.md`
 - `company/approval-boundaries.md`
 - `company/company-scorecard.md`
 - `company/guided-pilot-plan.md`

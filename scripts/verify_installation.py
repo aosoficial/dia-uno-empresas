@@ -11,7 +11,7 @@ from pathlib import Path
 
 REQUIRED_PATHS = [
     "README.md", "AGENTS.md", "MAP.md", ".env.example",
-    "company/company-brain.md", "company/approval-boundaries.md", "company/operating-principles.md",
+    "company/company-brain.md", "company/source-of-truth-map.md", "company/approval-boundaries.md", "company/operating-principles.md",
     "company/accountability-map.md", "company/scorecard.md", "company/operating-cadence.md",
     "company/company-scorecard.md", "company/guided-pilot-plan.md", "company/point-b-readiness.md",
     "departments/direction/department-brain.md", "departments/direction/skills.md", "departments/direction/onboarding.md",
@@ -58,7 +58,7 @@ def main() -> int:
     for phrase in ["External", "Spend", "Production", "Sensitive", "Legal"]:
         if phrase.lower() not in approval_text.lower():
             errors.append(f"Approval boundary missing concept: {phrase}")
-    for must in ["direction", "receipt", "statechange", "context packet"]:
+    for must in ["direction", "source-of-truth", "receipt", "statechange", "context packet"]:
         combined = "\n".join(p.read_text(encoding="utf-8", errors="ignore") for p in iter_text_files(root) if p.stat().st_size < 20000).lower()
         if must not in combined:
             errors.append(f"Generated instance missing concept: {must}")

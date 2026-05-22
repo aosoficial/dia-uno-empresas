@@ -10,14 +10,16 @@ Risk tier: `{{ risk_tier }}`
 
 1. `AGENTS.md`
 2. `company/company-brain.md`
-3. `company/approval-boundaries.md`
-4. Relevant department brain: `departments/<department>/department-brain.md`
-5. Latest context packet, receipt, statechange or handoff
+3. `company/source-of-truth-map.md`
+4. `company/approval-boundaries.md`
+5. Relevant department brain: `departments/<department>/department-brain.md`
+6. Latest context packet, receipt, statechange or handoff
 
 ## Core locations
 
 - Private onboarding guide: `README.md`
 - Company brain / Direction: `company/company-brain.md`
+- Source-of-truth / existing systems map: `company/source-of-truth-map.md`
 - Approval boundaries: `company/approval-boundaries.md`
 - Company scorecard: `company/company-scorecard.md`
 - Guided pilot / next sprint: `company/guided-pilot-plan.md`

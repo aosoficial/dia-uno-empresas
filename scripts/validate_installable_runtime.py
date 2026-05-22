@@ -37,7 +37,7 @@ REQUIRED = [
     "templates/receipts/installation-receipt-template.md", "templates/trace-policy/trace-policy-template.md",
     "templates/generated-company-instance/README.md", "templates/generated-company-instance/AGENTS.md", "templates/generated-company-instance/MAP.md",
     "templates/generated-company-instance/.env.example", "templates/generated-company-instance/.gitignore",
-    "templates/generated-company-instance/company/company-brain.md", "templates/generated-company-instance/company/approval-boundaries.md",
+    "templates/generated-company-instance/company/company-brain.md", "templates/generated-company-instance/company/source-of-truth-map.md", "templates/generated-company-instance/company/approval-boundaries.md",
     "templates/generated-company-instance/company/operating-principles.md", "templates/generated-company-instance/company/accountability-map.md",
     "templates/generated-company-instance/company/scorecard.md", "templates/generated-company-instance/company/operating-cadence.md",
     "templates/generated-company-instance/departments/direction/department-brain.md", "templates/generated-company-instance/roadmap/48h-7d-30d.md",
@@ -108,7 +108,7 @@ def main() -> int:
             errors.append(f"{dept} department brain too shallow: expected >=300 words")
 
     wizard = (ROOT / "scripts" / "company_brain_wizard.py").read_text(encoding="utf-8", errors="ignore")
-    for marker in ["--interactive", "department-rollout-map.md", "company-scorecard.md", "maturity-diagnosis.md", "guided-pilot-plan.md", "point-b-readiness.md", "--maturity", "--vertical", "COMPANY_TYPE_DEFAULTS"]:
+    for marker in ["--interactive", "department-rollout-map.md", "company-scorecard.md", "maturity-diagnosis.md", "guided-pilot-plan.md", "point-b-readiness.md", "source-of-truth-map.md", "--maturity", "--vertical", "COMPANY_TYPE_DEFAULTS"]:
         if marker not in wizard:
             errors.append(f"Wizard missing capability marker: {marker}")
 

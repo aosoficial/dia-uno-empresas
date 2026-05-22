@@ -93,10 +93,11 @@ Company type: `{args.company_type}`
 ## First 48 hours
 
 1. Review `company/company-brain.md`.
-2. Review `company/approval-boundaries.md`.
-3. Complete `context-packets/initial-company-context.md`.
-4. Run one safe internal Dirección task.
-5. Write `receipts/first-loop.md` and update `company/company-scorecard.md`.
+2. Complete `company/source-of-truth-map.md` with existing systems, owners, permissions, freshness and receipt rules.
+3. Review `company/approval-boundaries.md`.
+4. Complete `context-packets/initial-company-context.md` from the source-of-truth map.
+5. Run one safe internal Dirección task.
+6. Write `receipts/first-loop.md` and update `company/company-scorecard.md`.
 
 ## Closeout rule
 
@@ -111,6 +112,7 @@ Freshness: `draft until validated with evidence`
 ## Scaffold checklist
 
 - [x] Direction / Mother Brain file exists.
+- [x] Source-of-truth map file exists.
 - [x] Approval boundaries file exists.
 - [x] Initial context packet scaffold exists.
 - [x] Installation receipt exists.
@@ -118,6 +120,7 @@ Freshness: `draft until validated with evidence`
 ## Operational Punto B evidence still required
 
 - [ ] Human-reviewed Direction contains real vision, mission, annual goal/rocks/OKRs and owner.
+- [ ] Source-of-truth map is reviewed with system owners, freshness, permissions, risks and evidence.
 - [ ] One priority department has a live workflow, owner, scorecard and escalation path.
 - [ ] One digital employee/role ran a bounded internal loop under explicit permissions.
 - [ ] A receipt proves what happened, why, source/provenance, approvals and observed outcome.
@@ -171,6 +174,7 @@ Prepare a safe AI-First company runtime with company memory, approvals, roadmap 
 ## Allowed next actions
 
 - Run verifier.
+- Complete `company/source-of-truth-map.md` before the first Context Packet.
 - Fill company intake.
 - Run one safe internal Dirección task.
 

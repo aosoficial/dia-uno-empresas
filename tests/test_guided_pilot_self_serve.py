@@ -46,6 +46,41 @@ def test_guided_pilot_docs_and_templates_exist_with_operational_markers():
         assert any(marker in text for marker in markers), rel
 
 
+def test_source_of_truth_maps_are_operator_usable_and_required():
+    template = ROOT / "templates/integrations/existing-systems-map.md"
+    generated = ROOT / "templates/generated-company-instance/company/source-of-truth-map.md"
+    for path in [template, generated]:
+        assert path.exists(), path
+        text = path.read_text(encoding="utf-8", errors="ignore")
+        for marker in [
+            "Drive / Docs",
+            "Notion / wiki",
+            "Sheets / spreadsheets",
+            "CRM",
+            "WhatsApp / Slack",
+            "Email",
+            "Calendar / meetings",
+            "Project management",
+            "Finance / invoices",
+            "Owner",
+            "Source-of-truth status",
+            "Agent read permission",
+            "Agent write/action permission",
+            "Sync cadence",
+            "Freshness",
+            "Receipt rule",
+            "Risks",
+            "Next action",
+            "Start read-only",
+            "Do not store credentials",
+            "DIA UNO",
+            "diauno.io",
+            "Connection approvals",
+            "Action approvals",
+        ]:
+            assert marker in text, f"{path} missing {marker}"
+
+
 def test_point_b_validator_separates_scaffold_operational_and_synthetic(tmp_path):
     acme = ROOT / "examples" / "acme-agency-ai-first"
 
@@ -81,15 +116,19 @@ def test_wizard_generates_pilot_plan_and_point_b_scorecard(tmp_path):
     assert result.returncode == 0, result.stderr + result.stdout
     pilot_plan = output / "company" / "guided-pilot-plan.md"
     point_b = output / "company" / "point-b-readiness.md"
+    source_map = output / "company" / "source-of-truth-map.md"
     assert pilot_plan.exists()
     assert point_b.exists()
+    assert source_map.exists()
     assert "30 / 60 / 120" in pilot_plan.read_text()
     assert "Point B readiness" in point_b.read_text()
+    assert "Source-of-Truth Map" in source_map.read_text(encoding="utf-8")
 
     readme = (output / "README.md").read_text(encoding="utf-8")
     required_readme_markers = [
         "No subas esta instancia a un repositorio público",
         "company/company-brain.md",
+        "company/source-of-truth-map.md",
         "company/approval-boundaries.md",
         "company/company-scorecard.md",
         "company/guided-pilot-plan.md",
@@ -152,6 +191,7 @@ def test_bootstrap_generates_verifiable_scaffold_without_operational_false_posit
         "company/company-scorecard.md",
         "company/guided-pilot-plan.md",
         "company/point-b-readiness.md",
+        "company/source-of-truth-map.md",
     ]:
         assert (output / rel).exists(), rel
 
@@ -180,6 +220,24 @@ Freshness: reviewed this week
 Approval: human owner reviewed
 Evidence: receipts/first-loop.md
 Vision and mission are documented. Annual goal, rocks and OKRs are reviewed for the first operating slice.
+""",
+        "company/source-of-truth-map.md": """
+# Source-of-Truth Map
+Owner: Founder
+Source: reviewed systems inventory 2026-05-20
+Freshness: updated this week
+Approval: human owner reviewed system access boundaries
+Evidence: receipts/first-loop.md
+This reviewed map was completed before creating context-packets/first-loop.md. Do not store credentials, tokens, API keys, passwords or connection strings.
+
+| Tool/system | Owner | Data contained | Source-of-truth status | Agent read permission | Agent write/action permission | Sync cadence | Freshness / last reviewed | Receipt rule | Risks | Next action |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Drive / Docs | Founder | SOPs and delivery notes | partial | allowed read-only after review | approval required | weekly | reviewed this week | receipt when used in context packet | stale folders | separate current SOPs |
+| Notion / wiki | Founder | operating decisions | partial | allowed read-only after review | approval required | weekly | reviewed this week | receipt for decision changes | outdated wiki | mark active pages |
+| Sheets / spreadsheets | Founder | KPI tracker | yes | allowed read-only after review | approval required | weekly | reviewed this week | receipt for scorecard updates | formula errors | lock KPI source sheet |
+| CRM | Sales lead | pipeline and handoffs | yes | allowed read-only after review | approval required before edits/messages | daily | reviewed this week | receipt for handoff decisions | incomplete fields | confirm handoff owner |
+| WhatsApp / Slack | Operations lead | approved internal summaries | partial | approved extracts only | no messages without approval | per loop | reviewed this week | receipt cites approved extract | private chats | use anonymized summaries |
+| Email | Founder | approved thread summaries | partial | approved extracts only | no sending without approval | per loop | reviewed this week | receipt cites approved extract | sensitive communication | keep drafts approval-gated |
 """,
         "company/approval-boundaries.md": """
 # Approval boundaries
@@ -260,6 +318,61 @@ def test_operational_validator_accepts_complete_first_loop_receipt(tmp_path):
     result = run_cmd([POINT_B_VALIDATOR, "--mode", "operational", instance])
     assert result.returncode == 0, result.stderr + result.stdout
     assert "Point B operational validation OK" in result.stdout
+
+
+def test_operational_validator_requires_reviewed_source_of_truth_map(tmp_path):
+    instance = tmp_path / "missing-source-of-truth-map"
+    write_operational_fixture(instance)
+    (instance / "company" / "source-of-truth-map.md").unlink()
+
+    result = run_cmd([POINT_B_VALIDATOR, "--mode", "operational", "--min-score", "75", instance])
+    assert result.returncode == 1
+    assert "Source-of-truth map reviewed" in result.stdout
+    assert "missing mandatory operational evidence" in result.stdout.lower()
+    assert "Point B operational validation OK" not in result.stdout
+
+
+def test_operational_validator_rejects_generic_source_of_truth_map(tmp_path):
+    instance = tmp_path / "generic-source-of-truth-map"
+    write_operational_fixture(instance)
+    (instance / "company" / "source-of-truth-map.md").write_text(
+        """
+# Source-of-Truth Map
+Owner: Founder
+Source: reviewed systems inventory 2026-05-20
+Freshness: updated this week
+Approval: human owner reviewed system access boundaries
+Evidence: receipts/first-loop.md
+The team reviewed company sources, permissions, freshness, approval and evidence. This generic note cites context-packets/first-loop.md and looks evidence-shaped, but it does not map concrete systems, read/write permissions, sync cadence, receipt rules, risks or next actions by system family. It mentions Tool/system, Source-of-truth status, Agent read permission, Agent write/action permission, Sync cadence, Freshness, Receipt rule, Risks, Next action, Drive, Notion, Sheets, CRM, WhatsApp and Email only as prose.
+""".strip()
+        + "\n",
+        encoding="utf-8",
+    )
+
+    result = run_cmd([POINT_B_VALIDATOR, "--mode", "operational", "--min-score", "75", instance])
+    assert result.returncode == 1
+    assert "Source-of-truth map reviewed" in result.stdout
+    assert "missing mandatory operational evidence" in result.stdout.lower()
+    assert "Point B operational validation OK" not in result.stdout
+
+
+def test_operational_validator_rejects_source_map_with_unsafe_secret_handling(tmp_path):
+    instance = tmp_path / "unsafe-secret-source-map"
+    write_operational_fixture(instance)
+    text = (instance / "company" / "source-of-truth-map.md").read_text(encoding="utf-8")
+    (instance / "company" / "source-of-truth-map.md").write_text(
+        text.replace(
+            "Do not store credentials, tokens, API keys, passwords or connection strings.",
+            "Store API keys and tokens in this file for faster agent access.",
+        ),
+        encoding="utf-8",
+    )
+
+    result = run_cmd([POINT_B_VALIDATOR, "--mode", "operational", "--min-score", "75", instance])
+    assert result.returncode == 1
+    assert "Source-of-truth map reviewed" in result.stdout
+    assert "missing mandatory operational evidence" in result.stdout.lower()
+    assert "Point B operational validation OK" not in result.stdout
 
 
 def test_operational_validator_accepts_concise_founder_owner(tmp_path):
@@ -395,6 +508,7 @@ def test_operational_validator_rejects_generic_prose_without_evidence_shape(tmp_
     instance = tmp_path / "generic-prose"
     files = [
         "company/company-brain.md",
+        "company/source-of-truth-map.md",
         "company/approval-boundaries.md",
         "departments/operations/department-brain.md",
         "digital-employees/ops-agent/PERMISSIONS.md",
@@ -422,6 +536,7 @@ def test_operational_validator_rejects_label_only_evidence_shape(tmp_path):
     instance = tmp_path / "label-only"
     files = [
         "company/company-brain.md",
+        "company/source-of-truth-map.md",
         "company/approval-boundaries.md",
         "departments/operations/department-brain.md",
         "digital-employees/ops-agent/PERMISSIONS.md",
@@ -460,6 +575,24 @@ Vigencia: actualizado 2026-05-22
 Aprobación: aprobado por responsable humana
 Evidencia: receipts/first-loop.md
 La visión, misión, meta anual, rocks y OKRs quedaron revisados para el primer ciclo operativo con responsables y decisiones trazables.
+""",
+        "company/source-of-truth-map.md": """
+# Mapa de fuentes de verdad
+Responsable: Fundadora operativa
+Fuente: inventario de sistemas 2026-05-20
+Actualización: actualizado 2026-05-22
+Aprobacion requerida: aprobado por responsable humana antes de conectar herramientas
+Prueba: receipts/first-loop.md
+Este mapa revisado alimentó context-packets/first-loop.md. No almacenar credenciales, tokens, API keys, passwords ni connection strings.
+
+| Sistema | Responsable | Datos | Estado de fuente de verdad | Permiso de lectura | Permiso de acción | Cadencia de sincronización | Actualización / última revisión | Regla de recibo | Riesgos | Siguiente acción |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Drive / Docs | Fundadora | SOPs y notas de entrega | parcial | lectura aprobada | aprobación requerida | semanal | revisado 2026-05-22 | recibo si alimenta paquete de contexto | carpetas antiguas | separar SOP vigente |
+| Notion / wiki | Fundadora | decisiones operativas | parcial | lectura aprobada | aprobación requerida | semanal | revisado 2026-05-22 | recibo si cambia una decisión | wiki antigua | marcar páginas vigentes |
+| Sheets / spreadsheets | Fundadora | KPIs y scorecard | sí | lectura aprobada | aprobación requerida | semanal | revisado 2026-05-22 | recibo para cambios de scorecard | fórmulas rotas | bloquear hoja fuente |
+| CRM | Ventas | pipeline y traspasos | sí | lectura aprobada | aprobación requerida antes de editar | diario | revisado 2026-05-22 | recibo para traspasos | campos incompletos | confirmar owner del traspaso |
+| WhatsApp / Slack | Operaciones | resúmenes internos aprobados | parcial | solo extractos aprobados | no enviar mensajes sin aprobación | por ciclo | revisado 2026-05-22 | recibo cita extracto aprobado | chats privados | usar resúmenes anonimizados |
+| Email | Fundadora | resúmenes de hilos aprobados | parcial | solo extractos aprobados | no enviar correos sin aprobación | por ciclo | revisado 2026-05-22 | recibo cita extracto aprobado | comunicación sensible | mantener borradores con aprobación |
 """,
         "company/approval-boundaries.md": """
 # Límites de aprobación
@@ -546,6 +679,7 @@ def test_operational_validator_rejects_spanish_label_only_evidence_shape(tmp_pat
     instance = tmp_path / "spanish-label-only"
     files = [
         "company/company-brain.md",
+        "company/source-of-truth-map.md",
         "company/approval-boundaries.md",
         "departments/operations/department-brain.md",
         "digital-employees/ops-agent/PERMISSIONS.md",

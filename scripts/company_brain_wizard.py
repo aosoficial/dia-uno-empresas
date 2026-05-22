@@ -394,13 +394,14 @@ Next sprint: `{profile["next_sprint"]}`
 ### First 60 minutes — Direction and first department
 
 - Review `company/company-brain.md`.
+- Review `company/source-of-truth-map.md` and select the current system/source for the first workflow.
 - Review `company/approval-boundaries.md`.
 - Install first priority department: `{first_department}`.
 - Fill company scorecard with evidenced values or `unknown`.
 
 ### First 120 minutes — first internal loop
 
-- Create one context packet.
+- Create one context packet after the source-of-truth map names system/source, owner, freshness, permissions and evidence path.
 - Ask the digital employee for draft/analysis only.
 - Human reviews the output.
 - Write Receipt and StateChange when operating state changes.
@@ -417,7 +418,7 @@ Next sprint: `{profile["next_sprint"]}`
 
 ## Closeout rule
 
-Do not claim operational Punto B from generated files. Scaffold validation only proves installation shape. Operational Punto B requires `--mode operational` to pass with human-reviewed evidence for Direction, approval boundaries, first department, digital employee permissions, context packet, receipt, scorecard and next sprint.
+Do not claim operational Punto B from generated files. Scaffold validation only proves installation shape. Operational Punto B requires `--mode operational` to pass with human-reviewed evidence for Direction, source-of-truth map, approval boundaries, first department, digital employee permissions, context packet, receipt, scorecard and next sprint.
 """, encoding="utf-8")
     return path
 
@@ -442,6 +443,7 @@ Recommended next sprint: `{profile["next_sprint"]}`
 ## Scaffold checklist generated now
 
 - [x] Direction / Mother Brain file created: `company/company-brain.md`
+- [x] Source-of-truth map scaffold created: `company/source-of-truth-map.md`
 - [x] Approval boundaries file created: `company/approval-boundaries.md`
 - [x] Priority department scaffold created: `departments/*/department-brain.md`
 - [x] Digital employee permissions file created: `digital-employees/*/PERMISSIONS.md`
@@ -453,6 +455,7 @@ Recommended next sprint: `{profile["next_sprint"]}`
 ## Operational Punto B evidence still required
 
 - [ ] Human-reviewed Direction contains real vision, mission, annual goal/rocks/OKRs and owner.
+- [ ] Source-of-truth map identifies existing systems, owners, permissions, freshness and receipt rules.
 - [ ] Approval boundaries were reviewed by the accountable human.
 - [ ] One priority department has a live workflow, owner, scorecard and escalation path.
 - [ ] One digital employee/role ran a bounded internal loop under explicit permissions.
@@ -512,6 +515,7 @@ Move a service business from Point A to Point B AI-First using memory, people/ac
 ## Allowed next actions
 
 - Run verifier.
+- Complete `company/source-of-truth-map.md` before the first Context Packet.
 - Fill private company context.
 - Run one safe internal Dirección task.
 

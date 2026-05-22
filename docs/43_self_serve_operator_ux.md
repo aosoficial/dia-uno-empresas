@@ -14,7 +14,7 @@ make point-b-scaffold INSTANCE=/tmp/company-brain-demo-agency
 make point-b-operational INSTANCE=/tmp/company-brain-demo-agency
 ```
 
-Use `point-b-scaffold` first. `point-b`, `point-b-operational` or `--mode operational` are only for after a human-reviewed first loop has produced real evidence: Context Packet, Receipt, scorecard update and approval boundaries.
+Use `point-b-scaffold` first. `point-b`, `point-b-operational` or `--mode operational` are only for after a human-reviewed first loop has produced real evidence: reviewed source-of-truth map, Context Packet, Receipt, scorecard update and approval boundaries.
 
 If `make` is unavailable, run the Python commands printed by the wizard. For copy/paste fixes to common stalls, use [`TROUBLESHOOTING.md`](TROUBLESHOOTING.md).
 
@@ -44,11 +44,11 @@ Full practical guide: [`TROUBLESHOOTING.md`](TROUBLESHOOTING.md). It includes ex
 
 ### The verifier fails
 
-Fix the missing file or folder. Do not continue with agent work until the private instance has Direction, approvals, context packets, receipts and digital employee permissions.
+Fix the missing file or folder. Do not continue with agent work until the private instance has Direction, source-of-truth map, approvals, context packets, receipts and digital employee permissions.
 
 ### The Point B validator fails
 
-Read the missing evidence. Usually the fix is to complete one internal loop, add a Receipt, update scorecard and confirm approval boundaries.
+Read the missing evidence. Usually the fix is to review the source-of-truth map, complete one internal loop, add a Receipt, update scorecard and confirm approval boundaries.
 
 ### A user wants to use real client data
 

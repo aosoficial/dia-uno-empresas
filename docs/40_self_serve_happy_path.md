@@ -33,7 +33,7 @@ python scripts/verify_installation.py /tmp/acme-company-brain
 python scripts/validate_point_b_readiness.py --mode scaffold /tmp/acme-company-brain
 ```
 
-This first validation is scaffold-only: it checks that the private instance was created with the expected structure. Operational Point B validation is expected to fail on a fresh scaffold because no human-reviewed evidence exists yet. Run operational mode only after one internal loop has a real Context Packet, human review, Receipt, scorecard update and approval boundaries.
+This first validation is scaffold-only: it checks that the private instance was created with the expected structure. Operational Point B validation is expected to fail on a fresh scaffold because no human-reviewed evidence exists yet. Run operational mode only after one internal loop has a real Context Packet, reviewed source-of-truth map, human review, Receipt, scorecard update and approval boundaries.
 
 Approval: writing local files is safe. Any external/public/economic/legal/production/sensitive action still requires a human decision.
 
@@ -45,6 +45,7 @@ Fill:
 - bottleneck;
 - owner;
 - tools map;
+- source-of-truth map with owner, freshness, permissions, risks and evidence path;
 - scorecard values;
 - one internal workflow.
 
@@ -62,6 +63,7 @@ Use the first digital employee only to draft, analyze or prepare. It may create 
 
 Evidence:
 - context packet;
+- reviewed source-of-truth map for the workflow input;
 - human review;
 - Receipt;
 - StateChange when the operating system changed.

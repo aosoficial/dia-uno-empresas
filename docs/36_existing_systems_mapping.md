@@ -12,19 +12,21 @@ A system can be read or written by an agent only after the company records:
 - read permission;
 - write permission;
 - sync cadence;
+- freshness / last reviewed date;
 - receipt requirement;
-- risk.
+- risk;
+- next action.
 
 ## Mapping fields
 
-| Tool/system | Data contained | Source of truth | Agent read | Agent write | Sync cadence | Receipt requirement | Risks |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| CRM | leads, opportunities, notes | yes/partial/no | allowed/approval/no | allowed/approval/no | daily/weekly/manual | required when changed | wrong client data |
-| Project management | tasks, deadlines, owners | yes/partial/no | allowed/approval/no | allowed/approval/no | daily | required for scope/status changes | silent task mutation |
-| Docs/Drive | SOPs, proposals, client files | yes/partial/no | allowed/approval/no | approval/no | manual | required for new docs | sensitive data leakage |
-| Meetings/transcripts | decisions, context, actions | partial | approval | no | after meeting | context packet receipt | private data |
-| Finance/accounting | invoices, payments, costs | yes | approval | no/approval | weekly | finance receipt | economic/legal risk |
-| Support/community | issues, feedback, blockers | partial | allowed | approval | weekly | issue receipt | public/client exposure |
+| Tool/system | Owner | Data contained | Source of truth | Agent read | Agent write/action | Sync cadence | Freshness / last reviewed | Receipt requirement | Risks | Next action |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| CRM | Sales owner | leads, opportunities, notes | yes/partial/no | read-only/approval/no | approval/no | daily/weekly/manual | date + stale rule | query/filter, records used and reviewer | wrong client data | start with read-only pipeline summary |
+| Project management | Delivery owner | tasks, deadlines, owners | yes/partial/no | read-only/approval/no | approval/no | daily | date + stale rule | board/filter, items used and reviewer | silent task mutation | run delivery risk review before updates |
+| Docs/Drive | Document owner | SOPs, proposals, client files | yes/partial/no | read-only/approval/no | approval/no | manual/weekly | date + stale rule | document, version/date and reviewer | sensitive data leakage | mark canonical folders and agent-readable folders |
+| Meetings/transcripts | Meeting owner | decisions, context, actions | partial | approval/read-only | no | after meeting | date + stale rule | event/source, action items and reviewer | private data | use agenda/notes before recordings |
+| Finance/accounting | Finance owner | invoices, payments, costs | yes | approval/read-only | no/approval | weekly/monthly | date + stale rule | export/report, totals and reviewer | economic/legal risk | use owner-approved summaries only |
+| Support/community | Support owner | issues, feedback, blockers | partial | read-only/approval | approval/no | weekly | date + stale rule | issue/source, summary and reviewer | public/client exposure | anonymize before support/escalation |
 
 ## Safe rollout
 

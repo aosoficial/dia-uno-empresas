@@ -25,10 +25,11 @@ class Criterion:
 
 
 SCAFFOLD_CRITERIA = (
-    Criterion("Direction / Mother Brain file exists", 15, ("company/company-brain.md",), "Create company/company-brain.md."),
-    Criterion("Approval boundaries file exists", 15, ("company/approval-boundaries.md",), "Create company/approval-boundaries.md."),
-    Criterion("Priority department scaffold exists", 15, ("departments/*/department-brain.md",), "Install at least one department brain."),
-    Criterion("Digital employee permissions file exists", 15, ("digital-employees/*/PERMISSIONS.md",), "Create at least one digital employee permissions file."),
+    Criterion("Direction / Mother Brain file exists", 12, ("company/company-brain.md",), "Create company/company-brain.md."),
+    Criterion("Source-of-truth map file exists", 12, ("company/source-of-truth-map.md",), "Create company/source-of-truth-map.md before the first Context Packet."),
+    Criterion("Approval boundaries file exists", 12, ("company/approval-boundaries.md",), "Create company/approval-boundaries.md."),
+    Criterion("Priority department scaffold exists", 12, ("departments/*/department-brain.md",), "Install at least one department brain."),
+    Criterion("Digital employee permissions file exists", 12, ("digital-employees/*/PERMISSIONS.md",), "Create at least one digital employee permissions file."),
     Criterion("Context packet scaffold exists", 10, ("context-packets/*.md",), "Create a context packet scaffold."),
     Criterion("Installation receipt exists", 10, ("receipts/*.md",), "Write an installation or pilot receipt."),
     Criterion("Scorecard scaffold exists", 10, ("company/company-scorecard.md", "company/point-b-readiness.md"), "Create scorecard/readiness files."),
@@ -36,10 +37,11 @@ SCAFFOLD_CRITERIA = (
 )
 
 OPERATIONAL_CRITERIA = (
-    Criterion("Direction / Mother Brain installed", 15, ("company/company-brain.md",), "Replace Direction placeholders with reviewed vision, mission, annual goal/rocks/OKRs and operating owner."),
-    Criterion("Approval boundaries reviewed", 15, ("company/approval-boundaries.md",), "Define human approval gates for external, economic, legal, production and sensitive actions."),
-    Criterion("Priority department operating", 15, ("departments/*/department-brain.md",), "Complete one department brain with responsibilities, workflows, scorecard and escalation path."),
-    Criterion("Digital employee permissions active", 15, ("digital-employees/*/PERMISSIONS.md",), "Define one role/position agent with allowed actions, forbidden actions and required approvals."),
+    Criterion("Direction / Mother Brain installed", 12, ("company/company-brain.md",), "Replace Direction placeholders with reviewed vision, mission, annual goal/rocks/OKRs and operating owner."),
+    Criterion("Source-of-truth map reviewed", 12, ("company/source-of-truth-map.md",), "Complete the source-of-truth map with owners, freshness, permissions, risks and evidence before creating the first Context Packet."),
+    Criterion("Approval boundaries reviewed", 12, ("company/approval-boundaries.md",), "Define human approval gates for external, economic, legal, production and sensitive actions."),
+    Criterion("Priority department operating", 12, ("departments/*/department-brain.md",), "Complete one department brain with responsibilities, workflows, scorecard and escalation path."),
+    Criterion("Digital employee permissions active", 12, ("digital-employees/*/PERMISSIONS.md",), "Define one role/position agent with allowed actions, forbidden actions and required approvals."),
     Criterion("Operational context packet exists", 10, ("context-packets/*.md",), "Create a non-placeholder context packet for the first human-reviewed loop."),
     Criterion("Operational receipt exists", 10, ("receipts/*.md",), "Write a receipt for an actual human-reviewed operating loop, not only installation."),
     Criterion("Scorecard updated from evidence", 10, ("company/company-scorecard.md", "company/point-b-readiness.md"), "Update a scorecard/readiness file from observed operating evidence."),
@@ -135,6 +137,73 @@ GENERIC_FIELD_VALUES = {
 }
 
 OPERATIONAL_RECEIPT_CRITERION = "Operational receipt exists"
+SOURCE_OF_TRUTH_MAP_CRITERION = "Source-of-truth map reviewed"
+SOURCE_MAP_REQUIRED_MARKERS = (
+    "tool/system",
+    "source-of-truth status",
+    "agent read permission",
+    "agent write/action permission",
+    "sync cadence",
+    "freshness",
+    "receipt rule",
+    "risks",
+    "next action",
+)
+SOURCE_MAP_TABLE_HEADER_ALIASES = {
+    "tool": ("tool/system", "tool", "system", "sistema", "herramienta"),
+    "owner": ("owner", "propietario", "responsable"),
+    "source_status": ("source-of-truth status", "source status", "estado de fuente", "estado fuente", "fuente de verdad"),
+    "read_permission": ("agent read permission", "read permission", "permiso de lectura", "lectura del agente"),
+    "write_permission": ("agent write/action permission", "write/action permission", "permiso de escritura", "permiso de acción", "permiso de accion"),
+    "sync_cadence": ("sync cadence", "cadencia de sincronización", "cadencia de sincronizacion", "cadencia"),
+    "freshness": ("freshness", "last reviewed", "vigencia", "frescura", "actualización", "actualizacion", "última revisión", "ultima revision"),
+    "receipt_rule": ("receipt rule", "regla de recibo", "regla de evidencia", "regla de prueba"),
+    "risks": ("risks", "riesgos"),
+    "next_action": ("next action", "siguiente acción", "siguiente accion", "próxima acción", "proxima accion"),
+}
+SOURCE_MAP_REQUIRED_COLUMNS = (
+    "tool",
+    "owner",
+    "source_status",
+    "read_permission",
+    "write_permission",
+    "sync_cadence",
+    "freshness",
+    "receipt_rule",
+    "risks",
+    "next_action",
+)
+SOURCE_MAP_SYSTEM_FAMILIES = (
+    ("drive", "docs", "document"),
+    ("notion", "wiki"),
+    ("sheets", "spreadsheet", "hoja"),
+    ("crm", "pipeline"),
+    ("whatsapp", "slack", "chat"),
+    ("email", "correo", "inbox"),
+)
+SOURCE_MAP_PERMISSION_MARKERS = (
+    "read-only",
+    "read only",
+    "lectura",
+    "approval required",
+    "aprobación requerida",
+    "aprobacion requerida",
+    "human review",
+    "human owner",
+)
+SOURCE_MAP_PRIVACY_MARKERS = (
+    "do not store credentials",
+    "no credentials",
+    "sin credenciales",
+    "tokens",
+    "api keys",
+    "passwords",
+    "connection strings",
+)
+SOURCE_MAP_PRIVACY_GUARDRAIL_RE = re.compile(
+    r"(do not|don't|never|no|sin|no almacenar|no guardar)[^.\n]*(credentials|credenciales|tokens|api keys|passwords|contraseñas|contrasenas|connection strings|secret)",
+    re.IGNORECASE,
+)
 INSTALLATION_RECEIPT_NAME_RE = re.compile(r"(installation|install|day[-_ ]?0|scaffold|verify_installation)", re.IGNORECASE)
 INSTALLATION_RECEIPT_CONTENT_MARKERS = (
     "installation receipt",
@@ -280,9 +349,93 @@ def has_operational_receipt_shape(path: Path, *, allow_synthetic: bool) -> bool:
     )
 
 
+def markdown_table_rows(text: str) -> list[list[str]]:
+    rows: list[list[str]] = []
+    for line in text.splitlines():
+        stripped = line.strip()
+        if not stripped.startswith("|") or not stripped.endswith("|"):
+            continue
+        cells = [cell.strip() for cell in stripped.strip("|").split("|")]
+        if cells and all(re.fullmatch(r":?-{3,}:?", cell.strip()) for cell in cells):
+            continue
+        rows.append(cells)
+    return rows
+
+
+def normalize_table_cell(value: str) -> str:
+    return " ".join(value.strip().strip("`*_ ").casefold().split())
+
+
+def source_map_column_indexes(header: list[str]) -> dict[str, int]:
+    normalized_header = [normalize_table_cell(cell) for cell in header]
+    indexes: dict[str, int] = {}
+    for canonical, aliases in SOURCE_MAP_TABLE_HEADER_ALIASES.items():
+        for index, cell in enumerate(normalized_header):
+            if any(alias in cell for alias in aliases):
+                indexes[canonical] = index
+                break
+    return indexes
+
+
+def source_map_cell_value(row: list[str], index: int) -> str:
+    if index >= len(row):
+        return ""
+    return normalized_field_value(row[index])
+
+
+def is_specific_source_map_row(row: list[str], indexes: dict[str, int]) -> bool:
+    for column in SOURCE_MAP_REQUIRED_COLUMNS:
+        value = source_map_cell_value(row, indexes[column])
+        if len(value) < 2:
+            return False
+        if column in {"tool", "owner", "risks", "next_action"} and value in GENERIC_FIELD_VALUES:
+            return False
+    return True
+
+
+def source_map_table_has_required_rows(text: str) -> bool:
+    rows = markdown_table_rows(text)
+    for header_index, header in enumerate(rows):
+        indexes = source_map_column_indexes(header)
+        if not all(column in indexes for column in SOURCE_MAP_REQUIRED_COLUMNS):
+            continue
+        data_rows = [row for row in rows[header_index + 1 :] if len(row) >= len(header) - 1]
+        if not data_rows or not all(is_specific_source_map_row(row, indexes) for row in data_rows):
+            continue
+        covered_families: set[int] = set()
+        for row in data_rows:
+            tool = source_map_cell_value(row, indexes["tool"])
+            for family_index, aliases in enumerate(SOURCE_MAP_SYSTEM_FAMILIES):
+                if any(alias in tool for alias in aliases):
+                    covered_families.add(family_index)
+        if len(covered_families) == len(SOURCE_MAP_SYSTEM_FAMILIES):
+            return True
+    return False
+
+
+def has_source_of_truth_map_shape(path: Path, *, allow_synthetic: bool) -> bool:
+    """Require a real systems map, not a generic evidence-shaped document."""
+    if not is_substantive(path, allow_synthetic=allow_synthetic):
+        return False
+
+    text = read_text(path)
+    lowered = text.lower()
+    if not source_map_table_has_required_rows(text):
+        return False
+    if not any(marker in lowered for marker in SOURCE_MAP_PERMISSION_MARKERS):
+        return False
+    if not SOURCE_MAP_PRIVACY_GUARDRAIL_RE.search(text):
+        return False
+    if "context-packets/" not in lowered and "context packet" not in lowered and "paquete de contexto" not in lowered:
+        return False
+    return True
+
+
 def has_operational_evidence(root: Path, criterion: Criterion, *, allow_synthetic: bool) -> bool:
     if criterion.name == OPERATIONAL_RECEIPT_CRITERION:
         return any(has_operational_receipt_shape(path, allow_synthetic=allow_synthetic) for path in matching_files(root, criterion))
+    if criterion.name == SOURCE_OF_TRUTH_MAP_CRITERION:
+        return any(has_source_of_truth_map_shape(path, allow_synthetic=allow_synthetic) for path in matching_files(root, criterion))
     return any(is_substantive(path, allow_synthetic=allow_synthetic) for path in matching_files(root, criterion))
 
 

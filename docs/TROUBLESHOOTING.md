@@ -209,7 +209,7 @@ python3 scripts/validate_point_b_readiness.py --mode scaffold /tmp/mi-company-br
 python3 scripts/validate_point_b_readiness.py --mode operational /tmp/mi-company-brain
 ```
 
-Para que `operational` pase, necesitas evidencia real y privada: Context Packet, Receipt, scorecard actualizado, límites de aprobación y siguiente sprint.
+Para que `operational` pase, necesitas evidencia real y privada: mapa de fuentes/sistemas revisado, Context Packet, Receipt, scorecard actualizado, límites de aprobación y siguiente sprint.
 
 ## 10. Permisos y aprobaciones: qué no puede hacer la IA sin permiso
 
