@@ -24,12 +24,39 @@ Risk tier: `{{ risk_tier }}`
 - Company scorecard: `company/company-scorecard.md`
 - Guided pilot / next sprint: `company/guided-pilot-plan.md`
 - Point B diagnosis: `company/point-b-readiness.md`
-- Operations brain: `departments/operations/department-brain.md`
+- Department brains: `departments/<department>/department-brain.md`
 - First employee: `digital-employees/ceo-operations-assistant/`
 - Initial context packet: `context-packets/initial-company-context.md`
 - Operational receipts: `receipts/`
 - State changes: `statechanges/`
 - 48h/7d/30d roadmap: `roadmap/48h-7d-30d.md`
+
+## Folder hierarchy boundary
+
+This generated folder is the operating boundary for the private Company Brain.
+
+Use this hierarchy:
+
+```text
+./
+  company/              # Direction / Mother Brain, approvals, scorecards
+  departments/          # one folder per department brain
+  digital-employees/    # SOUL.md and operating files per AI employee
+  context-packets/      # approved context for work
+  receipts/             # evidence of completed work
+  statechanges/         # durable operational changes
+  handoffs/             # human/agent handoffs
+  decisions/            # explicit decisions and rationale
+  scorecards/           # before/after and readiness scores
+  secrets/              # README only; real secrets stay out of Git
+```
+
+Rules:
+
+- Do not create random folders outside this private instance.
+- Do not move operational artifacts to Desktop/Downloads unless the human explicitly approves.
+- Do not store secrets, passwords, API keys or tokens in chat or Git.
+- If a new folder is needed, explain why it belongs in this hierarchy first.
 
 ## Rule
 

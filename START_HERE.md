@@ -4,6 +4,20 @@ Este repositorio sirve para instalar una **instancia privada de Company Brain**:
 
 No promete una transformación garantizada. Te ayuda a crear una base ordenada para empezar con seguridad: Dirección / Mother Brain, límites de aprobación, contexto mínimo, un primer departamento, receipts y evidencia revisable.
 
+## Antes de instalar: examen rápido de nivel IA
+
+Si no eres técnico o vas a usar Codex/Claude Code como copiloto instalador, empieza aquí:
+
+- [`docs/00_non_technical_start_with_codex_or_claude.md`](docs/00_non_technical_start_with_codex_or_claude.md)
+
+Ese flujo hace primero un examen corto de nivel de IA y asigna uno de tres modos de guardrails:
+
+1. **No técnico**: pasos exactos, guardrails fuertes y nada de claves en chat.
+2. **Usuario IA intermedio**: opciones seguras y explicación breve de tradeoffs.
+3. **Técnico / builder**: más autonomía, pero manteniendo límites en secretos, pagos, producción, legal y acciones públicas.
+
+Antes de que exista el cerebro privado, no hace falta indagar en la persona ni en datos sensibles. Solo se debe saber su nivel de IA para tratarla bien y no darle demasiada libertad demasiado pronto.
+
 ## Si no eres técnico, sigue este camino primero
 
 Usa el camino self-serve como una lista de pasos. La primera validación debe ser de **scaffold**: comprueba que la estructura está creada, no que la empresa ya opera como Punto B.
