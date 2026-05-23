@@ -605,6 +605,9 @@ def main() -> int:
         print("Recommended departments now: " + ", ".join(selections["now"]))
         if selections["later"]:
             print("Install later: " + ", ".join(selections["later"]))
+        print("Non-technical start: docs/00_non_technical_start_with_codex_or_claude.md")
+        print("AI level mode: choose Mode 1/2/3 before collecting sensitive company context")
+        print("Folder rule: keep work inside the generated private folder hierarchy")
         print("Next: rerun with --yes, then python scripts/verify_installation.py <output>")
         print("Then: python scripts/validate_point_b_readiness.py --mode scaffold <output>")
         print("Troubleshooting: docs/TROUBLESHOOTING.md")

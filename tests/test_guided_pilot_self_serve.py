@@ -47,6 +47,53 @@ def test_guided_pilot_docs_and_templates_exist_with_operational_markers():
         assert any(marker in text for marker in markers), rel
 
 
+def test_nontechnical_bootstrap_asks_ai_level_and_sets_guardrails():
+    guide = ROOT / "docs/00_non_technical_start_with_codex_or_claude.md"
+    assert guide.exists()
+    text = guide.read_text(encoding="utf-8")
+    for marker in [
+        "examen inicial de nivel de IA",
+        "Modo 1 — No técnico",
+        "Modo 2 — Usuario IA intermedio",
+        "Modo 3 — Técnico / builder",
+        "guardrails fuertes",
+        "no investigar a la persona",
+        "pedir cuentas y claves solo después",
+        "gratis o free tier",
+        "no pegues claves en el chat",
+        "jerarquía de carpetas",
+        "no salir de la carpeta privada",
+        "Codex",
+        "Claude Code",
+        "SOUL.md",
+        "CEO/Operations Assistant",
+    ]:
+        assert marker in text, marker
+
+    start_here = (ROOT / "START_HERE.md").read_text(encoding="utf-8")
+    assert "Antes de instalar: examen rápido de nivel IA" in start_here
+    assert "docs/00_non_technical_start_with_codex_or_claude.md" in start_here
+
+
+def test_wizard_dry_run_points_nontechnical_users_to_bootstrap_guide(tmp_path):
+    output = tmp_path / "dia-uno"
+    result = run_cmd([
+        WIZARD,
+        "--company", "DIA UNO",
+        "--company-type", "consultancy",
+        "--output", output,
+        "--dry-run",
+    ])
+    assert result.returncode == 0, result.stderr + result.stdout
+    for marker in [
+        "Non-technical start",
+        "docs/00_non_technical_start_with_codex_or_claude.md",
+        "AI level mode",
+        "private folder hierarchy",
+    ]:
+        assert marker in result.stdout
+
+
 def test_first_operating_loop_examples_make_evidence_concrete():
     path = ROOT / "docs/44_first_operating_loop_examples.md"
     text = path.read_text(encoding="utf-8")

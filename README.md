@@ -4,7 +4,7 @@ Convierte una agencia, consultoría o negocio freelance en una empresa AI-First 
 
 Company Brain System es una aceleradora guiada para pasar de **Punto A** a **Punto B AI-First**.
 
-**Primera vez aquí:** empieza por [`START_HERE.md`](START_HERE.md). La primera instalación valida el scaffold privado; la validación operativa de Punto B viene después de un primer loop interno revisado con evidencia real. Si un comando falla, usa [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md).
+**Primera vez aquí:** empieza por [`START_HERE.md`](START_HERE.md). Si no eres técnico o vas a usar Codex/Claude Code como operador instalador, empieza con [`docs/00_non_technical_start_with_codex_or_claude.md`](docs/00_non_technical_start_with_codex_or_claude.md): hace un examen corto de nivel IA, asigna guardrails y evita pedir datos sensibles antes de crear el cerebro privado. La primera instalación valida el scaffold privado; la validación operativa de Punto B viene después de un primer loop interno revisado con evidencia real. Si un comando falla, usa [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md).
 
 ## Punto A
 
