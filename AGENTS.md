@@ -34,7 +34,7 @@ Follow this order:
 4. Verify the framework locally with the repo validators when available.
 5. Prepare the private company instance and memory substrate in Sprint 0: Supabase/Postgres, Voyage and GBrain/Company Brain. For DIA UNO public/client installs, GBrain means the public upstream repo `https://github.com/garrytan/gbrain`; install or verify that target as part of the normal setup.
 6. Treat Slack as a mandatory Sprint 0 dependency for a real company install: present the minimum Slack workspace/channel plan and ask the user to approve creating/configuring it. This is not optional; without Slack, the first agent has no approved conversation surface.
-7. Connect Slack directly to Hermes with the repo connector. Composio may be used later as an approved app-integration layer, but it is not memory, source of truth or default Slack runtime.
+7. Connect Slack directly to Hermes with the repo connector. Do not add an external integration layer in the base path; Slack is not memory, source of truth or the runtime.
 8. Create or update the private company instance before agent launch. The instance is the company's private operating space, not this public framework repo.
 9. Run `scripts/check_private_memory_readiness.py --company-instance <private-instance> --strict`; do not create or launch CEO until Supabase/Voyage/GBrain readiness passes or the human explicitly approves a blocked/pending memory state.
 10. Create the first agent: CEO Agent, limited to Dirección only.

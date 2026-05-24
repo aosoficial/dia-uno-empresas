@@ -127,7 +127,7 @@ Create only the minimum channels:
 
 Add department channels later, when department agents exist.
 
-Slack is only the interface. Hermes is the runtime bridge. The Company Brain is the memory. Default path is direct Slack -> Hermes via Socket Mode; Composio is not the default Slack runtime and may only be used later as an approved app-integration layer.
+Slack is only the interface. Hermes is the runtime bridge. The Company Brain is the memory. Default path is direct Slack -> Hermes via Socket Mode. Do not add an external integration layer in the base company setup.
 
 After the Slack app exists, the installer operator must run `scripts/connect_slack_to_hermes.py` so the repo creates/uses the Hermes profile, writes the local Slack env block outside Git, restarts the Hermes gateway and records a private receipt:
 

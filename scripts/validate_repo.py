@@ -41,7 +41,12 @@ SECRET_PATTERNS = [
 ]
 
 SKIP_DIRS = {".git", "node_modules", ".venv", "venv", "build"}
-TEXT_SUFFIXES = {".md", ".yaml", ".yml", ".json", ".py", ".txt", ""}
+TEXT_SUFFIXES = {".md", ".yaml", ".yml", ".json", ".py", ".txt", ".sql", ""}
+ALLOWED_PLACEHOLDER_FRAGMENTS = [
+    "example-placeholder-only",
+    "example-bot-token-value",
+    "example-app-token-value",
+]
 
 
 def iter_text_files() -> list[Path]:
@@ -66,8 +71,12 @@ def main() -> int:
             text = path.read_text(encoding="utf-8")
         except UnicodeDecodeError:
             continue
+        scan_text = "\n".join(
+            line for line in text.splitlines()
+            if not any(fragment in line for fragment in ALLOWED_PLACEHOLDER_FRAGMENTS)
+        )
         for pattern in SECRET_PATTERNS:
-            if pattern.search(text):
+            if pattern.search(scan_text):
                 errors.append(f"Posible secreto en {path.relative_to(ROOT)} con patrón {pattern.pattern}")
 
     if errors:

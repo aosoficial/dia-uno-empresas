@@ -90,10 +90,10 @@ python scripts/bootstrap_company_brain.py --dry-run --company "Acme Demo" --comp
 2. ORGO instala/conecta Codex o Claude Code como operador instalador.
 3. Codex/Claude abre o actualiza DIA UNO y sigue [`AGENTS.md`](AGENTS.md) sin esperar que el usuario le diga qué leer.
 4. Se crea la instancia privada de empresa antes de hablar con agentes reales.
-5. Memoria privada en Sprint 0: Supabase/Postgres, Voyage y GBrain/Company Brain. En instalaciones públicas/cliente de DIA UNO, GBrain es el repo upstream `https://github.com/garrytan/gbrain`. Verificar con `scripts/check_private_memory_readiness.py` o `make memory-preflight`. Contrato de conexiones/procesos: [`docs/47_private_memory_runtime_connections.md`](docs/47_private_memory_runtime_connections.md).
+5. Memoria privada en Sprint 0: Supabase/Postgres, Voyage y GBrain/Company Brain. En instalaciones públicas/cliente de DIA UNO, GBrain es el repo upstream `https://github.com/garrytan/gbrain`. Verificar con `scripts/check_private_memory_readiness.py` o `make memory-preflight`. Contrato de conexiones/procesos: [`docs/47_private_memory_runtime_connections.md`](docs/47_private_memory_runtime_connections.md). Migración genérica revisable: `supabase/migrations/001_private_memory_runtime.sql`.
 6. Slack obligatorio: workspace/canales mínimos y app creada con `hermes slack guide` / `hermes slack manifest --write`.
 7. Conectar Slack directo a Hermes con `scripts/connect_slack_to_hermes.py`: instala/usa Hermes, crea el perfil, escribe tokens fuera de Git, verifica memoria, reinicia gateway y deja receipt privado.
-8. Herramientas base necesarias para el primer loop. Composio puede usarse después como capa aprobada para conectar apps, pero no como runtime Slack ni memoria.
+8. Herramientas base necesarias para el primer loop. Slack conecta directo a Hermes; no hay capa externa de integración en la ruta base.
 9. Primer agente: CEO, limitado a Dirección, accesible por Slack y escribiendo/leyendo memoria operativa.
 10. Observer agent read-only para señales, contradicciones, receipts y StateChanges.
 11. CEO entrevista Dirección y propone el organigrama inicial de agentes.

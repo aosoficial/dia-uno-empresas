@@ -169,14 +169,31 @@ def test_docs_make_direct_slack_to_hermes_mandatory():
         "hermes slack manifest --write",
         "SLACK_APP_TOKEN",
         "SLACK_ALLOWED_USERS",
-        "Composio is not the default Slack runtime",
+        "direct Slack -> Hermes",
         "check_private_memory_readiness.py",
         "Supabase/Voyage/GBrain",
         "https://github.com/garrytan/gbrain",
         "DATABASE_URL",
         "VOYAGE_MODEL",
+        "supabase/migrations/001_private_memory_runtime.sql",
     ]:
         assert marker in combined
+
+
+def test_generic_supabase_memory_migration_exists():
+    migration = ROOT / "supabase" / "migrations" / "001_private_memory_runtime.sql"
+    text = migration.read_text(encoding="utf-8")
+    for marker in [
+        "create schema if not exists gbrain",
+        "create extension if not exists vector",
+        "gbrain.operational_items",
+        "context_packet",
+        "statechange",
+        "receipt",
+        "embedding vector(1024)",
+        "gbrain_agent",
+    ]:
+        assert marker in text
 
 
 def test_public_gbrain_is_canonical():

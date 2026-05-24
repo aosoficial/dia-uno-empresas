@@ -17,7 +17,7 @@ Slack is required because:
 - receipts and blockers need a notification surface;
 - the work is internal, reviewed and receipt-based.
 
-Default path: **direct Slack -> Hermes via Socket Mode**. Do not route the first agent through Composio by default. Composio is only an approved exception for app integrations after Hermes is already the runtime.
+Default path: **direct Slack -> Hermes via Socket Mode**. Do not route the first agent through an external integration layer in the base path.
 
 If Slack cannot be created or connected to Hermes yet, stop the first-agent launch and record Slack/Hermes connection as a blocking dependency. Do not replace it with ad-hoc chat unless the user explicitly approves a different operating surface.
 
@@ -93,7 +93,7 @@ Its first Slack behavior should be boring and safe:
    ```
 4. Create or choose the Slack workspace.
 5. Create the first channels.
-6. Create the Slack app/bot user for the first agent with `hermes slack guide` + `hermes slack manifest --write`. Default path is direct Slack -> Hermes, not Composio.
+6. Create the Slack app/bot user for the first agent with `hermes slack guide` + `hermes slack manifest --write`. Default path is direct Slack -> Hermes.
 7. Configure minimum permissions from the Hermes manifest and install the Slack app.
 8. Store real tokens outside Git: environment variables, a private `.env` file or a secrets manager.
 9. Register the Slack surface in the private instance at `integrations/slack-first-agent.md`.
@@ -202,6 +202,6 @@ Slack-first setup is ready when:
 - Observer is created or explicitly pending as a read-only cross-system memory observer before department agents open;
 - approval boundaries are respected;
 - evidence is saved outside Slack and linked from a receipt;
-- no secret was pasted in Slack/Composio chat surfaces or committed to Git.
+- no secret was pasted in Slack or committed to Git.
 
 If one human cannot message the first agent in Slack, the first agent is not ready to launch.

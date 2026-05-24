@@ -14,7 +14,7 @@ Haz inmediatamente esto:
 2. Explica al usuario el siguiente paso en lenguaje humano.
 3. Haz el examen corto de nivel IA antes de pedir datos de empresa.
 4. Usa comandos locales seguros para verificar el repo.
-5. Para una empresa real, no saltes a agentes: primero presenta el plan mínimo de Slack y herramientas base. Slack es obligatorio para hablar con el primer agente; crear/configurar Slack o conectar Composio es una acción externa y requiere aprobación del usuario.
+5. Para una empresa real, no saltes a agentes: primero presenta el plan mínimo de Slack y herramientas base. Slack es obligatorio para hablar con el primer agente; crear/configurar Slack es una acción externa y requiere aprobación del usuario.
 6. Pide aprobación solo antes de acciones externas, públicas, económicas, legales, productivas, sensibles, destructivas, con secretos o con workers/crons/bots persistentes.
 
 Primer mensaje recomendado:
@@ -55,7 +55,7 @@ python scripts/company_brain_wizard.py --dry-run --company "Mi Empresa" --compan
 
 # 2) Antes de una empresa real: preparar Slack/herramientas base.
 #    Slack es obligatorio para hablar con el primer agente.
-#    Composio puede usarse como capa recomendada para conectar Slack/apps.
+#    Slack conecta directo a Hermes; no hay capa externa en la ruta base.
 #    No se crean recursos externos desde el repo sin aprobación explícita.
 
 # 3) Crear una instancia privada local
@@ -89,7 +89,7 @@ No uses una validación operativa fresca para afirmar que la empresa ya está li
 Rellena solo lo mínimo y seguro:
 
 1. **ORGO + Codex/Claude**: instala o conecta el operador instalador antes de tocar la empresa.
-2. **Slack mínimo obligatorio**: prepara la superficie de conversación y aprobaciones para hablar con el primer agente. Slack es interfaz, no memoria. Composio puede ser la capa de conexión/autenticación.
+2. **Slack mínimo obligatorio**: prepara la superficie de conversación y aprobaciones para hablar con el primer agente. Slack es interfaz, no memoria. Slack conecta directo a Hermes.
 3. **Memoria privada**: Supabase/Voyage/GBrain o estado explícito de pendiente si aún no se conectó.
 4. **CEO agent**: primer agente, limitado a Dirección / Mother Brain.
 5. **Dirección / Mother Brain**: visión, modelo, prioridades, criterios de decisión y límites de aprobación.
