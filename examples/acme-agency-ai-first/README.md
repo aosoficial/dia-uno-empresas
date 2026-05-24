@@ -10,7 +10,7 @@ Acme is a 7-person growth agency with scattered client knowledge, manual deliver
 
 ## Punto B AI-First
 
-Acme has a Direction / Mother Brain, departments, scorecards, approval boundaries, digital employees, receipts, statechanges, context packets, handoffs and a 48h / 7d / 30d rollout plan. The first digital employee supports CEO/Ops with internal reviews only.
+Acme has a Direction / Mother Brain, departments, scorecards, approval boundaries, digital employees, receipts, statechanges, context packets, handoffs and a 48h / 7d / 30d rollout plan. The first digital employee is CEO/Dirección, with internal reviews only.
 
 ## First run
 

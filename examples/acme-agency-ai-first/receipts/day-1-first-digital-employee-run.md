@@ -4,7 +4,7 @@ Synthetic fake company receipt.
 
 ## What changed
 
-The first digital employee, CEO/Ops Assistant, reviewed the Day 0 context packet and produced three internal recommendations: clarify offer scope, create Sales-to-Operations handoff, and add a margin pre-check before proposal approval.
+The first digital employee, CEO/Dirección Agent, reviewed the Day 0 context packet and produced three internal recommendations: clarify offer scope, create Sales-to-Operations handoff, and add a margin pre-check before proposal approval.
 
 ## Why
 

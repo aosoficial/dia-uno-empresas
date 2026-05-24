@@ -2,18 +2,24 @@
 
 Goal: make the first digital employee reachable in the place where the client team already works.
 
-For most guided pilots, the first conversational surface should be **Slack**. It is not the source of truth. It is the front door for human-agent collaboration.
+For a real ORGO-first company install, the first conversational surface **must be Slack**. It is not the source of truth. It is the front door for human-agent collaboration and the required surface for talking to the first agent.
 
 In the ORGO-first flow, Slack comes after ORGO has installed/connected Codex or Claude Code as the installer operator, and before the company starts deep department discovery.
 
-## Default decision
+## Mandatory decision for real installs
 
-Use Slack first when:
+Use Slack before launching the first agent. Do not present Slack as an optional channel in a real company install.
 
-- the company has more than one human collaborating with agents;
-- the team already uses Slack or can adopt it quickly;
-- the pilot needs mobile notifications, threads, channels and clear membership;
+Slack is required because:
+
+- the first agent needs one approved place to receive messages;
+- approvals and escalations need visible channels;
+- receipts and blockers need a notification surface;
 - the work is internal, reviewed and receipt-based.
+
+Composio can be used as the integration/auth layer for Slack and other apps, but it must not become memory or source of truth.
+
+If Slack cannot be created or connected yet, stop the first-agent launch and record Slack as a blocking dependency. Do not replace it with ad-hoc chat unless the user explicitly approves a different operating surface.
 
 Do not build a custom chat product before the first pilot proves the operating loop.
 
@@ -77,7 +83,7 @@ Its first Slack behavior should be boring and safe:
 
 1. Create or choose the Slack workspace.
 2. Create the first channels.
-3. Create a Slack app or bot user for the first agent.
+3. Create a Slack app/bot user for the first agent, or connect Slack through Composio if that is the approved integration path.
 4. Configure permissions with the minimum scopes needed.
 5. Store real tokens outside Git: environment variables or a secrets manager.
 6. Register the Slack surface in the private instance at `integrations/slack-first-agent.md`.
@@ -133,7 +139,7 @@ Validation checks:
 
 ## Observer agent
 
-After the first CEO + department-agent loop exists, add an **Observer** agent.
+After the CEO/Dirección agent exists and before department agents are opened, add or explicitly mark pending an **Observer** agent.
 
 Observer is not a business executor. It watches the system and proposes memory maintenance:
 
@@ -144,7 +150,7 @@ Observer is not a business executor. It watches the system and proposes memory m
 - repeated questions that should become memory;
 - actions that appear outside approval boundaries.
 
-Observer can suggest StateChanges or receipts, but it must ask before changing permissions, connecting tools or executing business actions.
+Observer can suggest StateChanges or receipts, but it must ask before changing permissions, connecting tools or executing business actions. It must not interview departments or act as a business executor.
 
 ## Done criteria
 
@@ -154,7 +160,9 @@ Slack-first setup is ready when:
 - the first agent is CEO and remains limited to Dirección;
 - the agent can complete one safe internal task;
 - department interviews are assigned to department agents, not CEO;
-- Observer is defined as a later cross-system memory observer;
+- Observer is created or explicitly pending as a read-only cross-system memory observer before department agents open;
 - approval boundaries are respected;
 - evidence is saved outside Slack and linked from a receipt;
-- no secret was pasted in Slack or committed to Git.
+- no secret was pasted in Slack/Composio chat surfaces or committed to Git.
+
+If one human cannot message the first agent in Slack, the first agent is not ready to launch.

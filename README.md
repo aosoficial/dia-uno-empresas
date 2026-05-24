@@ -28,7 +28,7 @@ Empresa AI-First de servicios productizados con:
 - departamentos definidos uno por uno;
 - brain por departamento;
 - sistema para guardar memoria operativa;
-- comunicación entre humanos y agentes, empezando por Slack cuando haya varios humanos/equipos;
+- comunicación entre humanos y agentes; en una primera empresa real empieza obligatoriamente por Slack para poder hablar con el primer agente;
 - organización de personas y agentes;
 - roles, permisos, límites y aprobaciones;
 - skills por departamento;
@@ -54,7 +54,7 @@ Empresa AI-First de servicios productizados con:
 - [`docs/43_self_serve_operator_ux.md`](docs/43_self_serve_operator_ux.md) — UX operativa self-serve.
 - [`docs/44_first_operating_loop_examples.md`](docs/44_first_operating_loop_examples.md) — ejemplos seguros para crear evidencia del primer loop.
 - [`docs/45_slack_first_agent.md`](docs/45_slack_first_agent.md) — primer agente conversacional por Slack.
-- [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md) — flujo real ORGO → Codex/Claude → Slack → memoria → CEO → departamentos → Observer.
+- [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md) — flujo real ORGO → Codex/Claude → Slack obligatorio → memoria → CEO/Dirección + Observer → departamentos.
 
 ### 2. Generar una empresa privada guiada
 
@@ -89,13 +89,14 @@ python scripts/bootstrap_company_brain.py --dry-run --company "Acme Demo" --comp
 1. ORGO instalado por el cliente.
 2. ORGO instala/conecta Codex o Claude Code como operador instalador.
 3. Codex/Claude abre o actualiza DIA UNO y sigue [`AGENTS.md`](AGENTS.md) sin esperar que el usuario le diga qué leer.
-4. Se crea la instancia privada de empresa.
-5. Slack-first: canales mínimos para hablar con agentes, aprobar y recibir receipts.
-6. Memoria privada: Supabase/Postgres, Voyage y GBrain/Company Brain.
-7. Primer agente: CEO, limitado a Dirección.
-8. CEO entrevista Dirección y propone el organigrama inicial de agentes.
-9. Agentes de departamento entrevistan sus propias áreas: operaciones, marketing, growth/sales, producto/servicio, finanzas y postventa.
-10. Observer agent conecta señales, contradicciones, receipts y StateChanges en el cerebro común.
+4. Slack obligatorio: workspace/canales mínimos para hablar con agentes, aprobar y recibir receipts. Si Slack no existe, no se lanza el primer agente.
+5. Herramientas base necesarias para el primer loop. Composio puede usarse como capa recomendada para conectar Slack/apps, sin convertirlo en memoria ni fuente de verdad.
+6. Se crea la instancia privada de empresa.
+7. Memoria privada: Supabase/Postgres, Voyage y GBrain/Company Brain.
+8. Primer agente: CEO, limitado a Dirección, accesible por Slack.
+9. Observer agent read-only para señales, contradicciones, receipts y StateChanges.
+10. CEO entrevista Dirección y propone el organigrama inicial de agentes.
+11. Agentes de departamento entrevistan sus propias áreas: operaciones, marketing, growth/sales, producto/servicio, finanzas y postventa.
 
 ## Qué incluye
 

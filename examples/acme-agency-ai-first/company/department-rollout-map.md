@@ -5,7 +5,7 @@ Synthetic fake company rollout from Punto A to Punto B AI-First.
 ## 48 hours
 
 1. Direction / Mother Brain validates operating principles, approval boundaries and first scorecard.
-2. CEO/Ops first digital employee creates first internal review and receipt.
+2. CEO/Dirección first digital employee creates first internal review and receipt.
 3. Sales creates one discovery brief and one handoff context packet.
 4. Operations receives the handoff and produces a delivery QA checklist.
 

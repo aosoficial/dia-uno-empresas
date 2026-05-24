@@ -141,7 +141,7 @@ What changed:
 - Replaced remaining generated/example paths from `digital-employees/ceo-operations-assistant/` to `digital-employees/ceo/`.
 
 Why:
-- The first company pilot needs a practical entry sequence: ORGO → Codex/Claude → DIA UNO → Slack → private memory → CEO Agent → department agents → Observer.
+- The first company pilot needs a practical entry sequence: ORGO → Codex/Claude → DIA UNO → Slack/base tools → private memory → CEO Agent/Dirección + Observer → department agents.
 - Slack remains the interface; GBrain/Company Brain remains the operational memory and source of truth.
 
 Allowed actions:
@@ -180,6 +180,37 @@ Allowed actions:
 
 Forbidden actions:
 - No live Slack/Supabase/Voyage/GBrain setup, secrets, client data, paid/public/legal/production actions, workers, crons or bots.
+
+Verification:
+- `python3 scripts/validate_repo.py` passed.
+- `python3 scripts/validate_schemas.py` passed.
+- `python3 scripts/build_docs.py` passed.
+- `python3 scripts/validate_links.py` passed.
+- `python3 scripts/validate_public_safety.py` passed.
+- `python3 scripts/validate_installable_runtime.py` passed.
+- `pytest -q` passed: 50 tests.
+
+## R-011 — Canonical ORGO → Slack → memory → CEO/Observer flow
+
+Date: 2026-05-24
+Owner: Hermes Clean
+Scope: repository guidance change only; no live Slack/Supabase/Voyage/GBrain integration activated.
+
+What changed:
+- Updated `AGENTS.md`, `START_HERE.md` and `docs/46_orgo_first_company_onboarding.md` so the installer follows the canonical flow: ORGO → Codex/Claude → DIA UNO → Slack/base tools → private memory → CEO/Dirección + Observer → department agents.
+- Updated `docs/45_slack_first_agent.md` so Observer is created or explicitly pending before department agents open, not after department discovery.
+- Clarified that Slack/base tools are Sprint 0 prerequisites for a real company install and require approval before external configuration.
+
+Why:
+- The installer agent must not jump directly into CEO/departamental interviews or treat Slack as a later optional step.
+- The first real company needs Slack as the human-agent interface, Company Brain/GBrain as memory, CEO limited to Dirección and Observer as a read-only guard before departments scale.
+
+Allowed actions:
+- Local docs/instruction changes inside this repo.
+- Local validators and tests.
+
+Forbidden actions:
+- No live Slack workspace/app, production runtime, real client data, Supabase/Voyage/GBrain provisioning, secrets, money/legal/public actions, workers, crons or bots without explicit approval.
 
 Verification:
 - `python3 scripts/validate_repo.py` passed.

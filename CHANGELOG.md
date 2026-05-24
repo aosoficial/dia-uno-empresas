@@ -12,6 +12,8 @@
 - Added Slack-first first agent path for guided pilots.
 - Added ORGO-first company onboarding: ORGO connects Codex/Claude Code as installer, DIA UNO prepares Slack, private memory, CEO Agent and Observer Agent.
 - Added root `AGENTS.md` so Codex/Claude launched from ORGO guides the next step automatically after clone/open.
+- Clarified installer flow: ORGO → Codex/Claude → DIA UNO → Slack/base tools → private memory → CEO/Dirección + Observer → department agents.
+- Made Slack mandatory for first-agent launch in real ORGO-first installs and documented Composio as a possible integration/auth layer.
 
 ## v0.1.0
 

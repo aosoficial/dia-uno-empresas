@@ -2,7 +2,7 @@
 
 Este repositorio sirve para instalar una **instancia privada de Company Brain**: el primer corte seguro de un sistema operativo AI-first para tu empresa.
 
-Si vas a montar una primera empresa real desde **ORGO**, el camino correcto es: ORGO instala/conecta Codex o Claude Code, Codex/Claude instala DIA UNO, se conecta Slack, se monta memoria privada con Supabase/Voyage/GBrain, se crea el CEO agent y después los agentes de departamento. Usa [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md) como guía principal.
+Si vas a montar una primera empresa real desde **ORGO**, el camino correcto es: ORGO instala/conecta Codex o Claude Code, Codex/Claude carga este framework, prepara **Slack como primera interfaz operativa obligatoria para hablar con el primer agente**, prepara las herramientas base, crea la instancia privada de empresa, monta memoria privada con Supabase/Voyage/GBrain, crea el CEO agent y después los agentes de departamento. Usa [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md) como guía principal.
 
 ## Para Codex/Claude después de clonar desde ORGO
 
@@ -14,7 +14,8 @@ Haz inmediatamente esto:
 2. Explica al usuario el siguiente paso en lenguaje humano.
 3. Haz el examen corto de nivel IA antes de pedir datos de empresa.
 4. Usa comandos locales seguros para verificar el repo.
-5. Pide aprobación solo antes de acciones externas, públicas, económicas, legales, productivas, sensibles, destructivas, con secretos o con workers/crons/bots persistentes.
+5. Para una empresa real, no saltes a agentes: primero presenta el plan mínimo de Slack y herramientas base. Slack es obligatorio para hablar con el primer agente; crear/configurar Slack o conectar Composio es una acción externa y requiere aprobación del usuario.
+6. Pide aprobación solo antes de acciones externas, públicas, económicas, legales, productivas, sensibles, destructivas, con secretos o con workers/crons/bots persistentes.
 
 Primer mensaje recomendado:
 
@@ -52,13 +53,18 @@ git clone https://github.com/aosoficial/dia-uno-empresas.git
 cd dia-uno-empresas
 python scripts/company_brain_wizard.py --dry-run --company "Mi Empresa" --company-type agency --output /tmp/mi-company-brain
 
-# 2) Crear una instancia privada local
+# 2) Antes de una empresa real: preparar Slack/herramientas base.
+#    Slack es obligatorio para hablar con el primer agente.
+#    Composio puede usarse como capa recomendada para conectar Slack/apps.
+#    No se crean recursos externos desde el repo sin aprobación explícita.
+
+# 3) Crear una instancia privada local
 python scripts/company_brain_wizard.py --company "Mi Empresa" --company-type agency --output /tmp/mi-company-brain --yes
 
-# 3) Verificar que la instalación existe y tiene la estructura esperada
+# 4) Verificar que la instalación existe y tiene la estructura esperada
 python scripts/verify_installation.py /tmp/mi-company-brain
 
-# 4) Validar primero en modo scaffold
+# 5) Validar primero en modo scaffold
 python scripts/validate_point_b_readiness.py --mode scaffold /tmp/mi-company-brain
 ```
 
@@ -83,7 +89,7 @@ No uses una validación operativa fresca para afirmar que la empresa ya está li
 Rellena solo lo mínimo y seguro:
 
 1. **ORGO + Codex/Claude**: instala o conecta el operador instalador antes de tocar la empresa.
-2. **Slack mínimo**: prepara la superficie de conversación y aprobaciones. Slack es interfaz, no memoria.
+2. **Slack mínimo obligatorio**: prepara la superficie de conversación y aprobaciones para hablar con el primer agente. Slack es interfaz, no memoria. Composio puede ser la capa de conexión/autenticación.
 3. **Memoria privada**: Supabase/Voyage/GBrain o estado explícito de pendiente si aún no se conectó.
 4. **CEO agent**: primer agente, limitado a Dirección / Mother Brain.
 5. **Dirección / Mother Brain**: visión, modelo, prioridades, criterios de decisión y límites de aprobación.

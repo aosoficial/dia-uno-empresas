@@ -39,14 +39,15 @@ After the mode is selected:
 3. Explain that tools/accounts should use free plans or free tier first when available.
 4. Ask me to create required accounts only when needed.
 5. Never ask me to paste real API keys, passwords or tokens into chat. Tell me where to store them locally instead.
-6. Create the private Company Brain instance outside the public repo.
-7. Help me prepare Slack as the first human-agent interface.
-8. Help me configure the private memory path: Supabase/Postgres, Voyage and GBrain/Company Brain, or mark it explicitly pending if not connected yet.
-9. Keep all internal files inside the generated private folder hierarchy. Do not create random folders elsewhere unless I explicitly approve.
-10. Create or guide the first digital employee SOUL.md: CEO Agent, limited to Dirección.
-11. Do not ask CEO to interview marketing, operations, product, growth, finance or post-sale. Those interviews belong to department agents later.
-12. Define the Observer agent as a memory/system observer, not as a business executor.
-13. Stop after the first safe internal operating loop with Context Packet, human review, Receipt and scorecard.
+6. Help me prepare Slack as the mandatory first human-agent interface. Do not launch the first agent until I can talk to it through Slack.
+7. If useful, use Composio as the integration/auth layer for Slack and other apps, but do not treat Composio as memory or source of truth.
+8. Create the private Company Brain instance outside the public repo after Slack is approved/created/configured.
+9. Help me configure the private memory path: Supabase/Postgres, Voyage and GBrain/Company Brain, or mark it explicitly pending if not connected yet.
+10. Keep all internal files inside the generated private folder hierarchy. Do not create random folders elsewhere unless I explicitly approve.
+11. Create or guide the first digital employee SOUL.md: CEO Agent, limited to Dirección.
+12. Do not ask CEO to interview marketing, operations, product, growth, finance or post-sale. Those interviews belong to department agents later.
+13. Define the Observer agent as a memory/system observer, not as a business executor.
+14. Stop after the first safe internal operating loop with Context Packet, human review, Receipt and scorecard.
 
 If a command is destructive, paid, public, external, legal, production-related or sensitive, ask me before doing it.
 ```
@@ -150,7 +151,7 @@ Suggested order for ORGO-first onboarding:
 2. Codex or Claude Code desktop/terminal connected from ORGO as installer operator.
 3. GitHub account or repo access, if needed to clone/open/update DIA UNO.
 4. Local runtime requirements from this repo.
-5. Slack workspace/app setup for the first interface.
+5. Slack workspace/app setup for the first interface. For real installs, Slack is mandatory before launching the first agent; Composio may be used as the integration/auth layer.
 6. Supabase/Postgres, Voyage and GBrain/Company Brain for private memory, using free/free-tier first when possible.
 7. Optional integrations only after the private brain and approval rules exist.
 
@@ -193,16 +194,17 @@ The first goal is not a full company transformation.
 
 The first goal is:
 
-1. Create the private instance.
-2. Verify the scaffold.
-3. Create the first digital employee: `CEO` agent for Dirección only.
-4. Review its `SOUL.md`.
-5. CEO interviews Dirección only and proposes the first department-agent roster.
-6. Create one safe Context Packet.
-7. Run one internal action only.
-8. Human reviews the result.
-9. Save an Operational Receipt.
-10. Update the scorecard.
+1. Prepare Slack as the mandatory conversation surface for the first agent.
+2. Create the private instance.
+3. Verify the scaffold.
+4. Create the first digital employee: `CEO` agent for Dirección only.
+5. Review its `SOUL.md`.
+6. CEO interviews Dirección only and proposes the first department-agent roster.
+7. Create one safe Context Packet.
+8. Run one internal action only.
+9. Human reviews the result.
+10. Save an Operational Receipt.
+11. Update the scorecard.
 
 After that, the operational validator can be run. Until then, examples are examples; they are not Point B evidence.
 
@@ -224,6 +226,7 @@ After that, the operational validator can be run. Until then, examples are examp
 This bootstrap is done when there is:
 
 - selected AI-level mode;
+- Slack working as the first-agent conversation surface;
 - private instance outside the public repo;
 - verified scaffold;
 - first CEO agent `SOUL.md` reviewed;
