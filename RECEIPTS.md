@@ -255,3 +255,28 @@ Verification:
 - `python3 scripts/validate_public_safety.py` passed.
 - `python3 scripts/validate_installable_runtime.py` passed.
 - `pytest -q` passed: 59 tests.
+
+## R-013 — Slack/Hermes pending-memory receipt hardening
+
+Date: 2026-05-24
+Owner: Framework maintainer
+Scope: repository script/test change only; no live Slack/Supabase/Voyage/GBrain integration activated.
+
+What changed:
+- Hardened `scripts/connect_slack_to_hermes.py` so an explicit `--allow-memory-pending` override writes the unresolved memory blockers into the private Slack/Hermes receipt.
+- Added regression coverage to prove the receipt records pending blockers without recording Slack token values.
+
+Why:
+- Direct Slack → Hermes is correct, but a working chat surface must not hide missing Supabase/Voyage/GBrain readiness.
+- If a human explicitly allows pending memory, the repo must preserve that blocker as operational evidence and keep CEO launch paused until resolved.
+
+Allowed actions:
+- Public-safe script/test edits inside this repo.
+- Local validation only.
+
+Forbidden actions:
+- No live Slack workspace/app, production runtime, real client data, Supabase/Voyage/GBrain provisioning, secrets, money/legal/public actions, workers, crons or bots without explicit approval.
+
+Verification:
+- `python -m pytest tests/test_slack_hermes_connector.py tests/test_observer_read_only_runtime.py` passed: 13 tests.
+- `python scripts/validate_repo.py && python scripts/validate_installable_runtime.py` passed.

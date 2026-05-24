@@ -140,7 +140,7 @@ def upsert_env_block(env_path: Path, values: dict[str, str]) -> None:
         pass
 
 
-def write_private_receipt(instance: Path, profile: str, apply: bool) -> None:
+def write_private_receipt(instance: Path, profile: str, apply: bool, memory_errors: list[str] | None = None) -> None:
     rel = Path("receipts") / f"{datetime.now(timezone.utc).strftime('%Y-%m-%d')}-slack-hermes-connection.md"
     path = instance / rel
     print(("WRITE" if apply else "DRY-RUN") + f": {path}")
@@ -148,6 +148,10 @@ def write_private_receipt(instance: Path, profile: str, apply: bool) -> None:
         return
     path.parent.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    memory_block = "- Private memory readiness passed before Slack/Hermes connection."
+    if memory_errors:
+        formatted = "\n".join(f"- BLOCKED/PENDING: {error}" for error in memory_errors)
+        memory_block = f"Memory readiness was explicitly overridden by the human/operator. CEO launch remains paused until these blockers are closed:\n\n{formatted}"
     path.write_text(f"""# Slack -> Hermes Connection Receipt
 
 Date: `{stamp}`
@@ -171,6 +175,7 @@ DIA UNO needs the first human-agent conversation to happen in Slack, while memor
 
 ## Evidence
 
+{memory_block}
 - Hermes profile selected: `{profile}`
 - Tokens were loaded from local environment or a private env file. Values are intentionally not recorded.
 - Gateway status must be verified with `hermes --profile {profile} gateway status` after restart.
@@ -284,7 +289,7 @@ def main() -> int:
     else:
         print("PENDING: profile path not available until the profile exists")
 
-    write_private_receipt(instance, args.profile, args.apply)
+    write_private_receipt(instance, args.profile, args.apply, memory_errors if args.allow_memory_pending else None)
 
     if args.start_gateway:
         result = run(["hermes", "--profile", args.profile, "gateway", "restart"], apply=args.apply)

@@ -151,6 +151,25 @@ def test_connector_can_plan_with_explicit_memory_pending_override(tmp_path):
     assert "DRY-RUN" in result.stdout
 
 
+def test_private_receipt_records_memory_pending_blockers(tmp_path):
+    connector = load_connector()
+    instance = tmp_path / "private-company"
+    instance.mkdir()
+    connector.write_private_receipt(
+        instance,
+        "acme-ceo",
+        True,
+        ["missing supabase memory env: one of SUPABASE_URL", "missing private memory path: receipts"],
+    )
+    receipts = list((instance / "receipts").glob("*-slack-hermes-connection.md"))
+    assert len(receipts) == 1
+    text = receipts[0].read_text(encoding="utf-8")
+    assert "explicitly overridden" in text
+    assert "CEO launch remains paused" in text
+    assert "BLOCKED/PENDING: missing supabase memory env" in text
+    assert "SLACK_BOT_TOKEN=" not in text
+
+
 def test_docs_make_direct_slack_to_hermes_mandatory():
     combined = "\n".join(
         (ROOT / rel).read_text(encoding="utf-8")
