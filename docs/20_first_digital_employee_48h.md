@@ -4,7 +4,7 @@ Goal: launch one useful internal employee, not a whole autonomous company.
 
 ## Recommended first role
 
-Default: **CEO / Operations Assistant**.
+Default: **CEO Agent** — limited to Dirección.
 
 Why:
 
@@ -32,8 +32,8 @@ Why:
 
 ### Hour 6–12 — First department and employee pack
 
-- Start with operations department.
-- Review the employee files under `digital-employees/ceo-operations-assistant/`.
+- Start with Dirección, not operations.
+- Review the employee files under `digital-employees/ceo/`.
 - Confirm allowed tools, forbidden actions and escalation path.
 - If Slack is in scope, register the surface in `integrations/slack-first-agent.md` inside the private company instance. Store real Slack tokens outside Git.
 

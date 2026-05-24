@@ -4,6 +4,8 @@ Goal: make the first digital employee reachable in the place where the client te
 
 For most guided pilots, the first conversational surface should be **Slack**. It is not the source of truth. It is the front door for human-agent collaboration.
 
+In the ORGO-first flow, Slack comes after ORGO has installed/connected Codex or Claude Code as the installer operator, and before the company starts deep department discovery.
+
 ## Default decision
 
 Use Slack first when:
@@ -39,16 +41,27 @@ The Company Brain remains the source of truth. Receipts, statechanges, context p
 
 Start small:
 
-- `#00-direction` — owner, priorities, decisions and escalations.
-- `#01-operations` — first internal workflows and delivery questions.
+- `#00-direction` — CEO agent, Dirección, priorities, decisions and escalations.
 - `#90-approvals` — actions that need explicit human approval.
 - `#99-receipts` — receipt notifications and evidence links.
 
-Add department channels only after there is a real workflow for them.
+Add department channels only after the CEO agent proposes the roster and the human approves the department agents. Do not create operations, marketing, growth, product, finance or post-sale deep-dive channels just because Slack exists.
 
 ## First agent
 
-Default first agent: **CEO / Operations Assistant**.
+Default first agent: **CEO**.
+
+The CEO agent is responsible for **Dirección** only at the beginning:
+
+- vision;
+- business model;
+- priorities;
+- decision criteria;
+- risk appetite;
+- approval boundaries;
+- proposed department-agent roster.
+
+The CEO agent must not run a deep interview about marketing, operations, product, growth/sales, finance or post-sale. Those areas belong to department agents later.
 
 Its first Slack behavior should be boring and safe:
 
@@ -69,8 +82,8 @@ Its first Slack behavior should be boring and safe:
 5. Store real tokens outside Git: environment variables or a secrets manager.
 6. Register the Slack surface in the private instance at `integrations/slack-first-agent.md`.
 7. Connect the bot to the runtime bridge outside the public framework repo.
-8. Send a safe test message in `#01-operations`.
-9. Run one internal task with a human reviewer.
+8. Send a safe test message in `#00-direction`.
+9. Run one Dirección-only internal task with a human reviewer.
 10. Save the receipt in `receipts/` and post only a short notification in `#99-receipts`.
 
 ## What can be configured from Slack
@@ -95,32 +108,53 @@ Those changes must be made in the runtime/private instance and then reflected in
 
 ## First test script
 
-Human posts in `#01-operations`:
-
+Human posts in `#00-direction`:
 ```text
-@ceo-operations-assistant Read the approved initial context only. Prepare a short internal brief with:
+@ceo Read the approved initial context only. Prepare a short Dirección brief with:
 1. what you know;
 2. what is missing;
-3. one safe next action;
-4. what requires human approval.
+3. the likely first department agents needed;
+4. one safe next action;
+5. what requires human approval.
+Do not interview marketing, operations, product, growth, finance or post-sale yet.
 Do not contact anyone, publish anything, spend money, use secrets or change production.
 End with a receipt draft.
 ```
 
-Expected result:
+Validation checks:
 
 - the agent stays within approved context;
 - the agent names missing context;
+- the agent stays limited to Dirección;
+- department discovery is deferred to department agents;
 - the next action is internal and reversible;
 - approval boundaries are respected;
 - a receipt draft exists.
 
-## Done
+## Observer agent
+
+After the first CEO + department-agent loop exists, add an **Observer** agent.
+
+Observer is not a business executor. It watches the system and proposes memory maintenance:
+
+- contradictions between channels or agents;
+- missing receipts;
+- stale assumptions;
+- decisions not reflected in the Company Brain;
+- repeated questions that should become memory;
+- actions that appear outside approval boundaries.
+
+Observer can suggest StateChanges or receipts, but it must ask before changing permissions, connecting tools or executing business actions.
+
+## Done criteria
 
 Slack-first setup is ready when:
 
 - one human can message the first agent in Slack;
+- the first agent is CEO and remains limited to Dirección;
 - the agent can complete one safe internal task;
+- department interviews are assigned to department agents, not CEO;
+- Observer is defined as a later cross-system memory observer;
 - approval boundaries are respected;
-- evidence is saved outside Slack in the private company instance;
-- the team knows that Slack is the interface, not the memory.
+- evidence is saved outside Slack and linked from a receipt;
+- no secret was pasted in Slack or committed to Git.

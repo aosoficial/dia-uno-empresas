@@ -57,7 +57,7 @@ Recommended first files to read:
 1. `MAP.md`
 2. `AGENTS.md`
 3. `company/approval-boundaries.md`
-4. `digital-employees/ceo-operations-assistant/IDENTITY.md`
+4. `digital-employees/ceo/IDENTITY.md`
 5. latest handoff or receipt, if any
 
 ## Skills

@@ -4,7 +4,7 @@ Convierte una agencia, consultoría o negocio freelance en una empresa AI-First 
 
 DIA UNO Empresas es una aceleradora guiada para pasar de **Punto A** a **Punto B AI-First**.
 
-**Primera vez aquí:** empieza por [`START_HERE.md`](START_HERE.md). Si no eres técnico o vas a usar Codex/Claude Code como operador instalador, empieza con [`docs/00_non_technical_start_with_codex_or_claude.md`](docs/00_non_technical_start_with_codex_or_claude.md): hace un examen corto de nivel IA, asigna guardrails y evita pedir datos sensibles antes de crear el cerebro privado. La primera instalación valida el scaffold privado; la validación operativa de Punto B viene después de un primer loop interno revisado con evidencia real. Si un comando falla, usa [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md).
+**Primera vez aquí:** empieza por [`START_HERE.md`](START_HERE.md). En un piloto real desde ORGO, primero instala o conecta **Codex** o **Claude Code** como operador instalador; después sigue [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md). Si no eres técnico o vas a usar Codex/Claude Code como operador instalador, usa también [`docs/00_non_technical_start_with_codex_or_claude.md`](docs/00_non_technical_start_with_codex_or_claude.md): hace un examen corto de nivel IA, asigna guardrails y evita pedir datos sensibles antes de crear el cerebro privado. La primera instalación valida el scaffold privado; la validación operativa de Punto B viene después de un primer loop interno revisado con evidencia real. Si un comando falla, usa [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md).
 
 ## Punto A
 
@@ -52,6 +52,7 @@ Empresa AI-First de servicios productizados con:
 - [`docs/43_self_serve_operator_ux.md`](docs/43_self_serve_operator_ux.md) — UX operativa self-serve.
 - [`docs/44_first_operating_loop_examples.md`](docs/44_first_operating_loop_examples.md) — ejemplos seguros para crear evidencia del primer loop.
 - [`docs/45_slack_first_agent.md`](docs/45_slack_first_agent.md) — primer agente conversacional por Slack.
+- [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md) — flujo real ORGO → Codex/Claude → Slack → memoria → CEO → departamentos → Observer.
 
 ### 2. Generar una empresa privada guiada
 
@@ -81,18 +82,18 @@ Para un bootstrap mínimo:
 python scripts/bootstrap_company_brain.py --dry-run --company "Acme Demo" --company-type agency --output /tmp/acme-company-brain
 ```
 
-## Orden de instalación
+## Orden de instalación para primera empresa real
 
-1. Dirección / Mother Brain.
-2. Slack-first: canal mínimo para hablar con el primer agente y pedir aprobaciones.
-3. Operations / Delivery.
-4. Marketing.
-5. Sales.
-6. Customer Success / Postventa.
-7. Product / Software Internal Systems.
-8. Finance.
-9. People / Organization.
-10. Admin / Legal / Compliance where needed.
+1. ORGO instalado por el cliente.
+2. ORGO instala/conecta Codex o Claude Code como operador instalador.
+3. Codex/Claude abre o actualiza DIA UNO.
+4. Se crea la instancia privada de empresa.
+5. Slack-first: canales mínimos para hablar con agentes, aprobar y recibir receipts.
+6. Memoria privada: Supabase/Postgres, Voyage y GBrain/Company Brain.
+7. Primer agente: CEO, limitado a Dirección.
+8. CEO entrevista Dirección y propone el organigrama inicial de agentes.
+9. Agentes de departamento entrevistan sus propias áreas: operaciones, marketing, growth/sales, producto/servicio, finanzas y postventa.
+10. Observer agent conecta señales, contradicciones, receipts y StateChanges en el cerebro común.
 
 ## Qué incluye
 

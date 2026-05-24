@@ -10,7 +10,7 @@ Goal: create a safe operating base and one useful digital employee.
 - Company type selected: agency, consultancy or freelancer.
 - Approval boundaries written.
 - Accountability map drafted.
-- First digital employee launched: Dirección Assistant or CEO / Operations Assistant.
+- First digital employee launched: CEO Agent for Dirección.
 - First safe task completed with receipt.
 
 ## 7 days — build the service operating system

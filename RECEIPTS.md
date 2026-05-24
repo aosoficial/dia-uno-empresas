@@ -124,5 +124,38 @@ Allowed actions:
 Forbidden actions:
 - Do not create Slack apps, connect live workspaces, store tokens, activate external bots or configure production without explicit human approval.
 
-Validation:
-- Run repository validators before publication.
+**Verification:**
+- Full repository validation passed before publication.
+
+## R-009 — ORGO-first CEO and Observer onboarding
+
+Date: 2026-05-24
+Owner: Hermes Clean
+Scope: repository change for private pilot readiness; no live Slack/Supabase/Voyage/GBrain integration activated.
+
+What changed:
+- Added `docs/46_orgo_first_company_onboarding.md` as the canonical ORGO-first company onboarding flow.
+- Clarified that the client starts in ORGO, then connects Codex or Claude Code as guided technical installer.
+- Updated docs/templates/scripts/tests so the first agent is `CEO Agent`, limited to Dirección.
+- Added `Observer Agent` template as a read-only coherence and evidence guard.
+- Replaced remaining generated/example paths from `digital-employees/ceo-operations-assistant/` to `digital-employees/ceo/`.
+
+Why:
+- The first company pilot needs a practical entry sequence: ORGO → Codex/Claude → DIA UNO → Slack → private memory → CEO Agent → department agents → Observer.
+- Slack remains the interface; GBrain/Company Brain remains the operational memory and source of truth.
+
+Allowed actions:
+- Documentation, templates, local generators, validators and tests.
+- Synthetic example updates only.
+
+Forbidden actions:
+- No live Slack app, production runtime, real client data, Supabase/Voyage/GBrain provisioning, secrets, money/legal/public actions or workers without explicit approval.
+
+Verification:
+- `python3 scripts/validate_repo.py` passed.
+- `python3 scripts/validate_schemas.py` passed.
+- `python3 scripts/build_docs.py` passed.
+- `python3 scripts/validate_links.py` passed.
+- `python3 scripts/validate_public_safety.py` passed.
+- `python3 scripts/validate_installable_runtime.py` passed.
+- `pytest -q` passed: 50 tests.

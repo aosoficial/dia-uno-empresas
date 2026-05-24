@@ -200,7 +200,7 @@ def main() -> int:
     parser.add_argument("--sector", default="unspecified")
     parser.add_argument("--owner", default="operator")
     parser.add_argument("--first-department", default="direction")
-    parser.add_argument("--first-employee", default="Dirección Assistant / CEO Operations Assistant")
+    parser.add_argument("--first-employee", default="CEO Agent")
     parser.add_argument("--language", default="en")
     parser.add_argument("--risk-tier", default="internal-low")
     parser.add_argument("--point-a", default="Knowledge scattered; processes manual; AI used ad hoc.")

@@ -66,7 +66,7 @@ def test_nontechnical_bootstrap_asks_ai_level_and_sets_guardrails():
         "Codex",
         "Claude Code",
         "SOUL.md",
-        "CEO/Operations Assistant",
+        "CEO Agent",
     ]:
         assert marker in text, marker
 
@@ -256,6 +256,9 @@ def test_wizard_generates_pilot_plan_and_point_b_scorecard(tmp_path):
     for marker in required_readme_markers:
         assert marker in readme
     assert "digital-employees/Dirección Assistant / CEO Operations Assistant/PERMISSIONS.md" not in readme
+    assert "digital-employees/ceo/PERMISSIONS.md" in readme
+    assert (output / "digital-employees" / "ceo" / "PERMISSIONS.md").exists()
+    assert (output / "digital-employees" / "observer" / "PERMISSIONS.md").exists()
 
     verify = run_cmd([ROOT / "scripts" / "verify_installation.py", output])
     assert verify.returncode == 0, verify.stderr + verify.stdout
@@ -310,7 +313,10 @@ def test_bootstrap_generates_verifiable_scaffold_without_operational_false_posit
 
     readme = (output / "README.md").read_text(encoding="utf-8")
     assert "digital-employees/Dirección Assistant / CEO Operations Assistant/PERMISSIONS.md" not in readme
-    assert "digital-employees/ceo-operations-assistant/PERMISSIONS.md" in readme
+    assert "digital-employees/ceo-operations-assistant/PERMISSIONS.md" not in readme
+    assert "digital-employees/ceo/PERMISSIONS.md" in readme
+    assert (output / "digital-employees" / "ceo" / "PERMISSIONS.md").exists()
+    assert (output / "digital-employees" / "observer" / "PERMISSIONS.md").exists()
 
     verify = run_cmd([ROOT / "scripts" / "verify_installation.py", output])
     assert verify.returncode == 0, verify.stderr + verify.stdout

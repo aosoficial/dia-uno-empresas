@@ -2,6 +2,8 @@
 
 Este repositorio sirve para instalar una **instancia privada de Company Brain**: el primer corte seguro de un sistema operativo AI-first para tu empresa.
 
+Si vas a montar una primera empresa real desde **ORGO**, el camino correcto es: ORGO instala/conecta Codex o Claude Code, Codex/Claude instala DIA UNO, se conecta Slack, se monta memoria privada con Supabase/Voyage/GBrain, se crea el CEO agent y después los agentes de departamento. Usa [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md) como guía principal.
+
 No promete una transformación garantizada. Te ayuda a crear una base ordenada para empezar con seguridad: Dirección / Mother Brain, límites de aprobación, contexto mínimo, un primer departamento, receipts y evidencia revisable.
 
 ## Antes de instalar: examen rápido de nivel IA
@@ -60,16 +62,17 @@ No uses una validación operativa fresca para afirmar que la empresa ya está li
 
 Rellena solo lo mínimo y seguro:
 
-1. **Dirección / Mother Brain**: propósito, oferta, tipo de empresa, prioridades.
-2. **Contexto seguro**: información general, sin secretos ni datos sensibles.
-3. **Límites de aprobación**: qué puede preparar la IA y qué necesita decisión humana.
-4. **Primer departamento**: normalmente Operaciones / Delivery o el cuello de botella recomendado. Usa la guía [`templates/how-to/choose-first-department.md`](templates/how-to/choose-first-department.md) para decidir.
-5. **Primer Context Packet**: contexto suficiente para una acción interna pequeña.
-6. **Primer contacto por Slack**: si hay varios humanos/equipos, crea el canal mínimo y habla con el primer agente siguiendo [`docs/45_slack_first_agent.md`](docs/45_slack_first_agent.md). Slack es la interfaz, no la memoria.
-7. **Primera acción interna**: redactar, analizar, ordenar o preparar; no enviar ni publicar.
-8. **Receipt**: prueba de qué se hizo, quién revisó y qué cambió.
-9. **Scorecard**: puntuación honesta de preparación y huecos.
-10. **Siguiente sprint**: el próximo paso pequeño y revisable.
+1. **ORGO + Codex/Claude**: instala o conecta el operador instalador antes de tocar la empresa.
+2. **Slack mínimo**: prepara la superficie de conversación y aprobaciones. Slack es interfaz, no memoria.
+3. **Memoria privada**: Supabase/Voyage/GBrain o estado explícito de pendiente si aún no se conectó.
+4. **CEO agent**: primer agente, limitado a Dirección / Mother Brain.
+5. **Dirección / Mother Brain**: visión, modelo, prioridades, criterios de decisión y límites de aprobación.
+6. **Organigrama inicial de agentes**: CEO propone qué agentes de departamento hacen falta.
+7. **Agentes de departamento**: cada agente entrevista solo su área: operaciones, marketing, growth/sales, producto/servicio, finanzas o postventa.
+8. **Observer agent**: observa contradicciones, huecos, receipts y cambios que deben entrar al cerebro.
+9. **Primer Context Packet**: contexto suficiente para una acción interna pequeña.
+10. **Primera acción interna**: redactar, analizar, ordenar o preparar; no enviar ni publicar.
+11. **Receipt + Scorecard**: prueba de qué se hizo, quién revisó, qué cambió y siguiente sprint.
 
 Para los pasos 5-10, sigue la guía detallada: [`templates/how-to/run-first-internal-loop.md`](templates/how-to/run-first-internal-loop.md).
 Si no sabes qué acción elegir, usa ejemplos seguros en [`docs/44_first_operating_loop_examples.md`](docs/44_first_operating_loop_examples.md).
@@ -106,6 +109,7 @@ Incluye solo contexto seguro o anonimizado: tipo de empresa, paso donde te bloqu
 - [`docs/43_self_serve_operator_ux.md`](docs/43_self_serve_operator_ux.md) — checklist operativa para usuarios self-serve.
 - [`docs/44_first_operating_loop_examples.md`](docs/44_first_operating_loop_examples.md) — ejemplos seguros de evidencia para agencia, consultoría y freelancer.
 - [`docs/45_slack_first_agent.md`](docs/45_slack_first_agent.md) — cómo empezar a hablar con el primer agente por Slack.
+- [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md) — flujo real ORGO → Codex/Claude → Slack → memoria → CEO → departamentos → Observer.
 - [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) — errores habituales y arreglos copy/paste.
 - [`docs/12_get_help_from_dia_uno.md`](docs/12_get_help_from_dia_uno.md) — cómo pedir ayuda de forma segura.
 - [`templates/generated-company-instance/README.md`](templates/generated-company-instance/README.md) — plantilla de instancia privada generada.

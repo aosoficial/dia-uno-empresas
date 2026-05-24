@@ -13,7 +13,7 @@ People seats before agent seats.
 
 ## Digital employee seats
 
-- Dirección Assistant / CEO Operations Assistant: `active first`
+- CEO Agent: `active first`, Dirección only.
 - Department assistants: `created only after department brain exists`
 
 ## Rule

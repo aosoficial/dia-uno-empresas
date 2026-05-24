@@ -15,7 +15,7 @@ Status: `draft until reviewed`
 
 | Nombre | Departamento | Tipo | Permisos | Scorecard | Estado |
 |--------|-------------|------|----------|-----------|--------|
-| `{{ first_employee }}` | direction | copiloto | `digital-employees/ceo-operations-assistant/PERMISSIONS.md` | (enlace a scorecard) | en prueba |
+| `{{ first_employee }}` | direction | CEO Agent | `digital-employees/ceo/PERMISSIONS.md` | (enlace a scorecard) | en prueba |
 
 ## Vacantes y necesidades
 

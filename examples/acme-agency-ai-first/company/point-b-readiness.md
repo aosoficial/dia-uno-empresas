@@ -17,7 +17,7 @@ Level: `compounding Punto B demo`
 - [x] Direction / Mother Brain installed: `company/company-brain.md`
 - [x] Approval boundaries defined: `company/approval-boundaries.md`
 - [x] Priority department installed: `departments/operations/department-brain.md`
-- [x] Digital employee permissions exist: `digital-employees/ceo-operations-assistant/PERMISSIONS.md`
+- [x] Digital employee permissions exist: `digital-employees/ceo/PERMISSIONS.md`
 - [x] Context packet exists: `context-packets/day-1-sales-to-operations-handoff.md`
 - [x] Receipt exists: `receipts/day-1-first-digital-employee-run.md`
 - [x] Scorecard exists: `company/company-scorecard.md`

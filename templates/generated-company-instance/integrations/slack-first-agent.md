@@ -24,18 +24,20 @@ Why:
 
 ## Initial channels
 
-- `#00-direction`: owner, decisions and escalations.
-- `#01-operations`: first internal workflows.
+- `#00-direction`: CEO agent, owner, Dirección, decisions and escalations.
 - `#90-approvals`: explicit human approvals.
 - `#99-receipts`: receipt notifications and evidence links.
 
+Create department channels only after the CEO agent proposes the department-agent roster and the human approves it.
+
 ## First agent
 
-- Agent name: `ceo-operations-assistant`
+- Agent name: `ceo`
 - Human owner: `[owner]`
 - Runtime: `[Hermes / other]`
-- Default department: `operations`
+- Default department: `direction`
 - Source of truth: `company/company-brain.md`, `company/source-of-truth-map.md`, approved context packets and receipts.
+- Scope: Dirección only. Marketing, operations, product, growth/sales, finance and post-sale discovery belongs to department agents later.
 
 ## Allowed Slack actions
 
@@ -74,10 +76,10 @@ Never paste them into Slack, Git, receipts or context packets.
 
 ## First test message
 
-Post in `#01-operations`:
+Post in `#00-direction`:
 
 ```text
-@ceo-operations-assistant Read the approved initial context only. Prepare a short internal brief with what you know, what is missing, one safe next action and what requires human approval. Do not contact anyone, publish anything, spend money, use secrets or change production. End with a receipt draft.
+@ceo Read the approved initial context only. Prepare a short Dirección brief with what you know, what is missing, the likely first department agents needed, one safe next action and what requires human approval. Do not interview marketing, operations, product, growth, finance or post-sale yet. Do not contact anyone, publish anything, spend money, use secrets or change production. End with a receipt draft.
 ```
 
 ## Evidence

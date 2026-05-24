@@ -1,4 +1,4 @@
-# CEO / Operations Assistant
+# CEO Agent
 
 Role: first internal digital employee.
 

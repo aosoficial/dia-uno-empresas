@@ -9,11 +9,12 @@ Risk tier: `{{ risk_tier }}`
 ## Load order for agents
 
 1. `AGENTS.md`
-2. `company/company-brain.md`
-3. `company/source-of-truth-map.md`
-4. `company/approval-boundaries.md`
-5. Relevant department brain: `departments/<department>/department-brain.md`
-6. Latest context packet, receipt, statechange or handoff
+2. `integrations/slack-first-agent.md` when Slack is the active interface
+3. `company/approval-boundaries.md`
+4. `company/company-brain.md` for Dirección / CEO context
+5. `company/source-of-truth-map.md`
+6. Relevant department brain only after the department agent exists: `departments/<department>/department-brain.md`
+7. Latest context packet, receipt, statechange or handoff
 
 ## Core locations
 
@@ -25,7 +26,8 @@ Risk tier: `{{ risk_tier }}`
 - Guided pilot / next sprint: `company/guided-pilot-plan.md`
 - Point B diagnosis: `company/point-b-readiness.md`
 - Department brains: `departments/<department>/department-brain.md`
-- First employee: `digital-employees/ceo-operations-assistant/`
+- First employee: `digital-employees/ceo/`
+- Observer employee: `digital-employees/observer/` when enabled
 - Slack-first agent surface: `integrations/slack-first-agent.md`
 - Initial context packet: `context-packets/initial-company-context.md`
 - Operational receipts: `receipts/`
@@ -59,6 +61,8 @@ Rules:
 - Do not move operational artifacts to Desktop/Downloads unless the human explicitly approves.
 - Do not store secrets, passwords, API keys or tokens in chat or Git.
 - Do not store Slack bot tokens, signing secrets, webhooks or model/provider credentials in this folder.
+- CEO interviews Dirección only. Marketing, operations, product, growth/sales, finance and post-sale are interviewed by their department agents.
+- Observer observes and proposes memory maintenance; it does not execute business actions directly.
 - If a new folder is needed, explain why it belongs in this hierarchy first.
 
 ## Rule

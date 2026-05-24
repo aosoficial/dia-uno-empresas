@@ -10,6 +10,7 @@
 - Added human SOPs and agent SOPs.
 - Added public-safety cleanup for private implementation references.
 - Added Slack-first first agent path for guided pilots.
+- Added ORGO-first company onboarding: ORGO connects Codex/Claude Code as installer, DIA UNO prepares Slack, private memory, CEO Agent and Observer Agent.
 
 ## v0.1.0
 

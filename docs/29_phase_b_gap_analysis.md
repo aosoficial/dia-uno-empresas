@@ -158,7 +158,7 @@ Improve by adding one complete synthetic example:
 
 Keep it clearly synthetic.
 
-### 10. Digital employees beyond CEO Operations Assistant are not packaged
+### 10. Digital employees beyond CEO Agent and Observer Agent are not packaged
 
 There is one initial digital employee pack. Departments need starter packs.
 

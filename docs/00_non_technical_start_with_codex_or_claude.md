@@ -2,6 +2,8 @@
 
 Use this first if you are not sure how technical you are, or if you want an AI assistant to help you install your private Company Brain instance.
 
+In the ORGO-first flow, the user starts in **ORGO** and installs or connects **Codex** or **Claude Code** first. That assistant becomes the installer operator for DIA UNO. See `docs/46_orgo_first_company_onboarding.md` for the full real-company sequence.
+
 The assistant's first job is not to collect your life story. Before the brain is installed, it should run only an **examen inicial de nivel de IA**: enough to know how much freedom and how many guardrails you need.
 
 ## Step 0 — Copy this prompt into Codex or Claude Code
@@ -18,14 +20,19 @@ Classify me into one of three guardrail modes:
 - Mode 3 — technical / builder: feel free to give me more direct commands and autonomy, but still ask before external/public/economic/legal/production/sensitive actions.
 
 After the mode is selected:
-1. Help me clone or open the repo.
-2. Explain that tools/accounts should use free plans or free tier first when available.
-3. Ask me to create required accounts only when needed.
-4. Never ask me to paste real API keys, passwords or tokens into chat. Tell me where to store them locally instead.
-5. Create the private Company Brain instance outside the public repo.
-6. Keep all internal files inside the generated private folder hierarchy. Do not create random folders elsewhere unless I explicitly approve.
-7. Create or guide the first digital employee SOUL.md, starting with CEO/Operations Assistant.
-8. Stop after the first safe internal operating loop with Context Packet, human review, Receipt and scorecard.
+1. Help me install/connect Codex or Claude Code from ORGO if it is not working yet.
+2. Help me clone, open or update the DIA UNO repo.
+3. Explain that tools/accounts should use free plans or free tier first when available.
+4. Ask me to create required accounts only when needed.
+5. Never ask me to paste real API keys, passwords or tokens into chat. Tell me where to store them locally instead.
+6. Create the private Company Brain instance outside the public repo.
+7. Help me prepare Slack as the first human-agent interface.
+8. Help me configure the private memory path: Supabase/Postgres, Voyage and GBrain/Company Brain, or mark it explicitly pending if not connected yet.
+9. Keep all internal files inside the generated private folder hierarchy. Do not create random folders elsewhere unless I explicitly approve.
+10. Create or guide the first digital employee SOUL.md: CEO Agent, limited to Dirección.
+11. Do not ask CEO to interview marketing, operations, product, growth, finance or post-sale. Those interviews belong to department agents later.
+12. Define the Observer agent as a memory/system observer, not as a business executor.
+13. Stop after the first safe internal operating loop with Context Packet, human review, Receipt and scorecard.
 
 If a command is destructive, paid, public, external, legal, production-related or sensitive, ask me before doing it.
 ```
@@ -123,12 +130,15 @@ Rules:
 - For API keys/tokens/passwords, instruct the user to store them in local `.env` or the generated instance `secrets/` folder according to the repo templates.
 - Never commit `.env`, tokens, passwords or connection strings.
 
-Suggested order:
+Suggested order for ORGO-first onboarding:
 
-1. GitHub account or repo access, if needed to clone/fork.
-2. Codex or Claude Code desktop/terminal, if the user wants an installer operator.
-3. Local runtime requirements from this repo.
-4. Optional integrations only after the private brain and approval rules exist.
+1. ORGO installed by the user.
+2. Codex or Claude Code desktop/terminal connected from ORGO as installer operator.
+3. GitHub account or repo access, if needed to clone/open/update DIA UNO.
+4. Local runtime requirements from this repo.
+5. Slack workspace/app setup for the first interface.
+6. Supabase/Postgres, Voyage and GBrain/Company Brain for private memory, using free/free-tier first when possible.
+7. Optional integrations only after the private brain and approval rules exist.
 
 ## Folder hierarchy rule
 
@@ -171,13 +181,14 @@ The first goal is:
 
 1. Create the private instance.
 2. Verify the scaffold.
-3. Create the first digital employee: `CEO/Operations Assistant`.
+3. Create the first digital employee: `CEO` agent for Dirección only.
 4. Review its `SOUL.md`.
-5. Create one safe Context Packet.
-6. Run one internal action only.
-7. Human reviews the result.
-8. Save an Operational Receipt.
-9. Update the scorecard.
+5. CEO interviews Dirección only and proposes the first department-agent roster.
+6. Create one safe Context Packet.
+7. Run one internal action only.
+8. Human reviews the result.
+9. Save an Operational Receipt.
+10. Update the scorecard.
 
 After that, the operational validator can be run. Until then, examples are examples; they are not Point B evidence.
 
@@ -187,6 +198,9 @@ After that, the operational validator can be run. Until then, examples are examp
 - Do not ask for customer names, contracts or private files.
 - Do not request API keys in chat.
 - Do not connect Gmail, CRM, payment processors, production databases or social media.
+- Do not ask CEO to do deep discovery for marketing, operations, product, growth, finance or post-sale.
+- Do not create department agents before CEO has proposed the roster and the human has approved it.
+- Do not let the Observer agent execute business actions directly; it observes, connects memory and flags gaps.
 - Do not publish websites, posts or public claims.
 - Do not claim the company is AI-first or at Point B just because files exist.
 - Do not bypass the generated private folder hierarchy.
@@ -198,7 +212,10 @@ This bootstrap is done when there is:
 - selected AI-level mode;
 - private instance outside the public repo;
 - verified scaffold;
-- first digital employee `SOUL.md` reviewed;
+- first CEO agent `SOUL.md` reviewed;
+- CEO scope limited to Dirección;
+- department-agent interviews deferred to department agents;
+- Observer agent defined as a memory/system observer;
 - folder boundary understood;
 - no secrets in chat or Git;
 - next step is the first internal operating loop.

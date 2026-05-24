@@ -34,8 +34,8 @@ DEPARTMENT_LABELS = {
     "admin-legal": "Admin / Legal",
 }
 DEPARTMENT_DIGITAL_EMPLOYEES = {
-    "direction": "ceo-operations-assistant",
-    "operations-delivery": "ceo-operations-assistant",
+    "direction": "ceo",
+    "operations-delivery": "operations-delivery-assistant",
     "marketing": "marketing-assistant",
     "sales": "sales-assistant",
     "customer-success": "customer-success-assistant",
@@ -581,7 +581,7 @@ def main() -> int:
         "{{ point_a }}": args.point_a,
         "{{ first_objective }}": args.first_objective,
         "{{ first_department }}": "direction",
-        "{{ first_employee }}": "Dirección Assistant / CEO Operations Assistant",
+        "{{ first_employee }}": "CEO Agent",
         "{{ department_owner }}": args.owner,
         "{{ point_a_symptoms }}": args.point_a,
         "{{ current_tools }}": "fill privately",

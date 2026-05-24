@@ -44,5 +44,5 @@ Agents may draft, analyze, organize, propose and create internal receipts. They 
 3. Write company brain and approval boundaries.
 4. Create accountability map with human owners.
 5. Create department rollout order.
-6. Launch the Dirección Assistant or CEO / Operations Assistant.
+6. Launch the CEO Agent for Dirección.
 7. Run one safe internal task and leave a receipt.

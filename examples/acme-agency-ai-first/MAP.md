@@ -19,7 +19,7 @@ Risk tier: `internal-low`
 - Company brain: `company/company-brain.md`
 - Approval boundaries: `company/approval-boundaries.md`
 - Operations brain: `departments/operations/department-brain.md`
-- First employee: `digital-employees/ceo-operations-assistant/`
+- First employee: `digital-employees/ceo/`
 
 ## Rule
 
