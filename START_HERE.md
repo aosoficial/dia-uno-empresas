@@ -95,7 +95,7 @@ Rellena solo lo mínimo y seguro:
 5. **Dirección / Mother Brain**: visión, modelo, prioridades, criterios de decisión y límites de aprobación.
 6. **Organigrama inicial de agentes**: CEO propone qué agentes de departamento hacen falta.
 7. **Agentes de departamento**: cada agente entrevista solo su área: operaciones, marketing, growth/sales, producto/servicio, finanzas o postventa.
-8. **Observer agent**: observa contradicciones, huecos, receipts y cambios que deben entrar al cerebro.
+8. **Observer agent**: observa contradicciones, huecos, receipts, cambios que deben entrar al cerebro, runtime health y digest diario read-only.
 9. **Primer Context Packet**: contexto suficiente para una acción interna pequeña.
 10. **Primera acción interna**: redactar, analizar, ordenar o preparar; no enviar ni publicar.
 11. **Receipt + Scorecard**: prueba de qué se hizo, quién revisó, qué cambió y siguiente sprint.
@@ -135,6 +135,7 @@ Incluye solo contexto seguro o anonimizado: tipo de empresa, paso donde te bloqu
 - [`docs/43_self_serve_operator_ux.md`](docs/43_self_serve_operator_ux.md) — checklist operativa para usuarios self-serve.
 - [`docs/44_first_operating_loop_examples.md`](docs/44_first_operating_loop_examples.md) — ejemplos seguros de evidencia para agencia, consultoría y freelancer.
 - [`docs/45_slack_first_agent.md`](docs/45_slack_first_agent.md) — cómo empezar a hablar con el primer agente por Slack.
+- [`docs/48_observer_read_only_runtime.md`](docs/48_observer_read_only_runtime.md) — cómo crear Observer read-only con digest diario y escalación segura.
 - [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md) — flujo real ORGO → Codex/Claude → Slack → memoria → CEO → departamentos → Observer.
 - [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) — errores habituales y arreglos copy/paste.
 - [`docs/12_get_help_from_dia_uno.md`](docs/12_get_help_from_dia_uno.md) — cómo pedir ayuda de forma segura.

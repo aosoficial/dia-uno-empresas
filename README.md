@@ -55,6 +55,7 @@ Empresa AI-First de servicios productizados con:
 - [`docs/44_first_operating_loop_examples.md`](docs/44_first_operating_loop_examples.md) — ejemplos seguros para crear evidencia del primer loop.
 - [`docs/45_slack_first_agent.md`](docs/45_slack_first_agent.md) — primer agente conversacional por Slack.
 - [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md) — flujo real ORGO → Codex/Claude → Slack obligatorio → memoria → CEO/Dirección + Observer → departamentos.
+- [`docs/48_observer_read_only_runtime.md`](docs/48_observer_read_only_runtime.md) — Observer read-only: vigilancia, digest diario, escalaciones y límites.
 
 ### 2. Generar una empresa privada guiada
 
@@ -95,7 +96,7 @@ python scripts/bootstrap_company_brain.py --dry-run --company "Acme Demo" --comp
 7. Conectar Slack directo a Hermes con `scripts/connect_slack_to_hermes.py`: instala/usa Hermes, crea el perfil, escribe tokens fuera de Git, verifica memoria, reinicia gateway y deja receipt privado.
 8. Herramientas base necesarias para el primer loop. Slack conecta directo a Hermes; no hay capa externa de integración en la ruta base.
 9. Primer agente: CEO, limitado a Dirección, accesible por Slack y escribiendo/leyendo memoria operativa.
-10. Observer agent read-only para señales, contradicciones, receipts y StateChanges.
+10. Observer agent read-only para señales, contradicciones, receipts, StateChanges, runtime health, digest diario y escalaciones internas.
 11. CEO entrevista Dirección y propone el organigrama inicial de agentes.
 12. Agentes de departamento entrevistan sus propias áreas: operaciones, marketing, growth/sales, producto/servicio, finanzas y postventa.
 
