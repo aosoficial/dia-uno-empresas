@@ -159,3 +159,33 @@ Verification:
 - `python3 scripts/validate_public_safety.py` passed.
 - `python3 scripts/validate_installable_runtime.py` passed.
 - `pytest -q` passed: 50 tests.
+
+## R-010 — ORGO installer autopilot instructions
+
+Date: 2026-05-24
+Owner: Hermes Clean
+Scope: repository guidance change for ORGO/Codex/Claude pilot readiness; no live integration activated.
+
+What changed:
+- Added root `AGENTS.md` with immediate installer-operator behavior for Codex/Claude after clone/open.
+- Updated `START_HERE.md`, `README.md`, `docs/46_orgo_first_company_onboarding.md` and `docs/00_non_technical_start_with_codex_or_claude.md` so the assistant guides the user instead of waiting for internal commands.
+
+Why:
+- In the ORGO flow, the user should not need to tell Codex/Claude to read repo docs or decide the next step.
+- The installer should explain the next safe step, run the AI-level guardrail exam, and ask approval only when crossing real boundaries.
+
+Allowed actions:
+- Local docs/instruction changes inside this repo.
+- Local validation and push to the private DIA UNO repo.
+
+Forbidden actions:
+- No live Slack/Supabase/Voyage/GBrain setup, secrets, client data, paid/public/legal/production actions, workers, crons or bots.
+
+Verification:
+- `python3 scripts/validate_repo.py` passed.
+- `python3 scripts/validate_schemas.py` passed.
+- `python3 scripts/build_docs.py` passed.
+- `python3 scripts/validate_links.py` passed.
+- `python3 scripts/validate_public_safety.py` passed.
+- `python3 scripts/validate_installable_runtime.py` passed.
+- `pytest -q` passed: 50 tests.

@@ -6,6 +6,8 @@ DIA UNO Empresas es una aceleradora guiada para pasar de **Punto A** a **Punto B
 
 **Primera vez aquí:** empieza por [`START_HERE.md`](START_HERE.md). En un piloto real desde ORGO, primero instala o conecta **Codex** o **Claude Code** como operador instalador; después sigue [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md). Si no eres técnico o vas a usar Codex/Claude Code como operador instalador, usa también [`docs/00_non_technical_start_with_codex_or_claude.md`](docs/00_non_technical_start_with_codex_or_claude.md): hace un examen corto de nivel IA, asigna guardrails y evita pedir datos sensibles antes de crear el cerebro privado. La primera instalación valida el scaffold privado; la validación operativa de Punto B viene después de un primer loop interno revisado con evidencia real. Si un comando falla, usa [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md).
 
+**Para Codex/Claude desde ORGO:** este repo incluye [`AGENTS.md`](AGENTS.md). Tras clonar o abrir el repo, el asistente debe tomar la iniciativa: leer las instrucciones, explicar el siguiente paso en lenguaje humano, hacer el examen corto de nivel IA y pedir aprobación solo antes de acciones externas, públicas, económicas, legales, productivas, sensibles, destructivas o con secretos/workers/crons.
+
 ## Punto A
 
 Empresa de servicios que no sabe por dónde empezar:
@@ -86,7 +88,7 @@ python scripts/bootstrap_company_brain.py --dry-run --company "Acme Demo" --comp
 
 1. ORGO instalado por el cliente.
 2. ORGO instala/conecta Codex o Claude Code como operador instalador.
-3. Codex/Claude abre o actualiza DIA UNO.
+3. Codex/Claude abre o actualiza DIA UNO y sigue [`AGENTS.md`](AGENTS.md) sin esperar que el usuario le diga qué leer.
 4. Se crea la instancia privada de empresa.
 5. Slack-first: canales mínimos para hablar con agentes, aprobar y recibir receipts.
 6. Memoria privada: Supabase/Postgres, Voyage y GBrain/Company Brain.

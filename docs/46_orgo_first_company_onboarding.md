@@ -4,6 +4,23 @@ Goal: install the first real DIA UNO company from ORGO without turning the first
 
 The client experience starts in **ORGO**. ORGO's first practical job is to help the user install or connect **Codex** or **Claude Code** as the technical installer operator. ORGO itself is not treated as the business consultant at this point.
 
+## Installer operator autopilot
+
+When Codex or Claude Code opens this repo after ORGO, it must not wait for the user to provide internal repo instructions.
+
+The installer operator should immediately:
+
+1. Read root `AGENTS.md`.
+2. Read `START_HERE.md`.
+3. Read this file.
+4. Read `docs/00_non_technical_start_with_codex_or_claude.md`.
+5. Tell the user the next safe step in plain language.
+6. Run the short AI-level guardrail exam before asking for business context.
+
+The user should experience this as: **"DIA UNO is loaded; the installer is guiding me now."**
+
+The user should not need to say: "read START_HERE", "pull the repo", "check the docs", or "tell me what to do next".
+
 ## Core principle
 
 Do not ask the company to explain every department at the beginning.
@@ -33,6 +50,7 @@ The selected assistant acts as installer/operator, not as an autonomous consulta
 It should:
 
 - verify it can run locally;
+- take initiative after clone/open by following root `AGENTS.md`;
 - run the AI-level guardrail exam from `docs/00_non_technical_start_with_codex_or_claude.md`;
 - avoid asking for business-sensitive information before the private brain exists;
 - keep secrets out of chat and Git;

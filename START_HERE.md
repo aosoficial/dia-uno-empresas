@@ -4,6 +4,26 @@ Este repositorio sirve para instalar una **instancia privada de Company Brain**:
 
 Si vas a montar una primera empresa real desde **ORGO**, el camino correcto es: ORGO instala/conecta Codex o Claude Code, Codex/Claude instala DIA UNO, se conecta Slack, se monta memoria privada con Supabase/Voyage/GBrain, se crea el CEO agent y después los agentes de departamento. Usa [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md) como guía principal.
 
+## Para Codex/Claude después de clonar desde ORGO
+
+Si eres Codex, Claude Code u otro asistente lanzado desde ORGO: **toma la iniciativa como operador instalador**. No esperes a que el usuario te diga qué documento leer ni qué comando ejecutar.
+
+Haz inmediatamente esto:
+
+1. Lee [`AGENTS.md`](AGENTS.md), este `START_HERE.md`, [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md) y [`docs/00_non_technical_start_with_codex_or_claude.md`](docs/00_non_technical_start_with_codex_or_claude.md).
+2. Explica al usuario el siguiente paso en lenguaje humano.
+3. Haz el examen corto de nivel IA antes de pedir datos de empresa.
+4. Usa comandos locales seguros para verificar el repo.
+5. Pide aprobación solo antes de acciones externas, públicas, económicas, legales, productivas, sensibles, destructivas, con secretos o con workers/crons/bots persistentes.
+
+Primer mensaje recomendado:
+
+```text
+DIA UNO está cargado. Yo guío la instalación desde aquí.
+Primero revisaré las instrucciones del repo y tu nivel de uso de IA; después te diré el siguiente paso seguro.
+No te pediré claves en el chat y pediré permiso antes de acciones externas, de pago, públicas, legales, de producción o sensibles.
+```
+
 No promete una transformación garantizada. Te ayuda a crear una base ordenada para empezar con seguridad: Dirección / Mother Brain, límites de aprobación, contexto mínimo, un primer departamento, receipts y evidencia revisable.
 
 ## Antes de instalar: examen rápido de nivel IA

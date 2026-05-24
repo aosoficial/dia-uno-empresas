@@ -6,6 +6,19 @@ In the ORGO-first flow, the user starts in **ORGO** and installs or connects **C
 
 The assistant's first job is not to collect your life story. Before the brain is installed, it should run only an **examen inicial de nivel de IA**: enough to know how much freedom and how many guardrails you need.
 
+## If you are the assistant, guide without being prompted
+
+When this repo is opened after an ORGO clone/open action, do not wait for the user to tell you to read files or choose commands.
+
+Immediately read:
+
+1. `AGENTS.md`;
+2. `START_HERE.md`;
+3. `docs/46_orgo_first_company_onboarding.md`;
+4. this file.
+
+Then say the next safe step in human language, run the short AI-level exam, and only ask for approvals when the next action crosses a boundary.
+
 ## Step 0 — Copy this prompt into Codex or Claude Code
 
 ```text
@@ -13,6 +26,7 @@ I want to create a private Company Brain instance for my business using this rep
 https://github.com/aosoficial/dia-uno-empresas
 
 Act as my installer operator.
+If you have just cloned or opened the repo, immediately read AGENTS.md, START_HERE.md, docs/46_orgo_first_company_onboarding.md and this file. Do not wait for me to tell you which file to read. Guide me from here in plain language.
 Start with a short AI-level exam only. Do not investigate my personal life, customers, money, health, private documents or sensitive systems yet.
 Classify me into one of three guardrail modes:
 - Mode 1 — non-technical: strong guardrails, tell me exactly what to do and what not to do.

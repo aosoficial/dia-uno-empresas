@@ -11,6 +11,7 @@
 - Added public-safety cleanup for private implementation references.
 - Added Slack-first first agent path for guided pilots.
 - Added ORGO-first company onboarding: ORGO connects Codex/Claude Code as installer, DIA UNO prepares Slack, private memory, CEO Agent and Observer Agent.
+- Added root `AGENTS.md` so Codex/Claude launched from ORGO guides the next step automatically after clone/open.
 
 ## v0.1.0
 
