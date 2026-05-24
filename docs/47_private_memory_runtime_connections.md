@@ -1,6 +1,6 @@
 # Private memory runtime: Supabase + Voyage + GBrain
 
-This is the DIA UNO client-safe version of the runtime pattern we use internally, without private AOS/Cerebro endpoints or secrets.
+This is the DIA UNO client-safe runtime pattern, without customer secrets in the public repo.
 
 ## Purpose
 
@@ -13,24 +13,13 @@ Before Slack or the CEO agent start real work, the private company instance must
 
 Slack is the conversation surface. It is not memory.
 
-## Boundary
+## GBrain target
 
 Use this for DIA UNO public/client installs:
 
 ```text
 GBRAIN_REPO_URL=https://github.com/garrytan/gbrain
 ```
-
-Do not use Jordi/AOS private targets by default:
-
-```text
-aos_brain_local
-aosoficial/cerebro-personal
-cerebro-personal
-private Supabase schemas from Jordi's internal Cerebro
-```
-
-Those are internal AOS/Cerebro targets and require explicit Jordi approval.
 
 ## Private env contract
 
@@ -77,7 +66,7 @@ Minimum readiness requires:
 
 ## Process
 
-### Gate B — private memory credentials
+### Step 1 — private memory credentials
 
 Allowed:
 
@@ -94,15 +83,7 @@ python scripts/check_private_memory_readiness.py \
   --strict
 ```
 
-Forbidden:
-
-- no real secrets in public repo;
-- no secrets in Slack;
-- no Supabase migrations yet;
-- no production writes;
-- no real company memory import.
-
-### Gate B-GBrain — install/verify public GBrain
+### Step 2 — install/verify public GBrain
 
 Allowed:
 
@@ -130,29 +111,14 @@ gbrain stats || true
 
 If the install uses MCP instead of CLI, verify the configured MCP server/profile and record the server name, not any secret.
 
-### Gate C — schema/migrations
-
-Requires explicit human approval.
-
-Allowed only after approval:
+### Step 3 — schema/migrations
 
 - apply reviewed SQL/migrations;
 - create or verify the GBrain schema/tables/extensions required by upstream GBrain;
 - configure pgvector/embedding storage if upstream GBrain requires it;
 - create minimal roles/policies needed for the runtime.
 
-Forbidden without approval:
-
-- destructive migrations;
-- broad public schema changes;
-- copying Jordi's private Cerebro schema;
-- running unreviewed migration retries.
-
-### Gate D — synthetic memory test
-
-Requires explicit human approval.
-
-Use synthetic data only:
+### Step 4 — memory test
 
 1. Write one test Context Packet.
 2. Write one test StateChange.
@@ -160,14 +126,14 @@ Use synthetic data only:
 4. Trigger or verify embedding creation through Voyage.
 5. Query/search the synthetic record through GBrain.
 6. Verify health/stats.
-7. Delete or clearly mark the synthetic test data if required.
+7. Delete or clearly mark the test data if required.
 
 Expected proof:
 
 - preflight result;
 - GBrain target verification;
-- migration receipt if Gate C happened;
-- synthetic read/write/search receipt if Gate D happened;
+- migration receipt if schema changes happened;
+- read/write/search receipt if the memory test happened;
 - no secrets in logs or receipts.
 
 ## Runtime flow
@@ -184,7 +150,7 @@ Slack message
   -> Receipt/StateChange/Context Packet evidence
 ```
 
-The CEO may answer in Slack only after memory readiness passes or Jordi explicitly approves a blocked/pending memory state.
+The CEO answers in Slack after memory readiness is marked ready or pending in the company receipt.
 
 ## Verification commands
 

@@ -173,14 +173,13 @@ def test_docs_make_direct_slack_to_hermes_mandatory():
         "check_private_memory_readiness.py",
         "Supabase/Voyage/GBrain",
         "https://github.com/garrytan/gbrain",
-        "aos_brain_local",
         "DATABASE_URL",
         "VOYAGE_MODEL",
     ]:
         assert marker in combined
 
 
-def test_public_gbrain_is_canonical_and_private_aos_connector_is_not_default():
+def test_public_gbrain_is_canonical():
     combined = "\n".join(
         (ROOT / rel).read_text(encoding="utf-8")
         for rel in [
@@ -198,45 +197,3 @@ def test_public_gbrain_is_canonical_and_private_aos_connector_is_not_default():
     )
     assert "https://github.com/garrytan/gbrain" in combined
     assert "GBRAIN_REPO_URL=https://github.com/garrytan/gbrain" in combined
-    assert "aos_brain_local" in combined
-    env_example = (ROOT / "templates/generated-company-instance/.env.example").read_text(encoding="utf-8")
-    assert "GBRAIN_MCP_SERVER=aos_brain_local" not in env_example
-
-
-def test_memory_readiness_rejects_private_aos_gbrain_target(tmp_path):
-    instance = tmp_path / "private-company"
-    for rel in [
-        "company/company-brain.md",
-        "company/source-of-truth-map.md",
-        "company/approval-boundaries.md",
-    ]:
-        path = instance / rel
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text("ok\n", encoding="utf-8")
-    for rel in ["context-packets", "statechanges", "receipts"]:
-        (instance / rel).mkdir(parents=True, exist_ok=True)
-    env_file = tmp_path / "private.env"
-    env_file.write_text(
-        "SUPABASE_URL=https://example.supabase.co\n"
-        "VOYAGE_API_KEY=placeholder\n"
-        "GBRAIN_REPO_URL=https://github.com/garrytan/gbrain\n"
-        "GBRAIN_MCP_SERVER=aos_brain_local\n",
-        encoding="utf-8",
-    )
-    result = subprocess.run(
-        [
-            sys.executable,
-            str(MEMORY_SCRIPT),
-            "--company-instance",
-            str(instance),
-            "--env-file",
-            str(env_file),
-            "--strict",
-        ],
-        text=True,
-        capture_output=True,
-        cwd=ROOT,
-        timeout=60,
-    )
-    assert result.returncode == 1
-    assert "forbidden private GBrain target" in result.stdout

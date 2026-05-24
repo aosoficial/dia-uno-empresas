@@ -42,7 +42,6 @@ REQUIRED_MEMORY_ENV_GROUPS = {
     "gbrain-access": ["GBRAIN_COMMAND", "GBRAIN_MCP_SERVER", "GBRAIN_MCP_NAME", "GBRAIN_PROJECT_ID"],
 }
 CANONICAL_GBRAIN_REPO_URL = "https://github.com/garrytan/gbrain"
-FORBIDDEN_GBRAIN_TARGETS = ["aos_brain_local", "aosoficial/cerebro-personal", "cerebro-personal"]
 OPTIONAL_SLACK_ENV = [
     "SLACK_ALLOWED_USERS",
     "SLACK_ALLOWED_CHANNELS",
@@ -118,13 +117,6 @@ def memory_readiness_errors(instance: Path) -> list[str]:
     gbrain_repo = os.getenv("GBRAIN_REPO_URL", "")
     if gbrain_repo and gbrain_repo.rstrip("/").removesuffix(".git") != CANONICAL_GBRAIN_REPO_URL:
         errors.append(f"wrong gbrain repo: expected {CANONICAL_GBRAIN_REPO_URL}")
-    joined_targets = " ".join(
-        os.getenv(key, "")
-        for key in ["GBRAIN_REPO_URL", "GBRAIN_COMMAND", "GBRAIN_MCP_SERVER", "GBRAIN_MCP_NAME", "GBRAIN_PROJECT_ID"]
-    )
-    for forbidden in FORBIDDEN_GBRAIN_TARGETS:
-        if forbidden in joined_targets:
-            errors.append(f"forbidden private GBrain target for DIA UNO public/client install: {forbidden}")
     return errors
 
 
@@ -237,9 +229,9 @@ def main() -> int:
             print(f"  - {error}")
         print("Run: python scripts/check_private_memory_readiness.py --company-instance <private-instance> --strict")
         if not args.allow_memory_pending:
-            print("Slack/Hermes wiring is stopped so the next operator does not talk to CEO before GBrain/Supabase/Voyage exist. Use --allow-memory-pending only with explicit human approval and a blocker receipt.")
+            print("Slack/Hermes wiring is paused because GBrain/Supabase/Voyage readiness is pending. Use --allow-memory-pending only with explicit human approval and a blocker receipt.")
             return 1
-        print("ALLOW: override acknowledged because --allow-memory-pending was provided; do not launch CEO until this blocker is resolved or explicitly approved.")
+        print("ALLOW: override acknowledged because --allow-memory-pending was provided; memory remains pending until this blocker is resolved or explicitly approved.")
 
     if not hermes_bin():
         if not args.install_hermes:

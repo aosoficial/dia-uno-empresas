@@ -42,7 +42,7 @@ Create department channels only after the CEO agent proposes the department-agen
 
 ## Memory readiness gate
 
-Do this before the first CEO test message. For DIA UNO public/client installs, GBrain means public upstream `https://github.com/garrytan/gbrain`, not private AOS/Cerebro connectors.
+Do this as part of the normal setup. For DIA UNO public/client installs, GBrain means public upstream `https://github.com/garrytan/gbrain`.
 
 ```bash
 python scripts/check_private_memory_readiness.py \
@@ -58,7 +58,7 @@ Required before launch:
 - `context-packets/`, `receipts/`, `statechanges/` and `integrations/` exist.
 - Supabase/Postgres, Voyage and public GBrain/GBrain MCP config are present in private env/secrets.
 
-If this fails, do not launch CEO. Record the blocker and owner instead. Do not replace GBrain with `aos_brain_local` or private Cerebro connectors unless Jordi explicitly approves an internal AOS stack.
+If this fails, record the blocker and owner in the company receipt.
 
 ## Allowed Slack actions
 

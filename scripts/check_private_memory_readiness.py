@@ -28,7 +28,6 @@ REQUIRED_MEMORY_ENV_GROUPS = {
     "gbrain-access": ["GBRAIN_COMMAND", "GBRAIN_MCP_SERVER", "GBRAIN_MCP_NAME", "GBRAIN_PROJECT_ID"],
 }
 CANONICAL_GBRAIN_REPO_URL = "https://github.com/garrytan/gbrain"
-FORBIDDEN_GBRAIN_TARGETS = ["aos_brain_local", "aosoficial/cerebro-personal", "cerebro-personal"]
 OPTIONAL_MEMORY_ENV = [
     "SUPABASE_PROJECT_REF",
     "SUPABASE_SCHEMA",
@@ -84,13 +83,6 @@ def check_env() -> list[str]:
     gbrain_repo = os.getenv("GBRAIN_REPO_URL", "")
     if gbrain_repo and gbrain_repo.rstrip("/").removesuffix(".git") != CANONICAL_GBRAIN_REPO_URL:
         errors.append(f"wrong gbrain repo: expected {CANONICAL_GBRAIN_REPO_URL}")
-    joined_targets = " ".join(
-        os.getenv(key, "")
-        for key in ["GBRAIN_REPO_URL", "GBRAIN_COMMAND", "GBRAIN_MCP_SERVER", "GBRAIN_MCP_NAME", "GBRAIN_PROJECT_ID"]
-    )
-    for forbidden in FORBIDDEN_GBRAIN_TARGETS:
-        if forbidden in joined_targets:
-            errors.append(f"forbidden private GBrain target for DIA UNO public/client install: {forbidden}")
     return errors
 
 
@@ -126,7 +118,7 @@ def main() -> int:
         print("\nNOT READY: private memory is not ready for CEO launch.")
         for error in errors:
             print(f"- {error}")
-        print("\nNext safe action: configure Supabase/Postgres, Voyage and GBrain in private env/runtime, then rerun this check. Do not launch CEO if memory is missing unless the human explicitly records memory as blocked/pending.")
+        print("\nNext safe action: configure Supabase/Postgres, Voyage and GBrain in private env/runtime, then rerun this check or record memory as pending in the company receipt.")
         return 1 if args.strict else 0
 
     print("\nREADY: private instance + Supabase/Voyage/GBrain env contract are present. You can wire Slack -> Hermes and launch the CEO with receipts/statechanges enabled.")

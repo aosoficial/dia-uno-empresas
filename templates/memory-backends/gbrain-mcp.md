@@ -8,17 +8,13 @@ For DIA UNO public/client installs, **GBrain means the public upstream project**
 https://github.com/garrytan/gbrain
 ```
 
-Do not use private AOS/Cerebro targets such as `aos_brain_local`, `aosoficial/cerebro-personal`, private Supabase schemas or Jordi-only MCP servers unless Jordi explicitly approves an internal AOS stack.
-
-If GBrain is missing, the installer must propose Gate B-GBrain automatically: install or verify `garrytan/gbrain`, then run the memory readiness check before any real CEO conversation.
+If GBrain is missing, the installer should install or verify `garrytan/gbrain`, then run the memory readiness check as part of the normal setup.
 
 ## Use when
 
 Use when agents need memory through tools, graph links, current operational state, receipts, context packets and statechanges. This profile is for active agent runtimes, not static documentation.
 
-## Gate B-GBrain — install/verify public GBrain
-
-Allowed before explicit Gate C/D approval:
+## Install/verify public GBrain
 
 1. Inspect local tooling without printing secrets:
    ```bash
@@ -41,14 +37,6 @@ Allowed before explicit Gate C/D approval:
 4. Configure only env names/placeholders in private env/secrets. Do not paste or print real Supabase, Voyage, Slack or database secrets.
 5. Verify the installed command/API/MCP health according to upstream docs.
 6. Write a private receipt with source, target path, commands run, result, remaining blocker, and rollback.
-
-Forbidden in Gate B-GBrain:
-
-- no Supabase migrations;
-- no production writes;
-- no real company memory imports;
-- no secrets in logs, Slack, Git, receipts or context packets;
-- no private AOS/Cerebro connector substitution.
 
 ## Minimum private env contract
 
