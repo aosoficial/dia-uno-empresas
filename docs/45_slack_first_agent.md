@@ -17,9 +17,11 @@ Slack is required because:
 - receipts and blockers need a notification surface;
 - the work is internal, reviewed and receipt-based.
 
-Composio can be used as the integration/auth layer for Slack and other apps, but it must not become memory or source of truth.
+Default path: **direct Slack -> Hermes via Socket Mode**. Do not route the first agent through Composio by default. Composio is only an approved exception for app integrations after Hermes is already the runtime.
 
-If Slack cannot be created or connected yet, stop the first-agent launch and record Slack as a blocking dependency. Do not replace it with ad-hoc chat unless the user explicitly approves a different operating surface.
+If Slack cannot be created or connected to Hermes yet, stop the first-agent launch and record Slack/Hermes connection as a blocking dependency. Do not replace it with ad-hoc chat unless the user explicitly approves a different operating surface.
+
+Also stop if private memory is not ready. The CEO must not start meaningful work until the private company instance, Supabase/Postgres, Voyage and GBrain/Company Brain are configured or explicitly recorded as blocked/pending with human approval. For DIA UNO public/client installs, GBrain means `https://github.com/garrytan/gbrain`; do not substitute private AOS/Cerebro connectors. Slack is conversation; memory is operational state.
 
 Do not build a custom chat product before the first pilot proves the operating loop.
 
@@ -81,16 +83,52 @@ Its first Slack behavior should be boring and safe:
 
 ## Setup checklist
 
-1. Create or choose the Slack workspace.
-2. Create the first channels.
-3. Create a Slack app/bot user for the first agent, or connect Slack through Composio if that is the approved integration path.
-4. Configure permissions with the minimum scopes needed.
-5. Store real tokens outside Git: environment variables or a secrets manager.
-6. Register the Slack surface in the private instance at `integrations/slack-first-agent.md`.
-7. Connect the bot to the runtime bridge outside the public framework repo.
-8. Send a safe test message in `#00-direction`.
-9. Run one Dirección-only internal task with a human reviewer.
-10. Save the receipt in `receipts/` and post only a short notification in `#99-receipts`.
+1. Create the private company instance.
+2. Configure private memory: Supabase/Postgres, Voyage and public GBrain (`https://github.com/garrytan/gbrain`) as the Company Brain substrate.
+3. Verify memory readiness:
+   ```bash
+   python scripts/check_private_memory_readiness.py \
+     --company-instance /private/path/to/company-brain \
+     --strict
+   ```
+4. Create or choose the Slack workspace.
+5. Create the first channels.
+6. Create the Slack app/bot user for the first agent with `hermes slack guide` + `hermes slack manifest --write`. Default path is direct Slack -> Hermes, not Composio.
+7. Configure minimum permissions from the Hermes manifest and install the Slack app.
+8. Store real tokens outside Git: environment variables, a private `.env` file or a secrets manager.
+9. Register the Slack surface in the private instance at `integrations/slack-first-agent.md`.
+10. Run the DIA UNO connector so Hermes exists, the Hermes profile exists, memory readiness is checked and the Slack tokens are wired into that profile:
+   ```bash
+   export SLACK_BOT_TOKEN=<from Slack app>
+   export SLACK_APP_TOKEN=<from Slack app>
+   export SLACK_ALLOWED_USERS=<approved Slack user IDs>
+   python scripts/connect_slack_to_hermes.py \
+     --company-instance /private/path/to/company-brain \
+     --profile acme-ceo \
+     --install-hermes \
+     --start-gateway \
+     --apply
+   ```
+   Safer first run:
+   ```bash
+   python scripts/connect_slack_to_hermes.py \
+     --company-instance /private/path/to/company-brain \
+     --profile acme-ceo
+   ```
+   If memory is intentionally blocked/pending, the connector requires an explicit override:
+   ```bash
+   python scripts/connect_slack_to_hermes.py \
+     --company-instance /private/path/to/company-brain \
+     --profile acme-ceo \
+     --allow-memory-pending
+   ```
+11. Verify Hermes gateway status:
+   ```bash
+   hermes --profile acme-ceo gateway status
+   ```
+12. Send a safe test message in `#00-direction` only after memory and gateway are ready.
+13. Run one Dirección-only internal task with a human reviewer.
+14. Save the receipt in `receipts/` and post only a short notification in `#99-receipts`.
 
 ## What can be configured from Slack
 
@@ -156,6 +194,7 @@ Observer can suggest StateChanges or receipts, but it must ask before changing p
 
 Slack-first setup is ready when:
 
+- private memory readiness has passed for Supabase/Postgres, Voyage and GBrain/Company Brain, or the blocker is explicitly recorded and CEO launch is paused;
 - one human can message the first agent in Slack;
 - the first agent is CEO and remains limited to Dirección;
 - the agent can complete one safe internal task;

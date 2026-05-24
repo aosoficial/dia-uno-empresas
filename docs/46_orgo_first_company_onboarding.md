@@ -30,14 +30,15 @@ Install the operating base first:
 1. ORGO.
 2. Codex or Claude Code as installer operator.
 3. DIA UNO framework.
-4. Slack as the mandatory first human-agent interface.
-5. Base tools/integrations needed for the first operating loop.
-6. Private company instance.
-7. Supabase + Voyage + GBrain as the private company memory.
-8. First agent: CEO.
-9. Observer agent.
-10. Department agents.
-11. Company knowledge, built through agent-led interviews and evidence.
+4. Private company instance.
+5. Supabase + Voyage + public GBrain (`https://github.com/garrytan/gbrain`) as the private company memory.
+6. Slack as the mandatory first human-agent interface.
+7. Hermes profile/gateway connecting Slack to the agent runtime.
+8. Base tools/integrations needed for the first operating loop.
+9. First agent: CEO.
+10. Observer agent.
+11. Department agents.
+12. Company knowledge, built through agent-led interviews and evidence.
 
 ## Sequence
 
@@ -69,38 +70,9 @@ Client-facing language:
 
 Do not make the client reason about branches, commits or repo internals unless they are technical.
 
-### 3. Prepare Slack before creating agents or deep discovery
+### 3. Create the private company instance before agents talk
 
-Slack is connected early because the company needs a place to talk to agents. For a real company install, Slack is mandatory before the first agent is launched.
-
-For a real company install, the installer operator must explicitly tell the user that Slack is a required Sprint 0 dependency, not an optional route. Creating/configuring Slack is external and requires approval before action.
-
-Create only the minimum channels:
-
-- `#00-direction` — CEO agent, priorities, decisions, escalations.
-- `#90-approvals` — human approvals.
-- `#99-receipts` — receipt notifications.
-
-Add department channels later, when department agents exist.
-
-Slack is only the interface. The Company Brain is the memory. Composio may be used as the integration/auth layer to connect Slack and other apps, but it must not become memory or source of truth.
-
-If Slack cannot be configured yet, stop before launching the first agent. Record Slack as a blocking dependency with owner, reason, approval needed and expected outcome. Do not proceed as if the human-agent interface exists.
-
-### 4. Prepare base tools before the private company instance
-
-Identify the minimum base tools/integrations needed for the first safe operating loop. Do not ask for secrets in chat and do not connect production systems without approval.
-
-At minimum, classify each tool as:
-
-- ready;
-- pending approval;
-- pending credentials stored outside Git/chat;
-- not needed for Sprint 0.
-
-### 5. Create the private company instance
-
-Create the private folder where the company will live after Slack is approved/created/configured and base tools are planned or approved.
+Create the private folder where the company will live before Slack is used for a real CEO conversation.
 
 This is not the public framework repo. It is the company's operating space.
 
@@ -116,20 +88,70 @@ It contains:
 - integrations;
 - secrets instructions, never real secrets.
 
-### 6. Install private memory infrastructure
+### 4. Install private memory infrastructure before Slack CEO launch
 
 Install/configure the company memory layer:
 
 - Supabase/Postgres for stored operational memory;
 - Voyage for embeddings/search;
-- GBrain/Company Brain for pages, context, receipts, statechanges, links and operational state;
+- public GBrain (`https://github.com/garrytan/gbrain`) / Company Brain for pages, context, receipts, statechanges, links and operational state;
 - runtime config and secrets outside Slack and outside Git.
+
+Verify it before the first CEO conversation:
+
+```bash
+python scripts/check_private_memory_readiness.py \
+  --company-instance /private/path/to/company-brain \
+  --strict
+```
 
 Client-facing language:
 
-> We are installing the private memory of your company.
+> We are installing the private memory of your company before activating the CEO. Slack is only the interface; GBrain/Supabase/Voyage are where operational memory lives.
 
 Do not ask the user to paste API keys, passwords, Slack tokens or connection strings into chat.
+
+If memory is not ready, stop before launching CEO and record the blocker with owner, reason, approval needed and expected outcome. Do not compensate by treating Slack chat as memory.
+
+### 5. Prepare Slack before creating agents or deep discovery
+
+Slack is connected early because the company needs a place to talk to agents. For a real company install, Slack is mandatory before the first agent is launched.
+
+For a real company install, the installer operator must explicitly tell the user that Slack is a required Sprint 0 dependency, not an optional route. Creating/configuring Slack is external and requires approval before action.
+
+Create only the minimum channels:
+
+- `#00-direction` — CEO agent, priorities, decisions, escalations.
+- `#90-approvals` — human approvals.
+- `#99-receipts` — receipt notifications.
+
+Add department channels later, when department agents exist.
+
+Slack is only the interface. Hermes is the runtime bridge. The Company Brain is the memory. Default path is direct Slack -> Hermes via Socket Mode; Composio is not the default Slack runtime and may only be used later as an approved app-integration layer.
+
+After the Slack app exists, the installer operator must run `scripts/connect_slack_to_hermes.py` so the repo creates/uses the Hermes profile, writes the local Slack env block outside Git, restarts the Hermes gateway and records a private receipt:
+
+```bash
+python scripts/connect_slack_to_hermes.py \
+  --company-instance /private/path/to/company-brain \
+  --profile acme-ceo \
+  --install-hermes \
+  --start-gateway \
+  --apply
+```
+
+If Slack cannot be configured and connected to Hermes yet, stop before launching the first agent. Record Slack/Hermes as a blocking dependency with owner, reason, approval needed and expected outcome. Do not proceed as if the human-agent interface exists.
+
+### 6. Prepare base tools after memory and Slack are planned
+
+Identify the minimum base tools/integrations needed for the first safe operating loop. Do not ask for secrets in chat and do not connect production systems without approval.
+
+At minimum, classify each tool as:
+
+- ready;
+- pending approval;
+- pending credentials stored outside Git/chat;
+- not needed for Sprint 0.
 
 ### 7. Create the first agent: CEO
 
@@ -216,9 +238,10 @@ The ORGO-first onboarding is ready for the first real company when:
 
 - Codex or Claude Code is installed/connected from ORGO;
 - DIA UNO is updated;
-- Slack minimum channels exist;
 - a private company instance exists;
-- Supabase/Voyage/GBrain memory path is configured or explicitly pending;
+- Supabase/Voyage/GBrain memory path is configured and passes `scripts/check_private_memory_readiness.py --strict`, or it is explicitly recorded as a launch blocker;
+- Slack minimum channels exist;
+- Slack app exists and is connected directly to a Hermes profile/gateway;
 - CEO agent exists and is limited to Dirección;
 - Observer agent exists or is explicitly marked pending as a read-only memory/evidence guard;
 - no department deep-dive has been asked by CEO;

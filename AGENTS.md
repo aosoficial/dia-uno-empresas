@@ -32,14 +32,15 @@ Follow this order:
 2. Run the short AI-level guardrail exam from `docs/00_non_technical_start_with_codex_or_claude.md`.
 3. Choose one guardrail mode: non-technical, intermediate AI user, or technical/builder.
 4. Verify the framework locally with the repo validators when available.
-5. Treat Slack as a mandatory Sprint 0 dependency for a real company install: present the minimum Slack workspace/channel plan and ask the user to approve creating/configuring it. This is not optional; without Slack, the first agent has no approved conversation surface.
-6. Prepare the other base tools/integrations that must exist before agent interviews. Composio may be used as the integration/auth layer for Slack/apps, but it is not memory or source of truth.
-7. Create or update the private company instance only after Slack is approved/created/configured and the other base-tools step is planned or approved. The instance is the company's private operating space, not this public framework repo.
-8. Configure or explicitly mark pending the private memory path: Supabase/Postgres, Voyage and GBrain/Company Brain.
-9. Create the first agent: CEO Agent, limited to Dirección only.
-10. Defer marketing, operations, product, growth/sales, finance and post-sale discovery to later department agents.
-11. Define the Observer Agent as a read-only system/memory observer.
-12. Stop after one safe internal operating loop with Context Packet, human review, Receipt and scorecard.
+5. Treat the private company instance and memory substrate as Sprint 0 dependencies before the first CEO conversation: Supabase/Postgres, Voyage and GBrain/Company Brain must be configured and verified, or explicitly recorded as a blocker. For DIA UNO public/client installs, GBrain means the public upstream repo `https://github.com/garrytan/gbrain`; install or verify that target before asking the user to speak to the CEO agent.
+6. Treat Slack as a mandatory Sprint 0 dependency for a real company install: present the minimum Slack workspace/channel plan and ask the user to approve creating/configuring it. This is not optional; without Slack, the first agent has no approved conversation surface.
+7. Connect Slack directly to Hermes with the repo connector. Composio may be used later as an approved app-integration layer, but it is not memory, source of truth or default Slack runtime.
+8. Create or update the private company instance before agent launch. The instance is the company's private operating space, not this public framework repo.
+9. Run `scripts/check_private_memory_readiness.py --company-instance <private-instance> --strict`; do not create or launch CEO until Supabase/Voyage/GBrain readiness passes or the human explicitly approves a blocked/pending memory state.
+10. Create the first agent: CEO Agent, limited to Dirección only.
+11. Defer marketing, operations, product, growth/sales, finance and post-sale discovery to later department agents.
+12. Define the Observer Agent as a read-only system/memory observer.
+13. Stop after one safe internal operating loop with Context Packet, human review, Receipt and scorecard.
 
 ## Safety boundaries
 
@@ -62,7 +63,8 @@ Prefer one-time approvals over permanent allow rules during the first installati
 ## Do not do this
 
 - Do not make the user drive the installation by naming internal docs or commands.
-- Do not create CEO/departamental agents or start a full company diagnosis before Slack exists as the approved human-agent interface, base tools are planned/approved, and private memory is configured or explicitly blocked.
+- Do not use private AOS/Cerebro connectors (`aos_brain_local`, `aosoficial/cerebro-personal`, private Supabase schemas) as the default GBrain target for DIA UNO public/client installs. The default target is `https://github.com/garrytan/gbrain`.
+- Do not create CEO/departamental agents or start a full company diagnosis before the private instance exists, Supabase/Voyage/GBrain memory readiness passes or is explicitly blocked, Slack exists as the approved human-agent interface, and base tools are planned/approved.
 - Do not offer Slack as optional in a real company install. If Slack cannot be configured yet, stop the first-agent launch and record Slack as a blocking dependency with owner, reason, approval needed and expected outcome.
 - Do not make CEO Agent interview every department.
 - Do not store truth in Slack; Slack is interface, Company Brain/GBrain is memory.
