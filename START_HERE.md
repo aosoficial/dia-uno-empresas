@@ -65,12 +65,13 @@ Rellena solo lo mínimo y seguro:
 3. **Límites de aprobación**: qué puede preparar la IA y qué necesita decisión humana.
 4. **Primer departamento**: normalmente Operaciones / Delivery o el cuello de botella recomendado. Usa la guía [`templates/how-to/choose-first-department.md`](templates/how-to/choose-first-department.md) para decidir.
 5. **Primer Context Packet**: contexto suficiente para una acción interna pequeña.
-6. **Primera acción interna**: redactar, analizar, ordenar o preparar; no enviar ni publicar.
-7. **Receipt**: prueba de qué se hizo, quién revisó y qué cambió.
-8. **Scorecard**: puntuación honesta de preparación y huecos.
-9. **Siguiente sprint**: el próximo paso pequeño y revisable.
+6. **Primer contacto por Slack**: si hay varios humanos/equipos, crea el canal mínimo y habla con el primer agente siguiendo [`docs/45_slack_first_agent.md`](docs/45_slack_first_agent.md). Slack es la interfaz, no la memoria.
+7. **Primera acción interna**: redactar, analizar, ordenar o preparar; no enviar ni publicar.
+8. **Receipt**: prueba de qué se hizo, quién revisó y qué cambió.
+9. **Scorecard**: puntuación honesta de preparación y huecos.
+10. **Siguiente sprint**: el próximo paso pequeño y revisable.
 
-Para los pasos 5-9, sigue la guía detallada: [`templates/how-to/run-first-internal-loop.md`](templates/how-to/run-first-internal-loop.md).
+Para los pasos 5-10, sigue la guía detallada: [`templates/how-to/run-first-internal-loop.md`](templates/how-to/run-first-internal-loop.md).
 Si no sabes qué acción elegir, usa ejemplos seguros en [`docs/44_first_operating_loop_examples.md`](docs/44_first_operating_loop_examples.md).
 
 ## Qué no debes pegar ni compartir
@@ -104,6 +105,7 @@ Incluye solo contexto seguro o anonimizado: tipo de empresa, paso donde te bloqu
 - [`docs/40_self_serve_happy_path.md`](docs/40_self_serve_happy_path.md) — camino self-serve paso a paso.
 - [`docs/43_self_serve_operator_ux.md`](docs/43_self_serve_operator_ux.md) — checklist operativa para usuarios self-serve.
 - [`docs/44_first_operating_loop_examples.md`](docs/44_first_operating_loop_examples.md) — ejemplos seguros de evidencia para agencia, consultoría y freelancer.
+- [`docs/45_slack_first_agent.md`](docs/45_slack_first_agent.md) — cómo empezar a hablar con el primer agente por Slack.
 - [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) — errores habituales y arreglos copy/paste.
 - [`docs/12_get_help_from_dia_uno.md`](docs/12_get_help_from_dia_uno.md) — cómo pedir ayuda de forma segura.
 - [`templates/generated-company-instance/README.md`](templates/generated-company-instance/README.md) — plantilla de instancia privada generada.

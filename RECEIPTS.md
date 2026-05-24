@@ -101,3 +101,28 @@ Validation:
 
 Next gap:
 - Continue translating/self-serve hardening: Spanish summaries for remaining operator docs, standardized `python3` commands, and simpler troubleshooting for nontechnical users.
+
+## R-008 — Slack-first first agent path
+
+Date: 2026-05-24
+Owner: Hermes Clean
+Scope: local repo change, not pushed.
+
+What changed:
+- Added `docs/45_slack_first_agent.md` as the default short-term path for talking to the first agent through Slack.
+- Updated `README.md`, `START_HERE.md`, `docs/20_first_digital_employee_48h.md` and `docs/27_human_agent_operating_system.md` to make Slack the recommended first human-agent interface for multi-human pilots.
+- Added private instance template `templates/generated-company-instance/integrations/slack-first-agent.md` and mapped it in `MAP.md` / generated `README.md`.
+
+Why:
+- Slack is the fastest reliable surface for client teams, approvals and notifications.
+- The Company Brain remains the source of truth; Slack is only the interface.
+
+Allowed actions:
+- Document Slack-first setup and non-secret configuration.
+- Keep secrets/tokens outside Git and outside chat.
+
+Forbidden actions:
+- Do not create Slack apps, connect live workspaces, store tokens, activate external bots or configure production without explicit human approval.
+
+Validation:
+- Run repository validators before publication.

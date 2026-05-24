@@ -26,7 +26,7 @@ Empresa AI-First de servicios productizados con:
 - departamentos definidos uno por uno;
 - brain por departamento;
 - sistema para guardar memoria operativa;
-- comunicación entre humanos y agentes;
+- comunicación entre humanos y agentes, empezando por Slack cuando haya varios humanos/equipos;
 - organización de personas y agentes;
 - roles, permisos, límites y aprobaciones;
 - skills por departamento;
@@ -51,6 +51,7 @@ Empresa AI-First de servicios productizados con:
 - [`docs/42_point_b_definition.md`](docs/42_point_b_definition.md) — definición verificable de Punto B.
 - [`docs/43_self_serve_operator_ux.md`](docs/43_self_serve_operator_ux.md) — UX operativa self-serve.
 - [`docs/44_first_operating_loop_examples.md`](docs/44_first_operating_loop_examples.md) — ejemplos seguros para crear evidencia del primer loop.
+- [`docs/45_slack_first_agent.md`](docs/45_slack_first_agent.md) — primer agente conversacional por Slack.
 
 ### 2. Generar una empresa privada guiada
 
@@ -83,14 +84,15 @@ python scripts/bootstrap_company_brain.py --dry-run --company "Acme Demo" --comp
 ## Orden de instalación
 
 1. Dirección / Mother Brain.
-2. Operations / Delivery.
-3. Marketing.
-4. Sales.
-5. Customer Success / Postventa.
-6. Product / Software Internal Systems.
-7. Finance.
-8. People / Organization.
-9. Admin / Legal / Compliance where needed.
+2. Slack-first: canal mínimo para hablar con el primer agente y pedir aprobaciones.
+3. Operations / Delivery.
+4. Marketing.
+5. Sales.
+6. Customer Success / Postventa.
+7. Product / Software Internal Systems.
+8. Finance.
+9. People / Organization.
+10. Admin / Legal / Compliance where needed.
 
 ## Qué incluye
 
@@ -98,6 +100,7 @@ python scripts/bootstrap_company_brain.py --dry-run --company "Acme Demo" --comp
 - Wizard guiado para agencia, consultoría o freelancer.
 - Department templates.
 - Agent onboarding packs.
+- Slack-first first agent guide.
 - Skills por departamento.
 - Roadmap 48h / 7d / 30d.
 - Receipts, StateChanges y Context Packets.

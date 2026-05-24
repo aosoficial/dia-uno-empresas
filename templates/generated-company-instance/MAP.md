@@ -26,6 +26,7 @@ Risk tier: `{{ risk_tier }}`
 - Point B diagnosis: `company/point-b-readiness.md`
 - Department brains: `departments/<department>/department-brain.md`
 - First employee: `digital-employees/ceo-operations-assistant/`
+- Slack-first agent surface: `integrations/slack-first-agent.md`
 - Initial context packet: `context-packets/initial-company-context.md`
 - Operational receipts: `receipts/`
 - State changes: `statechanges/`
@@ -46,6 +47,7 @@ Use this hierarchy:
   receipts/             # evidence of completed work
   statechanges/         # durable operational changes
   handoffs/             # human/agent handoffs
+  integrations/         # non-secret integration setup notes, e.g. Slack
   decisions/            # explicit decisions and rationale
   scorecards/           # before/after and readiness scores
   secrets/              # README only; real secrets stay out of Git
@@ -56,6 +58,7 @@ Rules:
 - Do not create random folders outside this private instance.
 - Do not move operational artifacts to Desktop/Downloads unless the human explicitly approves.
 - Do not store secrets, passwords, API keys or tokens in chat or Git.
+- Do not store Slack bot tokens, signing secrets, webhooks or model/provider credentials in this folder.
 - If a new folder is needed, explain why it belongs in this hierarchy first.
 
 ## Rule

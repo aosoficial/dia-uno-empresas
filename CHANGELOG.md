@@ -9,6 +9,7 @@
 - Added skills guide.
 - Added human SOPs and agent SOPs.
 - Added public-safety cleanup for private implementation references.
+- Added Slack-first first agent path for guided pilots.
 
 ## v0.1.0
 

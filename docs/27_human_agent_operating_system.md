@@ -12,6 +12,22 @@ DIA UNO Empresas organizes people first, then agents. Agents amplify an operatin
 - Issues list: decisions and blockers.
 - Receipts/statechanges/context packets: evidence and memory updates.
 
+## Default communication surface
+
+For guided pilots with multiple humans or teams, start with **Slack** as the first human-agent interface.
+
+Use Slack for:
+
+- talking to the first agent;
+- asking questions;
+- requesting approval;
+- reporting blockers;
+- notifying that a receipt exists.
+
+Do not treat Slack as operational memory. The Company Brain remains the source of truth for context, receipts, statechanges, permissions and long-term decisions.
+
+Use [`45_slack_first_agent.md`](45_slack_first_agent.md) to launch the first agent safely.
+
 ## Weekly rhythm
 
 1. Scorecard review.

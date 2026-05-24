@@ -18,15 +18,16 @@ Trabaja en este orden. No intentes activar muchos agentes a la vez: el objetivo 
 3. Abre `FIRST_OPERATING_LOOP.md`. Es la guía corta para ejecutar el primer ciclo real de 30–60 minutos sin confundirse entre scaffold y Punto B operativo. Si necesitas ver la forma antes de usar datos reales, abre `examples/first-operating-loop/README.md`.
 4. Completa `company/source-of-truth-map.md`. Es un artefacto obligatorio de los primeros 120 minutos y la fuente principal para el primer Context Packet: identifica Drive/Docs, Notion/wiki, Sheets, CRM, WhatsApp/Slack, email, calendario, proyectos y finanzas con propietario, permisos, frescura, regla de recibo y siguiente acción.
 5. Revisa límites de aprobación en `company/approval-boundaries.md`. Nada externo, público, económico, legal, de producción o sensible se ejecuta sin aprobación humana explícita.
-6. Elige un primer departamento prioritario y completa su brain, por ejemplo `departments/{{ first_department }}/department-brain.md` o `departments/operations/department-brain.md`.
-7. Revisa permisos del primer empleado digital. La ruta inicial habitual es `digital-employees/ceo-operations-assistant/PERMISSIONS.md`; si el wizard generó otro empleado, usa su carpeta dentro de `digital-employees/`.
-8. Crea o completa un paquete de contexto en `context-packets/initial-company-context.md` antes de pedir trabajo al agente. Debe enlazar `company/source-of-truth-map.md`, nombrar las filas usadas y mantener el acceso en solo lectura salvo aprobación explícita.
-9. Ejecuta una acción interna pequeña y segura: resumir un handoff, revisar una SOP, preparar una lista de riesgos, actualizar una métrica interna, etc.
-10. Guarda evidencia del ciclo en `receipts/first-loop.md` o en otro archivo dentro de `receipts/`.
-11. Si cambió el estado operativo, registra el cambio en `statechanges/`.
-12. Actualiza `company/company-scorecard.md` con una línea basada en evidencia, no en intención.
-13. Actualiza `company/guided-pilot-plan.md`, `company/point-b-readiness.md` y `roadmap/48h-7d-30d.md` con el siguiente sprint.
-14. Ejecuta validaciones en modo scaffold primero. Usa modo operational solo después del primer ciclo humano revisado.
+6. Prepara el primer contacto humano-agente en Slack usando `integrations/slack-first-agent.md`. Slack es la interfaz para conversar, aprobar y recibir avisos; la memoria vive aquí.
+7. Elige un primer departamento prioritario y completa su brain, por ejemplo `departments/{{ first_department }}/department-brain.md` o `departments/operations/department-brain.md`.
+8. Revisa permisos del primer empleado digital. La ruta inicial habitual es `digital-employees/ceo-operations-assistant/PERMISSIONS.md`; si el wizard generó otro empleado, usa su carpeta dentro de `digital-employees/`.
+9. Crea o completa un paquete de contexto en `context-packets/initial-company-context.md` antes de pedir trabajo al agente. Debe enlazar `company/source-of-truth-map.md`, nombrar las filas usadas y mantener el acceso en solo lectura salvo aprobación explícita.
+10. Ejecuta una acción interna pequeña y segura: resumir un handoff, revisar una SOP, preparar una lista de riesgos, actualizar una métrica interna, etc.
+11. Guarda evidencia del ciclo en `receipts/first-loop.md` o en otro archivo dentro de `receipts/`.
+12. Si cambió el estado operativo, registra el cambio en `statechanges/`.
+13. Actualiza `company/company-scorecard.md` con una línea basada en evidencia, no en intención.
+14. Actualiza `company/guided-pilot-plan.md`, `company/point-b-readiness.md` y `roadmap/48h-7d-30d.md` con el siguiente sprint.
+15. Ejecuta validaciones en modo scaffold primero. Usa modo operational solo después del primer ciclo humano revisado.
 
 ## Secuencia de 48 horas hacia Punto B
 
@@ -45,6 +46,7 @@ Trabaja en este orden. No intentes activar muchos agentes a la vez: el objetivo 
 - Revisar `company/company-scorecard.md` y dejar valores desconocidos como `unknown` si todavía no hay evidencia.
 - Seleccionar el primer departamento en `departments/*/department-brain.md`.
 - Revisar `digital-employees/*/PERMISSIONS.md` antes de pedir cualquier acción.
+- Preparar `integrations/slack-first-agent.md` si el primer agente hablará con humanos por Slack. No guardar tokens ni secretos en Git.
 
 ### 90–180 minutos — preparar el primer ciclo interno
 
@@ -87,6 +89,7 @@ La definición vive en `docs/42_point_b_definition.md` del framework. Dentro de 
 - Permisos del empleado digital: `digital-employees/<employee>/PERMISSIONS.md`
 - Paquete de contexto usado: `context-packets/initial-company-context.md` o `context-packets/`
 - Recibo operativo: `receipts/first-loop.md` o `receipts/`
+- Superficie Slack-first: `integrations/slack-first-agent.md`
 - Cambios de estado, cuando existan: `statechanges/`
 - Roadmap operativo: `roadmap/48h-7d-30d.md`
 
@@ -125,6 +128,7 @@ En una instancia recién generada, `--mode operational` debe fallar. Es correcto
 - `receipts/`: evidencia de trabajo completado.
 - `statechanges/`: cambios de estado operativo.
 - `handoffs/`: traspasos entre sesiones o equipos.
+- `integrations/`: configuración operativa no secreta de superficies como Slack.
 - `contracts/`: contratos de trabajo acotados.
 - `traces/`: referencias técnicas o de depuración.
 - `secrets/`: instrucciones solamente; nunca guardes secretos reales aquí.

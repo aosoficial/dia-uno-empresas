@@ -19,6 +19,7 @@ Why:
 
 - Prepare ORGO/Hermes.
 - Confirm one Hermes chat works.
+- Prepare the Slack-first surface if more than one human will collaborate with the agent: use [`45_slack_first_agent.md`](45_slack_first_agent.md).
 - Define approval boundaries.
 - Confirm no real customer data is needed for the first test.
 
@@ -34,6 +35,7 @@ Why:
 - Start with operations department.
 - Review the employee files under `digital-employees/ceo-operations-assistant/`.
 - Confirm allowed tools, forbidden actions and escalation path.
+- If Slack is in scope, register the surface in `integrations/slack-first-agent.md` inside the private company instance. Store real Slack tokens outside Git.
 
 ### Day 2 — First safe task
 
@@ -47,6 +49,8 @@ Choose one:
 - review open operational risks.
 
 The employee must finish with a receipt.
+
+Default communication surface for the first pilot: Slack. Slack is the interface for conversation, approvals and notifications. The Company Brain remains the source of truth for context, receipts, statechanges and permission changes.
 
 ## Not first tasks
 
