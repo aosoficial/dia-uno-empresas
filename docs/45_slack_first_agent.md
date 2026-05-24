@@ -21,7 +21,7 @@ Default path: **direct Slack -> Hermes via Socket Mode**. Do not route the first
 
 If Slack cannot be created or connected to Hermes yet, stop the first-agent launch and record Slack/Hermes connection as a blocking dependency. Do not replace it with ad-hoc chat unless the user explicitly approves a different operating surface.
 
-Also stop if private memory is not ready. The CEO must not start meaningful work until the private company instance, Supabase/Postgres, Voyage and GBrain/Company Brain are configured or explicitly recorded as blocked/pending with human approval. For DIA UNO public/client installs, GBrain means `https://github.com/garrytan/gbrain`; do not substitute private AOS/Cerebro connectors. Slack is conversation; memory is operational state.
+Also verify private memory before meaningful CEO work. The private company instance, Supabase/Postgres, Voyage and GBrain/Company Brain should be configured or explicitly recorded as pending. For DIA UNO public/client installs, GBrain means `https://github.com/garrytan/gbrain`. Slack is conversation; memory is operational state.
 
 Do not build a custom chat product before the first pilot proves the operating loop.
 
