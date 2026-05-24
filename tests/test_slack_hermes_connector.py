@@ -151,6 +151,25 @@ def test_connector_can_plan_with_explicit_memory_pending_override(tmp_path):
     assert "DRY-RUN" in result.stdout
 
 
+def test_private_receipt_records_memory_pending_blockers(tmp_path):
+    connector = load_connector()
+    instance = tmp_path / "private-company"
+    instance.mkdir()
+    connector.write_private_receipt(
+        instance,
+        "acme-ceo",
+        True,
+        ["missing supabase memory env: one of SUPABASE_URL", "missing private memory path: receipts"],
+    )
+    receipts = list((instance / "receipts").glob("*-slack-hermes-connection.md"))
+    assert len(receipts) == 1
+    text = receipts[0].read_text(encoding="utf-8")
+    assert "explicitly overridden" in text
+    assert "CEO launch remains paused" in text
+    assert "BLOCKED/PENDING: missing supabase memory env" in text
+    assert "SLACK_BOT_TOKEN=" not in text
+
+
 def test_docs_make_direct_slack_to_hermes_mandatory():
     combined = "\n".join(
         (ROOT / rel).read_text(encoding="utf-8")
@@ -169,14 +188,31 @@ def test_docs_make_direct_slack_to_hermes_mandatory():
         "hermes slack manifest --write",
         "SLACK_APP_TOKEN",
         "SLACK_ALLOWED_USERS",
-        "Composio is not the default Slack runtime",
+        "direct Slack -> Hermes",
         "check_private_memory_readiness.py",
         "Supabase/Voyage/GBrain",
         "https://github.com/garrytan/gbrain",
         "DATABASE_URL",
         "VOYAGE_MODEL",
+        "supabase/migrations/001_private_memory_runtime.sql",
     ]:
         assert marker in combined
+
+
+def test_generic_supabase_memory_migration_exists():
+    migration = ROOT / "supabase" / "migrations" / "001_private_memory_runtime.sql"
+    text = migration.read_text(encoding="utf-8")
+    for marker in [
+        "create schema if not exists gbrain",
+        "create extension if not exists vector",
+        "gbrain.operational_items",
+        "context_packet",
+        "statechange",
+        "receipt",
+        "embedding vector(1024)",
+        "gbrain_agent",
+    ]:
+        assert marker in text
 
 
 def test_public_gbrain_is_canonical():

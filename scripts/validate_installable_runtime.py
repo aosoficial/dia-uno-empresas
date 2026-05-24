@@ -14,6 +14,7 @@ REQUIRED = [
     "docs/27_human_agent_operating_system.md", "docs/28_feedback_loop.md", "docs/29_phase_b_gap_analysis.md",
     "docs/30_feedback_loop_playbook.md", "docs/31_memory_backend_profiles.md",
     "docs/32_ai_first_readiness_assessment.md", "docs/33_department_selection_matrix.md",
+    "docs/48_observer_read_only_runtime.md",
     "docs/34_core_workflows_a_to_b.md", "docs/35_digital_employee_catalog.md",
     "docs/36_existing_systems_mapping.md", "docs/37_external_benchmarks_sylph_skillclaw.md",
     "docs/38_skill_evolution_v0.md", "docs/39_guided_pilot_happy_path.md", "docs/40_self_serve_happy_path.md",

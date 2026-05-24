@@ -40,7 +40,7 @@ After the mode is selected:
 4. Ask me to create required accounts only when needed.
 5. Never ask me to paste real API keys, passwords or tokens into chat. Tell me where to store them locally instead.
 6. Help me prepare Slack as the mandatory first human-agent interface. Do not launch the first agent until I can talk to it through Slack.
-7. If useful, use Composio as the integration/auth layer for Slack and other apps, but do not treat Composio as memory or source of truth.
+7. Connect Slack directly to Hermes. Do not add an external integration layer in the base path.
 8. Create the private Company Brain instance outside the public repo after Slack is approved/created/configured.
 9. Help me configure the private memory path: Supabase/Postgres, Voyage and GBrain/Company Brain, or mark it explicitly pending if not connected yet.
 10. Keep all internal files inside the generated private folder hierarchy. Do not create random folders elsewhere unless I explicitly approve.
@@ -151,7 +151,7 @@ Suggested order for ORGO-first onboarding:
 2. Codex or Claude Code desktop/terminal connected from ORGO as installer operator.
 3. GitHub account or repo access, if needed to clone/open/update DIA UNO.
 4. Local runtime requirements from this repo.
-5. Slack workspace/app setup for the first interface. For real installs, Slack is mandatory before launching the first agent; Composio may be used as the integration/auth layer.
+5. Slack workspace/app setup for the first interface. For real installs, Slack is mandatory before launching the first agent and connects directly to Hermes.
 6. Supabase/Postgres, Voyage and GBrain/Company Brain for private memory, using free/free-tier first when possible.
 7. Optional integrations only after the private brain and approval rules exist.
 

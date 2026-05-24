@@ -113,6 +113,7 @@ If the install uses MCP instead of CLI, verify the configured MCP server/profile
 
 ### Step 3 — schema/migrations
 
+- reviewed generic baseline migration: `supabase/migrations/001_private_memory_runtime.sql`;
 - apply reviewed SQL/migrations;
 - create or verify the GBrain schema/tables/extensions required by upstream GBrain;
 - configure pgvector/embedding storage if upstream GBrain requires it;
@@ -143,7 +144,7 @@ After readiness passes:
 ```text
 Slack message
   -> Hermes Slack gateway/profile
-  -> CEO agent ONE
+  -> CEO Agent
   -> GBrain access path
   -> Supabase/Postgres stored memory
   -> Voyage embeddings for semantic search

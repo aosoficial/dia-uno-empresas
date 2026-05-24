@@ -14,7 +14,7 @@ Haz inmediatamente esto:
 2. Explica al usuario el siguiente paso en lenguaje humano.
 3. Haz el examen corto de nivel IA antes de pedir datos de empresa.
 4. Usa comandos locales seguros para verificar el repo.
-5. Para una empresa real, no saltes a agentes: primero presenta el plan mínimo de Slack y herramientas base. Slack es obligatorio para hablar con el primer agente; crear/configurar Slack o conectar Composio es una acción externa y requiere aprobación del usuario.
+5. Para una empresa real, no saltes a agentes: primero presenta el plan mínimo de Slack y herramientas base. Slack es obligatorio para hablar con el primer agente; crear/configurar Slack es una acción externa y requiere aprobación del usuario.
 6. Pide aprobación solo antes de acciones externas, públicas, económicas, legales, productivas, sensibles, destructivas, con secretos o con workers/crons/bots persistentes.
 
 Primer mensaje recomendado:
@@ -55,7 +55,7 @@ python scripts/company_brain_wizard.py --dry-run --company "Mi Empresa" --compan
 
 # 2) Antes de una empresa real: preparar Slack/herramientas base.
 #    Slack es obligatorio para hablar con el primer agente.
-#    Composio puede usarse como capa recomendada para conectar Slack/apps.
+#    Slack conecta directo a Hermes; no hay capa externa en la ruta base.
 #    No se crean recursos externos desde el repo sin aprobación explícita.
 
 # 3) Crear una instancia privada local
@@ -89,13 +89,13 @@ No uses una validación operativa fresca para afirmar que la empresa ya está li
 Rellena solo lo mínimo y seguro:
 
 1. **ORGO + Codex/Claude**: instala o conecta el operador instalador antes de tocar la empresa.
-2. **Slack mínimo obligatorio**: prepara la superficie de conversación y aprobaciones para hablar con el primer agente. Slack es interfaz, no memoria. Composio puede ser la capa de conexión/autenticación.
+2. **Slack mínimo obligatorio**: prepara la superficie de conversación y aprobaciones para hablar con el primer agente. Slack es interfaz, no memoria. Slack conecta directo a Hermes.
 3. **Memoria privada**: Supabase/Voyage/GBrain o estado explícito de pendiente si aún no se conectó.
 4. **CEO agent**: primer agente, limitado a Dirección / Mother Brain.
 5. **Dirección / Mother Brain**: visión, modelo, prioridades, criterios de decisión y límites de aprobación.
 6. **Organigrama inicial de agentes**: CEO propone qué agentes de departamento hacen falta.
 7. **Agentes de departamento**: cada agente entrevista solo su área: operaciones, marketing, growth/sales, producto/servicio, finanzas o postventa.
-8. **Observer agent**: observa contradicciones, huecos, receipts y cambios que deben entrar al cerebro.
+8. **Observer agent**: observa contradicciones, huecos, receipts, cambios que deben entrar al cerebro, runtime health y digest diario read-only.
 9. **Primer Context Packet**: contexto suficiente para una acción interna pequeña.
 10. **Primera acción interna**: redactar, analizar, ordenar o preparar; no enviar ni publicar.
 11. **Receipt + Scorecard**: prueba de qué se hizo, quién revisó, qué cambió y siguiente sprint.
@@ -135,6 +135,7 @@ Incluye solo contexto seguro o anonimizado: tipo de empresa, paso donde te bloqu
 - [`docs/43_self_serve_operator_ux.md`](docs/43_self_serve_operator_ux.md) — checklist operativa para usuarios self-serve.
 - [`docs/44_first_operating_loop_examples.md`](docs/44_first_operating_loop_examples.md) — ejemplos seguros de evidencia para agencia, consultoría y freelancer.
 - [`docs/45_slack_first_agent.md`](docs/45_slack_first_agent.md) — cómo empezar a hablar con el primer agente por Slack.
+- [`docs/48_observer_read_only_runtime.md`](docs/48_observer_read_only_runtime.md) — cómo crear Observer read-only con digest diario y escalación segura.
 - [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md) — flujo real ORGO → Codex/Claude → Slack → memoria → CEO → departamentos → Observer.
 - [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) — errores habituales y arreglos copy/paste.
 - [`docs/12_get_help_from_dia_uno.md`](docs/12_get_help_from_dia_uno.md) — cómo pedir ayuda de forma segura.

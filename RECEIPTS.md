@@ -37,7 +37,7 @@ This file is a public-safe example receipt log for repository-level work.
 ## R-005 — Phase B guided accelerator assets
 
 Date: 2026-05-21
-Owner: Hermes Clean
+Owner: Framework maintainer
 Scope: local repo change, not pushed.
 
 What changed:
@@ -53,7 +53,7 @@ Evidence:
 ## R-006 — Guided Pilot and Self-Serve reliability pass
 
 Date: 2026-05-22
-Owner: Hermes Clean
+Owner: Framework maintainer
 Scope: local repo change, not pushed.
 
 What changed:
@@ -69,7 +69,7 @@ Evidence:
 ## R-007 — START_HERE and scaffold-first operator path
 
 Date: 2026-05-22
-Owner: Hermes Clean
+Owner: Framework maintainer
 Scope: autonomous cron change on `auto/point-b-readiness-loop`; no main merge, no PR, no deploy.
 
 What changed:
@@ -105,7 +105,7 @@ Next gap:
 ## R-008 — Slack-first first agent path
 
 Date: 2026-05-24
-Owner: Hermes Clean
+Owner: Framework maintainer
 Scope: local repo change, not pushed.
 
 What changed:
@@ -130,7 +130,7 @@ Forbidden actions:
 ## R-009 — ORGO-first CEO and Observer onboarding
 
 Date: 2026-05-24
-Owner: Hermes Clean
+Owner: Framework maintainer
 Scope: repository change for private pilot readiness; no live Slack/Supabase/Voyage/GBrain integration activated.
 
 What changed:
@@ -163,7 +163,7 @@ Verification:
 ## R-010 — ORGO installer autopilot instructions
 
 Date: 2026-05-24
-Owner: Hermes Clean
+Owner: Framework maintainer
 Scope: repository guidance change for ORGO/Codex/Claude pilot readiness; no live integration activated.
 
 What changed:
@@ -193,7 +193,7 @@ Verification:
 ## R-011 — Canonical ORGO → Slack → memory → CEO/Observer flow
 
 Date: 2026-05-24
-Owner: Hermes Clean
+Owner: Framework maintainer
 Scope: repository guidance change only; no live Slack/Supabase/Voyage/GBrain integration activated.
 
 What changed:
@@ -220,3 +220,63 @@ Verification:
 - `python3 scripts/validate_public_safety.py` passed.
 - `python3 scripts/validate_installable_runtime.py` passed.
 - `pytest -q` passed: 50 tests.
+
+## R-012 — Generic Slack/Hermes and Supabase memory cleanup
+
+Date: 2026-05-24
+Owner: Framework maintainer
+Scope: repository guidance and template change only; no live Slack/Supabase/Voyage/GBrain integration activated.
+
+What changed:
+- Removed internal profile naming from public docs and receipts.
+- Removed the private pilot agent name from the public repo; the generic first agent is `CEO Agent`.
+- Kept the base runtime path as direct Slack → Hermes.
+- Added generic Supabase/Postgres migration template `supabase/migrations/001_private_memory_runtime.sql` for any private company memory instance.
+- Updated validation so SQL templates are scanned and safe test placeholders do not trigger false secret positives.
+
+Why:
+- The public framework must be generic for any company, not tied to Jordi's private runtime or pilot naming.
+- Slack should connect directly to Hermes in the base install.
+- Supabase memory setup needs a reusable, reviewed, secret-free migration artifact.
+
+Allowed actions:
+- Public-safe docs, templates, validators and tests.
+- Synthetic placeholder examples only.
+
+Forbidden actions:
+- No live Slack workspace/app, production runtime, real client data, Supabase/Voyage/GBrain provisioning, secrets, money/legal/public actions, workers, crons or bots without explicit approval.
+
+Verification:
+- Keyword scan found zero matches for internal/pilot terms and removed integration-layer name.
+- `python3 scripts/validate_repo.py` passed.
+- `python3 scripts/validate_schemas.py` passed.
+- `python3 scripts/build_docs.py` passed.
+- `python3 scripts/validate_links.py` passed.
+- `python3 scripts/validate_public_safety.py` passed.
+- `python3 scripts/validate_installable_runtime.py` passed.
+- `pytest -q` passed: 59 tests.
+
+## R-013 — Slack/Hermes pending-memory receipt hardening
+
+Date: 2026-05-24
+Owner: Framework maintainer
+Scope: repository script/test change only; no live Slack/Supabase/Voyage/GBrain integration activated.
+
+What changed:
+- Hardened `scripts/connect_slack_to_hermes.py` so an explicit `--allow-memory-pending` override writes the unresolved memory blockers into the private Slack/Hermes receipt.
+- Added regression coverage to prove the receipt records pending blockers without recording Slack token values.
+
+Why:
+- Direct Slack → Hermes is correct, but a working chat surface must not hide missing Supabase/Voyage/GBrain readiness.
+- If a human explicitly allows pending memory, the repo must preserve that blocker as operational evidence and keep CEO launch paused until resolved.
+
+Allowed actions:
+- Public-safe script/test edits inside this repo.
+- Local validation only.
+
+Forbidden actions:
+- No live Slack workspace/app, production runtime, real client data, Supabase/Voyage/GBrain provisioning, secrets, money/legal/public actions, workers, crons or bots without explicit approval.
+
+Verification:
+- `python -m pytest tests/test_slack_hermes_connector.py tests/test_observer_read_only_runtime.py` passed: 13 tests.
+- `python scripts/validate_repo.py && python scripts/validate_installable_runtime.py` passed.

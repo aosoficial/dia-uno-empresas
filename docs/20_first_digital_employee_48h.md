@@ -35,7 +35,7 @@ Why:
 - Start with Dirección, not operations.
 - Review the employee files under `digital-employees/ceo/`.
 - Confirm allowed tools, forbidden actions and escalation path.
-- Register the Slack surface in `integrations/slack-first-agent.md` inside the private company instance. Store real Slack/Composio tokens outside Git.
+- Register the Slack surface in `integrations/slack-first-agent.md` inside the private company instance. Store real Slack tokens outside Git.
 
 ### Day 2 — First safe task
 
@@ -50,7 +50,7 @@ Choose one:
 
 The employee must finish with a receipt.
 
-Required communication surface for the first real-company pilot: Slack. Slack is the interface for conversation, approvals and notifications. Composio may connect Slack/apps, but the Company Brain remains the source of truth for context, receipts, statechanges and permission changes. If Slack is not working, the first agent is not live.
+Required communication surface for the first real-company pilot: Slack. Slack is the interface for conversation, approvals and notifications. Slack connects directly to Hermes; the Company Brain remains the source of truth for context, receipts, statechanges and permission changes. If Slack is not working, the first agent is not live.
 
 ## Not first tasks
 
