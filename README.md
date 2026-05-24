@@ -89,14 +89,15 @@ python scripts/bootstrap_company_brain.py --dry-run --company "Acme Demo" --comp
 1. ORGO instalado por el cliente.
 2. ORGO instala/conecta Codex o Claude Code como operador instalador.
 3. Codex/Claude abre o actualiza DIA UNO y sigue [`AGENTS.md`](AGENTS.md) sin esperar que el usuario le diga qué leer.
-4. Slack obligatorio: workspace/canales mínimos para hablar con agentes, aprobar y recibir receipts. Si Slack no existe, no se lanza el primer agente.
-5. Herramientas base necesarias para el primer loop. Composio puede usarse como capa recomendada para conectar Slack/apps, sin convertirlo en memoria ni fuente de verdad.
-6. Se crea la instancia privada de empresa.
-7. Memoria privada: Supabase/Postgres, Voyage y GBrain/Company Brain.
-8. Primer agente: CEO, limitado a Dirección, accesible por Slack.
-9. Observer agent read-only para señales, contradicciones, receipts y StateChanges.
-10. CEO entrevista Dirección y propone el organigrama inicial de agentes.
-11. Agentes de departamento entrevistan sus propias áreas: operaciones, marketing, growth/sales, producto/servicio, finanzas y postventa.
+4. Se crea la instancia privada de empresa antes de hablar con agentes reales.
+5. Memoria privada primero: Supabase/Postgres, Voyage y GBrain/Company Brain. En instalaciones públicas/cliente de DIA UNO, GBrain es el repo upstream `https://github.com/garrytan/gbrain`, no conectores privados AOS/Cerebro. Verificar con `scripts/check_private_memory_readiness.py` o `make memory-preflight`. Contrato de conexiones/procesos: [`docs/47_private_memory_runtime_connections.md`](docs/47_private_memory_runtime_connections.md).
+6. Slack obligatorio: workspace/canales mínimos y app creada con `hermes slack guide` / `hermes slack manifest --write`.
+7. Conectar Slack directo a Hermes con `scripts/connect_slack_to_hermes.py`: instala/usa Hermes, crea el perfil, escribe tokens fuera de Git, verifica que la memoria no falte, reinicia gateway y deja receipt privado. Si `garrytan/gbrain`, Supabase/Voyage o Slack -> Hermes no están vivos, no se lanza el primer agente.
+8. Herramientas base necesarias para el primer loop. Composio puede usarse después como capa aprobada para conectar apps, pero no como runtime Slack ni memoria.
+9. Primer agente: CEO, limitado a Dirección, accesible por Slack y escribiendo/leyendo memoria operativa.
+10. Observer agent read-only para señales, contradicciones, receipts y StateChanges.
+11. CEO entrevista Dirección y propone el organigrama inicial de agentes.
+12. Agentes de departamento entrevistan sus propias áreas: operaciones, marketing, growth/sales, producto/servicio, finanzas y postventa.
 
 ## Qué incluye
 

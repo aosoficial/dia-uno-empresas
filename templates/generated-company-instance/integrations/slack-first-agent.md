@@ -34,10 +34,31 @@ Create department channels only after the CEO agent proposes the department-agen
 
 - Agent name: `ceo`
 - Human owner: `[owner]`
-- Runtime: `[Hermes / other]`
+- Runtime: `Hermes profile [profile-name]`
+- Gateway: `direct Slack -> Hermes Socket Mode`
 - Default department: `direction`
 - Source of truth: `company/company-brain.md`, `company/source-of-truth-map.md`, approved context packets and receipts.
 - Scope: Dirección only. Marketing, operations, product, growth/sales, finance and post-sale discovery belongs to department agents later.
+
+## Memory readiness gate
+
+Do this before the first CEO test message. For DIA UNO public/client installs, GBrain means public upstream `https://github.com/garrytan/gbrain`, not private AOS/Cerebro connectors.
+
+```bash
+python scripts/check_private_memory_readiness.py \
+  --company-instance /private/path/to/this-company-instance \
+  --strict
+```
+
+Required before launch:
+
+- `company/company-brain.md` exists and states source of truth.
+- `company/source-of-truth-map.md` exists.
+- `company/approval-boundaries.md` exists.
+- `context-packets/`, `receipts/`, `statechanges/` and `integrations/` exist.
+- Supabase/Postgres, Voyage and public GBrain/GBrain MCP config are present in private env/secrets.
+
+If this fails, do not launch CEO. Record the blocker and owner instead. Do not replace GBrain with `aos_brain_local` or private Cerebro connectors unless Jordi explicitly approves an internal AOS stack.
 
 ## Allowed Slack actions
 
@@ -68,11 +89,33 @@ The agent must not:
 
 Real credentials live outside Git:
 
-- Slack bot token: environment variable or secrets manager.
-- Slack signing secret: environment variable or secrets manager.
+- Slack bot token (`SLACK_BOT_TOKEN`): private environment variable or secrets manager.
+- Slack app token for Socket Mode (`SLACK_APP_TOKEN`): private environment variable or secrets manager.
+- Slack allowed users/channels (`SLACK_ALLOWED_USERS`, `SLACK_ALLOWED_CHANNELS`): private environment variable or secrets manager.
 - Runtime/model/provider credentials: environment variable or secrets manager.
 
 Never paste them into Slack, Git, receipts or context packets.
+
+## Hermes connection
+
+After private memory readiness passes and the Slack app is created/installed, connect it to Hermes from the DIA UNO repo:
+
+```bash
+python scripts/connect_slack_to_hermes.py \
+  --company-instance /private/path/to/this-company-instance \
+  --profile [profile-name] \
+  --install-hermes \
+  --start-gateway \
+  --apply
+```
+
+Expected result:
+
+- Hermes exists locally or is installed.
+- Hermes profile `[profile-name]` exists.
+- The profile `.env` contains the Slack token block outside Git.
+- The Hermes gateway is restarted for that profile.
+- A private receipt is written in `receipts/`.
 
 ## First test message
 
