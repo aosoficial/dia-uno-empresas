@@ -1,13 +1,13 @@
 # Proceso de instalación con agente
 
-> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
+> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de DIA UNO Empresas, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
 
-Este proceso está pensado para que una persona pueda dárselo a un agente de IA y el agente ayude a instalar Company Brain System paso a paso.
+Este proceso está pensado para que una persona pueda dárselo a un agente de IA y el agente ayude a instalar DIA UNO Empresas paso a paso.
 
 ## Prompt para copiar y pegar en tu agente
 
 ```text
-Estás ayudando a mi empresa a instalar Company Brain System.
+Estás ayudando a mi empresa a instalar DIA UNO Empresas.
 
 Objetivo:
 Construir un Company Brain funcional basado en este repositorio.
@@ -44,7 +44,7 @@ El agente lee:
 
 Resultado esperado:
 
-- resumen en lenguaje simple de Company Brain System;
+- resumen en lenguaje simple de DIA UNO Empresas;
 - preguntas abiertas para la persona responsable;
 - primer plan de implementación seguro.
 

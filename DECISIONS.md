@@ -1,10 +1,10 @@
 # Decisions
 
-This file records public-safe method decisions for Company Brain System.
+This file records public-safe method decisions for DIA UNO Empresas.
 
 ## D-001 — Use plain text as source of truth
 
-**Decision:** Company Brain System uses Markdown and YAML in Git as the primary source of truth.
+**Decision:** DIA UNO Empresas uses Markdown and YAML in Git as the primary source of truth.
 
 **Why:** the method must be versionable, reviewable, portable and readable by both humans and agents.
 
@@ -30,7 +30,7 @@ This file records public-safe method decisions for Company Brain System.
 
 **Decision:** the repo should remain useful for free, while clearly showing how to ask DIA UNO for help when implementation gets blocked.
 
-**Why:** Company Brain System is a lead magnet and an implementation method. The commercial path should be visible but not required.
+**Why:** DIA UNO Empresas is a lead magnet and an implementation method. The commercial path should be visible but not required.
 
 ## D-006 — Punto B requires evidence, not narrative
 

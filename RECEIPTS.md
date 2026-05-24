@@ -4,7 +4,7 @@ This file is a public-safe example receipt log for repository-level work.
 
 ## R-001 — Initial framework assembled
 
-**Action:** assembled the first Company Brain System framework.
+**Action:** assembled the first DIA UNO Empresas framework.
 
 **Output:** docs, templates, schemas, registry, examples and scripts.
 

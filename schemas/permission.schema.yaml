@@ -1,4 +1,4 @@
-# Company Brain System — Schema: Permission
+# DIA UNO Empresas — Schema: Permission
 # Define un permiso asignado a un agente para una acción específica.
 
 schema:

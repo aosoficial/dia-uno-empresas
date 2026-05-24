@@ -61,7 +61,7 @@ def main() -> int:
         sections.append((path.name, title, content))
 
     # Construir tabla de contenidos
-    toc_lines = ["# Company Brain System — Documento Combinado", "", "## Tabla de contenidos", ""]
+    toc_lines = ["# DIA UNO Empresas — Documento Combinado", "", "## Tabla de contenidos", ""]
     for _filename, title, _content in sections:
         anchor = _slug(title)
         toc_lines.append(f"- [{title}](#{anchor})")

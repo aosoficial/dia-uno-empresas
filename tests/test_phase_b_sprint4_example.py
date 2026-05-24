@@ -42,7 +42,7 @@ def test_synthetic_example_is_fake_and_operational():
     ]
     for marker in required:
         assert marker.lower() in combined.lower(), marker
-    forbidden = ["Jordi", "/Users/", "DIA UNO", "6084768324", "iCloud", "Documents/IA"]
+    forbidden = ["Jordi", "/Users/", "6084768324", "iCloud", "Documents/IA"]
     for marker in forbidden:
         assert marker not in combined, marker
 

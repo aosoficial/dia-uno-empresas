@@ -26,8 +26,8 @@ Si te bloqueas con Python, Make, `pyyaml`, permisos, carpeta no vacía o validac
 
 ```bash
 # 1) Simular sin crear nada
-git clone https://github.com/aosoficial/company-brain-system.git
-cd company-brain-system
+git clone https://github.com/aosoficial/dia-uno-empresas.git
+cd dia-uno-empresas
 python scripts/company_brain_wizard.py --dry-run --company "Mi Empresa" --company-type agency --output /tmp/mi-company-brain
 
 # 2) Crear una instancia privada local

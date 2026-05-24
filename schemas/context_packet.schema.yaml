@@ -1,4 +1,4 @@
-# Company Brain System — Schema: Context Packet
+# DIA UNO Empresas — Schema: Context Packet
 # Define el paquete de contexto que se entrega a un agente para ejecutar una tarea.
 
 schema:

@@ -1,6 +1,6 @@
 # Guided Pilot Delivery Model
 
-This delivery model turns Company Brain System into a guided pilot product. The operator does not improvise; they follow sessions, evidence gates and approval boundaries until the company reaches a verified Punto B slice.
+This delivery model turns DIA UNO Empresas into a guided pilot product. The operator does not improvise; they follow sessions, evidence gates and approval boundaries until the company reaches a verified Punto B slice.
 
 ## Pilot structure
 

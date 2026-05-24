@@ -1,6 +1,6 @@
 ---
 name: Error o pregunta
-about: Reporta un problema o haz una pregunta sobre Company Brain System
+about: Reporta un problema o haz una pregunta sobre DIA UNO Empresas
 title: ""
 labels: question
 assignees: ''

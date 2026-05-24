@@ -1,6 +1,6 @@
 # 05 — Manual del Operador
 
-> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
+> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de DIA UNO Empresas, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
 
 ## Guía diaria para quien dirige el sistema
 
@@ -293,7 +293,7 @@ python scripts/build_docs.py
 
 ## Cómo actualizar el método
 
-Company Brain System es un método vivo. Se actualiza cuando:
+DIA UNO Empresas es un método vivo. Se actualiza cuando:
 
 1. **Se detecta un patrón de error.** Si varios agentes cometen el mismo tipo de fallo, el método necesita un ajuste.
 2. **Cambia la organización.** Nuevo departamento, nuevo tipo de agente, nueva herramienta.

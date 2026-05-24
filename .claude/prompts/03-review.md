@@ -1,11 +1,11 @@
-# Claude Task 03 — Deep Review of Company Brain System
+# Claude Task 03 — Deep Review of DIA UNO Empresas
 
 Review the whole repository for quality, completeness and public-readiness.
 
 Check:
 
 - Spanish clarity;
-- consistent naming: Company Brain System / Agentic Operating System;
+- consistent naming: DIA UNO Empresas / Agentic Operating System;
 - no leftover Company Brain OS as product name;
 - no private paths except in internal planning files;
 - no credentials/secrets;

@@ -5,7 +5,7 @@
 ---
 
 > **Nota:** este es un ejemplo ficticio para ilustrar un SOUL.md completado.
-> Los encabezados de sección (Identity, Mission Map, etc.) se mantienen en inglés como convención del framework Company Brain System para facilitar interoperabilidad entre implementaciones.
+> Los encabezados de sección (Identity, Mission Map, etc.) se mantienen en inglés como convención del framework DIA UNO Empresas para facilitar interoperabilidad entre implementaciones.
 
 ---
 

@@ -12,7 +12,7 @@ The company is moving from Punto A scattered operations to Punto B AI-First oper
 
 ## Source / provenance
 
-Company Brain System wizard using synthetic inputs only.
+DIA UNO Empresas wizard using synthetic inputs only.
 
 ## Owner
 

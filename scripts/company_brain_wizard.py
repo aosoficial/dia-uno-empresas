@@ -132,7 +132,7 @@ def prompt(label: str, default: str | None = None, choices: set[str] | None = No
 def apply_interactive_defaults(args: argparse.Namespace) -> argparse.Namespace:
     if not args.interactive:
         return args
-    print("Company Brain System guided setup")
+    print("DIA UNO Empresas guided setup")
     company = prompt("Company name", args.company)
     company_type = prompt("Company type", args.company_type or "agency", COMPANY_TYPES)
     defaults = COMPANY_TYPE_DEFAULTS[company_type]

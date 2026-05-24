@@ -1,6 +1,6 @@
 # Disclaimer
 
-Company Brain System is an operational framework and educational resource.
+DIA UNO Empresas is an operational framework and educational resource.
 
 It is not legal, financial, medical, compliance, or security advice.
 

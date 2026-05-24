@@ -1,6 +1,6 @@
 # Empresa AI-First: de Punto A a Punto B
 
-Company Brain System es una aceleradora operativa para convertir una empresa tradicional en una empresa AI-First: instala un cerebro operativo, define límites de aprobación y lanza el primer empleado digital útil en 48 horas.
+DIA UNO Empresas es una aceleradora operativa para convertir una empresa tradicional en una empresa AI-First: instala un cerebro operativo, define límites de aprobación y lanza el primer empleado digital útil en 48 horas.
 
 ## Punto A
 
@@ -44,7 +44,7 @@ Este repositorio público instala el marco: docs, plantillas, scripts y validado
 La empresa real se genera aparte como instancia privada. Ahí viven el contexto real, los handoffs, receipts, statechanges, trazas y cualquier dato sensible.
 
 ```text
-company-brain-system/          repo público reutilizable
+dia-uno-empresas/          repo público reutilizable
 private-company-instance/      instancia privada de una empresa real
 Hermes / ORGO runtime          agente operativo que trabaja dentro de límites
 ```

@@ -2,7 +2,7 @@
 
 ## Qué es este ejemplo
 
-Este directorio contiene un ejemplo mínimo completo de Company Brain System aplicado a una empresa ficticia: **Meridian Foods**.
+Este directorio contiene un ejemplo mínimo completo de DIA UNO Empresas aplicado a una empresa ficticia: **Meridian Foods**.
 
 Incluye:
 

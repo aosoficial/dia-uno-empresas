@@ -1,6 +1,6 @@
 # 04 — Onboarding de Agentes
 
-> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
+> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de DIA UNO Empresas, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
 
 ## Cómo crear agentes operativos paso a paso
 
@@ -36,7 +36,7 @@ Este documento describe el proceso completo para incorporar un nuevo agente al s
 
 ## Qué es un agente operativo
 
-Un agente operativo en Company Brain System **no es un chatbot**. Es un programa de IA que:
+Un agente operativo en DIA UNO Empresas **no es un chatbot**. Es un programa de IA que:
 
 - Tiene una identidad y misión definidas.
 - Opera dentro de límites explícitos.

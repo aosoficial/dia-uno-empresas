@@ -1,6 +1,6 @@
 # Agent Runtime Pack
 
-## Paquete operativo completo para un agente Company Brain System
+## Paquete operativo completo para un agente DIA UNO Empresas
 
 ---
 
@@ -45,7 +45,7 @@ Un agente sin pack es un agente sin contrato: no tiene limites claros, no deja e
 | `INSTALL.md` | Guia de activacion | Obligatorio |
 | `CUTOVER.md` | Migracion controlada si ya existe perfil/canal/gateway | Obligatorio cuando aplica |
 
-`OPERATIONS.md` y `MEMORY_POLICY.md` deben incluir feedback loops: qué correcciones actualizan el pack, la memoria, una skill o el método Company Brain System.
+`OPERATIONS.md` y `MEMORY_POLICY.md` deben incluir feedback loops: qué correcciones actualizan el pack, la memoria, una skill o el método DIA UNO Empresas.
 
 ---
 

@@ -1,6 +1,6 @@
 # Human-Agent Operating System
 
-Company Brain System organizes people first, then agents. Agents amplify an operating system; they do not replace accountability.
+DIA UNO Empresas organizes people first, then agents. Agents amplify an operating system; they do not replace accountability.
 
 ## Core artifacts
 

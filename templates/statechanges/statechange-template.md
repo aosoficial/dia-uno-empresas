@@ -2,7 +2,7 @@
 
 ## Qué es un StateChange
 
-Un StateChange registra que algo cambió en el sistema. Es el primitivo central de Company Brain System: la unidad mínima de cambio. Sin StateChanges, la memoria es una foto estática que puede estar obsoleta sin que nadie lo sepa.
+Un StateChange registra que algo cambió en el sistema. Es el primitivo central de DIA UNO Empresas: la unidad mínima de cambio. Sin StateChanges, la memoria es una foto estática que puede estar obsoleta sin que nadie lo sepa.
 
 **Principio fundamental:** si algo cambió y es relevante para la organización, debe quedar registrado como StateChange. Si no quedó registrado, es como si no hubiera pasado.
 

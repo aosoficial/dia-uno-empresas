@@ -148,7 +148,7 @@
 
 ### 8. Aprendizaje por feedback loop
 
-**Qué mide:** Si el agente convierte correcciones y aprendizajes reutilizables en mejoras verificadas de su pack, memoria, skill, rutina o del método Company Brain System.
+**Qué mide:** Si el agente convierte correcciones y aprendizajes reutilizables en mejoras verificadas de su pack, memoria, skill, rutina o del método DIA UNO Empresas.
 
 | Puntuación | Criterio |
 |-----------|---------|

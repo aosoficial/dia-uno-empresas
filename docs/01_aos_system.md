@@ -1,6 +1,6 @@
-# 01 — Company Brain System: Fundamentos
+# 01 — DIA UNO Empresas: Fundamentos
 
-> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
+> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de DIA UNO Empresas, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
 
 ## Agentic Operating System — El método
 
@@ -8,13 +8,13 @@
 
 ## Propósito
 
-Este documento explica qué es Company Brain System, por qué existe y cuáles son sus conceptos fundamentales. Es la base teórica y práctica sobre la que se construye todo lo demás.
+Este documento explica qué es DIA UNO Empresas, por qué existe y cuáles son sus conceptos fundamentales. Es la base teórica y práctica sobre la que se construye todo lo demás.
 
 ## Quién lo usa
 
-- Cualquier persona que vaya a implementar Company Brain System en una organización.
+- Cualquier persona que vaya a implementar DIA UNO Empresas en una organización.
 - Operadores que necesiten entender el "por qué" detrás de cada pieza.
-- Diseñadores de sistemas que evalúen si Company Brain System aplica a su caso.
+- Diseñadores de sistemas que evalúen si DIA UNO Empresas aplica a su caso.
 
 ## Entradas
 
@@ -24,9 +24,9 @@ Este documento explica qué es Company Brain System, por qué existe y cuáles s
 
 ## Salidas
 
-- Comprensión completa de los conceptos de Company Brain System.
+- Comprensión completa de los conceptos de DIA UNO Empresas.
 - Vocabulario compartido entre operadores y agentes.
-- Capacidad para decidir si Company Brain System aplica a tu caso y cómo empezar.
+- Capacidad para decidir si DIA UNO Empresas aplica a tu caso y cómo empezar.
 
 ---
 
@@ -44,7 +44,7 @@ La mayoría de organizaciones que usan agentes de IA tienen estos problemas:
 
 5. **Sin mejora sistemática.** Los errores se corrigen uno a uno, pero nadie actualiza las reglas, los permisos o la memoria del sistema.
 
-Company Brain System resuelve estos problemas con tres ideas centrales:
+DIA UNO Empresas resuelve estos problemas con tres ideas centrales:
 
 - **Memoria operativa estructurada** (no documentos sueltos).
 - **Agentes con contrato operativo** (no asistentes genéricos).
@@ -77,7 +77,7 @@ Registro de qué hizo cada agente, cuándo, con qué resultado y qué evidencia 
 
 ### 2. Las tres primitivas operativas
 
-Company Brain System se construye sobre tres primitivas: piezas mínimas que no se pueden dividir más.
+DIA UNO Empresas se construye sobre tres primitivas: piezas mínimas que no se pueden dividir más.
 
 #### StateChange (Cambio de estado)
 
@@ -191,7 +191,7 @@ Las secciones de SOUL.md (Identity, Mission Map, Pushback Rules, Autonomy Bounda
 
 ### 6. Ontología como lente
 
-Una ontología en Company Brain System es el vocabulario compartido que define qué tipos de cosas existen en el sistema (entidades), qué relaciones tienen entre sí, y qué propiedades importan.
+Una ontología en DIA UNO Empresas es el vocabulario compartido que define qué tipos de cosas existen en el sistema (entidades), qué relaciones tienen entre sí, y qué propiedades importan.
 
 No es un esquema rígido de base de datos. Es una lente que permite a humanos y agentes hablar el mismo idioma sobre la organización.
 
@@ -234,7 +234,7 @@ Mejoras
 
 ---
 
-## Proceso para aplicar Company Brain System
+## Proceso para aplicar DIA UNO Empresas
 
 1. **Definir la ontología inicial.** Qué entidades importan, qué relaciones tienen, qué propiedades rastrear.
 2. **Crear el Company Brain.** Registrar los hechos fundamentales de la organización.

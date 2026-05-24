@@ -1,6 +1,6 @@
 # DIA UNO Support Question Template
 
-Use this when asking DIA UNO for help implementing Company Brain System. Remove secrets, client names and private financial details.
+Use this when asking DIA UNO for help implementing DIA UNO Empresas. Remove secrets, client names and private financial details.
 
 ## Context
 

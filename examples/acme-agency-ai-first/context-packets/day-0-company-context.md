@@ -4,7 +4,7 @@ Type: context packet. Synthetic fake company.
 
 ## Source
 
-Curated synthetic example for Company Brain System Sprint 4. No real client data.
+Curated synthetic example for DIA UNO Empresas Sprint 4. No real client data.
 
 Freshness: synthetic current example.
 Approval: Example Operator must review before any real-world action.

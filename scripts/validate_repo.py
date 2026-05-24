@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validación básica local para Company Brain System.
+"""Validación básica local para DIA UNO Empresas.
 
 Comprueba que existen los archivos/carpetas mínimas y busca patrones obvios de secretos.
 No llama a servicios externos.

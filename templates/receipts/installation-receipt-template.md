@@ -17,7 +17,7 @@ To establish a safe Company Brain runtime before operating real workflows.
 
 ## Source / provenance
 
-- Company Brain System version/commit: `...`
+- DIA UNO Empresas version/commit: `...`
 - Bootstrap command: `...`
 - Verifier command: `...`
 

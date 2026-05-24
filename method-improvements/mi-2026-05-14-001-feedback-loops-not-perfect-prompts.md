@@ -17,7 +17,7 @@ senal_observada: >
   versionable y revisada, no si cada agente depende de prompts largos.
 
 problema_u_oportunidad: >
-  Company Brain System ya decía que el método se mide y mejora, pero faltaba un mecanismo explícito,
+  DIA UNO Empresas ya decía que el método se mide y mejora, pero faltaba un mecanismo explícito,
   transversal y aplicable a docs, templates, skills, rutinas y scorecards.
 
 propuesta: >
@@ -76,7 +76,7 @@ estado: "aplicada"
 ## Decisión
 
 - **Decisión:** aplicar.
-- **Razón:** cambio seguro, pedido por the human owner y coherente con Company Brain System.
+- **Razón:** cambio seguro, pedido por the human owner y coherente con DIA UNO Empresas.
 - **Aplicado en:** docs core, templates, scorecard, source-map, changelog y feedback del piloto.
 - **Pendiente:** observar impacto en próximas rutinas/revisiones de agentes.
 - **Receipt/StateChange:** registrado tras validación.

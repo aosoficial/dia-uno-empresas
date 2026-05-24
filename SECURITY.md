@@ -1,6 +1,6 @@
 # Seguridad
 
-Company Brain System debe poder convertirse en framework público sin exponer material sensible.
+DIA UNO Empresas debe poder convertirse en framework público sin exponer material sensible.
 
 ## Nunca incluir
 

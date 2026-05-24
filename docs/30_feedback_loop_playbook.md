@@ -6,7 +6,7 @@ This playbook turns human feedback into safe operating-system improvement using 
 
 ## Purpose
 
-Company Brain System must improve through evidence, not vibes. A human correction is a signal. The system captures it, checks risk, proposes the smallest useful improvement, implements only inside allowed boundaries, validates, writes a receipt and creates a statechange when operating rules changed.
+DIA UNO Empresas must improve through evidence, not vibes. A human correction is a signal. The system captures it, checks risk, proposes the smallest useful improvement, implements only inside allowed boundaries, validates, writes a receipt and creates a statechange when operating rules changed.
 
 ## Ordered loop
 

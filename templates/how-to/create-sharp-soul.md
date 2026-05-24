@@ -2,7 +2,7 @@
 
 Use this when creating or reviewing a digital employee / agent runtime pack.
 
-Source/inspiration: Alex Prompter post on X, 2026-05-21, about the 9 sections of an effective SOUL.md. Adapted here for Company Brain System with operational memory, approval gates and receipts.
+Source/inspiration: Alex Prompter post on X, 2026-05-21, about the 9 sections of an effective SOUL.md. Adapted here for DIA UNO Empresas with operational memory, approval gates and receipts.
 
 ## Target
 

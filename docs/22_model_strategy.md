@@ -1,6 +1,6 @@
 # Model strategy
 
-Company Brain System is provider-neutral. Pick models by privacy, quality, latency, cost and risk.
+DIA UNO Empresas is provider-neutral. Pick models by privacy, quality, latency, cost and risk.
 
 ## Default tiers
 

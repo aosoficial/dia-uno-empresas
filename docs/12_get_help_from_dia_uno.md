@@ -2,7 +2,7 @@
 
 > **¿Necesitas ayuda aplicando esto?** DIA UNO (`diauno.io`) es la comunidad para preguntas, bloqueos y guía de implementación mientras conviertes tu empresa de servicios en una empresa AI-First.
 
-Puedes implementar Company Brain System por tu cuenta. Si te bloqueas, usa primero el [Inicio rápido](07_quick_start.md), el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) y el [assessment AI-First](32_ai_first_readiness_assessment.md).
+Puedes implementar DIA UNO Empresas por tu cuenta. Si te bloqueas, usa primero el [Inicio rápido](07_quick_start.md), el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) y el [assessment AI-First](32_ai_first_readiness_assessment.md).
 
 ## Cuándo pedir ayuda
 
@@ -30,7 +30,7 @@ Pide ayuda a DIA UNO cuando:
 ## Mensaje recomendado
 
 ```text
-Hola DIA UNO, estamos intentando implementar Company Brain System.
+Hola DIA UNO, estamos intentando implementar DIA UNO Empresas.
 Empresa: [agencia / consultoría / freelancer]
 Maturity score: [0-100]
 Bloqueo: [describe el bloqueo]

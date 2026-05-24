@@ -1,6 +1,6 @@
 # 03 — Arquitectura de Cerebros
 
-> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
+> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de DIA UNO Empresas, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
 
 ## Cómo se organiza la memoria en niveles
 
@@ -8,7 +8,7 @@
 
 ## Propósito
 
-Este documento explica cómo se estructuran los "cerebros" (Brains) en Company Brain System: desde el Company Brain central hasta los Department Brains y los Project/Domain Brains. Define qué es cada nivel, qué contiene, cómo se sincronizan y quién es responsable de cada uno.
+Este documento explica cómo se estructuran los "cerebros" (Brains) en DIA UNO Empresas: desde el Company Brain central hasta los Department Brains y los Project/Domain Brains. Define qué es cada nivel, qué contiene, cómo se sincronizan y quién es responsable de cada uno.
 
 ## Quién lo usa
 
@@ -333,7 +333,7 @@ sube_al_company_brain:
 
 ### Infraestructura posible: almacén, embeddings y capa operativa
 
-La arquitectura puede implementarse con distintas herramientas. Company Brain System distingue tres responsabilidades:
+La arquitectura puede implementarse con distintas herramientas. DIA UNO Empresas distingue tres responsabilidades:
 
 - **Almacén estable:** dónde viven los datos. Ejemplo: Postgres/Supabase para páginas, chunks, links, timeline, receipts, historial y vectores.
 - **Modelo de embeddings:** cómo se convierte texto en vectores para búsqueda por significado. Ejemplo: Voyage u otro proveedor equivalente.

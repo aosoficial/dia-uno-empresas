@@ -1,6 +1,6 @@
 # 07 — Inicio rápido
 
-Esta guía te ayuda a crear la versión mínima útil de Company Brain System en más o menos una hora.
+Esta guía te ayuda a crear la versión mínima útil de DIA UNO Empresas en más o menos una hora.
 
 Vas a crear:
 
@@ -35,14 +35,14 @@ Si algún término no queda claro, usa [`docs/08_glossary.md`](08_glossary.md).
 ## Paso 1 — Clona el repositorio
 
 ```bash
-git clone https://github.com/aosoficial/company-brain-system.git
-cd company-brain-system
+git clone https://github.com/aosoficial/dia-uno-empresas.git
+cd dia-uno-empresas
 ```
 
 Verás esta estructura:
 
 ```text
-company-brain-system/
+dia-uno-empresas/
   docs/           manuales del método
   templates/      plantillas operativas reutilizables
   schemas/        contratos de validación

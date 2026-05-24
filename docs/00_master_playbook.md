@@ -1,14 +1,14 @@
 # 00 — Master Playbook
 
-> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
+> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de DIA UNO Empresas, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
 
-## Company Brain System — Agentic Operating System
+## DIA UNO Empresas — Agentic Operating System
 
 ---
 
 ## Propósito
 
-Este documento es la guía maestra de Company Brain System. Une todos los manuales, plantillas y conceptos en una vista única. Quien lea este playbook sabrá qué es Company Brain System, cómo funciona, qué piezas tiene y cómo empezar a usarlo.
+Este documento es la guía maestra de DIA UNO Empresas. Une todos los manuales, plantillas y conceptos en una vista única. Quien lea este playbook sabrá qué es DIA UNO Empresas, cómo funciona, qué piezas tiene y cómo empezar a usarlo.
 
 ## Quién lo usa
 
@@ -16,9 +16,9 @@ Este documento es la guía maestra de Company Brain System. Une todos los manual
 - **Los agentes**: programas de IA que ejecutan tareas operativas dentro de los límites que les marca el sistema.
 - **Nuevos miembros del equipo**: cualquier persona o agente que se incorpore al sistema y necesite entender cómo funciona.
 
-## Qué es Company Brain System
+## Qué es DIA UNO Empresas
 
-Company Brain System es un método operativo para organizaciones que trabajan con agentes de IA.
+DIA UNO Empresas es un método operativo para organizaciones que trabajan con agentes de IA.
 
 Define cómo una organización:
 
@@ -32,7 +32,7 @@ No es un chatbot. No es un dashboard. No es un documento de estrategia. Es la ca
 
 ## Nota sobre RAG y consolidación
 
-Company Brain System puede usar recuperación tipo RAG: buscar contexto relevante y entregarlo al agente antes de actuar. Pero el objetivo no es crear "un buscador de documentos". El objetivo es mantener memoria operativa con estado, decisiones, permisos, evidencias y trazabilidad.
+DIA UNO Empresas puede usar recuperación tipo RAG: buscar contexto relevante y entregarlo al agente antes de actuar. Pero el objetivo no es crear "un buscador de documentos". El objetivo es mantener memoria operativa con estado, decisiones, permisos, evidencias y trazabilidad.
 
 En una implementación típica:
 
@@ -40,24 +40,24 @@ En una implementación típica:
 - un modelo de embeddings como Voyage puede convertir texto en vectores para búsqueda semántica;
 - una capa de memoria como GBrain puede organizar todo eso como sistema operativo de memoria: páginas, relaciones, health, consultas, Context Packets y receipts.
 
-Estos componentes no sustituyen al método. Solo son infraestructura. Company Brain System define qué se guarda, por qué, con qué permisos, cómo se verifica y cuándo puede usarse para actuar.
+Estos componentes no sustituyen al método. Solo son infraestructura. DIA UNO Empresas define qué se guarda, por qué, con qué permisos, cómo se verifica y cuándo puede usarse para actuar.
 
 ### Regla de consolidación de memoria
 
 No toda memoria debe comprimirse o resumirse. Un resumen puede ahorrar espacio, pero también puede destruir identidad, evidencia o responsabilidad.
 
-El paper público **"The Geometry of Consolidation"** (Vangara y Gopinath, 2026) estudia cuándo una memoria basada en embeddings puede reemplazar muchos elementos por pocos representantes sin perder identidad. Su conclusión práctica es útil para Company Brain System:
+El paper público **"The Geometry of Consolidation"** (Vangara y Gopinath, 2026) estudia cuándo una memoria basada en embeddings puede reemplazar muchos elementos por pocos representantes sin perder identidad. Su conclusión práctica es útil para DIA UNO Empresas:
 
 - si los elementos de un cluster son muy parecidos, un representante simple como el centroide puede preservar bien la identidad;
 - si los elementos están dispersos, comprimirlos pierde información y ningún método lo evita completamente;
 - en muchos corpus reales de texto, lo simple y medido puede funcionar mejor que métodos adaptativos complejos.
 
-Por eso Company Brain System adopta esta regla: **primero conservar memoria operativa verificable; después consolidar solo cuando sea seguro, medido y reversible**.
+Por eso DIA UNO Empresas adopta esta regla: **primero conservar memoria operativa verificable; después consolidar solo cuando sea seguro, medido y reversible**.
 
 ## Estructura del método
 
 ```text
-Company Brain System
+DIA UNO Empresas
 │
 ├── Memoria operativa
 │   ├── StateChanges (qué cambió y por qué)
@@ -87,7 +87,7 @@ Company Brain System
 
 | Documento | Qué cubre | Cuándo leerlo |
 |-----------|-----------|---------------|
-| `01_aos_system.md` | Qué es Company Brain System, sus principios y primitivas | Primero. Es la base de todo. |
+| `01_aos_system.md` | Qué es DIA UNO Empresas, sus principios y primitivas | Primero. Es la base de todo. |
 | `02_operational_memory.md` | StateChanges, Context Packets, Receipts, permisos, freshness | Cuando necesites entender cómo el sistema recuerda y rastrea. |
 | `03_brain_architecture.md` | Company Brain, Department Brains, jerarquía, sincronización | Cuando diseñes la estructura de memoria de una organización. |
 | `04_agent_onboarding.md` | Cómo crear un agente nuevo, Runtime Packs, SOUL.md | Cuando vayas a incorporar un agente nuevo al sistema. |
@@ -108,7 +108,7 @@ Company Brain System
 | `37_external_benchmarks_sylph_skillclaw.md` | Adaptación segura de Sylph, SkillClaw y AutoResearch | Al mejorar onboarding, skills o experimentos. |
 | `38_skill_evolution_v0.md` | Skill Evolution local/private-first | Cuando correcciones repetidas deban convertirse en skills. |
 
-## Los 9 principios de Company Brain System
+## Los 9 principios de DIA UNO Empresas
 
 1. **La memoria es estado, no servicio.** No es un buscador al que preguntar. Es un registro vivo de qué es verdad ahora, qué cambió y por qué.
 
@@ -156,13 +156,13 @@ Company Brain System
 
 **NovaTech** es una startup de 15 personas que vende software de gestión de inventario.
 
-Antes de Company Brain System:
+Antes de DIA UNO Empresas:
 - Las decisiones vivían en Slack y se perdían.
 - Cada agente de IA (asistente de ventas, soporte al cliente) operaba sin contexto compartido.
 - Nadie sabía qué había decidido quién ni cuándo.
 - Los agentes repetían preguntas que ya se habían respondido.
 
-Después de aplicar Company Brain System:
+Después de aplicar DIA UNO Empresas:
 - **Company Brain**: registra decisiones de pricing, roadmap de producto, políticas de soporte.
 - **Sales Brain**: captura pipeline, objeciones frecuentes, compromisos con clientes.
 - **Product Brain**: mantiene el roadmap, bugs críticos, feedback de usuarios.

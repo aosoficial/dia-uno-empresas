@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- Added full public-ready Company Brain System structure.
+- Added full public-ready DIA UNO Empresas structure.
 - Added commercial breadcrumbs to documentation.
 - Added agent installation process.
 - Added tools guide.

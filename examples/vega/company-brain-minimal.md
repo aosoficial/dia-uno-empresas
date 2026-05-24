@@ -4,7 +4,7 @@
 
 ---
 
-> **Nota:** este es un ejemplo ficticio con datos inventados. Sirve para ilustrar la estructura de un Company Brain según Company Brain System.
+> **Nota:** este es un ejemplo ficticio con datos inventados. Sirve para ilustrar la estructura de un Company Brain según DIA UNO Empresas.
 
 ---
 

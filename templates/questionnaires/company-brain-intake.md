@@ -2,7 +2,7 @@
 
 ## Cuándo usar este cuestionario
 
-Al iniciar la implementación de Company Brain System en una organización. Este cuestionario recoge toda la información necesaria para construir el Company Brain inicial: la memoria central de la organización.
+Al iniciar la implementación de DIA UNO Empresas en una organización. Este cuestionario recoge toda la información necesaria para construir el Company Brain inicial: la memoria central de la organización.
 
 ## Cómo completarlo
 

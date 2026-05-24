@@ -1,11 +1,11 @@
 # Troubleshooting self-serve / anti-bloqueo
 
-Guía práctica, Spanish-first, para desbloquear la instalación local de Company Brain System. Usa ejemplos sintéticos y una ruta privada fuera del repo público.
+Guía práctica, Spanish-first, para desbloquear la instalación local de DIA UNO Empresas. Usa ejemplos sintéticos y una ruta privada fuera del repo público.
 
 Regla base:
 
 ```bash
-cd company-brain-system
+cd dia-uno-empresas
 python3 scripts/company_brain_wizard.py --dry-run --company "Mi Empresa" --company-type agency --output /tmp/mi-company-brain
 ```
 
@@ -87,7 +87,7 @@ Síntoma exacto:
 Refusing output inside canonical repo. Use a private path or --example for synthetic examples.
 ```
 
-Qué significa: intentaste crear una instancia privada dentro del repo público `company-brain-system`. Eso se bloquea para evitar mezclar datos de empresa con el framework público.
+Qué significa: intentaste crear una instancia privada dentro del repo público `dia-uno-empresas`. Eso se bloquea para evitar mezclar datos de empresa con el framework público.
 
 Arreglo recomendado: usa una ruta privada fuera del repo.
 

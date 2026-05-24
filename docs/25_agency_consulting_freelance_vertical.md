@@ -1,6 +1,6 @@
 # Agency, Consultancy and Freelancer Vertical
 
-The primary customer for Company Brain System is a service business becoming AI-First: an agency, consultancy or freelancer-led firm that wants productized delivery, operational memory and digital employees.
+The primary customer for DIA UNO Empresas is a service business becoming AI-First: an agency, consultancy or freelancer-led firm that wants productized delivery, operational memory and digital employees.
 
 ## Point A
 

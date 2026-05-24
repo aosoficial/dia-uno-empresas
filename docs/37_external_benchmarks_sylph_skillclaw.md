@@ -1,6 +1,6 @@
 # 37 — External Benchmarks: Sylph, SkillClaw and AutoResearch
 
-These projects are benchmarks and inspiration. They are not dependencies of Company Brain System.
+These projects are benchmarks and inspiration. They are not dependencies of DIA UNO Empresas.
 
 ## Sylph
 
@@ -57,7 +57,7 @@ What not to copy:
 - Do not optimize one metric if it harms trust, quality, client outcome, compliance or brand.
 - Do not run experiments on production/client systems without approval.
 
-## How this informs Company Brain System
+## How this informs DIA UNO Empresas
 
 - Sylph improves onboarding ergonomics and role clarity.
 - SkillClaw informs Skill Evolution v0.

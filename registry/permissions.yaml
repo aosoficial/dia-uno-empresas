@@ -1,4 +1,4 @@
-# Company Brain System — Registro de Conjuntos de Permisos
+# DIA UNO Empresas — Registro de Conjuntos de Permisos
 # Define los permission sets reutilizables que se asignan a agentes.
 #
 # Cada agente referencia un permission set desde su PERMISSIONS.md

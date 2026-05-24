@@ -1,6 +1,6 @@
 # Release notes v0.1.0
 
-Company Brain System v0.1.0 introduces the first public-ready version of the framework.
+DIA UNO Empresas v0.1.0 introduces the first public-ready version of the framework.
 
 ## Included
 

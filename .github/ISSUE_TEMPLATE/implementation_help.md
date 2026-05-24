@@ -1,6 +1,6 @@
 ---
 name: Ayuda de implementación
-about: Pide ayuda para aplicar Company Brain System en una empresa real
+about: Pide ayuda para aplicar DIA UNO Empresas en una empresa real
 title: "Ayuda de implementación: "
 labels: implementation-help
 assignees: ''

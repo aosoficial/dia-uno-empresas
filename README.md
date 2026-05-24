@@ -1,8 +1,8 @@
-# Company Brain System
+# DIA UNO Empresas
 
 Convierte una agencia, consultoría o negocio freelance en una empresa AI-First de servicios productizados: con Dirección / Cerebro Madre, departamentos, memoria operativa, empleados digitales, permisos, receipts y mejora continua.
 
-Company Brain System es una aceleradora guiada para pasar de **Punto A** a **Punto B AI-First**.
+DIA UNO Empresas es una aceleradora guiada para pasar de **Punto A** a **Punto B AI-First**.
 
 **Primera vez aquí:** empieza por [`START_HERE.md`](START_HERE.md). Si no eres técnico o vas a usar Codex/Claude Code como operador instalador, empieza con [`docs/00_non_technical_start_with_codex_or_claude.md`](docs/00_non_technical_start_with_codex_or_claude.md): hace un examen corto de nivel IA, asigna guardrails y evita pedir datos sensibles antes de crear el cerebro privado. La primera instalación valida el scaffold privado; la validación operativa de Punto B viene después de un primer loop interno revisado con evidencia real. Si un comando falla, usa [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md).
 
@@ -107,7 +107,7 @@ python scripts/bootstrap_company_brain.py --dry-run --company "Acme Demo" --comp
 ## Repo público vs instancia privada
 
 ```text
-company-brain-system/          framework público: docs, plantillas, scripts, validadores
+dia-uno-empresas/          framework público: docs, plantillas, scripts, validadores
 private-company-instance/      empresa real: contexto, handoffs, receipts, statechanges
 Hermes / ORGO / local runtime  agente operativo con herramientas y límites
 ```
@@ -117,8 +117,8 @@ Regla: los datos reales de empresa no viven en este repo público.
 ## Instalación rápida para desarrollo
 
 ```bash
-git clone https://github.com/aosoficial/company-brain-system.git
-cd company-brain-system
+git clone https://github.com/aosoficial/dia-uno-empresas.git
+cd dia-uno-empresas
 pip install pyyaml
 python scripts/validate_repo.py
 python scripts/validate_schemas.py

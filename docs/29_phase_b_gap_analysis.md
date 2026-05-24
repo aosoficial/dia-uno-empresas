@@ -1,6 +1,6 @@
 # Phase B Gap Analysis
 
-This audit reviews the current Company Brain System accelerator after the Dirección-first, department-rollout, source-adapter and wizard work.
+This audit reviews the current DIA UNO Empresas accelerator after the Dirección-first, department-rollout, source-adapter and wizard work.
 
 ## Current readiness
 

@@ -70,7 +70,7 @@ Mejora necesaria:
 - Prompt/rutina:
 - Kanban template:
 - Watchdog/cron:
-- Company Brain System method:
+- DIA UNO Empresas method:
 
 ## 5. Próxima revisión
 

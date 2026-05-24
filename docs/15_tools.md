@@ -1,8 +1,8 @@
-# Herramientas usadas en Company Brain System
+# Herramientas usadas en DIA UNO Empresas
 
-> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
+> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de DIA UNO Empresas, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
 
-Company Brain System no exige una única tecnología. Explica las categorías de herramientas que necesita una empresa para que los agentes trabajen con contexto, evidencia y control.
+DIA UNO Empresas no exige una única tecnología. Explica las categorías de herramientas que necesita una empresa para que los agentes trabajen con contexto, evidencia y control.
 
 ## Categorías de herramientas
 

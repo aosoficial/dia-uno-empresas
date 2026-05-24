@@ -1,6 +1,6 @@
 # Self-Serve Operator UX
 
-The self-serve experience must feel like an operator checklist, not a documentation maze. This document defines the minimum UX layer for users who install Company Brain System without a guided pilot.
+The self-serve experience must feel like an operator checklist, not a documentation maze. This document defines the minimum UX layer for users who install DIA UNO Empresas without a guided pilot.
 
 ## Command path
 

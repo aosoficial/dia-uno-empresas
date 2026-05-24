@@ -1,6 +1,6 @@
-# Claude Task 01 — Core Docs for Company Brain System
+# Claude Task 01 — Core Docs for DIA UNO Empresas
 
-You are working inside the Company Brain System repository.
+You are working inside the DIA UNO Empresas repository.
 
 Create or rewrite the core Spanish documentation with maximum clarity and operational usefulness.
 
@@ -15,7 +15,7 @@ Files to create:
 
 Requirements:
 
-1. The method name is **Company Brain System — Agentic Operating System**.
+1. The method name is **DIA UNO Empresas — Agentic Operating System**.
 2. Spanish only.
 3. Practical, not academic.
 4. Explain technical terms in simple Spanish.
@@ -32,6 +32,6 @@ Requirements:
    - anti-patterns;
    - checklist.
 
-Also update `README.md` to reflect Company Brain System naming.
+Also update `README.md` to reflect DIA UNO Empresas naming.
 
 Do not run external commands. Do not touch GitHub. Do not read outside this repository.

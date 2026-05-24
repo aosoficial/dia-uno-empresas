@@ -8,7 +8,7 @@ The assistant's first job is not to collect your life story. Before the brain is
 
 ```text
 I want to create a private Company Brain instance for my business using this repo:
-https://github.com/aosoficial/company-brain-system
+https://github.com/aosoficial/dia-uno-empresas
 
 Act as my installer operator.
 Start with a short AI-level exam only. Do not investigate my personal life, customers, money, health, private documents or sensitive systems yet.

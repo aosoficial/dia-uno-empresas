@@ -1,21 +1,21 @@
 # 06 — Product Review v0.1
 
-> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
+> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de DIA UNO Empresas, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
 
-## Revisión de Company Brain System como documentación pública
+## Revisión de DIA UNO Empresas como documentación pública
 
 ---
 
 **Fecha:** 2026-05-08
 **Revisor:** Revisión independiente de producto
 **Alcance:** README.md + docs/00–05 + templates/ + schemas/ + registry/ + scripts/ + examples/
-**Criterio:** ¿Puede alguien externo entender, evaluar y aplicar Company Brain System leyendo solo este repositorio?
+**Criterio:** ¿Puede alguien externo entender, evaluar y aplicar DIA UNO Empresas leyendo solo este repositorio?
 
 ---
 
 ## 1. Veredicto ejecutivo
 
-Company Brain System tiene un núcleo documental sólido y una profundidad inusual para un framework en fase pre-release. Los documentos core (00–05) enseñan el método de forma progresiva, los templates son genuinamente operativos (no decorativos), los schemas mapean correctamente a las plantillas y los scripts de validación/build funcionan.
+DIA UNO Empresas tiene un núcleo documental sólido y una profundidad inusual para un framework en fase pre-release. Los documentos core (00–05) enseñan el método de forma progresiva, los templates son genuinamente operativos (no decorativos), los schemas mapean correctamente a las plantillas y los scripts de validación/build funcionan.
 
 **El método está bien pensado. La documentación está bien escrita. Pero el empaquetado como producto público tiene huecos que bloquean la adopción por alguien externo.**
 
@@ -145,7 +145,7 @@ Existen templates de Receipt, StateChange y Context Packet tanto dentro de `temp
 | Mejora | Detalle |
 |--------|---------|
 | Añadir pitch de 2 líneas al inicio | Antes de "Qué es": ¿para quién? ¿qué problema? ¿qué NO es? |
-| Reemplazar `<url-del-repo>` | URL real o instrucción genérica tipo `git clone https://github.com/<org>/company-brain-system.git` |
+| Reemplazar `<url-del-repo>` | URL real o instrucción genérica tipo `git clone https://github.com/<org>/dia-uno-empresas.git` |
 | Añadir badge de versión | `v0.1.0` visible al inicio |
 | Añadir sección "Quick Start" | Caso mínimo: crear 1 Company Brain con 3 entidades + 1 agente con Runtime Pack mínimo. Enlazar a example/ |
 | Enlazar LICENSE | "Licencia: [MIT](../LICENSE)" en vez de solo "MIT" |

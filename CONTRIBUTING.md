@@ -1,6 +1,6 @@
-# Contribuir a Company Brain System
+# Contribuir a DIA UNO Empresas
 
-Company Brain System está en construcción como método operativo reutilizable.
+DIA UNO Empresas está en construcción como método operativo reutilizable.
 
 ## Principios
 

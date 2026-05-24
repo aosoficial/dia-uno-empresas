@@ -1,6 +1,6 @@
 # Department Rollout Roadmap
 
-Company Brain System rolls out one department at a time. Dirección is mandatory first; every later department gets a brain, owner, digital employee pack, skills, approvals and receipts.
+DIA UNO Empresas rolls out one department at a time. Dirección is mandatory first; every later department gets a brain, owner, digital employee pack, skills, approvals and receipts.
 
 ## 48 hours — establish control
 

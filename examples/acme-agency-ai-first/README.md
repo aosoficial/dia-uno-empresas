@@ -1,6 +1,6 @@
 # Acme Growth Studio — synthetic Company Brain example
 
-This is a synthetic, fake company example for Company Brain System. It demonstrates how an agency can move from Punto A to Punto B AI-First using a private generated instance, Direction / Mother Brain, department brains, first digital employee, context packet, receipt, statechange, handoff and roadmap.
+This is a synthetic, fake company example for DIA UNO Empresas. It demonstrates how an agency can move from Punto A to Punto B AI-First using a private generated instance, Direction / Mother Brain, department brains, first digital employee, context packet, receipt, statechange, handoff and roadmap.
 
 Acme Growth Studio is not a real client. It contains no real private data, secrets, customer records or production access. All numbers are illustrative.
 

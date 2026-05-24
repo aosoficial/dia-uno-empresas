@@ -1,12 +1,12 @@
-# Company Brain System — Agent Instructions
+# DIA UNO Empresas — Agent Instructions
 
-You are helping improve **Company Brain System — Agentic Operating System**.
+You are helping improve **DIA UNO Empresas — Agentic Operating System**.
 
 ## Mission
 
-Create and maintain a public-safe documentation/framework repository for Company Brain System.
+Create and maintain a public-safe documentation/framework repository for DIA UNO Empresas.
 
-Company Brain System is a reusable operating method for:
+DIA UNO Empresas is a reusable operating method for:
 
 - operational memory;
 - Company Brains;

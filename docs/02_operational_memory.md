@@ -1,6 +1,6 @@
 # 02 — Memoria Operativa
 
-> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
+> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de DIA UNO Empresas, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
 
 ## Cómo el sistema recuerda, rastrea y entrega contexto
 
@@ -8,7 +8,7 @@
 
 ## Propósito
 
-Este documento explica en detalle cómo funciona la memoria operativa en Company Brain System. Cubre los tres tipos de memoria, las primitivas (StateChange, Context Packet, Receipt), el sistema de permisos, la frescura de datos y cómo se mantiene la memoria saludable.
+Este documento explica en detalle cómo funciona la memoria operativa en DIA UNO Empresas. Cubre los tres tipos de memoria, las primitivas (StateChange, Context Packet, Receipt), el sistema de permisos, la frescura de datos y cómo se mantiene la memoria saludable.
 
 ## Quién lo usa
 
@@ -139,7 +139,7 @@ mejora_aplicada: >
 
 ## Consolidación de memoria: cuándo resumir y cuándo conservar
 
-La memoria operativa no debe crecer sin control, pero tampoco debe comprimirse de forma ciega. En Company Brain System, **consolidar** significa reemplazar muchos registros por una representación más pequeña: un resumen, una síntesis, un centroide semántico, una página agregada o un Context Packet reutilizable.
+La memoria operativa no debe crecer sin control, pero tampoco debe comprimirse de forma ciega. En DIA UNO Empresas, **consolidar** significa reemplazar muchos registros por una representación más pequeña: un resumen, una síntesis, un centroide semántico, una página agregada o un Context Packet reutilizable.
 
 La consolidación es útil cuando:
 
@@ -170,7 +170,7 @@ Antes de consolidar, responder:
 
 El paper **"The Geometry of Consolidation"** (Vangara y Gopinath, 2026) muestra que, en memorias basadas en embeddings, comprimir muchos elementos en pocos representantes solo es seguro cuando los elementos están cerca entre sí en el espacio semántico. Si están dispersos, la compresión pierde identidad aunque el algoritmo sea sofisticado.
 
-Para Company Brain System, esto se traduce así:
+Para DIA UNO Empresas, esto se traduce así:
 
 - usar embeddings para buscar no significa que debamos resumirlo todo;
 - un centroide o resumen simple puede ser suficiente para clusters muy parecidos;

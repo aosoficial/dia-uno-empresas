@@ -1,8 +1,8 @@
 # 08 — Glosario
 
-> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
+> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de DIA UNO Empresas, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
 
-## Términos clave de Company Brain System
+## Términos clave de DIA UNO Empresas
 
 ---
 
@@ -12,10 +12,10 @@ Referencia rápida de los conceptos fundamentales del framework. Cada término i
 
 | Término | Definición | Referencia |
 |---------|-----------|------------|
-| **Company Brain System** | Agentic Operating System. Método operativo para organizaciones que trabajan con agentes de IA. Define cómo una organización recuerda, decide, actúa y aprende. | [`docs/01_aos_system.md`](01_aos_system.md) |
+| **DIA UNO Empresas** | Agentic Operating System. Método operativo para organizaciones que trabajan con agentes de IA. Define cómo una organización recuerda, decide, actúa y aprende. | [`docs/01_aos_system.md`](01_aos_system.md) |
 | **Agent Runtime Pack** | Conjunto de archivos que define completamente a un agente: identidad, contrato operativo, permisos, herramientas, operaciones, memoria y protocolos. Es la "carpeta del agente". | [`docs/04_agent_onboarding.md`](04_agent_onboarding.md), [`templates/agent-runtime-pack/`](../templates/agent-runtime-pack/) |
 | **Company Brain** | Memoria central de la organización. Contiene hechos fundamentales, decisiones vigentes, políticas, ontología y compromisos. Es la fuente de verdad compartida. | [`docs/03_brain_architecture.md`](03_brain_architecture.md) |
-| **Consolidación de memoria** | Proceso de reemplazar muchos registros por una representación más pequeña: resumen, síntesis, centroide semántico o página agregada. En Company Brain System debe ser conservadora, reversible y basada en fuentes; no debe borrar evidencia ni trazabilidad. | [`docs/02_operational_memory.md`](02_operational_memory.md) |
+| **Consolidación de memoria** | Proceso de reemplazar muchos registros por una representación más pequeña: resumen, síntesis, centroide semántico o página agregada. En DIA UNO Empresas debe ser conservadora, reversible y basada en fuentes; no debe borrar evidencia ni trazabilidad. | [`docs/02_operational_memory.md`](02_operational_memory.md) |
 | **Context Packet** | Bloque de información empaquetada para que un agente pueda actuar sin buscar por todo el sistema. Incluye tarea, contexto, restricciones, permisos y freshness. | [`docs/02_operational_memory.md`](02_operational_memory.md) |
 | **Department Brain** | Memoria especializada de un departamento o área (ventas, operaciones, producto…). Se sincroniza con el Company Brain para datos compartidos. | [`docs/03_brain_architecture.md`](03_brain_architecture.md) |
 | **Drift** | Desviación entre lo que un agente debería hacer (según su SOUL.md) y lo que realmente hace. Se detecta comparando Heartbeats y Receipts contra el contrato operativo. | [`docs/04_agent_onboarding.md`](04_agent_onboarding.md) |
@@ -29,7 +29,7 @@ Referencia rápida de los conceptos fundamentales del framework. Cada término i
 | **Ontología** | Vocabulario compartido que define qué tipos de cosas existen en el sistema (entidades), qué relaciones tienen y qué propiedades importan. No es un esquema de base de datos; es una lente para que humanos y agentes hablen el mismo idioma. | [`docs/01_aos_system.md`](01_aos_system.md) |
 | **Operador** | Persona que supervisa agentes, aprueba acciones, revisa memoria y mantiene el sistema AOS saludable. Puede ser el CEO, founder o responsable de operaciones. | [`docs/05_operator_manual.md`](05_operator_manual.md) |
 | **Receipt** | Evidencia de que un agente completó una acción. Registra qué hizo, con qué inputs, qué produjo, el resultado observado y si fue verificado. Principio: "completado" no es lo mismo que "exitoso". | [`docs/02_operational_memory.md`](02_operational_memory.md), [`schemas/receipt.schema.yaml`](../schemas/receipt.schema.yaml) |
-| **Recuperación / RAG** | Proceso de buscar contexto relevante y entregarlo al agente antes de responder o actuar. Company Brain System puede usar RAG, pero no se reduce a RAG: también exige estado, permisos, receipts, owners y evidencia. | [`docs/00_master_playbook.md`](00_master_playbook.md), [`docs/03_brain_architecture.md`](03_brain_architecture.md) |
+| **Recuperación / RAG** | Proceso de buscar contexto relevante y entregarlo al agente antes de responder o actuar. DIA UNO Empresas puede usar RAG, pero no se reduce a RAG: también exige estado, permisos, receipts, owners y evidencia. | [`docs/00_master_playbook.md`](00_master_playbook.md), [`docs/03_brain_architecture.md`](03_brain_architecture.md) |
 | **Scorecard** | Rúbrica de evaluación con métricas ponderadas para medir la salud de un Company Brain, Department Brain o agente. Define criterios, escalas (1-5) y pesos porcentuales. | [`templates/scorecards/`](../templates/scorecards/) |
 | **SOUL.md** | Contrato operativo vivo del agente. Define identidad, misión, prioridades, voz, reglas de pushback, límites de autonomía, permisos de memoria y herramientas. Sus secciones usan encabezados en inglés como convención del framework (ver nota abajo). | [`templates/agent-runtime-pack/SOUL.md`](../templates/agent-runtime-pack/SOUL.md) |
 | **StateChange** | Registro de que algo cambió en el sistema. Campos: qué entidad, qué campo, valor anterior, valor nuevo, quién, cuándo y por qué. Sin StateChanges, la memoria es un dato estático que puede estar obsoleto sin que nadie lo sepa. | [`docs/01_aos_system.md`](01_aos_system.md), [`schemas/statechange.schema.yaml`](../schemas/statechange.schema.yaml) |
@@ -43,4 +43,4 @@ Las secciones de SOUL.md (Identity, Mission Map, Pushback Rules, Autonomy Bounda
 
 ---
 
-*Este glosario cubre los términos del framework Company Brain System v0.1.0. Para profundizar en cualquier concepto, sigue el enlace a su documento de referencia.*
+*Este glosario cubre los términos del framework DIA UNO Empresas v0.1.0. Para profundizar en cualquier concepto, sigue el enlace a su documento de referencia.*

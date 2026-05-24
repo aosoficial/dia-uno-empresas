@@ -1,14 +1,14 @@
 # 09 — Loop de Mejora del Método
 
-> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de Company Brain System, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
+> **¿Necesitas ayuda aplicando esto?** **¿Necesitas ayuda aplicando esto?** Esta página forma parte de DIA UNO Empresas, una aceleradora abierta hacia empresas AI-First. Si te bloqueas, empieza por el [Inicio rápido](07_quick_start.md), usa el [intake de servicio](../templates/questionnaires/service-business-ai-first-intake.md) o pide ayuda en [DIA UNO](12_get_help_from_dia_uno.md).
 
-## Cómo Company Brain System aprende de la operación real
+## Cómo DIA UNO Empresas aprende de la operación real
 
 ---
 
 ## Propósito
 
-Este documento define el mecanismo formal para mejorar Company Brain System sin depender de prompts cada vez mejores ni de correcciones sueltas. El método mejora cuando la operación real produce feedback, ese feedback se convierte en propuestas, las propuestas se revisan y los cambios aprobados se aplican a documentación, plantillas, schemas, skills y rutinas.
+Este documento define el mecanismo formal para mejorar DIA UNO Empresas sin depender de prompts cada vez mejores ni de correcciones sueltas. El método mejora cuando la operación real produce feedback, ese feedback se convierte en propuestas, las propuestas se revisan y los cambios aprobados se aplican a documentación, plantillas, schemas, skills y rutinas.
 
 La regla central es:
 
@@ -37,7 +37,7 @@ No activar el loop por gustos menores de redacción, preferencias temporales o e
 
 El loop puede producir cambios en cinco capas:
 
-1. **Método:** docs principales de Company Brain System.
+1. **Método:** docs principales de DIA UNO Empresas.
 2. **Plantillas:** Runtime Packs, Context Packets, Receipts, StateChanges, scorecards.
 3. **Schemas/registry:** campos obligatorios, estados, métricas, tipos de agente, permisos.
 4. **Skills y operaciones:** procedimientos que usan agentes reales para ejecutar trabajo.
@@ -131,7 +131,7 @@ Debo clasificarla:
 - ¿actualiza permisos?
 - ¿actualiza operaciones?
 - ¿actualiza SOUL?
-- ¿propone una mejora al método Company Brain System?
+- ¿propone una mejora al método DIA UNO Empresas?
 ```
 
 Si la mejora es local del agente, se aplica en su pack/skill. Si es reusable para otros agentes, se propone al método.

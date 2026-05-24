@@ -27,7 +27,7 @@ MEMORY_POLICY.md define las reglas de memoria del agente: que informacion retien
 | `olvido` | Que datos debe descartar y cuando |
 | `freshness` | Como clasifica la frescura de los datos |
 | `sincronizacion` | Cuando y como sincroniza con los Brains |
-| `feedback_to_method` | Qué correcciones o patrones deben elevarse al método Company Brain System |
+| `feedback_to_method` | Qué correcciones o patrones deben elevarse al método DIA UNO Empresas |
 
 ---
 

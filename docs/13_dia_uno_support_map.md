@@ -1,6 +1,6 @@
 # 13 — DIA UNO Community Support Map
 
-DIA UNO (`diauno.io`) es la comunidad para desbloquear la implementación de Company Brain System: diagnóstico, preguntas, ejemplos seguros, feedback y aprendizaje anonimizado.
+DIA UNO (`diauno.io`) es la comunidad para desbloquear la implementación de DIA UNO Empresas: diagnóstico, preguntas, ejemplos seguros, feedback y aprendizaje anonimizado.
 
 Esto no es una página de precios. Es un mapa entre bloqueos de implementación y formas seguras de pedir ayuda.
 

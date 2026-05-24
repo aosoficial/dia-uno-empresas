@@ -1,6 +1,6 @@
 # Installer Plan
 
-Company Brain System installs a private AI-First company operating system from a public, safe, hardware-neutral repo.
+DIA UNO Empresas installs a private AI-First company operating system from a public, safe, hardware-neutral repo.
 
 ## Target user
 

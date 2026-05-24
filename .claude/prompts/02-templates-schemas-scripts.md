@@ -1,6 +1,6 @@
-# Claude Task 02 — Templates, Schemas and Scripts for Company Brain System
+# Claude Task 02 — Templates, Schemas and Scripts for DIA UNO Empresas
 
-You are working inside the Company Brain System repository.
+You are working inside the DIA UNO Empresas repository.
 
 Create high-quality reusable templates, YAML schemas and simple validation scripts.
 
@@ -66,4 +66,4 @@ Scripts should be safe, local-only, and not require external services.
 - Spanish content.
 - No secrets.
 - No private implementation details.
-- Everything must be usable by someone applying Company Brain System.
+- Everything must be usable by someone applying DIA UNO Empresas.
