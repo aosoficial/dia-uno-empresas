@@ -155,6 +155,8 @@ Piden aprobación antes de:
 
 Este repositorio es gratuito y útil por sí mismo. Si tu equipo se bloquea aplicándolo, DIA UNO puede ayudar a instalarlo: diagnóstico, Company Brain, departamentos, empleados digitales, permisos, cadencia operativa y adopción.
 
+Si el bloqueo es definir quién responde, qué puede hacer cada agente, qué necesita aprobación y cómo se comprueba el resultado, empieza por [mapear la orquestación humano-agente](https://diauno.io/orquestacion-agentes-ia?utm_source=github&utm_medium=referral&utm_campaign=dia_uno_empresas&utm_content=readme_implementation_help) antes de conectar más herramientas.
+
 ## Contribuir
 
 Las contribuciones son bienvenidas: plantillas, ejemplos sintéticos, validadores, guías, pruebas de seguridad, mejoras del método y traducciones.

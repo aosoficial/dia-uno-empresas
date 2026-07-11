@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Added a measurable implementation-help path from the public framework to the DIA UNO orchestration guide.
 - Added full public-ready DIA UNO Empresas structure.
 - Added commercial breadcrumbs to documentation.
 - Added agent installation process.
