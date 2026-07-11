@@ -7,7 +7,7 @@
 - **La ficha de puesto** por asiento (qué hace, de qué responde, qué decide). Para un humano: la ficha; para un agente: su **contrato de 7 capas**.
 - **La matriz de decisiones** (quién decide qué y hasta dónde; los umbrales son de cada empresa). Para un agente: sus **puertas de aprobación**.
 - **La evaluación** (a una persona: por KPIs, competencias y valores; a un agente: por rendimiento y subida de madurez).
-- Carpeta **[`asientos/`](asientos/)**: un asiento por función → ficha (humano) | contrato 7 capas (agente), con su **estado de madurez** (Draft → Pilot → Shadow → Assisted → Bounded autonomous → Blocked → Retired).
+- Carpeta **`asientos/`**: un asiento por función → ficha (humano) | contrato 7 capas (agente), con su **estado de madurez** (Draft → Pilot → Shadow → Assisted → Bounded autonomous → Blocked → Retired).
 
 ## Cómo se conecta
 - De **Rumbo** salen los valores con que se evalúa, qué asientos hacen falta y las fronteras que limitan la autoridad de cada asiento.
