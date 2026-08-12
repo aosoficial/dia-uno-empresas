@@ -20,6 +20,9 @@ REQUIRED = [
     "docs/38_skill_evolution_v0.md", "docs/39_guided_pilot_happy_path.md", "docs/40_self_serve_happy_path.md",
     "docs/41_guided_pilot_delivery_model.md", "docs/42_point_b_definition.md", "docs/43_self_serve_operator_ux.md",
     "docs/12_get_help_from_dia_uno.md", "docs/13_dia_uno_support_map.md",
+    "personas/README.md", "personas/metodo-v3/README.md", "personas/metodo-v3/INVENTARIO.md", "personas/metodo-v3/MANIFEST.sha256",
+    "agentes/README.md", "sistema-hibrido/README.md", "sistema-hibrido/contrato-de-funcion.md", "sistema-hibrido/matriz-de-equivalencias.md",
+    "implementacion/organizar.md", "implementacion/agentizar.md", "implementacion/escalar.md",
     "templates/questionnaires/service-business-ai-first-intake.md",
     "templates/scorecards/service-business-scorecard.md", "templates/scorecards/ai-first-readiness-scorecard.md",
     "templates/scorecards/digital-employee-performance-scorecard.md", "templates/scorecards/point-b-readiness-scorecard.md",
@@ -35,8 +38,10 @@ REQUIRED = [
     "templates/pilot/sprint-3-digital-employee.md", "templates/pilot/sprint-4-feedback-loop.md",
     "templates/how-to/create-sharp-soul.md", "templates/agent-runtime-pack/SOUL.md",
     "scripts/bootstrap_company_brain.py", "scripts/company_brain_wizard.py", "scripts/verify_installation.py", "scripts/validate_department_quality.py", "scripts/validate_point_b_readiness.py",
+    "scripts/validate_people_readiness.py", "scripts/validate_method_layers.py", "scripts/method_assets.py",
     "templates/receipts/installation-receipt-template.md", "templates/trace-policy/trace-policy-template.md",
-    "templates/generated-company-instance/README.md", "templates/generated-company-instance/AGENTS.md", "templates/generated-company-instance/MAP.md",
+    "templates/generated-company-instance/README.md", "templates/generated-company-instance/AGENTS.md", "templates/generated-company-instance/MAP.md", "templates/generated-company-instance/METHOD.json",
+    "templates/generated-company-instance/personas/README.md", "templates/generated-company-instance/personas/metodo-v3/README.md", "templates/company/people-instance-readme.md",
     "templates/generated-company-instance/.env.example", "templates/generated-company-instance/.gitignore",
     "templates/generated-company-instance/company/company-brain.md", "templates/generated-company-instance/company/source-of-truth-map.md", "templates/generated-company-instance/company/approval-boundaries.md",
     "templates/generated-company-instance/company/operating-principles.md", "templates/generated-company-instance/company/accountability-map.md",
@@ -109,7 +114,7 @@ def main() -> int:
             errors.append(f"{dept} department brain too shallow: expected >=300 words")
 
     wizard = (ROOT / "scripts" / "company_brain_wizard.py").read_text(encoding="utf-8", errors="ignore")
-    for marker in ["--interactive", "department-rollout-map.md", "company-scorecard.md", "maturity-diagnosis.md", "guided-pilot-plan.md", "point-b-readiness.md", "source-of-truth-map.md", "--maturity", "--vertical", "COMPANY_TYPE_DEFAULTS"]:
+    for marker in ["--interactive", "department-rollout-map.md", "company-scorecard.md", "maturity-diagnosis.md", "guided-pilot-plan.md", "point-b-readiness.md", "source-of-truth-map.md", "--maturity", "--vertical", "COMPANY_TYPE_DEFAULTS", "--method-mode", "--upgrade", "copy_method_assets"]:
         if marker not in wizard:
             errors.append(f"Wizard missing capability marker: {marker}")
 

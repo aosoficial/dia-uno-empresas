@@ -4,12 +4,13 @@ This delivery model turns DIA UNO Empresas into a guided pilot product. The oper
 
 ## Pilot structure
 
-### Sprint 0 — Intake and safety
+### Sprint 0 — People readiness and safety
 
 Outcome: the company has a clear operating contract.
 
 Evidence:
 - service-business intake;
+- human accountable, followed SOP and measurable output for one capability;
 - current tools map;
 - approval matrix;
 - first bottleneck;
@@ -27,11 +28,11 @@ Evidence:
 - first scorecard line;
 - installation Receipt.
 
-Next action: pick one department to install.
+Next action: pick one mature capability to map into a hybrid function contract.
 
-### Sprint 2 — First department
+### Sprint 2 — First mature capability
 
-Outcome: one department can receive work through context packets and produce receipts.
+Outcome: one organized capability can receive work through context packets and produce receipts while retaining its human accountable.
 
 Evidence:
 - department brain;

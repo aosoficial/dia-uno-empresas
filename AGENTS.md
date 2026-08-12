@@ -31,16 +31,19 @@ Follow this order:
 1. Confirm whether this is a first install or an existing install/update.
 2. Run the short AI-level guardrail exam from `docs/00_non_technical_start_with_codex_or_claude.md`.
 3. Choose one guardrail mode: non-technical, intermediate AI user, or technical/builder.
-4. Verify the framework locally with the repo validators when available.
-5. Prepare the private company instance and memory substrate in Sprint 0: Supabase/Postgres, Voyage and GBrain/Company Brain. For DIA UNO public/client installs, GBrain means the public upstream repo `https://github.com/garrytan/gbrain`; install or verify that target as part of the normal setup.
-6. Treat Slack as a mandatory Sprint 0 dependency for a real company install: present the minimum Slack workspace/channel plan and ask the user to approve creating/configuring it. This is not optional; without Slack, the first agent has no approved conversation surface.
-7. Connect Slack directly to Hermes with the repo connector. Do not add an external integration layer in the base path; Slack is not memory, source of truth or the runtime.
-8. Create or update the private company instance before agent launch. The instance is the company's private operating space, not this public framework repo.
-9. Run `scripts/check_private_memory_readiness.py --company-instance <private-instance> --strict`; do not create or launch CEO until Supabase/Voyage/GBrain readiness passes or the human explicitly approves a blocked/pending memory state.
-10. Create the first agent: CEO Agent, limited to Dirección only.
-11. Defer marketing, operations, product, growth/sales, finance and post-sale discovery to later department agents.
-12. Define the Observer Agent as a read-only system/memory observer.
-13. Stop after one safe internal operating loop with Context Packet, human review, Receipt and scorecard.
+4. Ask whether the method starts as `people` or `hybrid`; default to `people` when the company has not organized its core functions.
+5. Verify the framework locally with the repo validators when available.
+6. Install the People layer first: Rumbo, seats, roles, decisions, evaluation, processes, SOPs, cash, execution, indicators, learning and meetings.
+7. Keep a named human accountable for every function. Do not create an agent to compensate for a missing owner, SOP, metric, source or decision boundary.
+8. In `hybrid` mode only, prepare the private company instance and memory substrate in Sprint 0: Supabase/Postgres, Voyage and GBrain/Company Brain. For DIA UNO public/client installs, GBrain means the public upstream repo `https://github.com/garrytan/gbrain`; install or verify that target as part of the normal setup.
+9. Treat Slack as a mandatory Sprint 0 dependency only when launching the first agent in the current guided path: present the minimum Slack workspace/channel plan and ask the user to approve creating/configuring it.
+10. Connect Slack directly to Hermes with the repo connector. Do not add an external integration layer in the base path; Slack is not memory, source of truth or the runtime.
+11. Create or update the private company instance before agent launch. The instance is the company's private operating space, not this public framework repo.
+12. Run `scripts/check_private_memory_readiness.py --company-instance <private-instance> --strict`; do not create or launch an agent until Supabase/Voyage/GBrain readiness passes or the human explicitly approves a blocked/pending memory state.
+13. Create the first agent for one mature capability, limited to the approved function and normally starting in `draft` or `pilot`.
+14. Defer other department discovery to later agents after each capability passes the same gate.
+15. Define the Observer Agent as a read-only system/memory observer when the scope needs it.
+16. Stop after one safe internal operating loop with Context Packet, human review, Receipt and scorecard.
 
 ## Safety boundaries
 

@@ -8,11 +8,14 @@ non-technical operators.
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import shutil
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+
+from method_assets import copy_method_assets, validate_method_assets, write_people_instance_readme
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_TEMPLATE = ROOT / "templates" / "generated-company-instance"
@@ -20,6 +23,8 @@ DEPARTMENT_TEMPLATE = ROOT / "templates" / "departments"
 COMPANY_TYPES = {"agency", "consultancy", "freelancer"}
 MATURITY_LEVELS = {"chaos", "documented", "assisted", "ai-first"}
 VERTICALS = {"agency", "consultancy", "freelancer", "service-business"}
+METHOD_MODES = {"people", "hybrid"}
+AGENT_ONLY_PREFIXES = {"departments", "digital-employees", "integrations", "skills", "roadmap", "examples"}
 DEFAULT_DEPARTMENTS = ["direction", "operations-delivery", "marketing", "sales", "customer-success"]
 ALL_DEPARTMENTS = DEFAULT_DEPARTMENTS + ["product-software", "finance", "people", "admin-legal"]
 DEPARTMENT_LABELS = {
@@ -100,13 +105,26 @@ def render(text: str, values: dict[str, str]) -> str:
     return text
 
 
-def copy_tree(src: Path, dst: Path, values: dict[str, str]) -> int:
+def copy_tree(
+    src: Path,
+    dst: Path,
+    values: dict[str, str],
+    *,
+    skip_top_level: set[str] | None = None,
+    overwrite: bool = True,
+) -> int:
     count = 0
     for source in src.rglob("*"):
         rel = source.relative_to(src)
+        if skip_top_level and rel.parts and rel.parts[0] in skip_top_level:
+            continue
+        if skip_top_level and rel.as_posix() == "FIRST_OPERATING_LOOP.md":
+            continue
         target = dst / rel
         if source.is_dir():
             target.mkdir(parents=True, exist_ok=True)
+            continue
+        if target.exists() and not overwrite:
             continue
         target.parent.mkdir(parents=True, exist_ok=True)
         try:
@@ -138,6 +156,8 @@ def apply_interactive_defaults(args: argparse.Namespace) -> argparse.Namespace:
     defaults = COMPANY_TYPE_DEFAULTS[company_type]
     args.company = company
     args.company_type = company_type
+    # Keep the established interactive prompt sequence backward compatible.
+    # Operators can choose People-only explicitly with --method-mode people.
     args.sector = prompt("Sector", args.sector if args.sector != "unspecified" else "service business")
     args.owner = prompt("Human owner", args.owner)
     args.point_a = prompt("Point A symptoms", args.point_a)
@@ -181,7 +201,7 @@ def readiness_profile(args: argparse.Namespace, departments: list[str]) -> dict[
             score += 1
         if dimension == "tool integration" and args.vertical:
             score += 1
-        if dimension == "digital employees" and departments:
+        if dimension == "digital employees" and departments and args.method_mode == "hybrid":
             score += 1
         if dimension == "feedback loop" and maturity in {"assisted", "ai-first"}:
             score += 1
@@ -485,6 +505,12 @@ def write_receipt(output: Path, args: argparse.Namespace, departments: list[str]
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     path = output / "receipts" / "wizard-installation-receipt.md"
     path.parent.mkdir(parents=True, exist_ok=True)
+    department_section = (
+        "## Department scaffolds generated\n\n"
+        + "\n".join(f"- `{department}`" for department in departments)
+        if args.method_mode == "hybrid"
+        else "## Department scaffolds generated\n\nNone. People mode does not install department or digital-employee scaffolds."
+    )
     path.write_text(f"""# Wizard Installation Receipt
 
 Date: `{stamp}`
@@ -495,15 +521,17 @@ Generated path: `{output}`
 
 ## What changed
 
-Created a guided Company Brain instance with Dirección first and department rollout assets.
+Created a guided `{args.method_mode}` Company Brain scaffold. Human-method assets were installed first; agent and department assets are present only in `hybrid` mode.
 
 ## Why
 
-Move a service business from Point A to Point B AI-First using memory, people/accountability, digital employees, approvals and receipts.
+Install the selected stage of the same method: organize human work first and add controlled agent scaffolds only in `hybrid` mode.
 
-## Departments generated
+{department_section}
 
-{chr(10).join(f'- `{d}`' for d in departments)}
+## Method mode
+
+`{args.method_mode}`
 
 ## Source / provenance
 
@@ -526,6 +554,162 @@ External/public/economic/legal/production/sensitive actions.
     return path
 
 
+def write_people_plan(output: Path, args: argparse.Namespace) -> list[Path]:
+    files = {
+        "company/people-organization-plan.md": f"""# People Organization Plan
+
+Company: `{args.company}`
+Human accountable: `{args.owner}`
+Method mode: `{args.method_mode}`
+
+## Sequence
+
+1. Complete Rumbo: purpose, goal, values, how we win, cash and North Stars.
+2. Map capabilities and seats; assign a human accountable to every function.
+3. Complete role cards, decision matrix and evaluation cadence.
+4. Map critical processes and approve their SOPs.
+5. Install cash, milestones, action items and tracking.
+6. Install indicators, continuous learning and meeting pulse.
+
+## Agentization gate
+
+Do not create an agent to compensate for an undefined function. A capability may be considered only after its owner, SOP, inputs, output, metric, authority, evidence and fallback are explicit.
+""",
+        "company/people-readiness.md": f"""# People Readiness
+
+Company: `{args.company}`
+Responsible human: `{args.owner}`
+Freshness: `scaffold not reviewed`
+
+## Installed now
+
+- [x] Method inventory and 36 original assets.
+- [x] People organization plan.
+- [x] Accountability, approval, scorecard and cadence scaffolds.
+
+## Evidence still required
+
+- [ ] Rumbo reviewed by the responsible human.
+- [ ] Every critical function has a seat and human accountable.
+- [ ] Role cards and decision matrix are complete.
+- [ ] Critical processes and SOPs are followed in practice.
+- [ ] Cash, execution and indicator panels use current sources.
+- [ ] Learning and meetings produce decisions and follow-up.
+
+## Rule
+
+This scaffold proves that the People layer was installed with intact sources. It does not prove that the company is organized, implemented or operational.
+""",
+    }
+    written: list[Path] = []
+    for relative, content in files.items():
+        path = output / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content, encoding="utf-8")
+        written.append(path)
+    return written
+
+
+def upgrade_people_instance(
+    output: Path,
+    args: argparse.Namespace,
+    departments: list[str],
+    values: dict[str, str],
+) -> int:
+    method_file = output / "METHOD.json"
+    if not method_file.is_file():
+        print("Refusing upgrade: METHOD.json is missing", file=sys.stderr)
+        return 2
+    try:
+        method = json.loads(method_file.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        print(f"Refusing upgrade: invalid METHOD.json: {exc}", file=sys.stderr)
+        return 2
+    if method.get("method_mode") != "people":
+        print("Refusing upgrade: instance is not in people mode", file=sys.stderr)
+        return 2
+    if args.method_mode != "hybrid":
+        print("Refusing upgrade: --upgrade requires --method-mode hybrid", file=sys.stderr)
+        return 2
+
+    people_validation_errors = validate_method_assets(output / "personas" / "metodo-v3")
+    if people_validation_errors:
+        print("Refusing upgrade: existing People layer failed integrity validation", file=sys.stderr)
+        for error in people_validation_errors:
+            print(f"- {error}", file=sys.stderr)
+        return 2
+
+    count = copy_tree(
+        BASE_TEMPLATE,
+        output,
+        values,
+        skip_top_level={"personas"},
+        overwrite=False,
+    )
+    copied_employee_packs: set[str] = set()
+    for dept in departments:
+        count += copy_tree(DEPARTMENT_TEMPLATE / dept, output / "departments" / dept, values, overwrite=False)
+        employee_pack = DEPARTMENT_DIGITAL_EMPLOYEES.get(dept)
+        if employee_pack and employee_pack not in copied_employee_packs:
+            source = BASE_TEMPLATE / "digital-employees" / employee_pack
+            if source.exists():
+                count += copy_tree(source, output / "digital-employees" / employee_pack, values, overwrite=False)
+                copied_employee_packs.add(employee_pack)
+
+    generated = [
+        write_rollout_map(output, args, departments),
+        write_company_scorecard(output, args, departments),
+        write_maturity_diagnosis(output, args, departments),
+        write_guided_pilot_plan(output, args, departments),
+        write_point_b_readiness(output, args, departments),
+    ]
+
+    method["method_mode"] = "hybrid"
+    method["status"] = "scaffold_not_operational"
+    method_file.write_text(json.dumps(method, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    transition = output / "HYBRID_CONTINUATION.md"
+    transition.write_text(f"""# Hybrid continuation
+
+Company: `{args.company}`
+Human accountable: `{args.owner}`
+Status: `scaffold_not_operational`
+
+The original People-mode `README.md` was preserved. Agent and department scaffolds were added without overwriting existing work.
+
+## Continue safely
+
+1. Keep `personas/` and the completed People artifacts as the organizational source.
+2. Read `METHOD.json`, `MAP.md`, `AGENTS.md` and this file.
+3. Choose one mature capability with a human accountable, followed SOP, current sources, measurable output, authority boundaries, evidence and fallback.
+4. Complete the hybrid function contract and the relevant agent pack.
+5. Keep the agent in `draft` or `pilot` until a reviewed internal loop provides evidence.
+
+No agent, service, integration, credential, worker or external action was activated by this upgrade.
+""", encoding="utf-8")
+    stamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    receipt = output / "receipts" / "people-to-hybrid-upgrade-receipt.md"
+    receipt.parent.mkdir(parents=True, exist_ok=True)
+    receipt.write_text(f"""# People to Hybrid Upgrade Receipt
+
+Date: `{stamp}`
+Human accountable: `{args.owner}`
+
+## What changed
+
+Added agent and department scaffolds to an existing People-mode instance without overwriting existing files.
+
+## What did not happen
+
+No agent, service, integration, credential, worker or external action was activated. The instance remains `scaffold_not_operational`.
+""", encoding="utf-8")
+    print(f"Upgraded People instance to hybrid scaffold: {output}")
+    print(f"New files written: {count + len(generated) + 2}")
+    print(f"Receipt: {receipt}")
+    print(f"Transition guide: {transition}")
+    print(f"Next: python scripts/verify_installation.py {output}")
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Generate a guided private Company Brain instance")
     parser.add_argument("--company")
@@ -540,6 +724,8 @@ def main() -> int:
     parser.add_argument("--vertical", choices=sorted(VERTICALS))
     parser.add_argument("--first-objective")
     parser.add_argument("--departments")
+    parser.add_argument("--method-mode", choices=sorted(METHOD_MODES), default="hybrid", help="Install People only or People plus agent scaffolds")
+    parser.add_argument("--upgrade", action="store_true", help="Upgrade an existing people-mode instance to hybrid without overwriting files")
     parser.add_argument("--interactive", action="store_true", help="Ask guided setup questions")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--yes", action="store_true")
@@ -555,7 +741,7 @@ def main() -> int:
     if not args.departments:
         args.departments = COMPANY_TYPE_DEFAULTS[args.company_type]["departments"]
 
-    for field in ["company", "company_type", "sector", "owner", "output", "language", "risk_tier", "point_a", "maturity", "vertical", "first_objective", "departments"]:
+    for field in ["company", "company_type", "sector", "owner", "output", "language", "risk_tier", "point_a", "maturity", "vertical", "first_objective", "departments", "method_mode"]:
         if has_secret(str(getattr(args, field))):
             print(f"Refusing possible secret in --{field.replace('_','-')}", file=sys.stderr)
             return 2
@@ -589,6 +775,7 @@ def main() -> int:
         "{{ metric_1 }}": "one company outcome metric",
         "{{ metric_2 }}": "one department throughput metric",
         "{{ metric_3 }}": "one quality or customer signal",
+        "{{ method_mode }}": args.method_mode,
     }
 
     dry_run = args.dry_run or not args.yes
@@ -598,56 +785,88 @@ def main() -> int:
         print("DRY RUN: no files written")
         print(f"Would create guided instance: {output}")
         print(f"Company type: {args.company_type}")
-        print("Departments: " + ", ".join(departments))
+        if args.method_mode == "hybrid":
+            print("Department scaffolds: " + ", ".join(departments))
+        else:
+            print("Department scaffolds: none in People mode")
         print(f"Maturity: {args.maturity}; vertical: {args.vertical}")
-        print(f"AI-First readiness score: {profile['total']}/100 ({profile['level']})")
-        print(f"Recommended next sprint: {profile['next_sprint']}")
-        print("Recommended departments now: " + ", ".join(selections["now"]))
-        if selections["later"]:
-            print("Install later: " + ", ".join(selections["later"]))
+        print(f"Method mode: {args.method_mode}")
+        if args.method_mode == "hybrid":
+            print(f"AI-First readiness score: {profile['total']}/100 ({profile['level']})")
+            print(f"Recommended next sprint: {profile['next_sprint']}")
+            print("Recommended departments now: " + ", ".join(selections["now"]))
+            if selections["later"]:
+                print("Install later: " + ", ".join(selections["later"]))
+        else:
+            print("People-first next step: complete Rumbo, seats, roles, decisions, processes and operating cadence.")
         print("Non-technical start: docs/00_non_technical_start_with_codex_or_claude.md")
         print("AI level mode: choose Mode 1/2/3 before collecting sensitive company context")
         print("Folder rule: keep work inside the generated private folder hierarchy")
         print("Next: rerun with --yes, then python scripts/verify_installation.py <output>")
-        print("Then: python scripts/validate_point_b_readiness.py --mode scaffold <output>")
+        print("Then: python scripts/validate_people_readiness.py <output>")
+        if args.method_mode == "hybrid":
+            print("Then: python scripts/validate_point_b_readiness.py --mode scaffold <output>")
         print("Troubleshooting: docs/TROUBLESHOOTING.md")
-        print("Guided Pilot 30/60/120: contract, Direction + first department, first internal loop")
+        if args.method_mode == "hybrid":
+            print("Guided Pilot 30/60/120: contract, Direction + first department, first internal loop")
         return 0
+
+    if args.upgrade:
+        if not output.exists() or not any(output.iterdir()):
+            print(f"Refusing upgrade: existing people-mode instance not found: {output}", file=sys.stderr)
+            return 2
+        return upgrade_people_instance(output, args, departments, values)
 
     if output.exists() and any(output.iterdir()):
         print(f"Refusing to write into non-empty directory: {output}", file=sys.stderr)
         return 2
 
-    count = copy_tree(BASE_TEMPLATE, output, values)
+    skip = AGENT_ONLY_PREFIXES if args.method_mode == "people" else None
+    count = copy_tree(BASE_TEMPLATE, output, values, skip_top_level=skip)
+    count += copy_method_assets(output, overwrite=True)
+    if args.method_mode == "people":
+        write_people_instance_readme(output, values)
     legacy_operations = output / "departments" / "operations"
     if legacy_operations.exists():
         shutil.rmtree(legacy_operations)
     copied_employee_packs: set[str] = set()
-    for dept in departments:
-        count += copy_tree(DEPARTMENT_TEMPLATE / dept, output / "departments" / dept, values)
-        employee_pack = DEPARTMENT_DIGITAL_EMPLOYEES.get(dept)
-        if employee_pack and employee_pack not in copied_employee_packs:
-            src = BASE_TEMPLATE / "digital-employees" / employee_pack
-            if src.exists():
-                count += copy_tree(src, output / "digital-employees" / employee_pack, values)
-                copied_employee_packs.add(employee_pack)
-    rollout = write_rollout_map(output, args, departments)
-    scorecard = write_company_scorecard(output, args, departments)
-    diagnosis = write_maturity_diagnosis(output, args, departments)
-    pilot_plan = write_guided_pilot_plan(output, args, departments)
-    point_b = write_point_b_readiness(output, args, departments)
+    if args.method_mode == "hybrid":
+        for dept in departments:
+            count += copy_tree(DEPARTMENT_TEMPLATE / dept, output / "departments" / dept, values)
+            employee_pack = DEPARTMENT_DIGITAL_EMPLOYEES.get(dept)
+            if employee_pack and employee_pack not in copied_employee_packs:
+                src = BASE_TEMPLATE / "digital-employees" / employee_pack
+                if src.exists():
+                    count += copy_tree(src, output / "digital-employees" / employee_pack, values)
+                    copied_employee_packs.add(employee_pack)
+    people_files = write_people_plan(output, args)
+    if args.method_mode == "hybrid":
+        rollout = write_rollout_map(output, args, departments)
+        scorecard = write_company_scorecard(output, args, departments)
+        diagnosis = write_maturity_diagnosis(output, args, departments)
+        pilot_plan = write_guided_pilot_plan(output, args, departments)
+        point_b = write_point_b_readiness(output, args, departments)
+    else:
+        rollout = scorecard = diagnosis = pilot_plan = point_b = None
     receipt = write_receipt(output, args, departments)
     print(f"Created guided Company Brain instance: {output}")
-    print(f"Files written: {count + 6}")
-    print(f"Rollout map: {rollout}")
-    print(f"Company scorecard: {scorecard}")
-    print(f"Maturity diagnosis: {diagnosis}")
-    print(f"Guided pilot plan: {pilot_plan}")
-    print(f"Point B readiness: {point_b}")
+    generated_operating_files = 5 if args.method_mode == "hybrid" else 0
+    print(f"Files written: {count + len(people_files) + generated_operating_files + 1}")
+    print(f"Method mode: {args.method_mode}")
+    if args.method_mode == "hybrid":
+        print(f"Rollout map: {rollout}")
+        print(f"Company scorecard: {scorecard}")
+        print(f"Maturity diagnosis: {diagnosis}")
+        print(f"Guided pilot plan: {pilot_plan}")
+        print(f"Point B readiness: {point_b}")
     print(f"Receipt: {receipt}")
     print(f"Next: python scripts/verify_installation.py {output}")
-    print(f"Then scaffold check: python scripts/validate_point_b_readiness.py --mode scaffold {output}")
-    print(f"After a human-reviewed loop: python scripts/validate_point_b_readiness.py --mode operational {output}")
+    print(f"Then People check: python scripts/validate_people_readiness.py {output}")
+    if args.method_mode == "hybrid":
+        print(f"Then scaffold check: python scripts/validate_point_b_readiness.py --mode scaffold {output}")
+        print(f"After a human-reviewed loop: python scripts/validate_point_b_readiness.py --mode operational {output}")
+    else:
+        print(f"Later upgrade: python scripts/company_brain_wizard.py --company \"{args.company}\" --company-type {args.company_type} --output {output} --method-mode hybrid --upgrade --yes")
     print("Troubleshooting: docs/TROUBLESHOOTING.md")
     return 0
 

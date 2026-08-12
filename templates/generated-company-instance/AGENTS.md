@@ -2,6 +2,10 @@
 
 This is a private company instance. Treat it as operational state, not as a generic document folder.
 
+Read `METHOD.json` first. In `people` mode, do not assume agent, department, Slack or runtime assets exist. Help the human organize the company using `personas/` and stop before agent creation. In `hybrid` mode, still organize the relevant capability first.
+
+Every function must keep a named human accountable. An agent is an executor within bounded authority, never the final owner of a company function.
+
 ## Default allowed actions
 
 - Read local approved files in this instance.
@@ -9,6 +13,7 @@ This is a private company instance. Treat it as operational state, not as a gene
 - Create context packets, receipts, statechanges and handoffs.
 - Summarize provided notes.
 - Propose next actions with risks.
+- Complete or review People-layer artifacts with the accountable human.
 
 ## Ask human approval before
 

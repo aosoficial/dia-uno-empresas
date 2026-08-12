@@ -1,10 +1,20 @@
 # DIA UNO Empresas
 
-Convierte una agencia, consultoría o negocio freelance en una empresa AI-First de servicios productizados: con Dirección / Cerebro Madre, departamentos, memoria operativa, empleados digitales, permisos, receipts y mejora continua.
+Organiza una empresa y, cuando sus capacidades estén maduras, permite agentizarlas con responsabilidad humana, permisos y evidencia. Una empresa puede usar únicamente la metodología para personas o continuar hasta un sistema híbrido.
 
-DIA UNO Empresas es una aceleradora guiada para pasar de **Punto A** a **Punto B AI-First**.
+DIA UNO Empresas sigue una secuencia: **Organizar personas → Agentizar capacidades maduras → Escalar el sistema híbrido**.
 
-**Primera vez aquí:** empieza por [`START_HERE.md`](START_HERE.md). En un piloto real desde ORGO, primero instala o conecta **Codex** o **Claude Code** como operador instalador; después sigue [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md). Si no eres técnico o vas a usar Codex/Claude Code como operador instalador, usa también [`docs/00_non_technical_start_with_codex_or_claude.md`](docs/00_non_technical_start_with_codex_or_claude.md): hace un examen corto de nivel IA, asigna guardrails y evita pedir datos sensibles antes de crear el cerebro privado. La primera instalación valida el scaffold privado; la validación operativa de Punto B viene después de un primer loop interno revisado con evidencia real. Si un comando falla, usa [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md).
+## Las tres capas
+
+| Capa | Para qué sirve | Empieza aquí |
+|---|---|---|
+| **Personas** | Rumbo, asientos, puestos, decisiones, evaluación, procesos, SOP, caja, ejecución, indicadores, aprendizaje y reuniones. | [`personas/README.md`](personas/README.md) |
+| **Agentes** | Contratos, identidad, permisos, herramientas, memoria, operaciones, madurez, supervisión y evidencia. | [`agentes/README.md`](agentes/README.md) |
+| **Sistema Híbrido** | Une funciones y ejecutores, siempre con responsable humano, autoridad acotada y trazabilidad. | [`sistema-hibrido/README.md`](sistema-hibrido/README.md) |
+
+Los 36 originales del Método V3 están preservados e inventariados en [`personas/metodo-v3/`](personas/metodo-v3/README.md). Los artefactos agénticos existentes no se duplican: se conectan mediante la [`matriz de equivalencias`](sistema-hibrido/matriz-de-equivalencias.md).
+
+**Primera vez aquí:** empieza por [`START_HERE.md`](START_HERE.md). Crea primero una instancia `people` y organiza sus funciones. Si una capacidad madura continúa a agentes desde ORGO, instala o conecta **Codex** o **Claude Code** como operador y sigue [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md). Si no eres técnico, usa también [`docs/00_non_technical_start_with_codex_or_claude.md`](docs/00_non_technical_start_with_codex_or_claude.md). La primera instalación valida estructura e integridad; la validación operativa híbrida viene después de un loop interno revisado con evidencia real. Si un comando falla, usa [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md).
 
 **Para Codex/Claude desde ORGO:** este repo incluye [`AGENTS.md`](AGENTS.md). Tras clonar o abrir el repo, el asistente debe tomar la iniciativa: leer las instrucciones, explicar el siguiente paso en lenguaje humano, hacer el examen corto de nivel IA y pedir aprobación solo antes de acciones externas, públicas, económicas, legales, productivas, sensibles, destructivas o con secretos/workers/crons.
 
@@ -20,7 +30,7 @@ Empresa de servicios que no sabe por dónde empezar:
 - sin agentes integrados;
 - sin memoria operativa ni feedback loop.
 
-## Punto B
+## Punto B híbrido
 
 Empresa AI-First de servicios productizados con:
 
@@ -28,7 +38,7 @@ Empresa AI-First de servicios productizados con:
 - departamentos definidos uno por uno;
 - brain por departamento;
 - sistema para guardar memoria operativa;
-- comunicación entre humanos y agentes; en una primera empresa real empieza obligatoriamente por Slack para poder hablar con el primer agente;
+- comunicación entre humanos y agentes; en el guided path actual, Slack se prepara al lanzar el primer agente, no durante una instalación `people`;
 - organización de personas y agentes;
 - roles, permisos, límites y aprobaciones;
 - skills por departamento;
@@ -36,9 +46,34 @@ Empresa AI-First de servicios productizados con:
 - receipts, statechanges, context packets y feedback loop;
 - roadmap claro de 48h / 7 días / 30 días.
 
-## Dos caminos
+## Dos modos de instalación
 
-### 1. Evaluar el método
+### 1. Solo Personas
+
+Instala la metodología humana sin departamentos, empleados digitales, Slack ni runtime:
+
+```bash
+python3 scripts/company_brain_wizard.py --company "Acme Demo" --company-type agency --method-mode people --output /tmp/acme-company --yes
+python3 scripts/verify_installation.py /tmp/acme-company
+python3 scripts/validate_people_readiness.py /tmp/acme-company
+```
+
+Esto crea un scaffold privado y copia los 36 originales. No demuestra que la empresa ya esté organizada.
+
+### 2. Sistema Híbrido
+
+Genera Personas + scaffolds agénticos, o amplía una instancia People existente:
+
+```bash
+python3 scripts/company_brain_wizard.py --company "Acme Demo" --company-type agency --method-mode hybrid --output /tmp/acme-company --yes
+
+# Si /tmp/acme-company ya fue creada en modo people:
+python3 scripts/company_brain_wizard.py --company "Acme Demo" --company-type agency --method-mode hybrid --output /tmp/acme-company --upgrade --yes
+```
+
+El upgrade añade archivos faltantes sin sobrescribir el trabajo humano. No activa agentes, servicios, integraciones ni infraestructura.
+
+## Explorar el método
 
 - [`docs/00_ai_first_company.md`](docs/00_ai_first_company.md) — Punto A → Punto B AI-First.
 - [`docs/23_direction_mother_brain.md`](docs/23_direction_mother_brain.md) — Dirección / Cerebro Madre.
@@ -54,15 +89,19 @@ Empresa AI-First de servicios productizados con:
 - [`docs/43_self_serve_operator_ux.md`](docs/43_self_serve_operator_ux.md) — UX operativa self-serve.
 - [`docs/44_first_operating_loop_examples.md`](docs/44_first_operating_loop_examples.md) — ejemplos seguros para crear evidencia del primer loop.
 - [`docs/45_slack_first_agent.md`](docs/45_slack_first_agent.md) — primer agente conversacional por Slack.
-- [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md) — flujo real ORGO → Codex/Claude → Slack obligatorio → memoria → CEO/Dirección + Observer → departamentos.
+- [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md) — continuación híbrida: Personas → capacidad madura → ORGO/Codex → memoria/interfaz → agente acotado → evidencia.
 - [`docs/48_observer_read_only_runtime.md`](docs/48_observer_read_only_runtime.md) — Observer read-only: vigilancia, digest diario, escalaciones y límites.
+- [`docs/49_three_layer_method.md`](docs/49_three_layer_method.md) — contrato Personas / Agentes / Sistema Híbrido.
+- [`docs/50_people_first_installation.md`](docs/50_people_first_installation.md) — instalación People-first y upgrade no destructivo.
+- [`examples/hybrid-method/README.md`](examples/hybrid-method/README.md) — ejemplo sintético de una función en las tres capas.
 
-### 2. Generar una empresa privada guiada
+## Generar una empresa privada guiada
 
 ```bash
-python scripts/company_brain_wizard.py --dry-run --company "Acme Demo" --company-type agency --output /tmp/acme-company-brain
-python scripts/company_brain_wizard.py --company "Acme Demo" --company-type agency --output /tmp/acme-company-brain --yes
+python scripts/company_brain_wizard.py --dry-run --company "Acme Demo" --company-type agency --method-mode hybrid --output /tmp/acme-company-brain
+python scripts/company_brain_wizard.py --company "Acme Demo" --company-type agency --method-mode hybrid --output /tmp/acme-company-brain --yes
 python scripts/verify_installation.py /tmp/acme-company-brain
+python scripts/validate_people_readiness.py /tmp/acme-company-brain
 python scripts/validate_point_b_readiness.py --mode scaffold /tmp/acme-company-brain
 # Solo después de un primer loop humano revisado con receipt real:
 python scripts/validate_point_b_readiness.py --mode operational /tmp/acme-company-brain
@@ -85,20 +124,19 @@ Para un bootstrap mínimo:
 python scripts/bootstrap_company_brain.py --dry-run --company "Acme Demo" --company-type agency --output /tmp/acme-company-brain
 ```
 
-## Orden de instalación para primera empresa real
+## Orden de instalación para una empresa que continúa a agentes
 
-1. ORGO instalado por el cliente.
-2. ORGO instala/conecta Codex o Claude Code como operador instalador.
-3. Codex/Claude abre o actualiza DIA UNO y sigue [`AGENTS.md`](AGENTS.md) sin esperar que el usuario le diga qué leer.
-4. Se crea la instancia privada de empresa antes de hablar con agentes reales.
-5. Memoria privada en Sprint 0: Supabase/Postgres, Voyage y GBrain/Company Brain. En instalaciones públicas/cliente de DIA UNO, GBrain es el repo upstream `https://github.com/garrytan/gbrain`. Verificar con `scripts/check_private_memory_readiness.py` o `make memory-preflight`. Contrato de conexiones/procesos: [`docs/47_private_memory_runtime_connections.md`](docs/47_private_memory_runtime_connections.md). Migración genérica revisable: `supabase/migrations/001_private_memory_runtime.sql`.
-6. Slack obligatorio: workspace/canales mínimos y app creada con `hermes slack guide` / `hermes slack manifest --write`.
-7. Conectar Slack directo a Hermes con `scripts/connect_slack_to_hermes.py`: instala/usa Hermes, crea el perfil, escribe tokens fuera de Git, verifica memoria, reinicia gateway y deja receipt privado.
-8. Herramientas base necesarias para el primer loop. Slack conecta directo a Hermes; no hay capa externa de integración en la ruta base.
-9. Primer agente: CEO, limitado a Dirección, accesible por Slack y escribiendo/leyendo memoria operativa.
-10. Observer agent read-only para señales, contradicciones, receipts, StateChanges, runtime health, digest diario y escalaciones internas.
-11. CEO entrevista Dirección y propone el organigrama inicial de agentes.
-12. Agentes de departamento entrevistan sus propias áreas: operaciones, marketing, growth/sales, producto/servicio, finanzas y postventa.
+1. Crear la instancia privada en modo `people` o `hybrid`.
+2. Completar la capa Personas para la capacidad que se quiere agentizar.
+3. Verificar responsable, SOP, entradas, salida, métrica, autoridad, evidencia y fallback.
+4. Instalar ORGO y conectar Codex o Claude Code como operador cuando se decida continuar al runtime.
+5. Preparar memoria privada: Supabase/Postgres, Voyage y GBrain/Company Brain. En instalaciones públicas/cliente de DIA UNO, GBrain es el repo upstream `https://github.com/garrytan/gbrain`. Verificar con `scripts/check_private_memory_readiness.py` o `make memory-preflight`.
+6. En el guided path actual, preparar Slack y conectarlo a Hermes antes de conversar con el primer agente. Esta acción externa requiere aprobación.
+7. Instalar las herramientas mínimas y permisos de mínimo privilegio.
+8. Crear el primer agente en `draft` o `pilot`, limitado a una capacidad madura de Dirección.
+9. Añadir Observer read-only si el alcance lo necesita.
+10. Ejecutar un loop interno revisado, con Context Packet, Receipt y scorecard.
+11. Crear agentes departamentales solo después de organizar y validar cada capacidad.
 
 ## Qué incluye
 

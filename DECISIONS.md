@@ -32,9 +32,9 @@ This file records public-safe method decisions for DIA UNO Empresas.
 
 **Why:** DIA UNO Empresas is a lead magnet and an implementation method. The commercial path should be visible but not required.
 
-## D-006 — Punto B requires evidence, not narrative
+## D-006 — Punto B híbrido requires evidence, not narrative
 
-**Decision:** a company can only claim the minimum Punto B slice when Direction, approval boundaries, one department, one digital employee permission file, one context packet, one Receipt, one scorecard update and one next sprint exist as evidence.
+**Decision:** a company can only claim the minimum hybrid Punto B slice when Direction, approval boundaries, one department, one digital employee permission file, one context packet, one Receipt, one scorecard update and one next sprint exist as evidence. A People-only installation has a separate structural/integrity check and must not claim this hybrid state.
 
 **Why:** the accelerator should increase pilot reliability without overpromising guaranteed transformation. The validator makes the claim operational and auditable.
 
@@ -43,3 +43,21 @@ This file records public-safe method decisions for DIA UNO Empresas.
 **Decision:** self-serve users get a happy path, `make` commands, troubleshooting, Point B validation and explicit “do not paste secrets/customer data” rules.
 
 **Why:** maximizing self-serve should not weaken privacy, approval or public-safety boundaries.
+
+## D-008 — One method, three layers
+
+**Decision:** DIA UNO Empresas separates Personas, Agentes and Sistema Híbrido while keeping one canonical function model.
+
+**Why:** human organization must not become a second source of truth beside agent prompts. Human artifacts define the function; agent artifacts translate only its bounded executable form; the shared contract keeps accountability, authority and evidence aligned.
+
+## D-009 — People-first is a complete installation mode
+
+**Decision:** the installer supports `people` without creating departments or digital employees, and can later add hybrid scaffolds through a non-destructive upgrade.
+
+**Why:** companies must be able to gain value by organizing people and processes before they are ready to agentize. Upgrade must preserve company work and must not be confused with runtime activation.
+
+## D-010 — Preserve Método V3 originals byte for byte
+
+**Decision:** the 36 human-method files are stored as immutable originals with inventory and SHA-256 manifest.
+
+**Why:** provenance and compatibility require a verifiable source. Companies work on private copies; the public originals are never populated with real company data.

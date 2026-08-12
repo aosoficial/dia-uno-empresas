@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Added the public three-layer method: Personas, Agentes and Sistema Híbrido.
+- Preserved and inventoried all 36 Método V3 originals with per-file SHA-256 integrity checks.
+- Added People-only installation and additive People-to-hybrid upgrade without activating agents or infrastructure.
+- Added the hybrid-function schema, equivalence matrix, People validator and end-to-end regression tests.
 - Added a measurable implementation-help path from the public framework to the DIA UNO orchestration guide.
 - Added full public-ready DIA UNO Empresas structure.
 - Added commercial breadcrumbs to documentation.

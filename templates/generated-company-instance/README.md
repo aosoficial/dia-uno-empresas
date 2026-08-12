@@ -1,6 +1,12 @@
-# Instancia privada de Company Brain
+# Instancia privada DIA UNO Empresas
 
-Esta carpeta es la copia privada de trabajo para `{{ company_name }}`. Es un espacio operativo: aquí se completa contexto real, se guardan decisiones revisadas y se conserva evidencia del primer ciclo.
+Esta carpeta es la copia privada de trabajo para `{{ company_name }}`. Se ha generado en modo `{{ method_mode }}` y su estado inicial es **scaffold, no empresa operativa**.
+
+## Elige la capa que corresponde
+
+- En modo `people`, organiza la empresa con `personas/` y no se instalan departamentos ni empleados digitales.
+- En modo `hybrid`, empieza igualmente por `personas/`; usa `departments/` y `digital-employees/` solo después de que una capacidad tenga dueño, SOP, entradas, salida, métrica, autoridad y fallback.
+- `METHOD.json` registra el modo de la instancia y el responsable humano.
 
 ## Regla de privacidad antes de empezar
 
@@ -11,28 +17,31 @@ Esta carpeta es la copia privada de trabajo para `{{ company_name }}`. Es un esp
 
 ## Qué rellenar primero
 
-Trabaja en este orden. No intentes activar muchos agentes a la vez: el objetivo inicial es montar canal, memoria, CEO y un primer ciclo revisado por una persona.
+Trabaja en este orden. Los pasos 1–7 son válidos para ambos modos. Los pasos de agentes se aplican solo al modo `hybrid`.
 
-1. Lee `MAP.md` y `AGENTS.md`.
-2. Confirma que ORGO ya instaló/conectó Codex o Claude Code como operador instalador.
-3. Prepara el primer contacto humano-agente en Slack usando `integrations/slack-first-agent.md`. Slack es la interfaz para conversar, aprobar y recibir avisos; la memoria vive aquí.
-4. Confirma el estado de memoria privada: Supabase/Postgres, Voyage y GBrain/Company Brain conectados, o explícitamente `pending` con siguiente acción.
-5. Completa solo Dirección/Mother Brain en `company/company-brain.md` con hechos verificados: propósito, modelo de negocio, metas, prioridades, sistemas en alcance, límites y preguntas abiertas.
-6. Crea o revisa el primer empleado digital: CEO agent para Dirección. No debe entrevistar marketing, operaciones, producto, growth/sales, finanzas ni postventa.
-7. El CEO propone el organigrama inicial de agentes de departamento y lo deja pendiente de aprobación humana.
-8. Solo después de aprobación, crea/completa los brains de departamento, por ejemplo `departments/{{ first_department }}/department-brain.md` o `departments/operations/department-brain.md`.
-9. Define Observer agent como observador de memoria/sistema: detecta huecos, contradicciones, receipts faltantes y cambios que deberían entrar al cerebro; no ejecuta negocio directamente.
-10. Abre `FIRST_OPERATING_LOOP.md`. Es la guía corta para ejecutar el primer ciclo real de 30–60 minutos sin confundirse entre scaffold y Punto B operativo. Si necesitas ver la forma antes de usar datos reales, abre `examples/first-operating-loop/README.md`.
-11. Completa `company/source-of-truth-map.md`. Es un artefacto obligatorio de los primeros 120 minutos y la fuente principal para el primer Context Packet: identifica Drive/Docs, Notion/wiki, Sheets, CRM, WhatsApp/Slack, email, calendario, proyectos y finanzas con propietario, permisos, frescura, regla de recibo y siguiente acción.
-12. Revisa límites de aprobación en `company/approval-boundaries.md`. Nada externo, público, económico, legal, de producción o sensible se ejecuta sin aprobación humana explícita.
-13. Revisa permisos del primer empleado digital. La ruta inicial habitual es `digital-employees/ceo/PERMISSIONS.md`; si el wizard generó otro empleado, usa su carpeta dentro de `digital-employees/`.
-14. Crea o completa un paquete de contexto en `context-packets/initial-company-context.md` antes de pedir trabajo al agente. Debe enlazar `company/source-of-truth-map.md`, nombrar las filas usadas y mantener el acceso en solo lectura salvo aprobación explícita.
-15. Ejecuta una acción interna pequeña y segura: resumir un handoff, revisar una SOP, preparar una lista de riesgos, actualizar una métrica interna, etc.
-16. Guarda evidencia del ciclo en `receipts/first-loop.md` o en otro archivo dentro de `receipts/`.
-17. Si cambió el estado operativo, registra el cambio en `statechanges/`.
-18. Actualiza `company/company-scorecard.md` con una línea basada en evidencia, no en intención.
-19. Actualiza `company/guided-pilot-plan.md`, `company/point-b-readiness.md` y `roadmap/48h-7d-30d.md` con el siguiente sprint.
-20. Ejecuta validaciones en modo scaffold primero. Usa modo operational solo después del primer ciclo humano revisado.
+1. Lee `METHOD.json`, `MAP.md` y `AGENTS.md`.
+2. Abre `personas/README.md` y revisa `personas/metodo-v3/INVENTARIO.md`.
+3. Completa Rumbo y nombra a su responsable humano.
+4. Completa capacidades, organigrama de asientos, fichas de puesto, matriz de decisiones y evaluación.
+5. Completa procesos críticos y SOP; después instala caja, ejecución, indicadores, aprendizaje y reuniones.
+6. Actualiza `company/people-organization-plan.md` y `company/people-readiness.md` con evidencia real.
+7. Ejecuta `python3 scripts/validate_people_readiness.py /ruta/a/esta-instancia` desde el framework. Esto valida la instalación, no la implantación.
+8. **Solo en modo `hybrid`:** confirma ORGO, memoria y la interfaz humana aprobada antes de lanzar un agente.
+9. **Solo en modo `hybrid`:** crea o revisa el primer empleado digital para una capacidad madura de Dirección.
+10. **Solo en modo `hybrid`:** prepara Slack con `integrations/slack-first-agent.md` si es la interfaz elegida y aprobada. Slack no es memoria.
+11. Solo después crea/completa los brains de departamento, por ejemplo `departments/{{ first_department }}/department-brain.md`.
+12. Define Observer agent como observador de memoria/sistema: detecta huecos, contradicciones, receipts faltantes y cambios que deberían entrar al cerebro; no ejecuta negocio directamente.
+13. Abre `FIRST_OPERATING_LOOP.md`. Es la guía corta para ejecutar el primer ciclo real de 30–60 minutos sin confundirse entre scaffold y Punto B operativo. Si necesitas ver la forma antes de usar datos reales, abre `examples/first-operating-loop/README.md`.
+14. Completa `company/source-of-truth-map.md`. Es un artefacto obligatorio de los primeros 120 minutos y la fuente principal para el primer Context Packet: identifica Drive/Docs, Notion/wiki, Sheets, CRM, WhatsApp/Slack, email, calendario, proyectos y finanzas con propietario, permisos, frescura, regla de recibo y siguiente acción.
+15. Revisa límites de aprobación en `company/approval-boundaries.md`. Nada externo, público, económico, legal, de producción o sensible se ejecuta sin aprobación humana explícita.
+16. Solo en modo `hybrid`, revisa permisos del primer empleado digital dentro de `digital-employees/<employee>/PERMISSIONS.md`. La ruta compatible del scaffold inicial es `digital-employees/ceo/PERMISSIONS.md`; que exista no significa que el agente esté activo.
+17. Crea o completa un paquete de contexto en `context-packets/initial-company-context.md` antes de pedir trabajo al agente. Debe enlazar `company/source-of-truth-map.md`, nombrar las filas usadas y mantener el acceso en solo lectura salvo aprobación explícita.
+18. Ejecuta una acción interna pequeña y segura: resumir un handoff, revisar una SOP, preparar una lista de riesgos, actualizar una métrica interna, etc.
+19. Guarda evidencia del ciclo en `receipts/first-loop.md` o en otro archivo dentro de `receipts/`.
+20. Si cambió el estado operativo, registra el cambio en `statechanges/`.
+21. Actualiza `company/company-scorecard.md` con una línea basada en evidencia, no en intención.
+22. Solo en modo `hybrid`, actualiza `company/guided-pilot-plan.md`, `company/point-b-readiness.md` y `roadmap/48h-7d-30d.md` con el siguiente sprint.
+23. Ejecuta validaciones en modo scaffold primero. Usa modo operational solo después del primer ciclo humano revisado.
 
 ## Secuencia de 48 horas hacia Punto B
 
@@ -40,8 +49,9 @@ Trabaja en este orden. No intentes activar muchos agentes a la vez: el objetivo 
 
 - Confirmar que esta carpeta es privada.
 - Leer `MAP.md`, `AGENTS.md` y esta guía.
-- Confirmar ORGO + Codex/Claude como operador instalador.
-- Confirmar Slack-first y memoria privada: Slack conversa, GBrain/Company Brain recuerda.
+- Confirmar el modo `people` o `hybrid`.
+- Solo en `hybrid`, confirmar ORGO + Codex/Claude como operador instalador.
+- Solo en `hybrid`, confirmar Slack-first y memoria privada: Slack conversa, GBrain/Company Brain recuerda.
 - Marcar qué datos no se pueden usar con agentes.
 - Abrir `company/approval-boundaries.md` y dejar claras las puertas de aprobación.
 - Abrir `company/source-of-truth-map.md` y marcar sistemas existentes, propietarios y permisos iniciales.
@@ -51,10 +61,8 @@ Trabaja en este orden. No intentes activar muchos agentes a la vez: el objetivo 
 - Completar `company/company-brain.md` solo para Dirección con propietario, fuente/procedencia, vigencia/frescura, aprobación y evidencia cuando aplique.
 - Completar `company/source-of-truth-map.md` con al menos una fuente segura, su frescura, permiso de lectura, regla de recibo y siguiente acción.
 - Revisar `company/company-scorecard.md` y dejar valores desconocidos como `unknown` si todavía no hay evidencia.
-- Revisar el CEO agent y asegurar que no entrevista marketing, operaciones, producto, growth/sales, finanzas ni postventa.
-- Dejar el roster de agentes de departamento como propuesta pendiente de aprobación.
-- Revisar `digital-employees/*/PERMISSIONS.md` antes de pedir cualquier acción.
-- Preparar `integrations/slack-first-agent.md` si el primer agente hablará con humanos por Slack. No guardar tokens ni secretos en Git.
+- Solo en `hybrid`, revisar el agente de la primera capacidad y asegurar que no amplía su alcance a otros departamentos.
+- Solo en `hybrid`, dejar otros asientos digitales como propuestas, revisar `digital-employees/*/PERMISSIONS.md` y preparar `integrations/slack-first-agent.md` si aplica. No guardar tokens ni secretos en Git.
 
 ### 90–180 minutos — preparar el primer ciclo interno
 
@@ -81,7 +89,7 @@ Trabaja en este orden. No intentes activar muchos agentes a la vez: el objetivo 
 - Actualizar `roadmap/48h-7d-30d.md` con próximos pasos.
 - Repetir validadores y corregir faltantes antes de afirmar Punto B.
 
-## Evidencia mínima de Punto B
+## Evidencia mínima de Punto B híbrido
 
 La definición vive en `docs/42_point_b_definition.md` del framework. Dentro de esta instancia, las pruebas mínimas deben apuntar a:
 
@@ -103,10 +111,16 @@ La definición vive en `docs/42_point_b_definition.md` del framework. Dentro de 
 
 ## Validación: scaffold vs operational
 
-Desde el repositorio del framework, ejecuta:
+Para ambos modos, desde el repositorio del framework ejecuta:
 
 ```bash
 python3 scripts/verify_installation.py /ruta/a/esta-instancia
+python3 scripts/validate_people_readiness.py /ruta/a/esta-instancia
+```
+
+Solo en modo `hybrid`, ejecuta además:
+
+```bash
 python3 scripts/validate_point_b_readiness.py --mode scaffold /ruta/a/esta-instancia
 ```
 
@@ -130,8 +144,9 @@ En una instancia recién generada, `--mode operational` debe fallar. Es correcto
 ## Estructura de la instancia
 
 - `company/`: memoria operativa de compañía, mapa de fuentes/sistemas, aprobación, scorecard y planes.
-- `departments/`: brains departamentales, workflows y SOPs.
-- `digital-employees/`: permisos, memoria y runtime packs de empleados digitales.
+- `personas/`: método humano, inventario y originales preservados.
+- `departments/`: solo modo `hybrid`; brains departamentales, workflows y SOPs.
+- `digital-employees/`: solo modo `hybrid`; permisos, memoria y runtime packs de empleados digitales.
 - `context-packets/`: contexto cargado antes de trabajar.
 - `receipts/`: evidencia de trabajo completado.
 - `statechanges/`: cambios de estado operativo.

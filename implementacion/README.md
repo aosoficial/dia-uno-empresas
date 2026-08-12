@@ -1,9 +1,9 @@
-# implementacion/ — OAE: Organizar → Agentizar → Escalar
+# Implementación — Organizar → Agentizar → Escalar
 
-El paso a paso para instalar el OS en una empresa.
+Este es el recorrido operativo de DIA UNO Empresas. No obliga a instalar agentes para obtener valor: una empresa puede completar y mantener únicamente la capa de Personas.
 
-1. **organizar.md** — montar las formas **humanas** hasta que la capa pasa las 4 primeras características.
-2. **agentizar.md** — activar la **forma agente** donde está el cuello (solo si pasó las 4).
-3. **escalar.md** — aumentar capacidad sin romper el sistema sano.
+1. [`organizar.md`](organizar.md) — montar y validar las formas humanas.
+2. [`agentizar.md`](agentizar.md) — activar la forma agente de capacidades maduras y acotadas.
+3. [`escalar.md`](escalar.md) — ampliar alcance y autonomía mediante evidencia.
 
-> Aquí encajan: `07_quick_start`, `14_agent_installation_process`, `19_orgo_hermes`, `46_orgo_onboarding`, `45_slack_first`, `39/40/41/43` (pilot & self-serve). Los departamentos (`24/33`) → guía de "por dónde empezar".
+La separación conceptual y sus invariantes viven en [`../sistema-hibrido/README.md`](../sistema-hibrido/README.md). Los documentos anteriores de quick start, instalación, pilotos y departamentos siguen siendo compatibles; esta ruta los ordena, no los duplica.

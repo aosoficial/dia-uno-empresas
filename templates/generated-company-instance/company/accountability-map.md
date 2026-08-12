@@ -13,7 +13,8 @@ People seats before agent seats.
 
 ## Digital employee seats
 
-- CEO Agent: `active first`, Dirección only.
+- People mode: `none installed`.
+- Hybrid mode: CEO Agent or another capability agent may be `proposed` only after the agentization gate passes; never active by generation alone.
 - Department assistants: `created only after department brain exists`
 
 ## Rule
