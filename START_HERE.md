@@ -1,8 +1,20 @@
 # Empieza aquí / START HERE
 
-Este repositorio sirve para instalar una **instancia privada de Company Brain**: el primer corte seguro de un sistema operativo AI-first para tu empresa.
+Este repositorio sirve para organizar una empresa y, si procede, instalar una **instancia privada híbrida**. No tienes que empezar por agentes.
 
-Si vas a montar una primera empresa real desde **ORGO**, el camino correcto es: ORGO instala/conecta Codex o Claude Code, Codex/Claude carga este framework, prepara **Slack como primera interfaz operativa obligatoria para hablar con el primer agente**, prepara las herramientas base, crea la instancia privada de empresa, monta memoria privada con Supabase/Voyage/GBrain, crea el CEO agent y después los agentes de departamento. Usa [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md) como guía principal.
+## Primero elige modo
+
+### Modo `people`
+
+Para una empresa que necesita aclarar Rumbo, personas, decisiones, procesos, caja, ejecución, indicadores, aprendizaje y reuniones. Instala solo la capa humana.
+
+### Modo `hybrid`
+
+Para una empresa que ya quiere preparar agentes sobre capacidades organizadas. Incluye la capa humana y los scaffolds agénticos; no activa nada.
+
+En ambos modos el responsable final es humano. Consulta [`personas/README.md`](personas/README.md), [`agentes/README.md`](agentes/README.md) y [`sistema-hibrido/README.md`](sistema-hibrido/README.md).
+
+Si vas a montar una empresa real, crea primero la instancia privada y organiza sus capacidades. Si después continúa a agentes desde **ORGO**, ORGO conecta Codex o Claude Code, prepara memoria privada y, en el guided path actual, configura Slack como interfaz del primer agente. Usa [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md) solo para esa segunda fase.
 
 ## Para Codex/Claude después de clonar desde ORGO
 
@@ -14,8 +26,9 @@ Haz inmediatamente esto:
 2. Explica al usuario el siguiente paso en lenguaje humano.
 3. Haz el examen corto de nivel IA antes de pedir datos de empresa.
 4. Usa comandos locales seguros para verificar el repo.
-5. Para una empresa real, no saltes a agentes: primero presenta el plan mínimo de Slack y herramientas base. Slack es obligatorio para hablar con el primer agente; crear/configurar Slack es una acción externa y requiere aprobación del usuario.
-6. Pide aprobación solo antes de acciones externas, públicas, económicas, legales, productivas, sensibles, destructivas, con secretos o con workers/crons/bots persistentes.
+5. Pregunta si la empresa quiere empezar en modo `people` o `hybrid`. En ambos casos instala y trabaja primero la capa Personas.
+6. Solo en modo `hybrid`, presenta después el plan de interfaz y herramientas del primer agente. Crear/configurar recursos externos requiere aprobación del usuario.
+7. Pide aprobación solo antes de acciones externas, públicas, económicas, legales, productivas, sensibles, destructivas, con secretos o con workers/crons/bots persistentes.
 
 Primer mensaje recomendado:
 
@@ -25,7 +38,7 @@ Primero revisaré las instrucciones del repo y tu nivel de uso de IA; después t
 No te pediré claves en el chat y pediré permiso antes de acciones externas, de pago, públicas, legales, de producción o sensibles.
 ```
 
-No promete una transformación garantizada. Te ayuda a crear una base ordenada para empezar con seguridad: Dirección / Mother Brain, límites de aprobación, contexto mínimo, un primer departamento, receipts y evidencia revisable.
+No promete una transformación garantizada. Te ayuda a crear una base humana ordenada y, solo si procede, a preparar un primer agente acotado con límites, receipts y evidencia revisable.
 
 ## Antes de instalar: examen rápido de nivel IA
 
@@ -51,20 +64,19 @@ Si te bloqueas con Python, Make, `pyyaml`, permisos, carpeta no vacía o validac
 # 1) Simular sin crear nada
 git clone https://github.com/aosoficial/dia-uno-empresas.git
 cd dia-uno-empresas
-python scripts/company_brain_wizard.py --dry-run --company "Mi Empresa" --company-type agency --output /tmp/mi-company-brain
+python scripts/company_brain_wizard.py --dry-run --company "Mi Empresa" --company-type agency --method-mode people --output /tmp/mi-company-brain
 
-# 2) Antes de una empresa real: preparar Slack/herramientas base.
-#    Slack es obligatorio para hablar con el primer agente.
-#    Slack conecta directo a Hermes; no hay capa externa en la ruta base.
-#    No se crean recursos externos desde el repo sin aprobación explícita.
+# 2) Crear primero la capa humana. No se crean recursos externos.
 
 # 3) Crear una instancia privada local
-python scripts/company_brain_wizard.py --company "Mi Empresa" --company-type agency --output /tmp/mi-company-brain --yes
+python scripts/company_brain_wizard.py --company "Mi Empresa" --company-type agency --method-mode people --output /tmp/mi-company-brain --yes
 
 # 4) Verificar que la instalación existe y tiene la estructura esperada
 python scripts/verify_installation.py /tmp/mi-company-brain
+python scripts/validate_people_readiness.py /tmp/mi-company-brain
 
-# 5) Validar primero en modo scaffold
+# 5) Cuando la capacidad esté organizada, ampliar sin sobrescribir el trabajo humano
+python scripts/company_brain_wizard.py --company "Mi Empresa" --company-type agency --method-mode hybrid --output /tmp/mi-company-brain --upgrade --yes
 python scripts/validate_point_b_readiness.py --mode scaffold /tmp/mi-company-brain
 ```
 
@@ -88,17 +100,16 @@ No uses una validación operativa fresca para afirmar que la empresa ya está li
 
 Rellena solo lo mínimo y seguro:
 
-1. **ORGO + Codex/Claude**: instala o conecta el operador instalador antes de tocar la empresa.
-2. **Slack mínimo obligatorio**: prepara la superficie de conversación y aprobaciones para hablar con el primer agente. Slack es interfaz, no memoria. Slack conecta directo a Hermes.
-3. **Memoria privada**: Supabase/Voyage/GBrain o estado explícito de pendiente si aún no se conectó.
-4. **CEO agent**: primer agente, limitado a Dirección / Mother Brain.
-5. **Dirección / Mother Brain**: visión, modelo, prioridades, criterios de decisión y límites de aprobación.
-6. **Organigrama inicial de agentes**: CEO propone qué agentes de departamento hacen falta.
-7. **Agentes de departamento**: cada agente entrevista solo su área: operaciones, marketing, growth/sales, producto/servicio, finanzas o postventa.
-8. **Observer agent**: observa contradicciones, huecos, receipts, cambios que deben entrar al cerebro, runtime health y digest diario read-only.
-9. **Primer Context Packet**: contexto suficiente para una acción interna pequeña.
-10. **Primera acción interna**: redactar, analizar, ordenar o preparar; no enviar ni publicar.
-11. **Receipt + Scorecard**: prueba de qué se hizo, quién revisó, qué cambió y siguiente sprint.
+1. **Rumbo**: propósito, meta, valores, forma de ganar, caja y North Stars.
+2. **Personas**: capacidades, asientos, fichas de puesto, decisiones y evaluación.
+3. **Procesos**: mapa y SOP de las capacidades críticas.
+4. **Operación humana**: caja, ejecución, indicadores, aprendizaje y reuniones.
+5. **Gate de agentización**: responsable, inputs, output, métrica, autoridad, evidencia y fallback.
+6. **Solo entonces ORGO + memoria + interfaz** para el primer agente.
+7. **Primer agente**: una capacidad madura, estado `draft` o `pilot`, permisos mínimos.
+8. **Primer Context Packet**: contexto suficiente para una acción interna pequeña.
+9. **Primera acción interna**: redactar, analizar, ordenar o preparar; no enviar ni publicar.
+10. **Receipt + Scorecard**: prueba de qué se hizo, quién revisó, qué cambió y siguiente sprint.
 
 Para los pasos 5-10, sigue la guía detallada: [`templates/how-to/run-first-internal-loop.md`](templates/how-to/run-first-internal-loop.md).
 Si no sabes qué acción elegir, usa ejemplos seguros en [`docs/44_first_operating_loop_examples.md`](docs/44_first_operating_loop_examples.md).
@@ -136,7 +147,7 @@ Incluye solo contexto seguro o anonimizado: tipo de empresa, paso donde te bloqu
 - [`docs/44_first_operating_loop_examples.md`](docs/44_first_operating_loop_examples.md) — ejemplos seguros de evidencia para agencia, consultoría y freelancer.
 - [`docs/45_slack_first_agent.md`](docs/45_slack_first_agent.md) — cómo empezar a hablar con el primer agente por Slack.
 - [`docs/48_observer_read_only_runtime.md`](docs/48_observer_read_only_runtime.md) — cómo crear Observer read-only con digest diario y escalación segura.
-- [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md) — flujo real ORGO → Codex/Claude → Slack → memoria → CEO → departamentos → Observer.
+- [`docs/46_orgo_first_company_onboarding.md`](docs/46_orgo_first_company_onboarding.md) — continuación híbrida desde una capacidad organizada hasta un primer agente supervisado.
 - [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) — errores habituales y arreglos copy/paste.
 - [`docs/12_get_help_from_dia_uno.md`](docs/12_get_help_from_dia_uno.md) — cómo pedir ayuda de forma segura.
 - [`templates/generated-company-instance/README.md`](templates/generated-company-instance/README.md) — plantilla de instancia privada generada.

@@ -1,0 +1,116 @@
+# DIA UNO Empresas — Schema: Hybrid Function Contract
+
+schema:
+  name: hybrid_function
+  version: "1.0"
+  description: >
+    Define una función compartida por una persona, un agente o una pareja
+    humano-agente sin perder responsabilidad, autoridad ni trazabilidad.
+
+fields:
+  - name: id
+    type: string
+    required: true
+    description: Identificador estable de la función o capacidad.
+    example: "function-delivery-qa"
+
+  - name: outcome
+    type: string
+    required: true
+    description: Resultado observable y verificable que produce la función.
+    example: "Entrega revisada contra la checklist de calidad."
+
+  - name: human_accountable
+    type: string
+    required: true
+    description: Persona o rol humano que responde por la función.
+    example: "head-of-delivery"
+
+  - name: executor_type
+    type: string
+    required: true
+    description: Forma actual de ejecución de la función.
+    enum:
+      - human
+      - agent
+      - human_agent_pair
+    example: "human_agent_pair"
+
+  - name: executor
+    type: string
+    required: true
+    description: Persona, agente o pareja que ejecuta actualmente la función.
+    example: "delivery-lead + delivery-qa-assistant"
+
+  - name: canonical_process
+    type: string
+    required: true
+    description: Referencia al proceso o SOP humano que gobierna el trabajo.
+    example: "personas/work/delivery-qa-sop.md"
+
+  - name: sources
+    type: list
+    required: true
+    description: Fuentes de verdad con propietario y vigencia definidos.
+    example:
+      - "project-brief: owner=delivery-lead; freshness=per-project"
+
+  - name: authority
+    type: object
+    required: true
+    description: Acciones autónomas, notificadas, aprobadas y prohibidas.
+    example:
+      autonomous:
+        - "run internal checklist"
+      notify:
+        - "flag a non-material defect"
+      approval_required:
+        - "contact client"
+      forbidden:
+        - "change contract scope"
+
+  - name: validation
+    type: string
+    required: true
+    description: Comprobación aplicada al resultado antes de aceptarlo.
+    example: "Checklist completa y revisión del delivery lead."
+
+  - name: evidence
+    type: list
+    required: true
+    description: Artefactos que permiten reconstruir la ejecución y su resultado.
+    example:
+      - "context packet"
+      - "receipt"
+      - "scorecard update"
+
+  - name: fallback
+    type: string
+    required: true
+    description: Estado seguro cuando falla la ejecución o la validación.
+    example: "Block agent execution and return the task to the delivery lead."
+
+example:
+  id: "function-delivery-qa"
+  outcome: "Entrega revisada contra la checklist de calidad."
+  human_accountable: "head-of-delivery"
+  executor_type: "human_agent_pair"
+  executor: "delivery-lead + delivery-qa-assistant"
+  canonical_process: "personas/work/delivery-qa-sop.md"
+  sources:
+    - "project-brief: owner=delivery-lead; freshness=per-project"
+  authority:
+    autonomous:
+      - "run internal checklist"
+    notify:
+      - "flag a non-material defect"
+    approval_required:
+      - "contact client"
+    forbidden:
+      - "change contract scope"
+  validation: "Checklist completa y revisión del delivery lead."
+  evidence:
+    - "context packet"
+    - "receipt"
+    - "scorecard update"
+  fallback: "Block agent execution and return the task to the delivery lead."

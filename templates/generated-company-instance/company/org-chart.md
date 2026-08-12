@@ -11,11 +11,13 @@ Status: `draft until reviewed`
 | `{{ owner }}` | Dirección / Owner | direction | (otros roles que cubre) | (dedicación) | (decisión o contrato) | (fecha ISO) |
 | (nombre) | (rol) | (departamento) | (otros roles) | (dedicación) | (fuente) | (fecha ISO) |
 
-## Empleados digitales activos
+## Asientos digitales propuestos o activos
 
 | Nombre | Departamento | Tipo | Permisos | Scorecard | Estado |
 |--------|-------------|------|----------|-----------|--------|
-| `{{ first_employee }}` | direction | CEO Agent | `digital-employees/ceo/PERMISSIONS.md` | (enlace a scorecard) | en prueba |
+| (ninguno por defecto) | (capacidad madura) | (tipo) | (enlace a permisos) | (enlace a scorecard) | propuesto |
+
+En modo `people` esta tabla permanece sin agentes. En modo `hybrid`, generar un pack no lo convierte en activo: registra por separado la evidencia y aprobación de cualquier cambio de estado.
 
 ## Vacantes y necesidades
 
@@ -41,7 +43,7 @@ Status: `draft until reviewed`
 
 1. Lista las personas que ya trabajan en el negocio, empezando por el fundador/owner.
 2. Para cada persona, indica qué departamento cubre y qué "sombreros" lleva.
-3. Lista los empleados digitales activos con su departamento y referencia a permisos.
+3. Solo en modo `hybrid`, lista los asientos digitales propuestos o realmente activos con referencia a permisos y evidencia del estado.
 4. Identifica vacantes: roles que nadie cubre o que dependen demasiado de una persona.
 5. Enlaza cada rol a `company/roles-and-responsibilities.md` y a `company/approval-boundaries.md`.
 

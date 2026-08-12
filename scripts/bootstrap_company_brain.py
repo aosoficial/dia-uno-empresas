@@ -13,6 +13,8 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+from method_assets import copy_method_assets, write_people_instance_readme
+
 ROOT = Path(__file__).resolve().parents[1]
 TEMPLATE = ROOT / "templates" / "generated-company-instance"
 SECRET_PATTERNS = [re.compile(r"(?i)(api[_-]?key|secret|password|token)\s*[:=]"), re.compile(r"-----BEGIN (RSA |OPENSSH |EC |DSA )?PRIVATE KEY-----"), re.compile(r"(?i)(postgres|mysql|mongodb)://")]
@@ -36,10 +38,16 @@ def render(text: str, values: dict[str, str]) -> str:
     return text
 
 
-def copy_template(output: Path, values: dict[str, str]) -> list[Path]:
+def copy_template(output: Path, values: dict[str, str], method_mode: str) -> list[Path]:
     written: list[Path] = []
     for source in TEMPLATE.rglob("*"):
         rel = source.relative_to(TEMPLATE)
+        if method_mode == "people" and rel.parts and rel.parts[0] in {
+            "departments", "digital-employees", "integrations", "skills", "roadmap", "examples"
+        }:
+            continue
+        if method_mode == "people" and rel.as_posix() == "FIRST_OPERATING_LOOP.md":
+            continue
         target = output / rel
         if source.is_dir():
             target.mkdir(parents=True, exist_ok=True)
@@ -61,6 +69,24 @@ def write_guided_scaffold_files(output: Path, args: argparse.Namespace) -> list[
     verifier and see that operational Punto B evidence remains pending.
     """
     files = {
+        "company/people-organization-plan.md": f"""# People Organization Plan
+
+Company: `{args.company}`
+Human accountable: `{args.owner}`
+Method mode: `{args.method_mode}`
+
+Complete Rumbo, seats, roles, decisions, evaluation, processes, SOPs, cash, execution, indicators, learning and meetings before agentizing a capability.
+""",
+        "company/people-readiness.md": f"""# People Readiness
+
+Company: `{args.company}`
+Responsible human: `{args.owner}`
+
+The 36 original Method V3 assets are installed. This scaffold does not prove that the company is organized, implemented or operational.
+""",
+    }
+    if args.method_mode == "hybrid":
+        files.update({
         "company/company-scorecard.md": f"""# Company AI-First Scorecard
 
 Company: `{args.company}`
@@ -130,7 +156,7 @@ Freshness: `draft until validated with evidence`
 
 A fresh bootstrap output should pass installation verification but fail operational validation until private evidence exists.
 """,
-    }
+        })
     written: list[Path] = []
     for rel, content in files.items():
         path = output / rel
@@ -144,39 +170,47 @@ def write_receipt(output: Path, args: argparse.Namespace) -> Path:
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     path = output / "receipts" / "installation-receipt.md"
     path.parent.mkdir(parents=True, exist_ok=True)
+    runtime_status = "not installed or verified" if args.method_mode == "people" else "scaffold only; not activated or verified"
+    agent_evidence = (
+        "- Department and digital-employee scaffolds: not installed in People mode."
+        if args.method_mode == "people"
+        else f"- First department scaffold: `direction`\n- First employee scaffold: `{args.first_employee}` (not active)"
+    )
     path.write_text(f"""# Installation Receipt
 
 Date: `{stamp}`
 Owner: `{args.owner}`
 Company instance: `{output}`
-Runtime: `Hermes / ORGO ready`
+Runtime: `{runtime_status}`
 Company type: `{args.company_type}`
+Method mode: `{args.method_mode}`
 
 ## What changed
 
-Private Company Brain instance bootstrapped for `{args.company}` with Dirección as the first department.
+Private Company Brain scaffold bootstrapped for `{args.company}` in `{args.method_mode}` mode. Human-method assets are installed first; agent assets exist only in hybrid mode.
 
 ## Why
 
-Prepare a safe AI-First company runtime with company memory, approvals, roadmap and one first digital employee.
+Prepare a safe organizational base that can remain People-only or continue to a governed hybrid system.
 
 ## Source / provenance
 
 - Bootstrap script: `scripts/bootstrap_company_brain.py`
 - Template: `templates/generated-company-instance/`
+- Human method: `personas/metodo-v3/`
 
 ## Evidence
 
 - Output path: `{output}`
-- First department: `direction`
-- First employee: `{args.first_employee}`
+{agent_evidence}
 
 ## Allowed next actions
 
 - Run verifier.
-- Complete `company/source-of-truth-map.md` before the first Context Packet.
-- Fill company intake.
-- Run one safe internal Dirección task.
+- Run the People readiness validator.
+- Complete the People layer with current private sources.
+- In hybrid mode only, complete `company/source-of-truth-map.md` before the first Context Packet.
+- Do not run an agent loop until the capability gate and runtime checks pass.
 
 ## Forbidden without approval
 
@@ -205,6 +239,7 @@ def main() -> int:
     parser.add_argument("--risk-tier", default="internal-low")
     parser.add_argument("--point-a", default="Knowledge scattered; processes manual; AI used ad hoc.")
     parser.add_argument("--first-objective", default="Install Dirección and complete one safe internal task with receipt.")
+    parser.add_argument("--method-mode", choices=["people", "hybrid"], default="hybrid", help="Install People only or People plus agent scaffolds")
     parser.add_argument("--output", required=True, help="Private output path outside this repo")
     parser.add_argument("--dry-run", action="store_true", help="Print what would be created")
     parser.add_argument("--yes", action="store_true", help="Actually write files")
@@ -215,7 +250,7 @@ def main() -> int:
         print("Company Brain bootstrap requires Dirección / direction as first department. Use the wizard for later rollout.", file=sys.stderr)
         return 2
 
-    for field in ["company", "company_type", "sector", "owner", "first_department", "first_employee", "language", "risk_tier", "point_a", "first_objective", "output"]:
+    for field in ["company", "company_type", "sector", "owner", "first_department", "first_employee", "language", "risk_tier", "point_a", "first_objective", "output", "method_mode"]:
         if has_secret(str(getattr(args, field))):
             print(f"Refusing possible secret in --{field.replace('_', '-')}", file=sys.stderr)
             return 2
@@ -243,6 +278,7 @@ def main() -> int:
         "{{ metric_1 }}": "TBD",
         "{{ metric_2 }}": "TBD",
         "{{ metric_3 }}": "TBD",
+        "{{ method_mode }}": args.method_mode,
     }
 
     dry_run = args.dry_run or not args.yes
@@ -250,8 +286,12 @@ def main() -> int:
         print("DRY RUN: no files written")
         print(f"Would create: {output}")
         print(f"Company: {args.company}")
-        print("First department: direction")
-        print(f"First employee: {args.first_employee}")
+        print(f"Method mode: {args.method_mode}")
+        if args.method_mode == "hybrid":
+            print("First department scaffold: direction")
+            print(f"First employee scaffold: {args.first_employee} (not active)")
+        else:
+            print("Department and digital-employee scaffolds: none")
         print("Next: rerun with --yes, then python scripts/verify_installation.py <output>")
         return 0
 
@@ -259,11 +299,14 @@ def main() -> int:
         print(f"Refusing to write into non-empty directory: {output}", file=sys.stderr)
         return 2
 
-    written = copy_template(output, values)
+    written = copy_template(output, values, args.method_mode)
+    copied_method_files = copy_method_assets(output, overwrite=True)
+    if args.method_mode == "people":
+        write_people_instance_readme(output, values)
     written.extend(write_guided_scaffold_files(output, args))
     receipt = write_receipt(output, args)
     print(f"Created private Company Brain instance: {output}")
-    print(f"Files written: {len(written) + 1}")
+    print(f"Files written: {len(written) + copied_method_files + 1}")
     print(f"Receipt: {receipt}")
     print(f"Next: python scripts/verify_installation.py {output}")
     return 0

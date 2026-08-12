@@ -1,6 +1,6 @@
 # Non-technical start: use Codex or Claude Code as installer operator
 
-Use this first if you are not sure how technical you are, or if you want an AI assistant to help you install your private Company Brain instance.
+Use this first if you are not sure how technical you are, or if you want an AI assistant to help you install a private People-first company instance and, later, an optional hybrid scaffold.
 
 In the ORGO-first flow, the user starts in **ORGO** and installs or connects **Codex** or **Claude Code** first. That assistant becomes the installer operator for DIA UNO. See `docs/46_orgo_first_company_onboarding.md` for the full real-company sequence.
 
@@ -39,15 +39,18 @@ After the mode is selected:
 3. Explain that tools/accounts should use free plans or free tier first when available.
 4. Ask me to create required accounts only when needed.
 5. Never ask me to paste real API keys, passwords or tokens into chat. Tell me where to store them locally instead.
-6. Help me prepare Slack as the mandatory first human-agent interface. Do not launch the first agent until I can talk to it through Slack.
-7. Connect Slack directly to Hermes. Do not add an external integration layer in the base path.
-8. Create the private Company Brain instance outside the public repo after Slack is approved/created/configured.
-9. Help me configure the private memory path: Supabase/Postgres, Voyage and GBrain/Company Brain, or mark it explicitly pending if not connected yet.
-10. Keep all internal files inside the generated private folder hierarchy. Do not create random folders elsewhere unless I explicitly approve.
-11. Create or guide the first digital employee SOUL.md: CEO Agent, limited to Dirección.
-12. Do not ask CEO to interview marketing, operations, product, growth, finance or post-sale. Those interviews belong to department agents later.
-13. Define the Observer agent as a memory/system observer, not as a business executor.
-14. Stop after the first safe internal operating loop with Context Packet, human review, Receipt and scorecard.
+6. Create the private Company Brain instance outside the public repo in `people` mode.
+7. Help me organize Rumbo, people/seats, decisions, processes, SOPs, cash, execution, indicators, learning and meetings.
+8. Keep all internal files inside the generated private folder hierarchy. Do not create random folders elsewhere unless I explicitly approve.
+9. Do not propose an agent until one capability has a human accountable, followed SOP, current sources, measurable output, authority boundary, evidence and fallback.
+10. When that gate passes, upgrade the same instance to `hybrid` without overwriting my People work.
+11. Help me prepare Slack as the mandatory first human-agent interface in the current guided path. Do not launch an agent until I can talk to it through Slack.
+12. Connect Slack directly to Hermes. Do not add an external integration layer in the base path.
+13. Help me configure the private memory path: Supabase/Postgres, Voyage and GBrain/Company Brain, or mark it explicitly pending if not connected yet.
+14. Create or guide one capability-agent pack, limited to its approved function and starting in `draft` or `pilot`. `CEO Agent` remains the compatible pack name when the selected mature capability belongs to Dirección; it is not mandatory and is not active merely because its files exist.
+15. Do not ask that agent to interview areas outside its function. Those capabilities stay People-owned until their own gate passes.
+16. Define the Observer agent as a memory/system observer, not as a business executor.
+17. Stop after the first safe internal operating loop with Context Packet, human review, Receipt and scorecard.
 
 If a command is destructive, paid, public, external, legal, production-related or sensitive, ask me before doing it.
 ```
@@ -147,34 +150,44 @@ Rules:
 
 Suggested order for ORGO-first onboarding:
 
-1. ORGO installed by the user.
-2. Codex or Claude Code desktop/terminal connected from ORGO as installer operator.
-3. GitHub account or repo access, if needed to clone/open/update DIA UNO.
-4. Local runtime requirements from this repo.
-5. Slack workspace/app setup for the first interface. For real installs, Slack is mandatory before launching the first agent and connects directly to Hermes.
-6. Supabase/Postgres, Voyage and GBrain/Company Brain for private memory, using free/free-tier first when possible.
-7. Optional integrations only after the private brain and approval rules exist.
+1. GitHub account or repo access, if needed to clone/open/update DIA UNO.
+2. Local runtime requirements from this repo.
+3. Private `people` instance and one organized capability.
+4. ORGO installed by the user when continuing to agents.
+5. Codex or Claude Code connected from ORGO as installer operator.
+6. Slack workspace/app setup for the first interface. In the current guided path, Slack is mandatory before launching the first agent and connects directly to Hermes.
+7. Supabase/Postgres, Voyage and GBrain/Company Brain for private memory, using free/free-tier first when possible.
+8. Optional integrations only after the private brain and approval rules exist.
 
 ## Folder hierarchy rule
 
 The generated private instance is the operating boundary. Keep work inside it.
 
-A normal private instance should look like this:
+A People instance should look like this:
 
 ```text
 my-company-brain/
   README.md
+  METHOD.json
   MAP.md
-  FIRST_OPERATING_LOOP.md
+  personas/
   company/
-  departments/
-  digital-employees/
   context-packets/
   receipts/
   statechanges/
-  scorecards/
-  decisions/
   secrets/
+```
+
+After a hybrid upgrade it additionally contains:
+
+```text
+my-company-brain/
+  FIRST_OPERATING_LOOP.md
+  departments/
+  digital-employees/
+  integrations/
+  roadmap/
+  skills/
 ```
 
 Rules:
@@ -192,19 +205,20 @@ This protects the user's future Company Brain from becoming scattered again.
 
 The first goal is not a full company transformation.
 
-The first goal is:
+The first People goal is:
 
-1. Prepare Slack as the mandatory conversation surface for the first agent.
-2. Create the private instance.
-3. Verify the scaffold.
-4. Create the first digital employee: `CEO` agent for Dirección only.
-5. Review its `SOUL.md`.
-6. CEO interviews Dirección only and proposes the first department-agent roster.
-7. Create one safe Context Packet.
-8. Run one internal action only.
-9. Human reviews the result.
-10. Save an Operational Receipt.
-11. Update the scorecard.
+1. Create the private instance in `people` mode.
+2. Verify its structure and the 36 original assets.
+3. Organize one capability with a human accountable, SOP, current sources, measurable output, authority boundary, evidence and fallback.
+4. Review that People work; the structural validator alone is not proof of implementation.
+
+Only then, if the company continues to agents:
+
+5. Upgrade the same instance to `hybrid` without overwriting People work.
+6. Prepare Slack and private memory before launching the first capability agent.
+7. Review its `SOUL.md`, permissions and `draft` or `pilot` status.
+8. Create one safe Context Packet and run one internal action only.
+9. Human reviews the result, saves a Receipt and updates the scorecard.
 
 After that, the operational validator can be run. Until then, examples are examples; they are not Point B evidence.
 
@@ -214,8 +228,9 @@ After that, the operational validator can be run. Until then, examples are examp
 - Do not ask for customer names, contracts or private files.
 - Do not request API keys in chat.
 - Do not connect Gmail, CRM, payment processors, production databases or social media.
-- Do not ask CEO to do deep discovery for marketing, operations, product, growth, finance or post-sale.
-- Do not create department agents before CEO has proposed the roster and the human has approved it.
+- Do not use an agent to compensate for a missing human accountable, SOP, metric, source or decision boundary.
+- Do not ask one agent to do deep discovery outside its approved capability.
+- Do not create further agents before each capability passes its own gate.
 - Do not let the Observer agent execute business actions directly; it observes, connects memory and flags gaps.
 - Do not publish websites, posts or public claims.
 - Do not claim the company is AI-first or at Point B just because files exist.
@@ -226,13 +241,11 @@ After that, the operational validator can be run. Until then, examples are examp
 This bootstrap is done when there is:
 
 - selected AI-level mode;
-- Slack working as the first-agent conversation surface;
 - private instance outside the public repo;
-- verified scaffold;
-- first CEO agent `SOUL.md` reviewed;
-- CEO scope limited to Dirección;
-- department-agent interviews deferred to department agents;
-- Observer agent defined as a memory/system observer;
+- verified People scaffold and intact originals;
+- one capability organized with named human accountability and current evidence;
 - folder boundary understood;
 - no secrets in chat or Git;
-- next step is the first internal operating loop.
+- next step is either continued People implementation or an explicit hybrid upgrade.
+
+Hybrid continuation is done only when Slack/memory are ready, one capability-agent pack has been reviewed in `draft` or `pilot`, Observer is defined when needed and the next step is the first supervised internal loop.

@@ -1,6 +1,6 @@
 # Acme Growth Studio — synthetic Company Brain example
 
-This is a synthetic, fake company example for DIA UNO Empresas. It demonstrates how an agency can move from Punto A to Punto B AI-First using a private generated instance, Direction / Mother Brain, department brains, first digital employee, context packet, receipt, statechange, handoff and roadmap.
+This is a synthetic, fake company example for DIA UNO Empresas. It demonstrates the shape of a hybrid Point B evidence set after People organization: Direction / Mother Brain, department brains, a bounded digital employee, context packet, receipt, statechange, handoff and roadmap.
 
 Acme Growth Studio is not a real client. It contains no real private data, secrets, customer records or production access. All numbers are illustrative.
 
@@ -10,7 +10,7 @@ Acme is a 7-person growth agency with scattered client knowledge, manual deliver
 
 ## Punto B AI-First
 
-Acme has a Direction / Mother Brain, departments, scorecards, approval boundaries, digital employees, receipts, statechanges, context packets, handoffs and a 48h / 7d / 30d rollout plan. The first digital employee is CEO/Dirección, with internal reviews only.
+In this fictional scenario, Acme has a Direction / Mother Brain, departments, scorecards, approval boundaries, digital employees, receipts, statechanges, context packets, handoffs and a 48h / 7d / 30d rollout plan. The example digital employee is CEO/Dirección in `assisted`, with internal reviews only. These files do not prove a live runtime or real company implementation.
 
 ## First run
 

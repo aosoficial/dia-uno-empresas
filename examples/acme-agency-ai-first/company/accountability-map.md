@@ -13,7 +13,7 @@ People seats before agent seats.
 
 ## Digital employee seats
 
-- CEO Agent: `active first`, Dirección only.
+- CEO Agent: synthetic example state `assisted`, Dirección only; this is not evidence of a live runtime.
 - Department assistants: `created only after department brain exists`
 
 ## Rule

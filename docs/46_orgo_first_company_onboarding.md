@@ -1,8 +1,8 @@
-# ORGO-first company onboarding
+# People-first to ORGO hybrid onboarding
 
-Goal: install the first real DIA UNO company from ORGO without turning the first interaction into a broad consulting interrogation.
+Goal: continue one organized capability from the People layer into a governed hybrid pilot without turning the first interaction into a broad consulting interrogation.
 
-The client experience starts in **ORGO**. ORGO's first practical job is to help the user install or connect **Codex** or **Claude Code** as the technical installer operator. ORGO itself is not treated as the business consultant at this point.
+The company starts in the `people` layer. **ORGO** enters only when a capability has a named human accountable, followed SOP, current sources, measurable output, authority boundaries and fallback. ORGO then helps install or connect **Codex** or **Claude Code** as the technical installer operator. ORGO itself is not treated as the business consultant.
 
 ## Installer operator autopilot
 
@@ -25,22 +25,51 @@ The user should not need to say: "read START_HERE", "pull the repo", "check the 
 
 Do not ask the company to explain every department at the beginning.
 
-Install the operating base first:
+Install the operating base in this order:
 
-1. ORGO.
-2. Codex or Claude Code as installer operator.
-3. DIA UNO framework.
-4. Private company instance.
-5. Supabase + Voyage + public GBrain (`https://github.com/garrytan/gbrain`) as the private company memory.
-6. Slack as the mandatory first human-agent interface.
-7. Hermes profile/gateway connecting Slack to the agent runtime.
-8. Base tools/integrations needed for the first operating loop.
-9. First agent: CEO.
-10. Observer agent.
-11. Department agents.
-12. Company knowledge, built through agent-led interviews and evidence.
+1. Private `people` instance.
+2. Rumbo, accountable seats, decisions, processes, SOPs, metrics and cadence.
+3. Agentization gate for one mature capability.
+4. Upgrade the private instance to `hybrid` without overwriting People work.
+5. ORGO plus Codex or Claude Code as installer operator.
+6. Supabase + Voyage + public GBrain (`https://github.com/garrytan/gbrain`) as private company memory.
+7. Slack as the mandatory first human-agent interface in the current guided path.
+8. Hermes profile/gateway connecting Slack to the agent runtime.
+9. Minimum tools for the bounded loop.
+10. First capability agent in `draft` or `pilot`.
+11. Observer agent when needed.
+12. Other capabilities only after their own People and agentization gates.
 
 ## Sequence
+
+### 0. Organize one capability before ORGO
+
+Create and validate the People instance first:
+
+```bash
+python scripts/company_brain_wizard.py \
+  --company "Acme Demo" \
+  --company-type agency \
+  --method-mode people \
+  --output /private/path/to/company-brain \
+  --yes
+python scripts/validate_people_readiness.py /private/path/to/company-brain
+```
+
+The structural validator is necessary but not sufficient. Review that the chosen capability has a human accountable, followed SOP, current sources, measurable output, authority boundaries, evidence and fallback. If it does not, remain in People mode.
+
+Then add only inert hybrid scaffolds:
+
+```bash
+python scripts/company_brain_wizard.py \
+  --company "Acme Demo" \
+  --company-type agency \
+  --method-mode hybrid \
+  --output /private/path/to/company-brain \
+  --upgrade --yes
+```
+
+This does not activate anything.
 
 ### 1. ORGO installs the installer operator
 
@@ -70,13 +99,13 @@ Client-facing language:
 
 Do not make the client reason about branches, commits or repo internals unless they are technical.
 
-### 3. Create the private company instance before agents talk
+### 3. Verify the private company instance before agents talk
 
-Create the private folder where the company will live before Slack is used for a real CEO conversation.
+Verify the private folder and its People work before Slack is used for a real agent conversation.
 
 This is not the public framework repo. It is the company's operating space.
 
-It contains:
+In hybrid mode it contains:
 
 - company brain;
 - approval boundaries;
@@ -88,7 +117,7 @@ It contains:
 - integrations;
 - secrets instructions, never real secrets.
 
-### 4. Install private memory infrastructure before Slack CEO launch
+### 4. Install private memory infrastructure before the capability-agent launch
 
 Install/configure the company memory layer:
 
@@ -97,7 +126,7 @@ Install/configure the company memory layer:
 - public GBrain (`https://github.com/garrytan/gbrain`) / Company Brain for pages, context, receipts, statechanges, links and operational state;
 - runtime config and secrets outside Slack and outside Git.
 
-Verify it before the first CEO conversation:
+Verify it before the first capability-agent conversation:
 
 ```bash
 python scripts/check_private_memory_readiness.py \
@@ -107,11 +136,11 @@ python scripts/check_private_memory_readiness.py \
 
 Client-facing language:
 
-> We are installing the private memory of your company before activating the CEO. Slack is only the interface; GBrain/Supabase/Voyage are where operational memory lives.
+> We are installing the private memory of your company before activating the first capability agent. Slack is only the interface; GBrain/Supabase/Voyage are where operational memory lives.
 
 Do not ask the user to paste API keys, passwords, Slack tokens or connection strings into chat.
 
-If memory is not ready, stop before launching CEO and record the blocker with owner, reason, approval needed and expected outcome. Do not compensate by treating Slack chat as memory.
+If memory is not ready, stop before launching the capability agent and record the blocker with owner, reason, approval needed and expected outcome. Do not compensate by treating Slack chat as memory.
 
 ### 5. Prepare Slack before creating agents or deep discovery
 
@@ -121,7 +150,7 @@ For a real company install, the installer operator must explicitly tell the user
 
 Create only the minimum channels:
 
-- `#00-direction` — CEO agent, priorities, decisions, escalations.
+- `#00-direction` — Direction capability agent when that is the selected first scope; priorities, decisions and escalations.
 - `#90-approvals` — human approvals.
 - `#99-receipts` — receipt notifications.
 
@@ -153,11 +182,11 @@ At minimum, classify each tool as:
 - pending credentials stored outside Git/chat;
 - not needed for Sprint 0.
 
-### 7. Create the first agent: CEO
+### 7. Create the first capability agent
 
-The first agent is **CEO**, not a generic all-area assistant.
+The first agent implements one mature capability and starts in `draft` or `pilot`. The existing CEO pack is a compatible default for a Direction capability, not a requirement to invent a CEO before the organization is ready.
 
-CEO owns only **Dirección** at the beginning:
+If the chosen capability belongs to **Dirección**, its bounded scope may include:
 
 - vision;
 - business model;
@@ -166,11 +195,11 @@ CEO owns only **Dirección** at the beginning:
 - risk appetite;
 - company-level constraints;
 - approval boundaries;
-- which department agents are needed first.
+- which capability-agent seats may be useful later.
 
-CEO must not run a deep interview about marketing, operations, product, growth, finance or post-sale. Those areas belong to department agents.
+The agent must not run a deep interview outside its approved capability. Other areas remain People-owned until their own gates pass.
 
-### 8. CEO interviews Dirección only
+### 8. The capability agent interviews only its approved scope
 
 The first interview should be short and directional.
 
@@ -187,7 +216,7 @@ Avoid asking for full department processes at this stage.
 
 ### 9. Create the Observer agent as read-only guard
 
-Create an **Observer** agent after CEO/Dirección exists and before department agents are opened.
+Create an **Observer** agent after the first governed capability exists and before broader agent rollout.
 
 The Observer does not run the company, does not interview departments and does not replace department owners. Its first job is to watch the Slack ↔ agents ↔ Company Brain loop for evidence quality and memory coherence.
 
@@ -203,9 +232,9 @@ It watches for:
 
 The Observer proposes memory updates and asks for approval when needed. It must not connect tools, change permissions or execute business actions directly.
 
-### 10. CEO proposes the first department-agent org chart
+### 10. The responsible human proposes the next capability-agent seats
 
-CEO proposes the first agent roster, for example:
+The responsible human may propose later agent seats, for example:
 
 - Operations;
 - Marketing;
@@ -215,7 +244,7 @@ CEO proposes the first agent roster, for example:
 - Post-sale / Customer Success;
 - Legal / Compliance if needed.
 
-The human approves the roster before more agents are created.
+Each capability must pass its own gate before more agents are created.
 
 ### 11. Department agents interview their own areas
 
@@ -242,10 +271,10 @@ The ORGO-first onboarding is ready for the first real company when:
 - Supabase/Voyage/GBrain memory path is configured and passes `scripts/check_private_memory_readiness.py --strict`, or it is explicitly recorded as a launch blocker;
 - Slack minimum channels exist;
 - Slack app exists and is connected directly to a Hermes profile/gateway;
-- CEO agent exists and is limited to Dirección;
+- one capability agent exists in `draft` or `pilot` and is limited to its approved scope;
 - Observer agent exists or is explicitly marked pending as a read-only memory/evidence guard;
-- no department deep-dive has been asked by CEO;
-- the first department-agent plan is proposed for approval;
+- no agent has performed a deep-dive outside its approved capability;
+- any next capability-agent proposal remains subject to its own People and agentization gates;
 - secrets remain outside chat and Git;
 - first receipt/statechange rules are clear.
 
@@ -253,9 +282,9 @@ The ORGO-first onboarding is ready for the first real company when:
 
 Do not:
 
-- ask the whole company diagnosis before Slack and memory exist;
+- ask for broad agent-led diagnosis before People organization, Slack and memory exist;
 - offer Slack as optional or launch the first agent without a working Slack surface;
-- make CEO interview every department;
+- make one agent interview every department;
 - store truth in Slack;
 - create many agents before approval boundaries exist;
 - ask for tokens/secrets in chat;

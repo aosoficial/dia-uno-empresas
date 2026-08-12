@@ -2,7 +2,7 @@
 # Operator shortcuts for validation, guided pilot evidence and Punto B readiness.
 # Approval stays human-owned; these commands only create or verify local artifacts.
 
-.PHONY: validate demo-agency point-b-scaffold point-b-operational point-b memory-preflight slack-hermes-plan
+.PHONY: validate demo-agency demo-people point-b-scaffold point-b-operational point-b people-check memory-preflight slack-hermes-plan
 
 INSTANCE ?= /tmp/company-brain-demo-agency
 PROFILE ?= demo-ceo
@@ -13,6 +13,7 @@ validate:
 	$(PYTHON) scripts/validate_schemas.py
 	$(PYTHON) scripts/validate_links.py
 	$(PYTHON) scripts/validate_public_safety.py
+	$(PYTHON) scripts/validate_method_layers.py
 	$(PYTHON) scripts/validate_installable_runtime.py
 	$(PYTHON) scripts/validate_department_quality.py templates
 	$(PYTHON) -m pytest -q
@@ -22,6 +23,15 @@ demo-agency:
 	$(PYTHON) scripts/company_brain_wizard.py --company "Demo Agency" --company-type agency --output $(INSTANCE) --yes
 	$(PYTHON) scripts/verify_installation.py $(INSTANCE)
 	$(PYTHON) scripts/validate_point_b_readiness.py --mode scaffold $(INSTANCE)
+
+demo-people:
+	rm -rf $(INSTANCE)
+	$(PYTHON) scripts/company_brain_wizard.py --company "Demo Agency" --company-type agency --method-mode people --output $(INSTANCE) --yes
+	$(PYTHON) scripts/verify_installation.py $(INSTANCE)
+	$(PYTHON) scripts/validate_people_readiness.py $(INSTANCE)
+
+people-check:
+	$(PYTHON) scripts/validate_people_readiness.py $(INSTANCE)
 
 point-b-scaffold:
 	$(PYTHON) scripts/validate_point_b_readiness.py --mode scaffold $(INSTANCE)

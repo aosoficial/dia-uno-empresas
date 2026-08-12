@@ -10,7 +10,7 @@ Status: `draft until reviewed`
 |-----|----------------------|-------------|-------------|-------------------------------|------------|--------|----------------|
 | Dirección / Owner | humano | `{{ owner }}` | direction | Definir visión, prioridades, aprobar compromisos externos | Económico, legal, publicación, externo | (decisión, contrato) | (fecha ISO) |
 | (rol operativo) | humano | (nombre) | (departamento) | (lista breve de responsabilidades) | (qué aprueba este rol) | (fuente) | (fecha ISO) |
-| `{{ first_employee }}` | digital | (nombre del agente) | direction | Redactar, analizar, preparar — sin acciones externas | nada — escala a humano | PERMISSIONS.md | (fecha ISO) |
+| (agente, solo hybrid) | digital | (nombre del agente) | (capacidad madura) | (alcance derivado del SOP) | nada material — escala a humano | PERMISSIONS.md + Receipt | (fecha ISO) |
 
 ## Matriz RACI simplificada
 
@@ -47,7 +47,7 @@ Regla base: el agente devuelve output al humano para revisión. El humano decide
 1. Lista los roles que existen en tu negocio (no las personas — un mismo humano puede tener varios roles).
 2. Para cada rol, define las responsabilidades concretas.
 3. Rellena la matriz RACI para los 3-5 procesos más importantes.
-4. Documenta los handoffs humano-agente.
+4. Documenta los handoffs humano-agente solo en modo `hybrid`; en modo `people`, déjalos como no aplicables.
 5. Enlaza a `company/approval-boundaries.md` para las reglas de aprobación.
 
 Plantilla de referencia: [`templates/company/roles-and-responsibilities.md`](../../company/roles-and-responsibilities.md)

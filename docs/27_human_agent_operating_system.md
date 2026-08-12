@@ -1,6 +1,14 @@
 # Human-Agent Operating System
 
-DIA UNO Empresas organizes people first, then agents. Agents amplify an operating system; they do not replace accountability.
+DIA UNO Empresas separates three layers: [Personas](../personas/README.md), [Agentes](../agentes/README.md) and the shared [Sistema Híbrido](../sistema-hibrido/README.md). Agents amplify an organized function; they do not replace accountability.
+
+## OAE
+
+1. Organizar personas.
+2. Agentizar capacidades maduras.
+3. Escalar el sistema híbrido mediante evidencia.
+
+Every function can be executed by a person, an agent or a human-agent pair, but it always keeps a named human accountable. Use the [function contract](../sistema-hibrido/contrato-de-funcion.md) and [equivalence matrix](../sistema-hibrido/matriz-de-equivalencias.md) rather than maintaining two separate truths.
 
 ## Core artifacts
 
