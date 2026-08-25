@@ -33,17 +33,44 @@ jobs:
       - name: Validate public safety
         run: python scripts/validate_public_safety.py
 
+      - name: Validate three-layer method and V3 integrity
+        run: python scripts/validate_method_layers.py
+
       - name: Validate installable runtime
         run: python scripts/validate_installable_runtime.py
 
       - name: Run self-serve regression tests
         run: python -m pytest tests/test_guided_pilot_self_serve.py -q -p no:cacheprovider
 
+      - name: Run People and hybrid method tests
+        run: python -m pytest tests/test_three_layer_method.py -q -p no:cacheprovider
+
+      - name: Smoke test People-only installation
+        run: |
+          python scripts/company_brain_wizard.py --company "People Demo" --company-type agency --method-mode people --output /tmp/people-company --yes
+          python scripts/verify_installation.py /tmp/people-company
+          python scripts/validate_people_readiness.py /tmp/people-company
+          test ! -e /tmp/people-company/digital-employees
+          test ! -e /tmp/people-company/departments
+          test ! -e /tmp/people-company/integrations
+          test ! -e /tmp/people-company/FIRST_OPERATING_LOOP.md
+
+      - name: Smoke test People-to-hybrid upgrade
+        run: |
+          printf '\nPRESERVE-ME\n' >> /tmp/people-company/company/people-organization-plan.md
+          python scripts/company_brain_wizard.py --company "People Demo" --company-type agency --method-mode hybrid --output /tmp/people-company --upgrade --yes
+          grep -q 'PRESERVE-ME' /tmp/people-company/company/people-organization-plan.md
+          test -f /tmp/people-company/HYBRID_CONTINUATION.md
+          test -f /tmp/people-company/digital-employees/ceo/PERMISSIONS.md
+          python scripts/verify_installation.py /tmp/people-company
+          python scripts/validate_point_b_readiness.py --mode scaffold /tmp/people-company
+
       - name: Smoke test guided wizard
         run: |
           python scripts/company_brain_wizard.py --dry-run --company "Acme Demo" --company-type agency --output /tmp/acme-company-brain
           python scripts/company_brain_wizard.py --company "Acme Demo" --company-type agency --output /tmp/acme-company-brain --yes
           python scripts/verify_installation.py /tmp/acme-company-brain
+          python scripts/validate_people_readiness.py /tmp/acme-company-brain
           python scripts/validate_point_b_readiness.py --mode scaffold /tmp/acme-company-brain
           if python scripts/validate_point_b_readiness.py --mode operational /tmp/acme-company-brain; then
             echo "Fresh wizard scaffold must not pass operational Point B readiness" >&2

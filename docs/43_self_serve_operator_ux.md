@@ -8,6 +8,9 @@ Recommended commands:
 
 ```bash
 make validate
+make demo-people
+make people-check INSTANCE=/tmp/company-brain-demo-agency
+# Only after a capability is organized, upgrade that private instance to hybrid.
 make demo-agency
 make point-b-scaffold INSTANCE=/tmp/company-brain-demo-agency
 # Only after a reviewed first internal loop with real evidence:
@@ -28,14 +31,20 @@ If `make` is unavailable, run the Python commands printed by the wizard. For cop
 
 ## Wizard output requirements
 
-The wizard should produce:
+Every mode should produce:
+
+- method mode and explicit scaffold status;
+- the preserved People method and integrity evidence;
+- People organization plan and readiness check;
+- installation Receipt;
+- verifier command.
+
+Hybrid mode should additionally produce:
 
 - readiness score;
 - recommended first departments;
 - guided pilot plan;
 - Point B readiness scorecard;
-- installation Receipt;
-- verifier command;
 - Point B validator command.
 
 ## Troubleshooting
@@ -44,7 +53,7 @@ Full practical guide: [`TROUBLESHOOTING.md`](TROUBLESHOOTING.md). It includes ex
 
 ### The verifier fails
 
-Fix the missing file or folder. Do not continue with agent work until the private instance has Direction, source-of-truth map, approvals, context packets, receipts and digital employee permissions.
+Fix the missing file or folder. In People mode, do not continue until the method, Direction, accountability, decisions, process and cadence scaffolds are intact. In hybrid mode, also require source-of-truth map, approvals, context packets, receipts and digital employee permissions before agent work.
 
 ### The Point B validator fails
 

@@ -10,44 +10,42 @@ This is the maximum self-serve path for a non-technical operator. It keeps the r
 
 ## The safe self-serve promise
 
-You can install a private Company Brain instance, diagnose your Punto A, choose the first department, run one internal digital employee loop and produce evidence. The repo does not send messages, spend money, change production or handle real client data automatically.
+You can install a private People instance, organize one capability and produce evidence. If that capability becomes mature, you can upgrade the same instance and run one supervised internal agent loop. The repo does not send messages, spend money, change production or handle real client data automatically.
 
 ## Step 1 — run the dry run
 
 ```bash
-python scripts/company_brain_wizard.py --dry-run --company "Acme Demo" --company-type agency --output /tmp/acme-company-brain
+python scripts/company_brain_wizard.py --dry-run --company "Acme Demo" --company-type agency --method-mode people --output /tmp/acme-company-brain
 ```
 
 Evidence:
-- readiness score;
-- recommended departments now;
-- recommended next sprint.
+- selected method mode;
+- People organization sequence;
+- installation and integrity checks to run next.
 
-Next action: read the dry-run output. If it recommends Direction first, do not skip it.
+Next action: read the dry-run output and start with Rumbo and human accountability.
 
 ## Step 2 — create the private instance
 
 ```bash
-python scripts/company_brain_wizard.py --company "Acme Demo" --company-type agency --output /tmp/acme-company-brain --yes
+python scripts/company_brain_wizard.py --company "Acme Demo" --company-type agency --method-mode people --output /tmp/acme-company-brain --yes
 python scripts/verify_installation.py /tmp/acme-company-brain
-python scripts/validate_point_b_readiness.py --mode scaffold /tmp/acme-company-brain
+python scripts/validate_people_readiness.py /tmp/acme-company-brain
 ```
 
-This first validation is scaffold-only: it checks that the private instance was created with the expected structure. Operational Point B validation is expected to fail on a fresh scaffold because no human-reviewed evidence exists yet. Run operational mode only after one internal loop has a real Context Packet, reviewed source-of-truth map, human review, Receipt, scorecard update and approval boundaries.
+These checks confirm structure, inventory and byte-for-byte integrity. They do not prove that the company has implemented the method.
 
 Approval: writing local files is safe. Any external/public/economic/legal/production/sensitive action still requires a human decision.
 
-## Step 3 — fill only safe private context
+## Step 3 — organize one capability with safe private context
 
 Fill:
-- offer;
-- ICP;
-- bottleneck;
-- owner;
-- tools map;
+- Rumbo and the capability outcome;
+- one human accountable;
+- role, decision boundary and evaluation rule;
+- one process and its SOP;
 - source-of-truth map with owner, freshness, permissions, risks and evidence path;
-- scorecard values;
-- one internal workflow.
+- metric, cadence and fallback.
 
 Do not paste:
 - passwords;
@@ -57,7 +55,17 @@ Do not paste:
 - regulated personal data;
 - production credentials.
 
-## Step 4 — run one internal action
+## Step 4 — upgrade only when the capability is mature
+
+```bash
+python scripts/company_brain_wizard.py --company "Acme Demo" --company-type agency --method-mode hybrid --output /tmp/acme-company-brain --upgrade --yes
+python scripts/verify_installation.py /tmp/acme-company-brain
+python scripts/validate_point_b_readiness.py --mode scaffold /tmp/acme-company-brain
+```
+
+The upgrade adds missing agent and department scaffolds without overwriting People work. It does not activate anything.
+
+## Step 5 — run one internal action
 
 Use the first digital employee only to draft, analyze or prepare. It may create a context packet, QA checklist, proposal draft or SOP draft. It may not send, publish, invoice, deploy or change client systems.
 
@@ -70,7 +78,7 @@ Evidence:
 - Receipt;
 - StateChange when the operating system changed.
 
-## Step 5 — ask for help only with safe blockers
+## Step 6 — ask for help only with safe blockers
 
 If blocked, use the DIA UNO blocker template. Strip private details. Share the bottleneck, company type, maturity level, what you tried and what evidence exists.
 

@@ -5,20 +5,25 @@ Owner: `{{ owner }}`
 Sector: `{{ sector }}`
 Language: `{{ language }}`
 Risk tier: `{{ risk_tier }}`
+Method mode: `{{ method_mode }}`
 
-## Load order for agents
+## Load order
 
 1. `AGENTS.md`
-2. `integrations/slack-first-agent.md` when Slack is the active interface
-3. `company/approval-boundaries.md`
-4. `company/company-brain.md` for Dirección / CEO context
-5. `company/source-of-truth-map.md`
-6. Relevant department brain only after the department agent exists: `departments/<department>/department-brain.md`
-7. Latest context packet, receipt, statechange or handoff
+2. `METHOD.json`
+3. `personas/README.md` and `personas/metodo-v3/INVENTARIO.md`
+4. `company/people-organization-plan.md` and `company/people-readiness.md`
+5. `company/approval-boundaries.md`
+6. `company/company-brain.md` and `company/source-of-truth-map.md`
+7. In hybrid mode only: agent contract, relevant department brain and latest context packet/receipt/statechange/handoff.
 
 ## Core locations
 
 - Private onboarding guide: `README.md`
+- Method mode and status: `METHOD.json`
+- People method: `personas/`
+- People organization plan: `company/people-organization-plan.md`
+- People readiness: `company/people-readiness.md`
 - Company brain / Direction: `company/company-brain.md`
 - Source-of-truth / existing systems map: `company/source-of-truth-map.md`
 - Approval boundaries: `company/approval-boundaries.md`
@@ -43,8 +48,9 @@ Use this hierarchy:
 ```text
 ./
   company/              # Direction / Mother Brain, approvals, scorecards
-  departments/          # one folder per department brain
-  digital-employees/    # SOUL.md and operating files per AI employee
+  personas/             # human method, inventory and preserved originals
+  departments/          # hybrid mode: one folder per department brain
+  digital-employees/    # hybrid mode: operating files per AI employee
   context-packets/      # approved context for work
   receipts/             # evidence of completed work
   statechanges/         # durable operational changes
@@ -61,7 +67,7 @@ Rules:
 - Do not move operational artifacts to Desktop/Downloads unless the human explicitly approves.
 - Do not store secrets, passwords, API keys or tokens in chat or Git.
 - Do not store Slack bot tokens, signing secrets, webhooks or model/provider credentials in this folder.
-- CEO interviews Dirección only. Marketing, operations, product, growth/sales, finance and post-sale are interviewed by their department agents.
+- Any capability agent stays inside its approved function. Other areas are organized first and considered separately; generation never grants an agent broader scope.
 - Observer observes and proposes memory maintenance; it does not execute business actions directly.
 - If a new folder is needed, explain why it belongs in this hierarchy first.
 

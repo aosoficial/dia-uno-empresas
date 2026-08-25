@@ -7,7 +7,7 @@ Freshness: initial bootstrap
 
 ## Purpose
 
-Describe the company in operational terms. Start here before asking a digital employee to work: this file is the Direction / Mother Brain for the private instance.
+Describe the company in operational terms. Start here before assigning work to a person or considering an agent: this file is the Direction / Mother Brain for the private instance.
 
 ## Fill first
 
@@ -30,8 +30,9 @@ Complete these files to close the Direction chain before operating departments:
 
 ## Current operating state
 
-- Departments: `{{ first_department }}` first.
-- First digital employee: `{{ first_employee }}`.
+- Method mode: `{{ method_mode }}`.
+- People mode: no digital employee is installed.
+- Hybrid mode: the first capability agent remains proposed until its gate and evidence are complete.
 - External actions require human approval.
 
 ## Known context
